@@ -1,36 +1,69 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import LogoutButton from '../auth/LogoutButton';
 
 const NavBar = () => {
+  const sessionUser = useSelector(state => state.session.user);
+  const [showMenu, setShowMenu] = useState(false);
+
+  const openMenu = () => {
+    if (showMenu) return;
+    setShowMenu(true);
+  };
+
+  useEffect(() => {
+    if (!showMenu) return;
+
+    const closeMenu = () => {
+      setShowMenu(false);
+    };
+
+    document.addEventListener('click', closeMenu);
+
+    return () => document.removeEventListener("click", closeMenu);
+  }, [showMenu]);
+
+
+
+  let sessionLinks;
+  if (sessionUser) {
+    sessionLinks = (
+      <div>
+        <div
+          onClick={openMenu}>
+          {/* USERNAME */}
+        </div>
+        {showMenu && (
+          <div className="profile-dropdown">
+            <LogoutButton> Logout </LogoutButton>
+          </div>
+        )
+        }
+      </div>
+    )
+  } else {
+    sessionLinks = (
+      <>
+        <NavLink to="/login">Log In</NavLink>
+        <NavLink to="/sign-up">Sign Up</NavLink>
+      </>
+    );
+  }
+
   return (
     <nav>
-      <ul>
-        <li>
+      <div>
+        <div>
           <NavLink to='/' exact={true} activeClassName='active'>
             Home
           </NavLink>
-        </li>
-        <li>
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
-        </li>
-        <li>
-          <LogoutButton />
-        </li>
-      </ul>
+        </div>
+        <div>
+          {sessionLinks}
+        </div>
+      </div>
     </nav>
   );
 }
