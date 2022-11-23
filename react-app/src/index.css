@@ -5,3 +5,9 @@
   /* for text */
   font-family: 'Cabin', sans-serif;
 }
+
+body {
+  min-width: 1080px;
+  margin: 0;
+  padding: 0;
+}

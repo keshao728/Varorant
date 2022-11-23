@@ -14,7 +14,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -26,7 +26,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -37,6 +36,7 @@ function App() {
         <Route path='/users/:userId' exact={true} >
           <User />
         </Route>
+        <NavBar />
         <Route path='/' exact={true} >
           <h1>My Home Page</h1>
         </Route>

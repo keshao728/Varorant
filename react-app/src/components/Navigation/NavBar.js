@@ -35,6 +35,7 @@ const NavBar = () => {
         <div
           onClick={openMenu}>
           {/* USERNAME */}
+          HERE
         </div>
         {showMenu && (
           <div className="profile-dropdown">

@@ -115,6 +115,8 @@
   color: #ECE8E1;
   background-color: #FF4655;
   z-index: 1;
+  transition: transform 200ms ease-in-out;
+
 }
 
 .playnow-cancel {
@@ -124,4 +126,5 @@
   left: 820px;
   top: -25px;
   padding: 5px;
+  transition: transform 200ms ease-in-out;
 }
