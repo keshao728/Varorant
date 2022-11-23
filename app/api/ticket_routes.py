@@ -18,6 +18,23 @@ def get_one_ticket(id):
     return ticket.to_dict()
 
 #CREATE A TICKET
+@ticket_routes.route('/new', methods=['POST'])
+@login_required
+def create_ticket():
+    form = TicketForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        ticket = Ticket(
+            user_id = current_user.id,
+            request_type=form.request_type.data,
+            subject=form.subject.data,
+            description=form.description.data,
+            attachments=form.attachments.data,
+        )
+        db.session.add(ticket)
+        db.session.commit()
+        return ticket.to_dict()
 
 #EDIT A TICKET
 @ticket_routes.route('/<int:id>', methods=['PUT'])
