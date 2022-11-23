@@ -25,4 +25,7 @@
 #modal-content {
   position: absolute;
   background-color:#0F1923;
+  /* border-top: 1px solid #ECE8E1;
+  border-bottom: 1px solid #ECE8E1; */
 }
+

@@ -3,6 +3,7 @@ import { Modal } from '../../context/Modal';
 import { NavLink, useHistory } from 'react-router-dom';
 // import LoginForm from "../auth/LoginForm";
 // import SignUpForm from "../auth/SignUpForm";
+import close from "./NavImages/close.png"
 import './PlayNowModal.css';
 
 const PlayNow = () => {
@@ -18,8 +19,14 @@ const PlayNow = () => {
       <button onClick={() => setShowModal(true)}> PLAY NOW </button>
 
       {showModal && (
-        <Modal onClose={closeModal}>
-          <div className="playnow-modal-wrapper">
+            <Modal onClose={closeModal}>
+              {/* <button type="button" className="cancel-create-annotation" onClick={closeModal}>Cancel</button> */}
+        <div className="playnow-modal-wrapper">
+              <img
+                className="playnow-cancel"
+                onClick={closeModal}
+                src={close}
+                />
             <div className="playnow-title">
               <div>\</div>
               <div className="playnow-title-text">

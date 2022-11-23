@@ -1,34 +1,37 @@
-.playnow-modal-wrapper{
+.playnow-modal-wrapper {
   color: white;
-  padding: 100px 300px;
+  padding: 40px 300px;
   display: flex;
   width: 600px;
   flex-direction: column;
+  border-top: 1px solid #ECE8E1;
+  border-bottom: 1px solid #ECE8E1;
   justify-content: center;
 }
 
-.playnow-title{
+.playnow-title {
   font-family: 'Antonio', sans-serif;
   font-size: 20px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-bottom: 80px;
+  margin-bottom: 90px;
   font-weight: bold;
 }
 
-.playnow-title-text{
+.playnow-title-text {
   margin: 0px 30px;
 
 }
 
-.playnow-buttons{
+.playnow-buttons {
   display: flex;
   flex-direction: row;
+  margin-bottom: 40px;
   justify-content: space-around;
 }
 
-.playnow-individual-button{
+.playnow-individual-button {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -36,10 +39,21 @@
   width: 250px;
   height: 60px;
   font-weight: bolder;
+  cursor: pointer;
   font-family: 'Cabin', sans-serif;
+  transition: 0.8s;
+  position: relative;
+  border: 1px solid #ECE8E1;
+  overflow: hidden;
+  color: var(--color);
+  background-color: var(--background-color);
+
+  color: black;
+  /* --background-color: #0F1923; */
 }
 
-.playnow-individual-text{
+
+.playnow-individual-text {
   margin-bottom: 10px;
   align-items: center;
   justify-content: center;
@@ -47,11 +61,67 @@
   font-size: 14px;
 }
 
-#playnow-make-one{
-  background-color: #ECE8E1;
+#playnow-make-one::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #0F1923;
+  z-index: -1;
+
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms ease-in-out;
 }
 
-#playnow-sign-in{
-  background-color: #FF4655;
+#playnow-make-one:hover::before,
+#playnow-make-one:focus::before {
+  transform: scaleX(1);
+}
+
+#playnow-make-one:hover,
+#playnow-make-one:focus {
   color: #ECE8E1;
+}
+
+#playnow-make-one {
+  z-index: 1;
+  --background-color:#ECE8E1;
+}
+
+#playnow-sign-in::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #0F1923;
+  z-index: -1;
+
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms ease-in-out;
+}
+
+#playnow-sign-in:hover::before,
+#playnow-sign-in:focus::before {
+  transform: scaleX(1);
+}
+
+#playnow-sign-in {
+  color: #ECE8E1;
+  background-color: #FF4655;
+  z-index: 1;
+}
+
+.playnow-cancel {
+  width: 50px;
+  border: 1px solid #ECE8E1;
+  position: relative;
+  left: 820px;
+  top: -25px;
+  padding: 5px;
 }
