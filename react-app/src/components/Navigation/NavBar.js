@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import PlayNow from './PlayNowModal';
 import LogoutButton from '../auth/LogoutButton';
 
 const NavBar = () => {
@@ -46,8 +47,7 @@ const NavBar = () => {
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/sign-up">Sign Up</NavLink>
+        <PlayNow />
       </>
     );
   }
