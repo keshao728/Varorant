@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Modal } from '../../context/Modal';
 import { NavLink, useHistory } from 'react-router-dom';
-import LoginForm from "../auth/LoginForm";
-import SignUpForm from "../auth/SignUpForm";
+// import LoginForm from "../auth/LoginForm";
+// import SignUpForm from "../auth/SignUpForm";
+import './PlayNowModal.css';
 
 const PlayNow = () => {
   const [showModal, setShowModal] = useState(false);
@@ -13,36 +14,51 @@ const PlayNow = () => {
   }
 
   return (
-    <>
+    <div className="playnow-modal-mother">
       <button onClick={() => setShowModal(true)}> PLAY NOW </button>
 
       {showModal && (
         <Modal onClose={closeModal}>
-          <div>
-            GET SET UP TO PLAY
-          </div>
-          <div>
-            <div>I dont't have a Riot account yet</div>
-            <button onClick={() => {
-              setShowModal(false);
-              history.push("/sign-up")
-            }}>
-              MAKE ONE
-            </button>
-          </div>
-          <div>
-            <div>I have a Riot account</div>
-            <button onClick={() => {
-              setShowModal(false);
-              history.push("/login")
-            }}>
-              SIGN IN
-            </button>
+          <div className="playnow-modal-wrapper">
+            <div className="playnow-title">
+              <div>\</div>
+              <div className="playnow-title-text">
+                GET SET UP TO PLAY
+              </div>
+              <div>\</div>
+            </div>
+            <div className="playnow-buttons">
+
+              <div>
+                <div className="playnow-individual-text">I dont't have a Riot account yet</div>
+                <button
+                  className="playnow-individual-button"
+                  id="playnow-make-one"
+                  onClick={() => {
+                    setShowModal(false);
+                    history.push("/sign-up")
+                  }}>
+                  MAKE ONE
+                </button>
+              </div>
+              <div>
+                <div className="playnow-individual-text">I have a Riot account</div>
+                <button
+                  className="playnow-individual-button"
+                  id="playnow-sign-in"
+                  onClick={() => {
+                    setShowModal(false);
+                    history.push("/login")
+                  }}>
+                  SIGN IN
+                </button>
+              </div>
+            </div>
           </div>
 
         </Modal>
       )}
-    </>
+    </div>
   )
 }
 
