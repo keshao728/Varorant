@@ -1,10 +1,54 @@
-from flask import Blueprint, jsonify
-from flask_login import login_required
-from app.models import Ticket
+from flask import Blueprint, jsonify, request
+from flask_login import login_required, current_user
+from app.models import Ticket, db
+from app.forms import TicketForm
 
 ticket_routes = Blueprint('ticket', __name__)
 
+#GET ALL TICKETS
+@ticket_routes.route('/')
+def get_all_ticket():
+    ticket = Ticket.query.all()
+    return {'ticket': [ticket.to_dict() for ticket in ticket]}
+
+#GET ONE TICKET
 @ticket_routes.route('/<int:id>')
-def ticket(id):
+def get_one_ticket(id):
     ticket = Ticket.query.get(id)
     return ticket.to_dict()
+
+#CREATE A TICKET
+
+#EDIT A TICKET
+@ticket_routes.route('/<int:id>', methods=['PUT'])
+@login_required
+def edit_ticket(id):
+  form = TicketForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+  ticket = Ticket.query.get(id)
+  if current_user.id != ticket.user_id:
+    return {'errors': 'Unauthorized', 'statusCode':401}
+
+  if form.validate_on_submit():
+    ticket.request = form.request.data
+    ticket.subject = form.subject.data
+    ticket.description = form.description.data
+    ticket.attachments = form.attachments.data
+
+    db.session.commit()
+    return ticket.to_dict()
+  return {'errors': 'Invalid ticket', 'statusCode': 401}
+
+#DELETE A TICKET
+@ticket_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_ticket(id):
+  ticket = Ticket.query.get(id)
+  if current_user.id != ticket.user_id:
+    return {'errors': 'Unauthorized', 'statusCode':401}
+  db.session.delete(ticket)
+  db.session.commit()
+  return {
+    "message": "Successfully deleted",
+    "statusCode": 200
+    }
