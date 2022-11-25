@@ -7,7 +7,7 @@ class Media(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    attachments = db.Column(db.String(255), nullable=True)
+    attachment = db.Column(db.String(255), nullable=True)
     title = db.Column(db.String(50), nullable=False)
     description = db.Column(db.String(255), nullable=False)
 
@@ -15,7 +15,7 @@ class Media(db.Model):
         return {
             "id": self.id,
             "user_id": self.user_id,
-            "attactments": self.attachments,
+            "attactment": self.attachment,
             "title": self.title,
             "description": self.description,
         }

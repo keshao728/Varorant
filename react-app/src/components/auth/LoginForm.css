@@ -1,0 +1,141 @@
+.login-form-mother {
+  background-image: url(./authImages/loginImg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: auto;
+  background-position: 0px -285px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.login-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F9F9F9;
+  width: 400px;
+  height: 500px;
+  padding: 60px 40px;
+}
+
+.login-form-child {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  /* height: 100%; */
+}
+
+.login-input-box {
+  position: relative;
+  width: 100%;
+}
+
+.login-message {
+  display: flex;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 0px 10px;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+.login-input-box input {
+  width: 91.5%;
+  padding-top: 28px;
+  padding-left: 10px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  border: 1px solid black;
+  background: #EDEDED;
+  font: inherit;
+  border: none;
+  color: #666666;
+}
+
+.login-input-box input:focus {
+  background-color: #F9F9F9;
+}
+
+.login-input-box label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 10px;
+  font-size: 15px;
+  pointer-events: none;
+  transition: .5s;
+  color: #666666;
+  /* background-color: #F9F9F9; */
+}
+
+.login-input-box input:valid+label,
+.login-input-box input:focus+label {
+  font-size: 15px;
+  top: -5px;
+  left: 0;
+
+}
+
+.submit-login-button {
+  background-color: #FF4655;
+  padding: 30px;
+  border: none;
+  border-radius: 20px;
+  margin-top: 90px;
+  margin-bottom: 45px;
+}
+
+.fa-arrow-right {
+  color: white;
+  font-size: 30px;
+}
+
+.demo-user {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 100%;
+}
+
+.demo-login-button {
+  border: 1px solid #ECECEC;
+  padding: 14px 20px;
+  width: 50%;
+  border-radius: 10px;
+}
+
+#demo-1 {
+  background-color: black;
+  color: white;
+}
+
+#demo-2 {
+  background-color: white;
+  color: black;
+}
+
+.login-redirect {
+  text-decoration: none;
+  color: inherit;
+  color: #666666;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.login-logo {
+  position: relative;
+  top: -450px;
+  left: -650px;
+}
+
+.login-homepage {
+  text-decoration: none;
+  color: inherit;
+
+}

@@ -11,8 +11,8 @@ class Ticket(db.Model):
     subject = db.Column(db.String(50), nullable=False)
     description = db.Column(db.String(255), nullable=False)
     attachments = db.Column(db.String(255), nullable=True)
-    created_at = db.Column(db.DateTime(timezone=True))
-    updated_at = db.Column(db.DateTime(timezone=True))
+    created_at = db.Column(db.DateTime(timezone=True), server_default=func.current_timestamp())
+    updated_at = db.Column(db.DateTime(timezone=True), onupdate=func.current_timestamp())
 
     def to_dict(self):
         return {
