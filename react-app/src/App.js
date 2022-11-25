@@ -7,6 +7,7 @@ import NavBar from './components/Navigation/NavBar';
 // import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/User/UsersList';
 import User from './components/User/User';
+import Support from './components/Support/Support';
 import { authenticate } from './store/session';
 
 function App() {
@@ -36,11 +37,16 @@ function App() {
         <Route path='/users/:userId' exact={true} >
           <User />
         </Route>
-        <NavBar />
         <Route path='/' exact={true} >
+          <NavBar />
           <h1>My Home Page</h1>
         </Route>
+        <Route path='/support'>
+          <NavBar />
+          <Support />
+        </Route>
       </Switch>
+
     </BrowserRouter>
   );
 }
