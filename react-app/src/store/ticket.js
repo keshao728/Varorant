@@ -1,5 +1,6 @@
 const GET_ALL_TICKETS = 'tickets/GET_ALL_TICKETS';
 const GET_ONE_TICKET = 'tickets/GET_ONE_TICKET';
+const CREATE_TICKET = 'tickets/CREATE_TICKET';
 const EDIT_TICKET = 'tickets/EDIT_TICKET';
 const DELETE_TICKET = 'tickets/DELETE_TICKET';
 
@@ -10,6 +11,11 @@ const getAllTicketAction = (tickets) => ({
 
 const getOneTicketAction = (ticket) => ({
   type: GET_ONE_TICKET,
+  ticket
+})
+
+const createTicketAction = (ticket) => ({
+  type: CREATE_TICKET,
   ticket
 })
 
@@ -27,8 +33,8 @@ const deleteTicketAction = (ticketId) => ({
 //THUNK
 export const getAllTicketsThunk = () => async (dispatch) => {
   const response = await fetch('/api/tickets');
-
-  if (response.ok){
+  console.log("RESPONSE", response)
+  if (response.ok) {
     const ticketsData = await response.json();
     dispatch(getAllTicketAction(ticketsData));
     return ticketsData;
@@ -39,12 +45,29 @@ export const getAllTicketsThunk = () => async (dispatch) => {
 export const getOneTicketThunk = (ticketId) => async (dispatch) => {
   const response = await fetch(`/api/tickets/${ticketId}`);
 
-  if (response.ok){
+  if (response.ok) {
     const ticketData = await response.json();
     dispatch(getOneTicketAction(ticketData));
     return ticketData;
   }
   return console.log("GET-ONE-TICKET-THUNK-ERROR", response)
+}
+
+export const createTicketThunk = (ticket) => async (dispatch) => {
+  const response = await fetch('/api/tickets/new', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(ticket)
+  });
+
+  if (response.ok) {
+    const ticketData = await response.json();
+    dispatch(createTicketAction(ticketData));
+    return ticketData;
+  }
+  return console.log("CREATE-TICKET-THUNK-ERROR", response)
 }
 
 export const editTicketThunk = (ticketId, ticket) => async (dispatch) => {
@@ -56,7 +79,7 @@ export const editTicketThunk = (ticketId, ticket) => async (dispatch) => {
     body: JSON.stringify(ticket)
   });
 
-  if (response.ok){
+  if (response.ok) {
     const ticketData = await response.json();
     dispatch(editTicketAction(ticketData));
     return ticketData;
@@ -69,7 +92,7 @@ export const deleteTicketThunk = (ticketId) => async (dispatch) => {
     method: 'DELETE',
   });
 
-  if (response.ok){
+  if (response.ok) {
     const ticketData = await response.json();
     dispatch(deleteTicketAction(ticketData));
     return ticketData;
@@ -89,15 +112,19 @@ const ticketReducer = (state = initialState, action) => {
       });
       return newState;
     case GET_ONE_TICKET:
-      newState = {...state};
+      newState = { ...state };
+      newState[action.ticket.id] = action.ticket;
+      return newState;
+    case CREATE_TICKET:
+      newState = { ...state };
       newState[action.ticket.id] = action.ticket;
       return newState;
     case EDIT_TICKET:
-      newState = {...state};
+      newState = { ...state };
       newState[action.ticketId.id] = action.ticketId;
       return newState;
     case DELETE_TICKET:
-      newState = {...state};
+      newState = { ...state };
       delete newState[action.ticketId];
       return newState;
     default:

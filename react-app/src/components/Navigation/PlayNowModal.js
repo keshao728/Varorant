@@ -19,14 +19,14 @@ const PlayNow = () => {
       <button onClick={() => setShowModal(true)}> PLAY NOW </button>
 
       {showModal && (
-            <Modal onClose={closeModal}>
-              {/* <button type="button" className="cancel-create-annotation" onClick={closeModal}>Cancel</button> */}
-        <div className="playnow-modal-wrapper">
-              <img
-                className="playnow-cancel"
-                onClick={closeModal}
-                src={close}
-                />
+        <Modal onClose={closeModal}>
+          {/* <button type="button" className="cancel-create-annotation" onClick={closeModal}>Cancel</button> */}
+          <div className="playnow-modal-wrapper">
+            <img
+              className="playnow-cancel"
+              onClick={closeModal}
+              src={close}
+            />
             <div className="playnow-title">
               <div>\</div>
               <div className="playnow-title-text">

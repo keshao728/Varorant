@@ -8,6 +8,7 @@ import NavBar from './components/Navigation/NavBar';
 import UsersList from './components/User/UsersList';
 import User from './components/User/User';
 import Support from './components/Support/Support';
+import AllTicket from './components/Ticket/AllTicket';
 import { authenticate } from './store/session';
 
 function App() {
@@ -44,6 +45,10 @@ function App() {
         <Route path='/support'>
           <NavBar />
           <Support />
+        </Route>
+        <Route>
+          <NavBar />
+          <AllTicket />
         </Route>
       </Switch>
 
