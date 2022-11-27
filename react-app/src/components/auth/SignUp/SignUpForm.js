@@ -60,15 +60,24 @@ const SignUpForm = () => {
 
   return (
     <div className='signup-form-mother'>
-      <div className='signup-links'>
-        <div onClick={() => setPage(0)}>
-          1
+      <div className='signup-links-pages'>
+        <div
+          className="signup-individual-pages"
+          onClick={() => setPage(0)}
+          style={page === 0 ? { backgroundColor: "#FF4654" } : null}
+        >
         </div>
-        <div onClick={() => setPage(1)}>
-          2
+        <div
+          className="signup-individual-pages"
+          onClick={() => setPage(1)}
+          style={page === 1 ? { backgroundColor: "#FF4654" } : null}
+        >
         </div>
-        <div onClick={() => setPage(2)}>
-          3
+        <div
+        className="signup-individual-pages"
+        onClick={() => setPage(2)}
+        style={page === 2 ? { backgroundColor: "#FF4654" } : null}
+        >
         </div>
       </div>
       <div className='signup-logo'>

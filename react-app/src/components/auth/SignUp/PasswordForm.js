@@ -35,7 +35,6 @@ const PasswordForm = ({ formData, setFormData }) => {
           onChange={(e) =>
             setFormData({ ...formData, repeatPassword: e.target.value })
           }
-          required={true}
         ></input>
         <label>Repeat Password</label>
       </div>
