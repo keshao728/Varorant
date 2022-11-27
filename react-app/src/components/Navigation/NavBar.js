@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import PlayNow from './PlayNowModal';
 import LogoutButton from '../auth/LogoutButton';
+import logo from './NavImages/logo.png';
+import './NavBar.css';
 
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user);
@@ -54,19 +56,26 @@ const NavBar = () => {
   }
 
   return (
-    <nav>
-      <div>
-        <div>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            Home
-          </NavLink>
+    <nav className='nav-mother'>
+      <div className='nav-wrapper'>
+        <div className='nav-left'>
+          <div className='nav-home-wrapper'>
+            <NavLink to='/' exact={true} activeClassName='active'>
+              <div className='nav-home'>
+                <div className="nav-home-logo" >
+                  <img className='nav-home-individual-logo' src={logo} />
+                </div>
+                <div className='nav-home-name'>MEOWIT GAMES</div>
+              </div>
+            </NavLink>
+          </div>
+          <div className='nav-action'>
+            <NavLink to='/support' exact={true} className="individual-action" activeClassName='active'>
+              Support
+            </NavLink>
+          </div>
         </div>
-        <div>
-          <NavLink to='/support' exact={true} activeClassName='active'>
-            Support
-          </NavLink>
-        </div>
-        <div>
+        <div className='nav-right'>
           {sessionLinks}
         </div>
       </div>
