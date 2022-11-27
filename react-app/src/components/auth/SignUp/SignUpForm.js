@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, NavLink } from 'react-router-dom';
 import { signUp } from '../../../store/session';
@@ -20,6 +20,7 @@ const SignUpForm = () => {
     password: '',
     repeatPassword: '',
   })
+
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
@@ -29,7 +30,12 @@ const SignUpForm = () => {
 
   const PageDisplay = () => {
     if (page === 0) {
-      return <EmailForm formData={formData} setFormData={setFormData} />
+      return <div>
+        <EmailForm formData={formData} setFormData={setFormData} />
+        <div>
+          <NavLink className="signup-redirect" to="/login"> ALREADY HAVE AN ACCOUNT? </NavLink>
+        </div>
+      </div>
     } else if (page === 1) {
       return <UsernameForm formData={formData} setFormData={setFormData} />
     } else {
@@ -54,38 +60,24 @@ const SignUpForm = () => {
 
   return (
     <div className='signup-form-mother'>
+      <div className='signup-links'>
+        <div onClick={() => setPage(0)}>
+          1
+        </div>
+        <div onClick={() => setPage(1)}>
+          2
+        </div>
+        <div onClick={() => setPage(2)}>
+          3
+        </div>
+      </div>
       <div className='signup-logo'>
         <NavLink className="signup-homepage" to={`/`} exact={true} activeClassName='active'>
           Riot Games
         </NavLink>
       </div>
-      <div className='progress-wrapper'>
-        {/* {page === 0 ?
-          <div
-            className="progressbar"
-            onClick={() => setPage(0)}
-          // style={{ width: "33.33%" }}
-          >
-          </div> :
-          <div className='no-progress-bar'></div>
-        }
-        {page === 1 ?
-          <div
-            className="progressbar"
-            onClick={() => setPage(1)}
-          // style={{ width: "66.66%" }}
-          >
-          </div> : null
-        }
-        {page === 2 ?
-          <div
-            className="progressbar"
-            onClick={() => setPage(2)}
-          // style={{ width: "100.00%" }}
-          >
-          </div> : null
-        } */}
-      </div>
+      {/* <div className='progress-wrapper'>
+      </div> */}
       <form onSubmit={onSignUp}>
         <div className='signup-form-wrapper'>
           <div className="signup-form-child">

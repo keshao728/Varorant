@@ -1,4 +1,5 @@
 import React from "react";
+import "./SignUpForm.css"
 
 // const onSignUp = async (e) => {
 //   e.preventDefault();
@@ -13,10 +14,11 @@ import React from "react";
 const PasswordForm = ({ formData, setFormData }) => {
   return (
     <div>
-      <div>
+      <div className='signup-input-box'>
         <input
           type='password'
           name='password'
+          required
           value={formData.password}
           onChange={(e) =>
             setFormData({ ...formData, password: e.target.value })
@@ -24,11 +26,12 @@ const PasswordForm = ({ formData, setFormData }) => {
         ></input>
         <label>Password</label>
       </div>
-      <div>
+      <div className='signup-input-box'>
         <input
           type='password'
           name='repeat_password'
           value={formData.repeatPassword}
+          required
           onChange={(e) =>
             setFormData({ ...formData, repeatPassword: e.target.value })
           }

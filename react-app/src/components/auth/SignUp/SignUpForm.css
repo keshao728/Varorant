@@ -4,7 +4,7 @@
   background-repeat: no-repeat;
   height: 100vh;
   width: auto;
-  background-position: 0px -285px;
+  background-position: 0px -280px;
   justify-content: flex-end;
   display: flex;
   align-items: center;
@@ -15,9 +15,10 @@
   flex-direction: column;
   align-items: center;
   background-color: #F9F9F9;
-  width: 400px;
-  height: 500px;
+  width: 470px;
+  height: 540px;
   padding: 60px 40px;
+  margin-right: 50px;
 }
 
 .signup-message {
@@ -89,6 +90,7 @@
   top: -5px;
   left: 0;
 }
+
 .submit-signup-button {
   background-color: #FF4655;
   padding: 30px;
@@ -96,6 +98,13 @@
   border-radius: 20px;
   margin-top: 90px;
   margin-bottom: 45px;
+}
+.signup-redirect{
+  text-decoration: none;
+  color: inherit;
+  color: #666666;
+  font-weight: bold;
+  font-size: 13px;
 }
 
 /* .progress-wrapper{
