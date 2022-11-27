@@ -1,5 +1,5 @@
 import homeVid from './HomeAssets/homeVid.mp4'
-import PlayNow from '../Navigation/PlayNowModal';
+import PlayFree from '../Navigation/PlayFreeModal';
 import "./Home.css"
 
 const Home = () => {
@@ -8,8 +8,9 @@ const Home = () => {
   return (
     <div>
       <div className='video-wrapper'>
-        <h1>VARORANT</h1>
-        <PlayNow />
+        <div className='video-des'>A 5v5 character-based tactical shooter</div>
+        <div className='video-title'>VARORANT</div>
+        <PlayFree />
         <video className="home-video" src={homeVid} autoPlay muted loop />
       </div>
     </div>

@@ -4,9 +4,10 @@ import { NavLink, useHistory } from 'react-router-dom';
 // import LoginForm from "../auth/LoginForm";
 // import SignUpForm from "../auth/SignUpForm";
 import close from "./NavImages/close.png"
+import './PlayFreeModal.css';
 import './PlayNowModal.css';
 
-const PlayNow = () => {
+const PlayFree = () => {
   const [showModal, setShowModal] = useState(false);
   const history = useHistory();
 
@@ -16,7 +17,13 @@ const PlayNow = () => {
 
   return (
     <div className="playnow-modal-mother">
-      <button onClick={() => setShowModal(true)}> PLAY NOW </button>
+      <div className="playfree-border">
+
+        <button
+          className="playnow-button"
+          id="playnow-play-free"
+          onClick={() => setShowModal(true)}> PLAY FREE </button>
+      </div>
 
       {showModal && (
         <Modal onClose={closeModal}>
@@ -73,4 +80,4 @@ const PlayNow = () => {
   )
 }
 
-export default PlayNow;
+export default PlayFree;

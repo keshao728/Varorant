@@ -8,7 +8,8 @@
   margin-bottom: 100px;
   position: relative;
   overflow: hidden;
-  min-height: 76vh;
+  min-height: 75vh;
+  min-width: 100vh;
   background: rgba(0, 0, 0, 0.25);
 }
 
@@ -20,4 +21,12 @@
   transform: translate(-50%, -30%);
   min-width: 100%;
   min-height: 100%;
+}
+
+.video-des{
+
+}
+
+.video-title{
+  font-size: 120px;
 }
