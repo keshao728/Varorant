@@ -15,7 +15,7 @@ choice = [
 ]
 
 class TicketForm(FlaskForm):
-  request = SelectField("Request", validators=[DataRequired()], choices=[choice])
+  request_type = SelectField("Request", validators=[DataRequired()], choices=[choice])
   subject = StringField("Subject", validators=[DataRequired()])
   description = TextAreaField("Description", validators=[DataRequired()])
   attachments = StringField("Attachments")

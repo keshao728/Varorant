@@ -9,7 +9,12 @@ ticket_routes = Blueprint('ticket', __name__)
 @ticket_routes.route('/')
 def get_all_ticket():
     ticket = Ticket.query.all()
-    return {'ticket': [ticket.to_dict() for ticket in ticket]}
+
+    ticket_list=[]
+    for ticket in ticket:
+        ticket_list.append(ticket.to_dict())
+
+    return jsonify(ticket_list)
 
 #GET ONE TICKET
 @ticket_routes.route('/<int:id>')

@@ -1,0 +1,260 @@
+.signup-form-mother {
+  background-image: url(../authImages/signupImg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: auto;
+  background-position: 0px -280px;
+  justify-content: flex-end;
+  display: flex;
+  align-items: center;
+}
+
+.signup-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F9F9F9;
+  width: 470px;
+  height: 540px;
+  padding: 60px 40px;
+  margin-right: 50px;
+}
+
+.signup-page-text {
+  font-family: 'Cabin', sans-serif;
+  display: flex;
+  font-size: 80px;
+  font-weight: bolder;
+  position: absolute;
+  color: white;
+  top: 570px;
+  left: 50px;
+  width: 500px;
+  line-height: 90px;
+  letter-spacing: 10px;
+}
+
+.signup-mes-des {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 35px;
+  font-weight: bold;
+  padding: 20px 10px;
+  margin-bottom: 30px;
+  align-items: center;
+  width: 90%;
+}
+
+.signup-description {
+  font-size: 28px;
+  color: #7A7A7A;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-weight: 500;
+}
+
+.signup-logo {
+  position: relative;
+  top: -450px;
+  left: -1150px;
+}
+
+.signup-homepage {
+  text-decoration: none;
+  color: inherit;
+
+}
+
+
+.signup-input-box {
+  position: relative;
+  width: 400px;
+}
+
+.signup-form-child {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+}
+
+.signup-input-box input {
+  width: 91.5%;
+  padding-top: 28px;
+  padding-left: 10px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  border: 1px solid black;
+  background: #EDEDED;
+  font: inherit;
+  border: none;
+  color: #666666;
+}
+
+.signup-input-box input:focus {
+  background-color: #F9F9F9;
+}
+
+.signup-input-box label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 10px;
+  font-size: 15px;
+  pointer-events: none;
+  transition: .5s;
+  color: #666666;
+}
+
+.signup-input-box input:valid+label,
+.signup-input-box input:focus+label {
+  font-size: 15px;
+  top: -5px;
+  left: 0;
+}
+
+.submit-signup-button {
+  background-color: #FF4655;
+  padding: 30px;
+  border: none;
+  border-radius: 20px;
+  margin-top: 90px;
+  margin-bottom: 45px;
+}
+
+.signup-redirect {
+  text-decoration: none;
+  color: inherit;
+  color: #666666;
+  font-weight: bold;
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 320px;
+}
+
+.signup-links-pages {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top: -360px;
+  left: 630px;
+  gap: 10px
+}
+
+.signup-individual-pages {
+  background-color: #fababf;
+  width: 30px;
+  height: 5px;
+  cursor: pointer;
+}
+
+.signup-individual-pages:hover {
+  background-color: #FD8E96;
+}
+
+.checkbox-wrapper {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox-wrapper input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 5px;
+
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox-wrapper:hover input~.checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-wrapper input:checked~.checkmark {
+  background-color: #EA3241;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-wrapper input:checked~.checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-wrapper .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* .progress-wrapper{
+  width: 40px;
+  height: 10px;
+  background-color: white;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  left: 1000px;
+  top: 0px;
+  z-index: 1;
+}
+
+.no-progress-bar{
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  height: 100%;
+}
+
+.progressbar {
+  background-color: rgb(98, 0, 255);
+  width: 100%;
+  height: 100%;
+} */
+
+/*
+.progressbar div {
+} */
