@@ -1,9 +1,128 @@
 .signup-form-mother{
-  background-image: url(./authImages/signupImg.jpg);
+  background-image: url(../authImages/signupImg.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
   width: auto;
-  background-position: 0px -280px;
+  background-position: 0px -285px;
+  justify-content: flex-end;
+  display: flex;
+  align-items: center;
   }
 
+.signup-form-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F9F9F9;
+  width: 400px;
+  height: 500px;
+  padding: 60px 40px;
+}
+
+.signup-message {
+  display: flex;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 0px 10px;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+.signup-logo {
+  position: relative;
+  top: -450px;
+  left: -1150px;
+}
+
+.signup-homepage {
+  text-decoration: none;
+  color: inherit;
+
+}
+
+.signup-input-box {
+  position: relative;
+  width: 100%;
+}
+
+.signup-form-child{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* width: 90%; */
+}
+
+.signup-input-box input {
+  width: 91.5%;
+  padding-top: 28px;
+  padding-left: 10px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  border: 1px solid black;
+  background: #EDEDED;
+  font: inherit;
+  border: none;
+  color: #666666;
+}
+
+.signup-input-box input:focus {
+  background-color: #F9F9F9;
+}
+
+.signup-input-box label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 10px;
+  font-size: 15px;
+  pointer-events: none;
+  transition: .5s;
+  color: #666666;
+}
+
+.signup-input-box input:valid+label,
+.signup-input-box input:focus+label {
+  font-size: 15px;
+  top: -5px;
+  left: 0;
+}
+.submit-signup-button {
+  background-color: #FF4655;
+  padding: 30px;
+  border: none;
+  border-radius: 20px;
+  margin-top: 90px;
+  margin-bottom: 45px;
+}
+
+/* .progress-wrapper{
+  width: 40px;
+  height: 10px;
+  background-color: white;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  left: 1000px;
+  top: 0px;
+  z-index: 1;
+}
+
+.no-progress-bar{
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  height: 100%;
+}
+
+.progressbar {
+  background-color: rgb(98, 0, 255);
+  width: 100%;
+  height: 100%;
+} */
+
+/*
+.progressbar div {
+} */

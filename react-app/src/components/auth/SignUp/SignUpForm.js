@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import { signUp } from '../../../store/session';
 import EmailForm from './EmailForm'
 import UsernameForm from './UsernameForm'
 import PasswordForm from './PasswordForm'
+import "./SignUpForm.css"
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -53,23 +54,66 @@ const SignUpForm = () => {
 
   return (
     <div className='signup-form-mother'>
-
+      <div className='signup-logo'>
+        <NavLink className="signup-homepage" to={`/`} exact={true} activeClassName='active'>
+          Riot Games
+        </NavLink>
+      </div>
+      <div className='progress-wrapper'>
+        {/* {page === 0 ?
+          <div
+            className="progressbar"
+            onClick={() => setPage(0)}
+          // style={{ width: "33.33%" }}
+          >
+          </div> :
+          <div className='no-progress-bar'></div>
+        }
+        {page === 1 ?
+          <div
+            className="progressbar"
+            onClick={() => setPage(1)}
+          // style={{ width: "66.66%" }}
+          >
+          </div> : null
+        }
+        {page === 2 ?
+          <div
+            className="progressbar"
+            onClick={() => setPage(2)}
+          // style={{ width: "100.00%" }}
+          >
+          </div> : null
+        } */}
+      </div>
       <form onSubmit={onSignUp}>
-        {/* <div>
+        <div className='signup-form-wrapper'>
+          <div className="signup-form-child">
+            {/* <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
-        </div> */}
-        <div>
-          <h1>{FormTitles[page]}</h1>
-        </div>
-        <div>{FormDescriptions[page]}</div>
-        <div>{PageDisplay()}</div>
-        <div>
-          {page === FormTitles.length - 1 ?
-            <button type='submit'>Sign Up</button>
-            : <button onClick={() => setPage((currPage) => currPage + 1)}>Next</button>
-          }
+          </div> */}
+            <div className='signup-message'>{FormTitles[page]}</div>
+            <div className='signup-description'>{FormDescriptions[page]}</div>
+
+            <div>
+              {PageDisplay()}
+            </div>
+
+            <div>
+              {page === FormTitles.length - 1 ?
+                <button className='submit-signup-button' type='submit'>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                : <button
+                  onClick={() => setPage((currPage) => currPage + 1)}
+                  className='submit-signup-button'>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              }
+            </div>
+          </div>
         </div>
       </form>
     </div>

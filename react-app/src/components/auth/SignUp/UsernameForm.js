@@ -1,10 +1,10 @@
 import React from "react";
+import "./SignUpForm.css"
 
 const UsernameForm = ({ formData, setFormData }) => {
   return (
     <div>
-      <div>
-        <label>User Name</label>
+      <div className='signup-input-box'>
         <input
           type='text'
           name='username'
@@ -13,6 +13,7 @@ const UsernameForm = ({ formData, setFormData }) => {
             setFormData({ ...formData, username: e.target.value })
           }
         ></input>
+        <label>User Name</label>
       </div>
     </div>
   )
