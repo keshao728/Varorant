@@ -4,7 +4,7 @@
   background-repeat: no-repeat;
   height: 100vh;
   width: auto;
-  background-position: 0px -280px;
+  background-position: 0px -255px;
   justify-content: flex-end;
   display: flex;
   align-items: center;
@@ -15,10 +15,10 @@
   flex-direction: column;
   align-items: center;
   background-color: #F9F9F9;
-  width: 470px;
-  height: 540px;
+  width: 420px;
+  height: 523px;
   padding: 60px 40px;
-  margin-right: 50px;
+  margin-right: 45px;
 }
 
 .signup-page-text {
@@ -29,7 +29,7 @@
   position: absolute;
   color: white;
   top: 570px;
-  left: 50px;
+  left: 150px;
   width: 500px;
   line-height: 90px;
   letter-spacing: 10px;
@@ -144,8 +144,8 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  top: -360px;
-  left: 630px;
+  top: -345px;
+  left: 577px;
   gap: 10px
 }
 

@@ -1,0 +1,23 @@
+.support-top-wrapper{
+  background-image: url(./supportImages/supportBanner.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 50vh;
+  width: auto;
+  background-position: 0px -62px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+/* .support-top{
+  height: 300px;
+  margin-top: 500px;
+  margin-bottom: 300px;
+  z-index: 1;
+} */
+
+.support-title{
+  width: 650px;
+  margin-bottom: 25px;
+}
