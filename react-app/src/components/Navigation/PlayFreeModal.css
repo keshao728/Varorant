@@ -1,0 +1,55 @@
+.playnow-button{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 250px;
+  height: 60px;
+  font-weight: bolder;
+  cursor: pointer;
+  font-family: 'Cabin', sans-serif;
+  transition: 0.8s;
+  position: relative;
+  border: 1px solid #61676A;
+  overflow: hidden;
+  color: var(--color);
+  background-color: var(--background-color);
+
+  color: black;
+}
+
+#playnow-play-free::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #0F1923;
+  z-index: -1;
+
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms ease-in-out;
+}
+
+#playnow-play-free:hover::before,
+#playnow-play-free:focus::before {
+  transform: scaleX(1);
+}
+
+#playnow-play-free {
+  color: #ECE8E1;
+  background-color: #FF4655;
+  z-index: 1;
+  transition: transform 200ms ease-in-out;
+
+}
+
+.playfree-border{
+  border: 13px solid;
+  /* padding: 10px; */
+  border-image-source: url(./NavImages/BtnBorder.png);
+  border-image-slice: 34;
+  border-image-repeat: round;
+}

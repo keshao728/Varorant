@@ -38,27 +38,31 @@ const PlayNow = () => {
 
               <div>
                 <div className="playnow-individual-text">I dont't have a Riot account yet</div>
-                <button
-                  className="playnow-individual-button"
-                  id="playnow-make-one"
-                  onClick={() => {
-                    setShowModal(false);
-                    history.push("/sign-up")
-                  }}>
-                  MAKE ONE
-                </button>
+                <div className="playnow-individual-border">
+                  <button
+                    className="playnow-individual-button"
+                    id="playnow-make-one"
+                    onClick={() => {
+                      setShowModal(false);
+                      history.push("/sign-up")
+                    }}>
+                    MAKE ONE
+                  </button>
+                </div>
               </div>
               <div>
                 <div className="playnow-individual-text">I have a Riot account</div>
-                <button
-                  className="playnow-individual-button"
-                  id="playnow-sign-in"
-                  onClick={() => {
-                    setShowModal(false);
-                    history.push("/login")
-                  }}>
-                  SIGN IN
-                </button>
+                <div className="playnow-individual-border">
+                  <button
+                    className="playnow-individual-button"
+                    id="playnow-sign-in"
+                    onClick={() => {
+                      setShowModal(false);
+                      history.push("/login")
+                    }}>
+                    SIGN IN
+                  </button>
+                </div>
               </div>
             </div>
           </div>

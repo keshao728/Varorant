@@ -31,6 +31,14 @@
   justify-content: space-around;
 }
 
+.playnow-individual-border {
+  border: 13px solid;
+  /* padding: 10px; */
+  border-image-source: url(./NavImages/BtnBorder.png);
+  border-image-slice: 34;
+  border-image-repeat: round;
+}
+
 .playnow-individual-button {
   align-items: center;
   display: flex;
@@ -43,7 +51,7 @@
   font-family: 'Cabin', sans-serif;
   transition: 0.8s;
   position: relative;
-  border: 1px solid #ECE8E1;
+  border: 1px solid #61676A;
   overflow: hidden;
   color: var(--color);
   background-color: var(--background-color);
@@ -54,7 +62,7 @@
 
 
 .playnow-individual-text {
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   align-items: center;
   justify-content: center;
   display: flex;
@@ -88,7 +96,7 @@
 
 #playnow-make-one {
   z-index: 1;
-  --background-color:#ECE8E1;
+  --background-color: #ECE8E1;
 }
 
 #playnow-sign-in::before {

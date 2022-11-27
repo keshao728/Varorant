@@ -7,6 +7,7 @@ import NavBar from './components/Navigation/NavBar';
 // import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/User/UsersList';
 import User from './components/User/User';
+import Home from './components/Home/Home';
 import Support from './components/Support/Support';
 import AllTicket from './components/Ticket/AllTicket';
 import { authenticate } from './store/session';
@@ -40,7 +41,7 @@ function App() {
         </Route>
         <Route path='/' exact={true} >
           <NavBar />
-          <h1>My Home Page</h1>
+          <Home />
         </Route>
         <Route path='/support'>
           <NavBar />
