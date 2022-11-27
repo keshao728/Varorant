@@ -84,6 +84,7 @@ const SignUpForm = () => {
         <NavLink className="signup-homepage" to={`/`} exact={true} activeClassName='active'>
           Riot Games
         </NavLink>
+      <div className='signup-page-text'> CREATE AN ACCOUNT </div>
       </div>
       {/* <div className='progress-wrapper'>
       </div> */}

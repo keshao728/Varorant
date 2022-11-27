@@ -21,6 +21,20 @@
   margin-right: 50px;
 }
 
+.signup-page-text {
+  font-family: 'Cabin', sans-serif;
+  display: flex;
+  font-size: 80px;
+  font-weight: bolder;
+  position: absolute;
+  color: white;
+  top: 570px;
+  left: 50px;
+  width: 500px;
+  line-height: 90px;
+  letter-spacing: 10px;
+}
+
 .signup-mes-des {
   display: flex;
   justify-content: center;
@@ -34,7 +48,7 @@
 }
 
 .signup-description {
-  font-size:28px;
+  font-size: 28px;
   color: #7A7A7A;
   margin-top: 20px;
   display: flex;
