@@ -1,8 +1,10 @@
 .nav-mother {
   background-color: #111111;
   width: 100%;
-  height: 60px;
-  height: 100%;
+  height: 74px;
+  position: fixed;
+  z-index: 1;
+  border-bottom: 1px solid #1A1A1A;
 }
 
 .nav-wrapper {

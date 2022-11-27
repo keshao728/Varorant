@@ -7,6 +7,8 @@ const Home = () => {
 
   return (
     <div>
+      <div className='video-line'></div>
+      <div className='video-line-2'></div>
       <div className='video-wrapper'>
         <div className='video-des'>A 5v5 character-based tactical shooter</div>
         <div className='video-title'>VARORANT</div>
