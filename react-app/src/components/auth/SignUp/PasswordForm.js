@@ -24,7 +24,7 @@ const PasswordForm = ({ formData, setFormData }) => {
             setFormData({ ...formData, password: e.target.value })
           }
         ></input>
-        <label>Password</label>
+        <label>PASSWORD</label>
       </div>
       <div className='signup-input-box'>
         <input
@@ -36,7 +36,7 @@ const PasswordForm = ({ formData, setFormData }) => {
             setFormData({ ...formData, repeatPassword: e.target.value })
           }
         ></input>
-        <label>Repeat Password</label>
+        <label>CONFIRM PASSWORD</label>
       </div>
     </div>
   )

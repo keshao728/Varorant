@@ -21,13 +21,26 @@
   margin-right: 50px;
 }
 
-.signup-message {
+.signup-mes-des {
   display: flex;
+  justify-content: center;
+  flex-direction: column;
   font-size: 35px;
   font-weight: bold;
   padding: 20px 10px;
   margin-bottom: 30px;
+  align-items: center;
+  width: 90%;
+}
+
+.signup-description {
+  font-size:28px;
+  color: #7A7A7A;
+  margin-top: 20px;
+  display: flex;
   justify-content: center;
+  text-align: center;
+  font-weight: 500;
 }
 
 .signup-logo {
@@ -41,6 +54,7 @@
   color: inherit;
 
 }
+
 
 .signup-input-box {
   position: relative;
@@ -106,6 +120,10 @@
   color: #666666;
   font-weight: bold;
   font-size: 13px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 320px;
 }
 
 .signup-links-pages {
@@ -128,57 +146,75 @@
   background-color: #FD8E96;
 }
 
-.checkbox-wrapper{
-  display: flex;
-  align-items: center;
+.checkbox-wrapper {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-.checkbox-wrapper label {
-  cursor: pointer;
-  display: flex;
-}
-
-.checkbox-wrapper input[type='checkbox'] {
-  cursor: pointer;
-  opacity: 0;
+/* Hide the browser's default checkbox */
+.checkbox-wrapper input {
   position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
 }
 
-.checkbox-wrapper label::before {
-  content: '';
-  width: 20px;
-  height: 20px;
-  border-radius: .15em;
-  margin-right: .5em;
-  border: .05em solid black;
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 5px;
+
 }
 
-.checkbox-wrapper label:hover::before,
-.checkbox-wrapper input[type='checkbox']:hover + label::before {
-  background-color: #d3d3d3;
-}
-
-.checkbox-wrapper input[type='checkbox']:disabled + label,
-.checkbox-wrapper input[type='checkbox']:disabled {
-  color: #aaa;
-  cursor: default;
-}
-
-.checkbox-wrapper input[type='checkbox']:checked + label::before {
-  content: '\002714';
-  background-color: #FF4655;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  border-color: #FF4655;
-}
-
-.checkbox-wrapper input[type='checkbox']:disabled + label::before {
+/* On mouse-over, add a grey background color */
+.checkbox-wrapper:hover input~.checkmark {
   background-color: #ccc;
-  border-color: #999;
 }
 
+/* When the checkbox is checked, add a blue background */
+.checkbox-wrapper input:checked~.checkmark {
+  background-color: #EA3241;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-wrapper input:checked~.checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-wrapper .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
 
 /* .progress-wrapper{
   width: 40px;

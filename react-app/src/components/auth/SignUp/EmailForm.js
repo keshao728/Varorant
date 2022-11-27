@@ -19,11 +19,10 @@ const EmailForm = ({ formData, setFormData }) => {
         />
         <label htmlFor='email'>EMAIL</label>
       </div>
-      <div className="checkbox-wrapper">
-        <input
-          type="checkbox"/>
-         <label htmlFor="checkbox"> MEOWMEOWMEOW </label>
-      </div>
+      <label className="checkbox-wrapper"> MEOWMEOWMEOW
+        <input type="checkbox" />
+        <span className="checkmark"></span>
+      </label>
     </div>
   )
 }

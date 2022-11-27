@@ -14,7 +14,7 @@ const UsernameForm = ({ formData, setFormData }) => {
             setFormData({ ...formData, username: e.target.value })
           }
         ></input>
-        <label>User Name</label>
+        <label>USERNAME</label>
       </div>
     </div>
   )

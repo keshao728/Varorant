@@ -95,8 +95,10 @@ const SignUpForm = () => {
             <div key={ind}>{error}</div>
           ))}
           </div> */}
+          <div className='signup-mes-des'>
             <div className='signup-message'>{FormTitles[page]}</div>
             <div className='signup-description'>{FormDescriptions[page]}</div>
+          </div>
 
             <div>
               {PageDisplay()}
