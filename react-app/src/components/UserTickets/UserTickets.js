@@ -20,7 +20,7 @@ const UserTickets = () => {
 
   useEffect(() => {
     dispatch(getUserTicketsThunk())
-    .then(() => setIsLoaded(true))
+      .then(() => setIsLoaded(true))
 
   }, [dispatch])
 
@@ -38,7 +38,7 @@ const UserTickets = () => {
           VARORANT Support
         </NavLink>
         <div className="ticket-support">
-          >
+          {">"}
         </div>
         <div>
           My activities

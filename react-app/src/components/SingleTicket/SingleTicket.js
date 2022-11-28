@@ -41,7 +41,7 @@ const SingleTicket = () => {
           VARORANT Support
         </NavLink>
         <div className="ticket-support">
-          >
+          {">"}
         </div>
         <div>
           <NavLink to='/tickets/my-tickets' exact={true} className="ticket-support" activeClassName='active'>

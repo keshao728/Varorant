@@ -59,7 +59,7 @@ const TicketForm = () => {
           VARORANT Support
         </NavLink>
         <div className="ticket-support">
-          >
+          {">"}
         </div>
         <div>
           Submit a request
