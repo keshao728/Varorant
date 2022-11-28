@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import DeleteTicketModal from "./DeleteTicket/DeleteTicketModal";
+import EditTicketModal from "../TicketForm/EditTicketForm/EditTicketModal";
 import * as moment from 'moment';
 
 
@@ -90,6 +92,15 @@ const SingleTicket = () => {
               </div>
               <div className="single-des">
                 {myTicket.description}
+              </div>
+
+              <div>
+                <div>
+                  {sessionUser.id === myTicket.user_id && <EditTicketModal />}
+                </div>
+                <div>
+                  {sessionUser.id === myTicket.user_id && <DeleteTicketModal />}
+                </div>
               </div>
             </div>
           </div>

@@ -14,10 +14,9 @@ from wtforms.validators import DataRequired, ValidationError
 # ]
 
 class TicketForm(FlaskForm):
-
-  request_type = StringField('Request', validators=[DataRequired()])
+  request_type = StringField('Request')
   # request_type = SelectField("Request", validators=[DataRequired()], choices=[choice])
   subject = StringField("Subject", validators=[DataRequired()])
   description = TextAreaField("Description", validators=[DataRequired()])
   attachments = StringField("Attachments")
-  status = BooleanField("Status")
+  # status = BooleanField("Status")

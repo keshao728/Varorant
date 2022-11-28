@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
+from operator import itemgetter
 from app.models import Ticket, db
 from app.forms import TicketForm
 
@@ -65,11 +66,16 @@ def edit_ticket(id):
   if current_user.id != ticket.user_id:
     return {'errors': 'Unauthorized', 'statusCode':401}
 
+  status = itemgetter('status')(request.json)
+
   if form.validate_on_submit():
-    ticket.request = form.request_type.data
     ticket.subject = form.subject.data
     ticket.description = form.description.data
-    ticket.attachments = form.attachments.data
+    # ticket.status = form.status.data
+    if status == 'Solved':
+      ticket.status = True
+    else:
+      ticket.status = False
 
     db.session.commit()
     return ticket.to_dict()
