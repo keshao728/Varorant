@@ -46,27 +46,31 @@ const UserTickets = () => {
           <div className='my-ticket-title'>
             My Tickets
           </div>
-          <div>
-            <div>
+          <div className="ticket-table-fields">
+            <div className="ticket-table-subject-1">
               SUBJECT
             </div>
-            <div>
+            <div className="ticket-table-id-1">
               TICKET ID
             </div>
-            <div>
+            <div className="ticket-table-created-1">
               CREATED AT
+            </div>
+            <div className="ticket-table-status-1">
+              STATUS
             </div>
           </div>
           {userTicket?.map((ticket) => (
             <div className="individual-ticket">
-              <div>{ticket.subject}</div>
-              <div>
+              <div className="ticket-table-subject-2">{ticket.subject}</div>
+              <div className="ticket-table-id-2">
                 #{ticket.id}
               </div>
-              <div>
-                <div className="ticket-time-stamp">{moment(ticket.created_at).fromNow()}</div>
+              <div  className="ticket-table-created-2">
+                <div>{moment(ticket.created_at).fromNow()}</div>
                 {/* {ticket.created_at.split(' ').slice(0, -2).join(' ')} */}
               </div>
+              <div className="ticket-table-status-2">{ticket.status === null || ticket.status === false ? "Open" : "Solved"}</div>
             </div>
           ))}
         </div>
