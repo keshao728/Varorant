@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import varorantW from '../Home/HomeAssets/varorantW.png'
 import './Support.css'
 
@@ -15,7 +16,12 @@ const Support = () => {
       </div>
       <div>
         <div>MY TICKETS</div>
-        <div>SUBMIT A TICKET</div>
+        <div>
+          <NavLink to='/tickets/new' exact={true} className="support-ticket" activeClassName='active'>
+          SUBMIT A TICKET
+          </NavLink>
+        </div>
+        {/* <div>SUBMIT A TICKET</div> */}
         <div>VIEW OTHER TICKETS</div>
         <div>USEFUL ERROR CODES</div>
       </div>

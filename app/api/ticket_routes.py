@@ -40,6 +40,7 @@ def create_ticket():
         db.session.add(ticket)
         db.session.commit()
         return ticket.to_dict()
+    return {'errors': "error"}, 401
 
 #EDIT A TICKET
 @ticket_routes.route('/<int:id>', methods=['PUT'])
@@ -52,7 +53,7 @@ def edit_ticket(id):
     return {'errors': 'Unauthorized', 'statusCode':401}
 
   if form.validate_on_submit():
-    ticket.request = form.request.data
+    ticket.request = form.request_type.data
     ticket.subject = form.subject.data
     ticket.description = form.description.data
     ticket.attachments = form.attachments.data

@@ -35,6 +35,7 @@ const NavBar = () => {
     sessionLinks = (
       <div>
         <div
+        className="HERE"
           onClick={openMenu}>
           {/* USERNAME */}
           HERE
