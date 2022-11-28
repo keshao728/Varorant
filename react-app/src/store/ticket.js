@@ -54,6 +54,7 @@ export const getOneTicketThunk = (ticketId) => async (dispatch) => {
 }
 
 export const createTicketThunk = (ticket) => async (dispatch) => {
+  console.log("CREATE TICKET THUNK", ticket)
   const response = await fetch('/api/tickets/new', {
     method: 'POST',
     headers: {
