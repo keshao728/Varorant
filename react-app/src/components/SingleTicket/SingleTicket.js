@@ -82,14 +82,17 @@ const SingleTicket = () => {
 
           <div className="right-ticket">
             <div className="right-section">
+
               <div className="see-all-ticket">
                 <NavLink to='/tickets/my-tickets' exact={true} className="see-all-ticket-link" activeClassName='active'>
                   {"< SEE ALL TICKETS"}
                 </NavLink>
               </div>
+
               <div className="single-subject">
                 {myTicket.subject}
               </div>
+
               <div className="single-des">
                 {myTicket.description}
               </div>
@@ -98,6 +101,7 @@ const SingleTicket = () => {
                 <div>
                   {sessionUser.id === myTicket.user_id && <EditTicketModal />}
                 </div>
+                
                 <div>
                   {sessionUser.id === myTicket.user_id && <DeleteTicketModal />}
                 </div>
