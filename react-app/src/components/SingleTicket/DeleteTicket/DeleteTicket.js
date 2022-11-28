@@ -1,8 +1,11 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
+import close from '../../Navigation/NavImages/close.png'
+
 
 import { deleteTicketThunk } from '../../../store/ticket';
+import './DeleteTicket.css'
 
 const DeleteTicket = ({ setModalOpen }) => {
   const dispatch = useDispatch()
@@ -18,13 +21,12 @@ const DeleteTicket = ({ setModalOpen }) => {
   }
 
   return (
-    <div>
+    <div className='delete-ticket-wrapper'>
       <form onSubmit={handleSubmit}>
-        <div>
-          <div> Would you like to delete this ticket?</div>
-
-          <button type='submit'>Delete</button>
-          <button onClick={() => setModalOpen(false)}>Cancel</button>
+      <img className="ticket-close-delete" src={close} onClick={() => setModalOpen(false)} />
+        <div className='delete-ticket'>
+          <div className='delete-ticket-title'> Would you like to delete this ticket? </div>
+          <button className='button-delete-ticket' type='submit'>Delete</button>
         </div>
       </form>
     </div>

@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { createTicketThunk } from '../../store/ticket';
 import varorantW from '../Home/HomeAssets/varorantW.png'
 // import ticketBanner from './TicketImages/ticketBanner.jpg'
@@ -8,6 +9,7 @@ import './TicketForm.css';
 
 const TicketForm = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
 
   const [request, setRequest] = useState('');
@@ -38,14 +40,13 @@ const TicketForm = () => {
       attachments: attachments,
       user_id: sessionUser.id
     }
-    // let createdTicket = await dispatch(createTicketThunk(newTicket))
-    await dispatch(createTicketThunk(newTicket))
-    // if (createdTicket) {
-    //   // setShowErrors(false)
-    //   history.push(`/tickets/${createdTicket.id}`)
-    //   return (() => dispatch(resetData()))
+    let createdTicket = await dispatch(createTicketThunk(newTicket))
+    if (createdTicket) {
+      // setShowErrors(false)
+      history.push(`/tickets/${createdTicket.id}`)
+      // return (() => dispatch(resetData()))
+    }
     // }
-    // // }
   }
 
   return (

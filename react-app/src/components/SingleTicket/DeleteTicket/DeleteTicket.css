@@ -1,0 +1,50 @@
+.delete-ticket-wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 400px;
+  padding: 50px;
+  /* height: 200px; */
+}
+
+.ticket-close-delete{
+  width: 50px;
+  border: 1px solid #ECE8E1;
+  position: relative;
+  left: 370px;
+  top: -30px;
+  padding: 5px;
+  transition: transform 200ms ease-in-out;
+}
+
+.button-delete-ticket{
+  border: none;
+  background: #E4373C;
+  display: flex;
+  font-size: 11px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  justify-content: center;
+  width: 180px;
+  height: 44px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.delete-ticket{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-ticket-title{
+  font-size: 50px;
+  font-weight: bolder;
+  padding: 0px 10px;
+  letter-spacing: 1px;
+  margin-bottom: 60px;
+}
