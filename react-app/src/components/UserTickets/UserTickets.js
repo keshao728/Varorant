@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from 'react-router-dom';
 
@@ -14,16 +14,20 @@ const UserTickets = () => {
   const allTickets = useSelector((state) => state.ticket);
   const allTicketsArr = Object.values(allTickets);
   const sessionUser = useSelector(state => state.session.user);
-  console.log("ALLTICKETS", allTickets)
+  // console.log("ALLTICKETS", allTickets)
+  const [isLoaded, setIsLoaded] = useState(false)
+
 
   useEffect(() => {
     dispatch(getUserTicketsThunk())
+    .then(() => setIsLoaded(true))
+
   }, [dispatch])
 
   const userTicket = allTicketsArr?.filter((ticket) => ticket.user_id === sessionUser.id)
   console.log("USER TICKET", userTicket)
 
-  return (
+  return isLoaded && (
     <div className="my-ticket-wrapper">
       <div className='ticket-top-wrapper'>
         <img className='ticket-title' src={varorantW} />

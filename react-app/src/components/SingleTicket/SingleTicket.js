@@ -1,7 +1,9 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import * as moment from 'moment';
+
 
 import { getOneTicketThunk } from '../../store/ticket';
 import varorantW from '../Home/HomeAssets/varorantW.png'
@@ -10,22 +12,24 @@ import './SingleTicket.css'
 import '../TicketForm/TicketForm.css'
 
 const SingleTicket = () => {
-  const { ticketId } = useParams();
   const dispatch = useDispatch();
+  const { ticketId } = useParams();
+  const [isLoaded, setIsLoaded] = useState(false)
+  const sessionUser = useSelector(state => state.session.user);
+
   const ticket = useSelector((state) => state.ticket);
-  const ticketArr = Object.values(ticket);
 
-  const myTicket = ticketArr[0]
-
-  console.log("TICKET", myTicket)
-  // console.log("TICKET ARR", ticketArr)
+  const myTicket = ticket[ticketId]
+  console.log("MYTICKET", myTicket)
 
   useEffect(() => {
     dispatch(getOneTicketThunk(ticketId))
+      .then(() => setIsLoaded(true))
+
   }, [dispatch, ticketId])
 
-  return (
-    <div className="single-ticket-wrapper">
+  return isLoaded && (
+    <div className="single-ticket-mother">
       <div className='ticket-top-wrapper'>
         <img className='ticket-title' src={varorantW} />
       </div>
@@ -45,15 +49,49 @@ const SingleTicket = () => {
       </div>
 
 
-      <div>
+      <div className="single-ticket-wapper">
         <div className="single-ticket">
-          <div className="left-ticket">
-            <div className="single-subject">
-              {ticket.subject}
-            </div>
-          </div>
-          <div className="right-ticket">
 
+          <div className="left-ticket">
+            <div className="see-all-ticket">{" "}</div>
+
+            <div className="left-section">
+              <div className="left-title">TICKET ID</div>
+              <div className="left-item">
+                #{myTicket.id}
+              </div>
+            </div>
+
+            <div className="left-section">
+              <div className="left-title">CREATED</div>
+              <div className="left-item">
+                {moment(ticket.created_at).fromNow()}
+              </div>
+            </div>
+
+            <div className="left-section">
+              <div className="left-title">STATUS</div>
+              <div className="left-item">
+                {myTicket.status === null || myTicket.status === false ? "Open" : "Solved"}
+              </div>
+            </div>
+
+          </div>
+
+          <div className="right-ticket">
+            <div className="right-section">
+              <div className="see-all-ticket">
+                <NavLink to='/tickets/my-tickets' exact={true} className="see-all-ticket-link" activeClassName='active'>
+                  {"< SEE ALL TICKETS"}
+                </NavLink>
+              </div>
+              <div className="single-subject">
+                {myTicket.subject}
+              </div>
+              <div className="single-des">
+                {myTicket.description}
+              </div>
+            </div>
           </div>
         </div>
       </div>
