@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: bf6db4c15277
+Revision ID: 3dbeeb9a1b05
 Revises: 
-Create Date: 2022-11-25 23:35:16.756320
+Create Date: 2022-11-27 22:56:47.155589
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'bf6db4c15277'
+revision = '3dbeeb9a1b05'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -37,12 +37,13 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('tickets',
-    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('id', sa.Integer(), nullable=False, order_by='desc'),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('request_type', sa.String(length=50), nullable=False),
     sa.Column('subject', sa.String(length=50), nullable=False),
     sa.Column('description', sa.String(length=255), nullable=False),
     sa.Column('attachments', sa.String(length=255), nullable=True),
+    sa.Column('status', sa.Boolean(), nullable=True),
     sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
     sa.Column('updated_at', sa.DateTime(timezone=True), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),

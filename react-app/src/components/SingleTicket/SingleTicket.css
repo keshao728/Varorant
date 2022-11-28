@@ -1,0 +1,81 @@
+.single-ticket{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 800px;
+}
+
+.single-ticket-wapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.left-ticket{
+  width: 200px;
+  font-size: 14px;
+}
+
+.right-ticket{
+  width: 600px;
+}
+
+.right-section{
+  padding: 0px 20px 20px 20px;
+  border-bottom: 1px solid #ECE8E1;
+}
+
+.left-section{
+  margin-bottom: 30px;
+}
+
+.left-title{
+  margin-bottom: 10px;
+  color: #888888;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.left-item{
+  margin-bottom: 10px;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+
+.single-subject{
+  margin-bottom: 10px;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+
+.single-des{
+  margin-bottom: 10px;
+  font-size: 12px;
+  color: #55574C;
+  letter-spacing: 0.5px;
+}
+.see-all-ticket{
+  height: 20px;
+  font-size: 11px;
+  align-items: center;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.see-all-ticket-link{
+  text-decoration: none;
+  color: #DA363A
+}
+
+.single-actions{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 10px;
+}

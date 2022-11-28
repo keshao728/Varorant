@@ -1,0 +1,161 @@
+.ticket-top-wrapper {
+  background-image: url(./TicketImages/ticketBanner.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 22vh;
+  width: auto;
+  background-position: 0px 9px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.ticket-title {
+  width: 150px;
+  margin-top: 60px;
+}
+
+.ticket-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ticket-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-top: 60px;
+  width: 800px;
+  margin-bottom: 60px;
+}
+
+.ticket-form-title-des {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 50px;
+
+}
+
+.ticket-form-title {
+  font-size: 50px;
+  font-weight: bolder;
+  padding: 0px 10px;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.ticket-form-des {
+  font-size: 14px;
+  padding: 0px 10px;
+  color: #666666;
+  letter-spacing: 1.5px;
+}
+
+.ticket-support-wrapper {
+  margin-top: 65px;
+  display: flex;
+  flex-direction: row;
+  font-size: 10px;
+  gap: 7px;
+  width: 790px;
+  justify-content: center;
+  letter-spacing: 1px;
+}
+
+.ticket-support {
+  text-decoration: none;
+  color: inherit;
+  color: #666666;
+}
+
+
+.ticket-input-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.ticket-form-details {
+  color: #666666;
+  font-weight: bold;
+  padding-bottom: 10px;
+  font-size: 10px;
+  border-bottom: 1px solid #D2D2D2;
+  width: 100%;
+  letter-spacing: 1.5px;
+}
+
+.ticket-input-wrapper-1,
+.ticket-input-wrapper-2 {
+  width: 55%;
+}
+
+.ticket-input-wrapper-2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* width: 100%; */
+}
+
+.ticket-input-wrapper-1 {
+  margin-top: 40px;
+}
+
+.ticket-input {
+  padding: 15px 20px;
+  /* width: 100%; */
+}
+
+.ticket-label {
+  font-size: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  letter-spacing: 1px;
+}
+
+.fa-star-of-life {
+  color: red;
+  font-size: 5px;
+  display: flex;
+  align-items: flex-start;
+}
+
+#ticket-des {
+  resize: none;
+  height: 100px;
+}
+
+#type:hover {
+  color: #6F2B36;
+}
+
+#type:focus {
+  color: black
+}
+
+.button-create-ticket {
+  border: none;
+  background: #E4373C;
+  display: flex;
+  font-size: 11px;
+  font-weight: bold;
+  color: white;
+  /* padding: 10px 20px; */
+  cursor: pointer;
+  justify-content: center;
+  width: 180px;
+  height: 44px;
+  align-items: center;
+  margin-top: 10px;
+}

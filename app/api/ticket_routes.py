@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
+from operator import itemgetter
 from app.models import Ticket, db
 from app.forms import TicketForm
 
@@ -16,11 +17,23 @@ def get_all_ticket():
 
     return jsonify(ticket_list)
 
+#GET ALL USER TICKETS
+@ticket_routes.route('/my-tickets')
+def get_all_user_ticket():
+    ticket = Ticket.query.order_by(Ticket.id.desc()).all()
+
+    ticket_list=[]
+    for ticket in ticket:
+        ticket_list.append(ticket.to_dict())
+
+    return jsonify(ticket_list)
+
 #GET ONE TICKET
 @ticket_routes.route('/<int:id>')
 def get_one_ticket(id):
     ticket = Ticket.query.get(id)
-    return ticket.to_dict()
+    my_ticket = ticket.to_dict()
+    return jsonify(my_ticket)
 
 #CREATE A TICKET
 @ticket_routes.route('/new', methods=['POST'])
@@ -36,10 +49,12 @@ def create_ticket():
             subject=form.subject.data,
             description=form.description.data,
             attachments=form.attachments.data,
+            status=False
         )
         db.session.add(ticket)
         db.session.commit()
         return ticket.to_dict()
+    return {'errors': "error"}, 401
 
 #EDIT A TICKET
 @ticket_routes.route('/<int:id>', methods=['PUT'])
@@ -51,11 +66,16 @@ def edit_ticket(id):
   if current_user.id != ticket.user_id:
     return {'errors': 'Unauthorized', 'statusCode':401}
 
+  status = itemgetter('status')(request.json)
+
   if form.validate_on_submit():
-    ticket.request = form.request.data
     ticket.subject = form.subject.data
     ticket.description = form.description.data
-    ticket.attachments = form.attachments.data
+    # ticket.status = form.status.data
+    if status == 'Solved':
+      ticket.status = True
+    else:
+      ticket.status = False
 
     db.session.commit()
     return ticket.to_dict()
