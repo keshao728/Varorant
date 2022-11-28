@@ -5,7 +5,7 @@ from sqlalchemy.sql import func
 class Ticket(db.Model):
     __tablename__ = 'tickets'
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, order_by="desc")
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     request_type = db.Column(db.String(50), nullable=False)
     subject = db.Column(db.String(50), nullable=False)

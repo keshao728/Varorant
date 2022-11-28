@@ -19,7 +19,7 @@ def get_all_ticket():
 #GET ALL USER TICKETS
 @ticket_routes.route('/my-tickets')
 def get_all_user_ticket():
-    ticket = Ticket.query.all()
+    ticket = Ticket.query.order_by(Ticket.id.desc()).all()
 
     ticket_list=[]
     for ticket in ticket:
