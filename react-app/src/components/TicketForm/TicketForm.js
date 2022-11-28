@@ -83,25 +83,27 @@ const TicketForm = () => {
           <div className='ticket-form-details'>
             DETAILS
           </div>
-          <div className='ticket-input-box'>
-            <label for="type">CHOOSE A REQUEST TYPE</label>
-            <select name="type" id='type' onChange={openForm}>
-              <option value="1">-</option>
-              <option value="Discuss Personal Suspension or Restriction">Discuss Personal Suspension or Restriction</option>
-              <option value="Recover My Account">Recover My Account</option>
-              <option value="In-Game Question/Issue & In-Game Content Refund">In-Game Question/Issue & In-Game Content Refund</option>
-              <option value="Techinical Issues: Install, Patch, Lag, or Crashes">Techinical Issues: Install, Patch, Lag, or Crashes</option>
-              <option value="Report a Player">Report a Player</option>
-              <option value="Account Management, Data Request, or Deletion">Account Management, Data Request, or Deletion</option>
-              <option value="Billing Payment and Premium Currency Refunds">Billing Payment and Premium Currency Refunds</option>
-              <option value="General Question">General Question</option>
-            </select>
+          <div className='ticket-input-wrapper-1'>
+            <div className='ticket-input-box'>
+              <label className="ticket-label" for="type">1. CHOOSE A REQUEST TYPE</label>
+              <select name="type" id='type' className='ticket-input' onChange={openForm}>
+                <option value="1">-</option>
+                <option value="Discuss Personal Suspension or Restriction">Discuss Personal Suspension or Restriction</option>
+                <option value="Recover My Account">Recover My Account</option>
+                <option value="In-Game Question/Issue & In-Game Content Refund">In-Game Question/Issue & In-Game Content Refund</option>
+                <option value="Techinical Issues: Install, Patch, Lag, or Crashes">Techinical Issues: Install, Patch, Lag, or Crashes</option>
+                <option value="Report a Player">Report a Player</option>
+                <option value="Account Management, Data Request, or Deletion">Account Management, Data Request, or Deletion</option>
+                <option value="Billing Payment and Premium Currency Refunds">Billing Payment and Premium Currency Refunds</option>
+                <option value="General Question">General Question</option>
+              </select>
+            </div>
           </div>
 
           {showForm && (
-            <div>
+            <div className='ticket-input-wrapper-2'>
               <div className='ticket-input-box'>
-                <label>
+                <label className="ticket-label">
                   SUBJECT
                   <i class="fa-solid fa-star-of-life"></i>
                 </label>
@@ -112,18 +114,19 @@ const TicketForm = () => {
                   onChange={(e) => setSubject(e.target.value)} />
               </div>
               <div className='ticket-input-box'>
-                <label>
+                <label className="ticket-label">
                   DESCRIPTION
                   <i class="fa-solid fa-star-of-life"></i>
                 </label>
                 <textarea
                   className='ticket-input'
                   type="text"
+                  id="ticket-des"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)} />
               </div>
               <div className='ticket-input-box'>
-                <label>
+                <label className="ticket-label">
                   ATTACHMENTS
                 </label>
                 <input
@@ -132,7 +135,7 @@ const TicketForm = () => {
                   value={attachments}
                   onChange={(e) => setAttachments(e.target.value)} />
               </div>
-              <button className="button-create-ticket" type="submit"> Submit </button>
+              <button className="button-create-ticket" type="submit"> SUBMIT </button>
             </div>
           )}
         </form>
