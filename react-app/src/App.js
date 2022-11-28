@@ -8,6 +8,7 @@ import NavBar from './components/Navigation/NavBar';
 import UsersList from './components/User/UsersList';
 import User from './components/User/User';
 import Home from './components/Home/Home';
+import UserTickets from './components/UserTickets/UserTickets';
 import Support from './components/Support/Support';
 import AllTicket from './components/TicketPage/AllTicket';
 import TicketForm from './components/TicketForm/TicketForm';
@@ -55,6 +56,10 @@ function App() {
         <Route path='/tickets/new'>
           <NavBar />
           <TicketForm />
+        </Route>
+        <Route path='/tickets/my-tickets'>
+          <NavBar />
+          <UserTickets />
         </Route>
       </Switch>
 

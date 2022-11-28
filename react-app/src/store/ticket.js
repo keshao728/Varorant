@@ -42,6 +42,16 @@ export const getAllTicketsThunk = () => async (dispatch) => {
   return console.log("GET-ALL-TICKET-THUNK-ERROR", response)
 }
 
+export const getUserTicketsThunk = () => async (dispatch) => {
+  const response = await fetch('/api/tickets/my-tickets');
+  if (response.ok) {
+    const ticketsData = await response.json();
+    dispatch(getAllTicketAction(ticketsData));
+    return ticketsData;
+  }
+  return console.log("GET-USER-TICKET-THUNK-ERROR", response)
+}
+
 export const getOneTicketThunk = (ticketId) => async (dispatch) => {
   const response = await fetch(`/api/tickets/${ticketId}`);
 

@@ -16,6 +16,17 @@ def get_all_ticket():
 
     return jsonify(ticket_list)
 
+#GET ALL USER TICKETS
+@ticket_routes.route('/my-tickets')
+def get_all_user_ticket():
+    ticket = Ticket.query.all()
+
+    ticket_list=[]
+    for ticket in ticket:
+        ticket_list.append(ticket.to_dict())
+
+    return jsonify(ticket_list)
+
 #GET ONE TICKET
 @ticket_routes.route('/<int:id>')
 def get_one_ticket(id):
@@ -36,6 +47,7 @@ def create_ticket():
             subject=form.subject.data,
             description=form.description.data,
             attachments=form.attachments.data,
+            status=False
         )
         db.session.add(ticket)
         db.session.commit()

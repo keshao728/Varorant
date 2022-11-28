@@ -30,7 +30,6 @@ const TicketForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     // setShowErrors(true)
-
     // if (!validationErrors.length) {
     const newTicket = {
       request_type: request,

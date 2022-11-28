@@ -1,0 +1,32 @@
+
+
+.my-ticket-title{
+  font-size: 40px;
+  font-weight: bolder;
+  padding: 0px 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+.my-tickets{
+  display: flex;
+  flex-direction: column;
+  margin-top: 60px;
+  width: 770px;
+  margin-bottom: 60px;
+}
+
+.individual-ticket{
+  display: flex;
+  flex-direction: row;
+}
+
+.my-ticket-top{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

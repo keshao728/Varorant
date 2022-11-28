@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import TextAreaField, StringField, SelectField
+from wtforms import TextAreaField, StringField, BooleanField
 from wtforms.validators import DataRequired, ValidationError
 
 # choice = [
@@ -14,8 +14,10 @@ from wtforms.validators import DataRequired, ValidationError
 # ]
 
 class TicketForm(FlaskForm):
+
   request_type = StringField('Request', validators=[DataRequired()])
   # request_type = SelectField("Request", validators=[DataRequired()], choices=[choice])
   subject = StringField("Subject", validators=[DataRequired()])
   description = TextAreaField("Description", validators=[DataRequired()])
   attachments = StringField("Attachments")
+  status = BooleanField("Status")
