@@ -71,3 +71,11 @@
   text-decoration: none;
   color: #DA363A
 }
+
+.single-actions{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 10px;
+}

@@ -96,3 +96,18 @@
   align-items: center;
   margin-top: 10px;
 }
+
+.edit-ticket-modal-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ECE8E1;
+  background: transparent;
+  color: #818181;
+  cursor: pointer;
+}
+
+.edit-ticket-modal-button:hover{
+  color: #DA363A;
+  border-color: #ffd0d0;
+}

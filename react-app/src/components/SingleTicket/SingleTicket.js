@@ -94,7 +94,7 @@ const SingleTicket = () => {
                 {myTicket.description}
               </div>
 
-              <div>
+              <div className="single-actions">
                 <div>
                   {sessionUser.id === myTicket.user_id && <EditTicketModal />}
                 </div>

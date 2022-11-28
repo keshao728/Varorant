@@ -48,3 +48,19 @@
   letter-spacing: 1px;
   margin-bottom: 60px;
 }
+
+.delete-ticket-modal-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ECE8E1;
+  background: transparent;
+  color: #818181;
+  cursor: pointer;
+}
+
+.delete-ticket-modal-button:hover{
+  color: #DA363A;
+  border-color: #ffd0d0;
+}
+
