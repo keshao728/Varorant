@@ -1,12 +1,13 @@
 
 
 .my-ticket-title{
-  font-size: 40px;
+  font-size: 50px;
   font-weight: bolder;
   padding: 0px 10px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
+  letter-spacing: 1px;
 }
 
 
@@ -15,7 +16,7 @@
   display: flex;
   flex-direction: column;
   margin-top: 60px;
-  width: 770px;
+  width: 1050px;
   margin-bottom: 60px;
 }
 
@@ -24,8 +25,9 @@
   flex-direction: row;
   /* justify-content: space-between; */
   /* width: 100%; */
-  padding: 10px;
+  padding: 18px 24px;
   text-align: flex-start;
+  font-size: 15px;
 }
 
 .my-ticket-top{
@@ -40,7 +42,6 @@
   flex-direction: row;
   /* justify-content: space-between; */
   width: 100%;
-  margin-bottom: 20px;
   margin-top: 20px;
   padding-bottom: 10px;
   color: #8B9199;
@@ -49,45 +50,54 @@
 }
 
 .ticket-table-subject-1{
-  width: 310px;
+  width: 350px;
 }
 
 .ticket-table-id-1{
   width: 70px;
-  margin-left: 6%;
+  margin-left: 20%;
 }
 
 .ticket-table-created-1{
   width: 150px;
-  margin-left: 7%;
+  margin-left: 10%;
 }
 
 .ticket-table-status-1{
   width: 100px;
-  margin-left: 6%;
+  margin-left: 10%;
 }
 
 
 .ticket-table-subject-2{
-  width: 300px;
+  width: 340px;
 }
 
 .ticket-table-id-2{
   width: 50px;
-  margin-left: 6%;
+  margin-left: 19%;
 }
 
 .ticket-table-created-2{
   width: 150px;
-  margin-left: 10%;
+  margin-left: 11.5%;
 }
 
 .ticket-table-status-2{
   width: 70px;
-  margin-left: 6%;
+  margin-left: 9%;
 }
 
 
 .individual-ticket:nth-child(even){
   background-color: #FAFAFA;
+}
+
+.ticket-subject-link{
+  text-decoration: none;
+  color: #e15a66;
+}
+
+.ticket-subject-link:hover{
+  color: #9c2a33;
 }

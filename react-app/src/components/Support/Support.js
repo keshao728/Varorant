@@ -15,10 +15,14 @@ const Support = () => {
         </div>
       </div>
       <div>
-        <div>MY TICKETS</div>
+        <div>
+          <NavLink to='/tickets/my-tickets' exact={true} className="support-ticket" activeClassName='active'>
+            MY TICKETS
+          </NavLink>
+        </div>
         <div>
           <NavLink to='/tickets/new' exact={true} className="support-ticket" activeClassName='active'>
-          SUBMIT A TICKET
+            SUBMIT A TICKET
           </NavLink>
         </div>
         {/* <div>SUBMIT A TICKET</div> */}

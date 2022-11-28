@@ -31,7 +31,7 @@ const UserTickets = () => {
 
       <div className='ticket-support-wrapper'>
         <NavLink to='/support' exact={true} className="ticket-support" activeClassName='active'>
-          VALORANT Support
+          VARORANT Support
         </NavLink>
         <div className="ticket-support">
           >
@@ -62,11 +62,15 @@ const UserTickets = () => {
           </div>
           {userTicket?.map((ticket) => (
             <div className="individual-ticket">
-              <div className="ticket-table-subject-2">{ticket.subject}</div>
+              <div className="ticket-table-subject-2">
+                <NavLink className="ticket-subject-link" to={`/tickets/${ticket.id}`}>
+                  {ticket.subject}
+                </NavLink>
+              </div>
               <div className="ticket-table-id-2">
                 #{ticket.id}
               </div>
-              <div  className="ticket-table-created-2">
+              <div className="ticket-table-created-2">
                 <div>{moment(ticket.created_at).fromNow()}</div>
                 {/* {ticket.created_at.split(' ').slice(0, -2).join(' ')} */}
               </div>
@@ -75,7 +79,7 @@ const UserTickets = () => {
           ))}
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 

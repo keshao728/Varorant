@@ -56,7 +56,7 @@ const TicketForm = () => {
 
       <div className='ticket-support-wrapper'>
         <NavLink to='/support' exact={true} className="ticket-support" activeClassName='active'>
-          VALORANT Support
+          VARORANT Support
         </NavLink>
         <div className="ticket-support">
           >

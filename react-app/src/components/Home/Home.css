@@ -41,9 +41,9 @@
 
 .video-line {
   position: absolute;
-  width: 1230px;
+  width: 1225px;
   height: 1000px;
-  left: 305px;
+  left: 338px;
   border-left: 1px solid white;
   border-right: 1px solid white;
 }
@@ -52,6 +52,6 @@
   position: absolute;
   width: 1230px;
   height: 1000px;
-  left: 593px;
+  left: 655px;
   border-left: 1px solid white;
 }

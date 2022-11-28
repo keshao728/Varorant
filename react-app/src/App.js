@@ -11,6 +11,7 @@ import Home from './components/Home/Home';
 import UserTickets from './components/UserTickets/UserTickets';
 import Support from './components/Support/Support';
 import AllTicket from './components/TicketPage/AllTicket';
+import SingleTicket from './components/SingleTicket/SingleTicket';
 import TicketForm from './components/TicketForm/TicketForm';
 import { authenticate } from './store/session';
 
@@ -60,6 +61,10 @@ function App() {
         <Route path='/tickets/my-tickets'>
           <NavBar />
           <UserTickets />
+        </Route>
+        <Route path='/tickets/:ticketId'>
+          <NavBar />
+          <SingleTicket />
         </Route>
       </Switch>
 

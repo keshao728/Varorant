@@ -31,7 +31,8 @@ def get_all_user_ticket():
 @ticket_routes.route('/<int:id>')
 def get_one_ticket(id):
     ticket = Ticket.query.get(id)
-    return ticket.to_dict()
+    my_ticket = ticket.to_dict()
+    return jsonify(my_ticket)
 
 #CREATE A TICKET
 @ticket_routes.route('/new', methods=['POST'])
