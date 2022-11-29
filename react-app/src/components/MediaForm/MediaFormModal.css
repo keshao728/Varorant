@@ -1,0 +1,35 @@
+
+.media-modal-button{
+  width: 100px;
+  /* height: 100%; */
+  background-color: transparent;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+  border: 1px solid #BDBCB7;
+  position: relative;
+}
+
+.media-modal-wrapper{
+  border: 1px solid #BDBCB7;
+  padding: 10px;
+  width: 100px;
+
+
+  /* width: 100px;
+  border: 13px solid;
+  border-image-source: url(../Navigation/NavImages/BtnBorder.png);
+  border-image-slice: 34;
+  border-image-repeat: round;
+  filter: invert(86%) sepia(3%) saturate(293%) hue-rotate(13deg) brightness(89%) contrast(89%); */
+}
+
+.media-form-line{
+  position: relative;
+  width: 200px;
+  height: 10px;
+  top:-77px;
+  left: 1040px;
+  background-color: #ECE8E1;
+}

@@ -9,13 +9,13 @@ class Media(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     attachment = db.Column(db.String(255), nullable=True)
     title = db.Column(db.String(50), nullable=False)
-    description = db.Column(db.String(255), nullable=False)
+    # description = db.Column(db.String(255), nullable=False)
 
     def to_dict(self):
         return {
             "id": self.id,
             "user_id": self.user_id,
-            "attactment": self.attachment,
+            "attachment": self.attachment,
             "title": self.title,
-            "description": self.description,
+            # "description": self.description,
         }

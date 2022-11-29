@@ -4,6 +4,6 @@ from wtforms.validators import DataRequired, ValidationError
 
 
 class MediaForm(FlaskForm):
-  attachment = StringField("Attachments")
+  attachment = StringField("Attachment")
   title = StringField("Title", validators=[DataRequired()])
-  description = TextAreaField("Description", validators=[DataRequired()])
+  # description = TextAreaField("Description", validators=[DataRequired()])

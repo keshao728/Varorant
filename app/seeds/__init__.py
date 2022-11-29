@@ -1,6 +1,7 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .ticket import seed_tickets, undo_tickets
+from .media import seed_media, undo_media
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -11,7 +12,8 @@ seed_commands = AppGroup('seed')
 @seed_commands.command('all')
 def seed():
     seed_users(),
-    seed_tickets()
+    seed_tickets(),
+    seed_media()
     # Add other seed functions here
 
 
@@ -19,5 +21,6 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_users(),
-    undo_tickets()
+    undo_tickets(),
+    undo_media()
     # Add other undo functions here

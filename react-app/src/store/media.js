@@ -1,6 +1,7 @@
 const GET_ALL_MEDIA = 'media/GET_ALL_MEDIA';
 const GET_ONE_MEDIA = 'media/GET_ONE_MEDIA';
-const EDIT_MEDIA = 'media/EDIT_MEDIA';
+// const EDIT_MEDIA = 'media/EDIT_MEDIA';
+const CREATE_MEDIA = 'media/CREATE_MEDIA';
 const DELETE_MEDIA = 'media/DELETE_MEDIA';
 
 const getAllMediaAction = (media) => ({
@@ -13,9 +14,14 @@ const getOneMediaAction = (media) => ({
   media
 })
 
-const editMediaAction = (mediaId) => ({
-  type: EDIT_MEDIA,
-  mediaId
+// const editMediaAction = (mediaId) => ({
+//   type: EDIT_MEDIA,
+//   mediaId
+// })
+
+const createMediaAction = (media) => ({
+  type: CREATE_MEDIA,
+  media
 })
 
 const deleteMediaAction = (mediaId) => ({
@@ -45,10 +51,9 @@ export const getOneMediaThunk = (mediaId) => async (dispatch) => {
   return console.log("GET-ONE-MEDIA-THUNK-ERROR", response)
 }
 
-
-export const editMediaThunk = (mediaId, media) => async (dispatch) => {
-  const response = await fetch(`/api/media/${mediaId}`, {
-    method: 'PUT',
+export const createMediaThunk = (media) => async (dispatch) => {
+  const response = await fetch('/api/media/new', {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -57,11 +62,28 @@ export const editMediaThunk = (mediaId, media) => async (dispatch) => {
 
   if (response.ok){
     const mediaData = await response.json();
-    dispatch(editMediaAction(mediaData));
+    dispatch(createMediaAction(mediaData));
     return mediaData;
   }
-  return console.log("EDIT-MEDIA-THUNK-ERROR", response)
+  return console.log("CREATE-MEDIA-THUNK-ERROR", response)
 }
+
+// export const editMediaThunk = (mediaId, media) => async (dispatch) => {
+//   const response = await fetch(`/api/media/${mediaId}`, {
+//     method: 'PUT',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(media)
+//   });
+
+//   if (response.ok){
+//     const mediaData = await response.json();
+//     dispatch(editMediaAction(mediaData));
+//     return mediaData;
+//   }
+//   return console.log("EDIT-MEDIA-THUNK-ERROR", response)
+// }
 
 export const deleteMediaThunk = (mediaId) => async (dispatch) => {
   const response = await fetch(`/api/media/${mediaId}`, {
@@ -94,10 +116,14 @@ const mediaReducer = (state = initialState, action) => {
       newState = {...state};
       newState[action.media.id] = action.media;
       return newState;
-    case EDIT_MEDIA:
+    case CREATE_MEDIA:
       newState = {...state};
-      newState[action.mediaId.id] = action.mediaId;
+      newState[action.media.id] = action.media;
       return newState;
+    // case EDIT_MEDIA:
+    //   newState = {...state};
+    //   newState[action.mediaId.id] = action.mediaId;
+    //   return newState;
     case DELETE_MEDIA:
       newState = {...state};
       delete newState[action.mediaId.id];
