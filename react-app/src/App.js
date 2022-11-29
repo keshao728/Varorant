@@ -12,6 +12,7 @@ import UserTickets from './components/UserTickets/UserTickets';
 import Support from './components/Support/Support';
 import AllTicket from './components/TicketPage/AllTicket';
 import SingleTicket from './components/SingleTicket/SingleTicket';
+import AllMedia from './components/AllMedia/AllMedia';
 import TicketForm from './components/TicketForm/TicketForm';
 import { authenticate } from './store/session';
 
@@ -65,6 +66,9 @@ function App() {
         <Route path='/tickets/:ticketId'>
           <NavBar />
           <SingleTicket />
+        </Route>
+        <Route exact path='/media'>
+          <AllMedia />
         </Route>
       </Switch>
 
