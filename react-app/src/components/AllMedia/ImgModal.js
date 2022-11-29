@@ -32,17 +32,20 @@ const ImgModal = ({ clickedImg, setClickedImg, clickRight, clickLeft, imgTitle, 
     <div className="img-modal-wrapper close-me" onClick={handleClick}>
       <div className='img-modal-content'>
         <img className="clicked-img" src={clickedImg} />
-        <div className='img-title-buttons'>
-          <div onClick={clickLeft} className="modal-left">
-            <i class="fa-solid fa-angle-left"></i>
+        <div className='img-title-buttons-wrapper'>
+          <div className='img-title-buttons'>
+            <div onClick={clickLeft} className="modal-left">
+              <i class="fa-solid fa-angle-left"></i>
+            </div>
+            <div onClick={clickRight} className="modal-right">
+              <i class="fa-solid fa-angle-right"></i>
+            </div>
+            <div className='img-modal-img-title'>
+              <div><i class="fa-regular fa-image"></i></div>
+              <div> {imgTitle}</div>
+            </div>
           </div>
-          <div onClick={clickRight} className="modal-right">
-            <i class="fa-solid fa-angle-right"></i>
-          </div>
-          <div className='img-modal-img-title'>
-            <div><i class="fa-regular fa-image"></i></div>
-            <div> {imgTitle}</div>
-          </div>
+
           <button onClick={handleSubmit} className='button-delete-media close-me' type='submit'>Delete</button>
 
         </div>

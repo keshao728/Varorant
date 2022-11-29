@@ -9,43 +9,22 @@ import './NavBar.css';
 
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user);
-  const [showMenu, setShowMenu] = useState(false);
-
-  const openMenu = () => {
-    if (showMenu) return;
-    setShowMenu(true);
-  };
-
-  useEffect(() => {
-    if (!showMenu) return;
-
-    const closeMenu = () => {
-      setShowMenu(false);
-    };
-
-    document.addEventListener('click', closeMenu);
-
-    return () => document.removeEventListener("click", closeMenu);
-  }, [showMenu]);
-
-
 
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <div>
-        <div
-        className="HERE"
-          onClick={openMenu}>
-          {/* USERNAME */}
-          HERE
+      <div className="nav-profile">
+        <div>
+          {sessionUser.username}
         </div>
-        {showMenu && (
-          <div className="profile-dropdown">
+        <div className="profile-dropdown">
+          <div className='drop-profile-name'>
+            {sessionUser.username}
+          </div>
+          <div className='drop-profile-button'>
             <LogoutButton> Logout </LogoutButton>
           </div>
-        )
-        }
+        </div>
       </div>
     )
   } else {
@@ -71,9 +50,13 @@ const NavBar = () => {
             </NavLink>
           </div>
           <div className='nav-action'>
+            <NavLink to='/media' exact={true} className="individual-action" activeClassName='active'>
+              Media
+            </NavLink>
             <NavLink to='/support' exact={true} className="individual-action" activeClassName='active'>
               Support
             </NavLink>
+
           </div>
         </div>
         <div className='nav-right'>
