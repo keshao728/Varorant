@@ -15,7 +15,7 @@ class Media(db.Model):
         return {
             "id": self.id,
             "user_id": self.user_id,
-            "attactment": self.attachment,
+            "attachment": self.attachment,
             "title": self.title,
             # "description": self.description,
         }

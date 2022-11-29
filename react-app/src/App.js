@@ -68,6 +68,7 @@ function App() {
           <SingleTicket />
         </Route>
         <Route exact path='/media'>
+          <NavBar />
           <AllMedia />
         </Route>
       </Switch>

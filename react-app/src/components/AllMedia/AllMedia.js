@@ -10,9 +10,10 @@ import './AllMedia.css'
 const AllMedia = () => {
   const dispatch = useDispatch();
   const allMedia = useSelector((state) => state.media);
-  // const allTicketsArr = Object.values(allTickets);
-  // const sessionUser = useSelector(state => state.session.user);
-  // console.log("ALLTICKETS", allTickets)
+  const allMediaArr = Object.values(allMedia);
+  const sessionUser = useSelector(state => state.session.user);
+
+
   const [isLoaded, setIsLoaded] = useState(false)
 
 
@@ -24,8 +25,39 @@ const AllMedia = () => {
 
 
   return isLoaded && (
-    <div className="my-media-wrapper">
-
+    <div className="all-media-wrapper">
+      <div className="media-top-red"></div>
+      <div className="media-top-div">
+        <div className="media-top-text">
+          <div className="media-top-text-red"></div>
+          <div className="media-top-title">
+            MEDIA
+          </div>
+          <div className="media-top-des">
+            Our work is your play. Whether you're press, a content creator or something in between, if you see it here it's yours to use.
+          </div>
+          <div className="media-top-des">
+            Don’t forget, if you create something with these files, tag @PlayVARORANT on social media. We cannot wait to see what you make.
+          </div>
+          <div className="media-top-empty">
+            <div className="media-top-empty-red"></div>
+          </div>
+        </div>
+        <div>
+          <img className="media-top-gif" src="https://imgur.com/EWhTQo2.gif" />
+        </div>
+      </div>
+      
+      <div className="all-media">
+        {allMediaArr?.map((media) => (
+          <div className="media">
+            <img className="media-img" src={media.attachment} />
+            <div>
+              {media.title}
+            </div>
+          </div>
+        ))}
+      </div>
     </div >
   )
 }
