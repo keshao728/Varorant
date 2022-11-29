@@ -59,6 +59,7 @@ const AllMedia = () => {
             {sessionUser && <MediaFormModal />}
           </div>
         </div>
+        <div className="media-form-line"></div>
 
         <div className="media-map">
           {allMediaArr?.map((media) => (

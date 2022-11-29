@@ -4,6 +4,7 @@ import { NavLink, useParams } from 'react-router-dom';
 import { createMediaThunk } from '../../store/media';
 import close from '../Navigation/NavImages/close.png'
 
+import './MediaForm.css'
 
 const MediaForm = ({ setModalOpen }) => {
   const dispatch = useDispatch();
