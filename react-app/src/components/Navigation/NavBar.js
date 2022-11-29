@@ -14,17 +14,23 @@ const NavBar = () => {
   if (sessionUser) {
     sessionLinks = (
       <div className="nav-profile">
+        
         <div>
           {sessionUser.username}
         </div>
+
         <div className="profile-dropdown">
+
           <div className='drop-profile-name'>
             {sessionUser.username}
           </div>
+
           <div className='drop-profile-button'>
             <LogoutButton> Logout </LogoutButton>
           </div>
+
         </div>
+
       </div>
     )
   } else {
