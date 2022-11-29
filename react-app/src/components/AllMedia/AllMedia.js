@@ -23,6 +23,35 @@ const AllMedia = () => {
   const [imgTitle, setImgTitle] = useState(null)
   const [imgId, setImgId] = useState(null)
 
+  const RandomSize = {
+    0: "width:675px; height:600px; grid-column:span 2",
+    1: "width:260px; height:280px; grid-column:span 1",
+    2: "width:260px; height:600px; grid-column:span 1",
+
+    3: "width:675px; height:600px; grid-column:span 2",
+    4: "width:260px; height:280px; grid-column:span 1",
+    5: "width:260px; height:600px; grid-column:span 1",
+
+    6: "width:675px; height:600px; grid-column:span 2",
+  }
+
+  const RandomSizeArr = Object.values(RandomSize)
+
+  console.log("MEOW", RandomSizeArr)
+
+  const randomize = () => {
+
+    let divs = document.querySelectorAll('.media-img');
+    // let divs = document.getElementsByClassName('grow');
+
+    divs.forEach((div) => {
+      div.style = RandomSizeArr[Math.floor(Math.random() * 7)];
+    })
+
+  };
+
+
+
   const clickRight = () => {
     const mediaLength = allMediaArr.length;
     if (currentIndex + 1 >= mediaLength) {
@@ -69,10 +98,12 @@ const AllMedia = () => {
     setImgId(newId);
   }
 
+  // window.onload = randomize;
 
   useEffect(() => {
     dispatch(getAllMediaThunk())
-      .then(() => setIsLoaded(true))
+    .then(() => setIsLoaded(true))
+    .then(() => randomize())
 
   }, [dispatch])
 
@@ -129,7 +160,7 @@ const AllMedia = () => {
                   setImgId(media.id)
                 }}
               />
-              <div>
+              <div className="media-item-title">
                 {media.title}
               </div>
             </div>
