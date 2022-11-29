@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from 'react-router-dom';
+import MediaFormModal from "../MediaForm/MediaFormModal";
 
 import { getAllMediaThunk } from '../../store/media';
 
@@ -47,16 +48,30 @@ const AllMedia = () => {
           <img className="media-top-gif" src="https://imgur.com/EWhTQo2.gif" />
         </div>
       </div>
-      
+
       <div className="all-media">
-        {allMediaArr?.map((media) => (
-          <div className="media">
-            <img className="media-img" src={media.attachment} />
-            <div>
-              {media.title}
-            </div>
+        <div className="all-media-links">
+          <NavLink className="link-media-all" to='/media' exact={true} activeClassName='active'>
+            ALL
+          </NavLink>
+          {/* maybe add my media later */}
+          <div>
+            {sessionUser && <MediaFormModal />}
           </div>
-        ))}
+        </div>
+
+        <div className="media-map">
+          {allMediaArr?.map((media) => (
+            <div className="media">
+              <img className="media-img" src={media.attachment} />
+              <div>
+                {media.title}
+              </div>
+            </div>
+          ))}
+        </div>
+
+
       </div>
     </div >
   )

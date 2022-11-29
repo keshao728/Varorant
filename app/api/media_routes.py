@@ -9,7 +9,7 @@ media_routes = Blueprint('media', __name__)
 @media_routes.route('/')
 def get_all_media():
     media = Media.query.all()
-    media_list=[]
+    media_list = []
 
     for media in media:
         media_list.append(media.to_dict())
@@ -33,13 +33,14 @@ def create_media():
 
     if form.validate_on_submit():
         media = Media(
-            user_id = current_user.id,
+            user_id=current_user.id,
             attachment=form.attachment.data,
             title=form.title.data,
         )
         db.session.add(media)
         db.session.commit()
         return media.to_dict()
+    return {'errors': "error"}, 401
 
 
 # # EDIT A MEDIA

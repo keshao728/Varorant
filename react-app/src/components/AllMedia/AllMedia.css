@@ -1,23 +1,26 @@
-.media{
+.media {
   display: flex;
   flex-direction: column;
 }
 
-.media-img{
+.media-img {
   width: 300px;
   height: 100%;
 }
 
-.all-media{
+.media-map {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  width: 1000px;
-
 }
 
-.all-media-wrapper{
+.all-media{
+  width: 1232px;
+  margin-top: 80px;
+}
+
+.all-media-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,7 +28,22 @@
   z-index: 0;
 }
 
-.media-top-red{
+
+.all-media-links{
+ padding: 20px 0px;
+ margin-bottom: 30px;
+}
+
+.link-media-all{
+  color: #111111;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 0px;
+  text-decoration: none;
+  border-bottom: 1px solid #111111;
+}
+
+.media-top-red {
   width: 1250px;
   position: absolute;
   left: -50px;
@@ -34,7 +52,7 @@
   z-index: 1;
 }
 
-.media-top-div{
+.media-top-div {
   z-index: 2;
   margin-top: 130px;
   display: flex;
@@ -42,7 +60,7 @@
   border-top: 1px solid #ECE8E1;
 }
 
-.media-top-text-red{
+.media-top-text-red {
   width: 520px;
   height: 29px;
   background-color: #FF4655;
@@ -50,12 +68,12 @@
   position: relative;
 }
 
-.media-top-text{
+.media-top-text {
   width: 490px;
   color: #ECE8E1;
 }
 
-.media-top-title{
+.media-top-title {
   font-family: 'Antonio', sans-serif;
   font-weight: bolder;
   font-size: 100px;
@@ -63,7 +81,7 @@
   margin-bottom: 35px;
 }
 
-.media-top-des{
+.media-top-des {
   width: 75%;
   font-family: 'Cabin', sans-serif;
   font-size: 16px;
@@ -72,18 +90,18 @@
   line-height: 23px;
 }
 
-.media-top-empty{
+.media-top-empty {
   height: 100px;
   border-top: 1px solid #ECE8E1;
   border-left: 1px solid #ECE8E1;
   margin-top: 48px;
 }
 
-.media-top-empty-red{
+.media-top-empty-red {
   height: 20px;
   width: 145px;
   top: -10px;
   left: 70px;
-  position:relative;
+  position: relative;
   background-color: #FF4655;
 }
