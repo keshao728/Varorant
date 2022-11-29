@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from 'react-router-dom';
 import MediaFormModal from "../MediaForm/MediaFormModal";
+import ImgModal from "./ImgModal";
 
 import { getAllMediaThunk } from '../../store/media';
 
@@ -17,6 +18,57 @@ const AllMedia = () => {
 
   const [isLoaded, setIsLoaded] = useState(false)
 
+  const [clickedImg, setClickedImg] = useState(null)
+  const [currentIndex, setCurrentIndex] = useState(null)
+  const [imgTitle, setImgTitle] = useState(null)
+  const [imgId, setImgId] = useState(null)
+
+  const clickRight = () => {
+    const mediaLength = allMediaArr.length;
+    if (currentIndex + 1 >= mediaLength) {
+      setCurrentIndex(0);
+      const newUrl = allMediaArr[0].attachment;
+      setClickedImg(newUrl);
+      setImgTitle(allMediaArr[0].title)
+      setImgId(allMediaArr[0].id)
+      return;
+    }
+    const newIndex = currentIndex + 1;
+    const newUrl = allMediaArr.filter((item) => {
+      return allMediaArr.indexOf(item) === newIndex;
+    });
+    const newItem = newUrl[0].attachment;
+    const newTitle = newUrl[0].title;
+    const newId = newUrl[0].id;
+    setClickedImg(newItem);
+    setCurrentIndex(newIndex);
+    setImgTitle(newTitle);
+    setImgId(newId);
+  }
+
+  const clickLeft = () => {
+    const mediaLength = allMediaArr.length;
+    if (currentIndex === 0) {
+      setCurrentIndex(mediaLength - 1);
+      const newUrl = allMediaArr[mediaLength - 1].attachment;
+      setClickedImg(newUrl);
+      setImgTitle(allMediaArr[mediaLength - 1].title)
+      setImgId(allMediaArr[mediaLength - 1].id)
+      return;
+    }
+    const newIndex = currentIndex - 1;
+    const newUrl = allMediaArr.filter((item) => {
+      return allMediaArr.indexOf(item) === newIndex;
+    });
+    const newItem = newUrl[0].attachment;
+    const newTitle = newUrl[0].title;
+    const newId = newUrl[0].id;
+    setClickedImg(newItem);
+    setCurrentIndex(newIndex);
+    setImgTitle(newTitle);
+    setImgId(newId);
+  }
+
 
   useEffect(() => {
     dispatch(getAllMediaThunk())
@@ -24,6 +76,10 @@ const AllMedia = () => {
 
   }, [dispatch])
 
+  // const handleClick = (media, index) => {
+  //   setCurrentIndex(index)
+  //   setClickedImg(media.attachment)
+  // }
 
   return isLoaded && (
     <div className="all-media-wrapper">
@@ -62,14 +118,34 @@ const AllMedia = () => {
         <div className="media-form-line"></div>
 
         <div className="media-map">
-          {allMediaArr?.map((media) => (
+          {allMediaArr?.map((media, index) => (
             <div className="media">
-              <img className="media-img" src={media.attachment} />
+              <img className="media-img"
+                src={media.attachment}
+                onClick={() => {
+                  setClickedImg(media.attachment);
+                  setCurrentIndex(index)
+                  setImgTitle(media.title)
+                  setImgId(media.id)
+                }}
+              />
               <div>
                 {media.title}
               </div>
             </div>
           ))}
+          <div>
+            {clickedImg && (
+              <ImgModal
+                clickedImg={clickedImg}
+                setClickedImg={setClickedImg}
+                clickRight={clickRight}
+                clickLeft={clickLeft}
+                imgTitle={imgTitle}
+                imgId={imgId}
+              />
+            )}
+          </div>
         </div>
 
 

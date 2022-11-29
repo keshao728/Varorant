@@ -139,3 +139,22 @@
   color: inherit;
 
 }
+
+.logout-button {
+  background-color: transparent;
+  color: #ECE8E1;
+  border: none;
+  padding: 6px 20px;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 8px;
+  /* text-align: left; */
+  display: flex;
+  justify-content: flex-start;
+  color: #808080;
+}
+
+.logout-button:hover {
+  background-color: #666666;
+  color:#ECECEC
+}
