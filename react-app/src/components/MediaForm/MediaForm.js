@@ -44,7 +44,7 @@ const MediaForm = ({ setModalOpen }) => {
               Post A Media
             </div>
             <div className='media-form-des'>
-              From tech to tilt, we're here to help you!
+              Showcase your artwork!
             </div>
           </div>
 
