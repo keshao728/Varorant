@@ -14,6 +14,7 @@ import AllTicket from './components/TicketPage/AllTicket';
 import SingleTicket from './components/SingleTicket/SingleTicket';
 import AllMedia from './components/AllMedia/AllMedia';
 import TicketForm from './components/TicketForm/TicketForm';
+import ImgModal from './components/AllMedia/ImgModal';
 import { authenticate } from './store/session';
 
 function App() {
@@ -71,6 +72,9 @@ function App() {
           <NavBar />
           <AllMedia />
         </Route>
+        {/* <Route path='/media/:mediaId' component={ImgModal}>
+
+        </Route> */}
       </Switch>
 
     </BrowserRouter>

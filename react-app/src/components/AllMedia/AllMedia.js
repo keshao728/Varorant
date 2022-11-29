@@ -21,6 +21,7 @@ const AllMedia = () => {
   const [clickedImg, setClickedImg] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(null)
   const [imgTitle, setImgTitle] = useState(null)
+  const [imgId, setImgId] = useState(null)
 
   const clickRight = () => {
     const mediaLength = allMediaArr.length;
@@ -29,6 +30,7 @@ const AllMedia = () => {
       const newUrl = allMediaArr[0].attachment;
       setClickedImg(newUrl);
       setImgTitle(allMediaArr[0].title)
+      setImgId(allMediaArr[0].id)
       return;
     }
     const newIndex = currentIndex + 1;
@@ -37,9 +39,11 @@ const AllMedia = () => {
     });
     const newItem = newUrl[0].attachment;
     const newTitle = newUrl[0].title;
+    const newId = newUrl[0].id;
     setClickedImg(newItem);
     setCurrentIndex(newIndex);
     setImgTitle(newTitle);
+    setImgId(newId);
   }
 
   const clickLeft = () => {
@@ -49,6 +53,7 @@ const AllMedia = () => {
       const newUrl = allMediaArr[mediaLength - 1].attachment;
       setClickedImg(newUrl);
       setImgTitle(allMediaArr[mediaLength - 1].title)
+      setImgId(allMediaArr[mediaLength - 1].id)
       return;
     }
     const newIndex = currentIndex - 1;
@@ -57,9 +62,11 @@ const AllMedia = () => {
     });
     const newItem = newUrl[0].attachment;
     const newTitle = newUrl[0].title;
+    const newId = newUrl[0].id;
     setClickedImg(newItem);
     setCurrentIndex(newIndex);
     setImgTitle(newTitle);
+    setImgId(newId);
   }
 
 
@@ -119,6 +126,7 @@ const AllMedia = () => {
                   setClickedImg(media.attachment);
                   setCurrentIndex(index)
                   setImgTitle(media.title)
+                  setImgId(media.id)
                 }}
               />
               <div>
@@ -134,6 +142,7 @@ const AllMedia = () => {
                 clickRight={clickRight}
                 clickLeft={clickLeft}
                 imgTitle={imgTitle}
+                imgId={imgId}
               />
             )}
           </div>
