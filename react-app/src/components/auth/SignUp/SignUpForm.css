@@ -28,10 +28,10 @@
   font-weight: bolder;
   position: absolute;
   color: white;
-  top: 570px;
-  left: 50px;
+  top: 620px;
+  left: 145px;
   width: 500px;
-  line-height: 90px;
+  line-height: 80px;
   letter-spacing: 10px;
 }
 
@@ -126,6 +126,18 @@
   border-radius: 20px;
   margin-top: 90px;
   margin-bottom: 45px;
+  color: white;
+}
+
+.submit-signup-button:disabled{
+  background-color: #F9F9F9;
+  padding: 30px;
+  border: 2px solid #E8E8E8;
+  border-radius: 20px;
+  margin-top: 90px;
+  margin-bottom: 45px;
+  opacity: 0.5;
+  color: #E8E8E8;
 }
 
 .signup-redirect {
@@ -258,3 +270,58 @@
 /*
 .progressbar div {
 } */
+
+.signup-logo {
+  position: relative;
+  top: -430px;
+  left: -1200px;
+}
+
+.signup-home-individual-logo {
+  width: 60px;
+  height: 60px;
+}
+
+.singup-link-home{
+  text-decoration: none;
+  color: inherit;
+}
+
+.signup-home-individual-logo:hover {
+  filter: invert(99%) sepia(2%) saturate(2246%) hue-rotate(254deg) brightness(118%) contrast(86%);
+}
+.signup-home-logo:hover+div {
+  color: #101D2C;
+}
+
+
+.signup-home:hover .signup-home-individual-logo {
+  filter: invert(99%) sepia(2%) saturate(2246%) hue-rotate(254deg) brightness(118%) contrast(86%);
+}
+.signup-home:hover .signup-home-name {
+  color: #101D2C;
+}
+
+
+.singin-link-home{
+  text-decoration: none;
+  color: inherit;
+}
+
+.signup-home-name {
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 30px;
+  margin-left: 6px;
+  width: 15px;
+}
+
+.signup-home {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+

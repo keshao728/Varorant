@@ -5,6 +5,7 @@ import { signUp } from '../../../store/session';
 import EmailForm from './EmailForm'
 import UsernameForm from './UsernameForm'
 import PasswordForm from './PasswordForm'
+import logo from '../../Navigation/NavImages/logo.png'
 import "./SignUpForm.css"
 
 const SignUpForm = () => {
@@ -43,6 +44,16 @@ const SignUpForm = () => {
     }
   }
 
+  const isDisabled = () => {
+    if (page === 0 && formData.email === '') {
+      return <button disabled={true}></button>
+    } else if (page === 1 && formData.username === '') {
+      return <button disabled={true}></button>
+    } else {
+      <button disabled={false}> </button>
+    }
+  }
+
   const onSignUp = async (e) => {
     e.preventDefault();
     if (formData.password === formData.repeatPassword) {
@@ -74,18 +85,23 @@ const SignUpForm = () => {
         >
         </div>
         <div
-        className="signup-individual-pages"
-        onClick={() => setPage(2)}
-        style={page === 2 ? { backgroundColor: "#FF4654" } : null}
+          className="signup-individual-pages"
+          onClick={() => setPage(2)}
+          style={page === 2 ? { backgroundColor: "#FF4654" } : null}
         >
         </div>
       </div>
       <div className='signup-logo'>
-        <NavLink className="signup-homepage" to={`/`} exact={true} activeClassName='active'>
-          Riot Games
+        <NavLink to='/' exact={true} className="singup-link-home" activeClassName='active'>
+          <div className='signup-home'>
+            <div className="signup-home-logo" >
+              <img className='signup-home-individual-logo' src={logo} />
+            </div>
+            <div className='signup-home-name'>MEOWIT GAMES</div>
+          </div>
         </NavLink>
-      <div className='signup-page-text'> CREATE AN ACCOUNT </div>
       </div>
+      <div className='signup-page-text'> CREATE AN ACCOUNT </div>
       {/* <div className='progress-wrapper'>
       </div> */}
       <form onSubmit={onSignUp}>
@@ -96,10 +112,10 @@ const SignUpForm = () => {
             <div key={ind}>{error}</div>
           ))}
           </div> */}
-          <div className='signup-mes-des'>
-            <div className='signup-message'>{FormTitles[page]}</div>
-            <div className='signup-description'>{FormDescriptions[page]}</div>
-          </div>
+            <div className='signup-mes-des'>
+              <div className='signup-message'>{FormTitles[page]}</div>
+              <div className='signup-description'>{FormDescriptions[page]}</div>
+            </div>
 
             <div>
               {PageDisplay()}
@@ -107,12 +123,16 @@ const SignUpForm = () => {
 
             <div>
               {page === FormTitles.length - 1 ?
-                <button className='submit-signup-button' type='submit'>
+                <button
+                  disabled={!formData.password || !formData.repeatPassword}
+                  className='submit-signup-button' type='submit'>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
                 : <button
                   onClick={() => setPage((currPage) => currPage + 1)}
-                  className='submit-signup-button'>
+                  className='submit-signup-button'
+                  disabled={isDisabled()}
+                >
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
               }
