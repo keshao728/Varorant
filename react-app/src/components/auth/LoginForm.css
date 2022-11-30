@@ -156,5 +156,17 @@
 
 .logout-button:hover {
   background-color: #666666;
-  color:#ECECEC
+  color: #ECECEC
+}
+
+.sign-in-error {
+  border: 1px solid #E35B66;
+  background-color: #FFF0F1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.caution{
+  width: 20px;
 }
