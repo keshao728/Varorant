@@ -10,10 +10,6 @@ import "./SignUpForm.css"
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
-  // const [username, setUsername] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [repeatPassword, setRepeatPassword] = useState('');
   const [page, setPage] = useState(0);
   const [formData, setFormData] = useState({
     email: '',
@@ -29,20 +25,7 @@ const SignUpForm = () => {
   const FormDescriptions = ["", "Used for sign in to all our games.", "Make sure it's a good one."]
 
 
-  const PageDisplay = () => {
-    if (page === 0) {
-      return <div>
-        <EmailForm formData={formData} setFormData={setFormData} />
-        <div>
-          <NavLink className="signup-redirect" to="/login"> ALREADY HAVE AN ACCOUNT? </NavLink>
-        </div>
-      </div>
-    } else if (page === 1) {
-      return <UsernameForm formData={formData} setFormData={setFormData} />
-    } else {
-      return <PasswordForm formData={formData} setFormData={setFormData} />
-    }
-  }
+
 
   const isDisabled = () => {
     if (page === 0 && formData.email === '') {
@@ -54,15 +37,38 @@ const SignUpForm = () => {
     }
   }
 
+  // let err=[]
   const onSignUp = async (e) => {
     e.preventDefault();
     if (formData.password === formData.repeatPassword) {
       const data = await dispatch(signUp(formData.username, formData.email, formData.password));
       if (data) {
-        setErrors(data)
+        for (let error of data) {
+          if (error.startsWith('email')) setPage(0)
+          // if(error.startsWith('password'))err.push('password: Invalid password')
+          // setErrors(err)
+        }
       }
+      setErrors(data)
     }
   };
+
+
+
+  const PageDisplay = () => {
+    if (page === 0) {
+      return <div>
+        <EmailForm formData={formData} setFormData={setFormData} errors={errors} />
+        <div>
+          <NavLink className="signup-redirect" to="/login"> ALREADY HAVE AN ACCOUNT? </NavLink>
+        </div>
+      </div>
+    } else if (page === 1) {
+      return <UsernameForm formData={formData} setFormData={setFormData} />
+    } else {
+      return <PasswordForm formData={formData} setFormData={setFormData} />
+    }
+  }
 
 
   if (user) {

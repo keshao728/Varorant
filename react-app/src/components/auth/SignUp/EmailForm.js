@@ -2,7 +2,8 @@ import React, { useRef } from "react";
 import "./SignUpForm.css"
 
 
-const EmailForm = ({ formData, setFormData }) => {
+const EmailForm = ({ formData, setFormData, errors }) => {
+
 
   return (
     <div>
@@ -18,8 +19,14 @@ const EmailForm = ({ formData, setFormData }) => {
           }
         />
         <label htmlFor='email'>EMAIL</label>
+        {!!errors.length && (
+          <div className='sign-in-error'>
+            <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
+            {errors.filter(error => error.includes("email"))}
+          </div>
+        )}
       </div>
-      <label className="checkbox-wrapper"> MEOWMEOWMEOW
+      <label className="checkbox-wrapper"> I allow Meowit Games to use my personal information
         <input type="checkbox" />
         <span className="checkmark"></span>
       </label>

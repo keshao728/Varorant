@@ -16,7 +16,7 @@
   align-items: center;
   background-color: #F9F9F9;
   width: 470px;
-  height: 540px;
+  height: auto;
   padding: 60px 40px;
   margin-right: 50px;
 }
@@ -33,6 +33,14 @@
   width: 500px;
   line-height: 80px;
   letter-spacing: 10px;
+}
+.signup-message{
+  display: flex;
+  font-size: 35px;
+  font-weight: bold;
+  padding: 20px 10px;
+  /* margin-bottom: 30px; */
+  justify-content: center;
 }
 
 .signup-mes-des {
@@ -149,7 +157,7 @@
   display: flex;
   justify-content: center;
   position: relative;
-  top: 320px;
+  top: 260px;
 }
 
 .signup-links-pages {
@@ -176,8 +184,7 @@
   display: block;
   position: relative;
   padding-left: 35px;
-  margin-top: 12px;
-  margin-bottom: 12px;
+  padding-top: 5px;
   cursor: pointer;
   font-size: 14px;
   -webkit-user-select: none;
