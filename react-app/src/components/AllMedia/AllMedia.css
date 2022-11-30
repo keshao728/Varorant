@@ -1,13 +1,13 @@
 .media {
   flex-grow: 1;
   transition: all 0.5s ease;
-  padding: 65px 0;
-  max-width: 100%;
+  position: relative;
 }
 
 .media-img {
   object-fit: cover;
-  width: auto;
+  width: 100%;
+  height: 100%;
 }
 
 .media-map {
@@ -26,7 +26,7 @@
   margin-bottom: 80px;
 }
 
-/* .media-item-title {
+.media-item-title {
   position: absolute;
   width: 60%;
   text-overflow: ellipsis;
@@ -35,11 +35,13 @@
   background-color: #0F1923;
   color: #ECE8E1;
   height: 5%;
+  align-items: flex-end;
+  bottom: 0;
   display: flex;
   align-items: center;
   padding: 10px 15px;
   font-size: 14px;
-} */
+}
 
 .all-media-wrapper {
   display: flex;
