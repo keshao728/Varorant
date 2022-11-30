@@ -1,7 +1,17 @@
 import React from "react";
 import "./SignUpForm.css"
 
-const UsernameForm = ({ formData, setFormData }) => {
+const UsernameForm = ({ formData, setFormData, errors }) => {
+
+  // const err = [];
+  // useEffect(async () => {
+  //   if (!username || isEmpty2(username)) err.username = 'Please provide a username'
+  //   if (username.length > 15) err.username = 'Username must be less than 15 characters'
+  //   if (username.length < 3) err.username = 'Username must be at least 3 characters'
+  //   return err
+  // }, [username])
+  // console.log("EEEEEEEE", err)
+
   return (
     <div>
       <div className='signup-input-box'>
@@ -15,6 +25,13 @@ const UsernameForm = ({ formData, setFormData }) => {
           }
         ></input>
         <label>USERNAME</label>
+        {!!errors.length && (
+          <div className='sign-in-error'>
+            <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
+            {errors.filter(error => error.includes("username"))}
+            {errors.formData.username}
+          </div>
+        )}
       </div>
     </div>
   )

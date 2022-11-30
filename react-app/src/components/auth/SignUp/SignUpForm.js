@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, NavLink } from 'react-router-dom';
 import { signUp } from '../../../store/session';
@@ -45,6 +45,7 @@ const SignUpForm = () => {
       if (data) {
         for (let error of data) {
           if (error.startsWith('email')) setPage(0)
+          if (error.startsWith('username')) setPage(1)
           // if(error.startsWith('password'))err.push('password: Invalid password')
           // setErrors(err)
         }
@@ -64,12 +65,26 @@ const SignUpForm = () => {
         </div>
       </div>
     } else if (page === 1) {
-      return <UsernameForm formData={formData} setFormData={setFormData} />
+      return <UsernameForm formData={formData} setFormData={setFormData} errors={errors} />
     } else {
       return <PasswordForm formData={formData} setFormData={setFormData} />
     }
   }
 
+  const err = {};
+  useEffect(async () => {
+    if (formData.username.length > 15) err.username = 'Username must be less than 15 characters'
+    if (formData.username.length < 3) err.username = 'Username must be at least 3 characters'
+    if (!formData.email.toLowerCase().match(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,63})$/)) err.email = 'Please provide a valid email'
+    if (formData.password !== formData.repeatPassword) err.password = 'Passwords must match'
+    if (formData.password.length < 6) err.password = 'Password must be at least 6 characters'
+    if (formData.password.length > 20) err.password = 'Password length must not exceed 20 characters'
+    setErrors(err)
+    return err
+  }, [formData.username, formData.email, formData.password, formData.repeatPassword])
+
+
+  console.log("EEEEEEEE", errors)
 
   if (user) {
     return <Redirect to='/' />;
@@ -130,7 +145,7 @@ const SignUpForm = () => {
             <div>
               {page === FormTitles.length - 1 ?
                 <button
-                  disabled={!formData.password || !formData.repeatPassword}
+                  disabled={!formData.password || !formData.repeatPassword || errors.length}
                   className='submit-signup-button' type='submit'>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
