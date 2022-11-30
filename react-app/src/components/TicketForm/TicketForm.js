@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { createTicketThunk } from '../../store/ticket';
@@ -18,6 +18,9 @@ const TicketForm = () => {
   const [attachments, setAttachments] = useState('');
   const [showForm, setShowForm] = useState(false);
 
+  const [errors, setErrors] = useState([]);
+  const [showErrors, setShowErrors] = useState(false);
+
   const openForm = (e) => {
     setRequest(e.target.value)
     const moreForm = document.getElementById('type');
@@ -29,25 +32,46 @@ const TicketForm = () => {
     };
   };
 
+
+  useEffect(async () => {
+    const err = []
+    if (subject.length > 15) err.subject = 'Subject must be less than 15 characters'
+    if (subject.length < 3) err.subject = 'Subject must be at least 3 characters'
+    if (description.length > 100) err.description = 'Description must be less than 100 characters'
+    if (description.length < 10) err.description = 'Description must be at least 10 characters'
+    setErrors(err)
+    console.log("THIS IS MAI ERROR", err)
+  }, [subject, description])
+
+
   const handleSubmit = async (e) => {
     e.preventDefault()
-    // setShowErrors(true)
-    // if (!validationErrors.length) {
-    const newTicket = {
-      request_type: request,
-      subject: subject,
-      description: description,
-      attachments: attachments,
-      user_id: sessionUser.id
+
+    if (Object.keys(errors).length) {
+      setShowErrors(true)
     }
-    let createdTicket = await dispatch(createTicketThunk(newTicket))
-    if (createdTicket) {
-      // setShowErrors(false)
-      history.push(`/tickets/${createdTicket.id}`)
-      // return (() => dispatch(resetData()))
+
+    if (!Object.values(errors).length) {
+      const newTicket = {
+        request_type: request,
+        subject: subject,
+        description: description,
+        attachments: attachments,
+        user_id: sessionUser.id
+      }
+      let createdTicket = await dispatch(createTicketThunk(newTicket))
+
+      if (createdTicket) {
+        setShowErrors(false)
+        history.push(`/tickets/${createdTicket.id}`)
+        // return (() => dispatch(resetData()))
+      }
     }
-    // }
+
   }
+  console.log("THIS IS MAI ERROR", errors)
+
+  // if (!Object.values(errors).length) setShowErrors(false)
 
   return (
     <div className='ticket-mother'>
@@ -112,6 +136,12 @@ const TicketForm = () => {
                   type="text"
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)} />
+                {showErrors &&
+                  <div className="ticket-error">
+                    <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
+                    {errors.subject}
+                  </div>
+                }
               </div>
               <div className='ticket-input-box'>
                 <label className="ticket-label">
@@ -124,6 +154,12 @@ const TicketForm = () => {
                   id="ticket-des"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)} />
+                {showErrors &&
+                  <div className='sign-in-error'>
+                    <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
+                    {errors.description}
+                  </div>
+                }
               </div>
               <div className='ticket-input-box'>
                 <label className="ticket-label">
