@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import logo from '../Navigation/NavImages/logo.png'
 import './LoginForm.css';
 
 const LoginForm = () => {
@@ -12,13 +13,24 @@ const LoginForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  // let err = []
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
     }
+    // if (data) {
+    //   for (let error of data) {
+    //     if (error.startsWith('email')) err.email = "Invalid email"
+    //     if (error.startsWith('password')) err.password = 'Invalid password'
+    //     setErrors(err)
+    //   }
+    //   console.log("THIS IS MAI ERROR", err)
+    //   return err
+    // }
   };
+
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
@@ -35,8 +47,13 @@ const LoginForm = () => {
   return (
     <div className='login-form-mother'>
       <div className='login-logo'>
-        <NavLink className="login-homepage" to={`/`} exact={true} activeClassName='active'>
-          Riot Games
+        <NavLink to='/' exact={true} className="singin-link-home" activeClassName='active'>
+          <div className='signin-home'>
+            <div className="signin-home-logo" >
+              <img className='signin-home-individual-logo' src={logo} />
+            </div>
+            <div className='signin-home-name'>MEOWIT GAMES</div>
+          </div>
         </NavLink>
       </div>
       <form onSubmit={onLogin}>
@@ -53,7 +70,12 @@ const LoginForm = () => {
               />
               <label htmlFor='email'>EMAIL</label>
             </div>
-            <div>{errors.email}</div>
+            {!!errors.length && (
+              <div className='sign-in-error'>
+                <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
+                {errors.filter(error => error.includes("email"))}
+              </div>
+            )}
             <div className='login-input-box'>
               <input
                 name='password'
@@ -64,6 +86,12 @@ const LoginForm = () => {
               />
               <label htmlFor='password'>PASSWORD</label>
             </div>
+            {!!errors.length && (
+              <div className='sign-in-error'>
+                <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
+                {errors.filter(error => error.includes("password"))}
+              </div>
+            )}
             <div className="demo-user">
               <button className='demo-login-button'
                 id='demo-2'
@@ -85,7 +113,7 @@ const LoginForm = () => {
               </button>
             </div>
             <div className='submit-login-wrapper'>
-              <button className='submit-login-button' type='submit'>
+              <button className='submit-login-button' type='submit' disabled={!email || !password}>
                 <i class="fa-solid fa-arrow-right"></i>
               </button>
             </div>

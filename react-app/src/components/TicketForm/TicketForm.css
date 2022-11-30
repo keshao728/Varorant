@@ -159,3 +159,22 @@
   align-items: center;
   margin-top: 10px;
 }
+
+.whatever{
+  border: 5px solid black;
+}
+
+.ticket-error {
+  border: 1px solid #E35B66;
+  background-color: #FFF0F1;
+  width: 98%;
+  /* height: 24px; */
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding-left: 5px;
+  gap: 5px;
+  color:#E35B66;
+  font-size: 14px;
+}

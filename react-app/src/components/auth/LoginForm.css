@@ -15,8 +15,8 @@
   flex-direction: column;
   align-items: center;
   background-color: #F9F9F9;
-  width: 400px;
-  height: 500px;
+  width: 450px;
+  height: auto;
   padding: 60px 40px;
 }
 
@@ -25,6 +25,7 @@
   flex-direction: column;
   align-items: center;
   width: 90%;
+  gap:7px;
   /* height: 100%; */
 }
 
@@ -35,9 +36,9 @@
 
 .login-message {
   display: flex;
-  font-size: 30px;
+  font-size: 35px;
   font-weight: bold;
-  padding: 0px 10px;
+  padding: 25px 10px;
   margin-bottom: 30px;
   justify-content: center;
 }
@@ -88,10 +89,22 @@
   border-radius: 20px;
   margin-top: 90px;
   margin-bottom: 45px;
+  color: white;
+}
+
+.submit-login-button:disabled{
+  background-color: #F9F9F9;
+  padding: 30px;
+  border: 2px solid #E8E8E8;
+  border-radius: 20px;
+  margin-top: 90px;
+  margin-bottom: 45px;
+  opacity: 0.5;
+  color: #E8E8E8;
 }
 
 .fa-arrow-right {
-  color: white;
+  /* color: white; */
   font-size: 30px;
 }
 
@@ -128,11 +141,6 @@
   font-size: 13px;
 }
 
-.login-logo {
-  position: relative;
-  top: -450px;
-  left: -650px;
-}
 
 .login-homepage {
   text-decoration: none;
@@ -156,5 +164,74 @@
 
 .logout-button:hover {
   background-color: #666666;
-  color:#ECECEC
+  color: #ECECEC
+}
+
+.sign-in-error {
+  border: 1px solid #E35B66;
+  background-color: #FFF0F1;
+  width: 98%;
+  /* height: 24px; */
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding-left: 5px;
+  gap: 5px;
+  color:#E35B66;
+  font-size: 14px;
+}
+
+.caution{
+  width: 20px;
+}
+
+
+.login-logo {
+  position: relative;
+  top: -430px;
+  left: -590px;
+}
+
+.signin-home-individual-logo {
+  width: 60px;
+  height: 60px;
+}
+
+
+.signin-home-individual-logo:hover {
+  filter: invert(99%) sepia(2%) saturate(2246%) hue-rotate(254deg) brightness(118%) contrast(86%);
+}
+.signin-home-logo:hover+div {
+  color: #101D2C;
+}
+
+
+.signin-home:hover .signin-home-individual-logo {
+  filter: invert(99%) sepia(2%) saturate(2246%) hue-rotate(254deg) brightness(118%) contrast(86%);
+}
+.signin-home:hover .signin-home-name {
+  color: #101D2C;
+}
+
+
+.singin-link-home{
+  text-decoration: none;
+  color: inherit;
+}
+
+.signin-home-name {
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 30px;
+  margin-left: 6px;
+  width: 15px;
+}
+
+.signin-home {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
