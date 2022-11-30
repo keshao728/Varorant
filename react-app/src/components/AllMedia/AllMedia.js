@@ -24,19 +24,16 @@ const AllMedia = () => {
   const [imgId, setImgId] = useState(null)
 
   const RandomSize = {
-    0:"grid-column:span 1;grid-row:span 2",
-    1:"grid-row:span 1",
-    2:"grid-column:span 2;grid-row:span 2"
+    0: "grid-column:span 1;grid-row:span 2",
+    1: "grid-row:span 1",
+    2: "grid-column:span 2;grid-row:span 2"
   }
 
   const RandomSizeArr = Object.values(RandomSize)
 
-  console.log("MEOW", RandomSizeArr)
-
   const randomize = () => {
 
-    let divs = document.querySelectorAll('.media-img');
-    // let divs = document.getElementsByClassName('grow');
+    let divs = document.querySelectorAll('.media');
 
     divs.forEach((div) => {
       div.style = RandomSizeArr[Math.floor(Math.random() * 3)];
@@ -96,8 +93,8 @@ const AllMedia = () => {
 
   useEffect(() => {
     dispatch(getAllMediaThunk())
-    .then(() => setIsLoaded(true))
-    .then(() => randomize())
+      .then(() => setIsLoaded(true))
+      .then(() => randomize())
 
   }, [dispatch])
 
@@ -159,18 +156,18 @@ const AllMedia = () => {
               </div>
             </div>
           ))}
-          <div>
-            {clickedImg && (
-              <ImgModal
-                clickedImg={clickedImg}
-                setClickedImg={setClickedImg}
-                clickRight={clickRight}
-                clickLeft={clickLeft}
-                imgTitle={imgTitle}
-                imgId={imgId}
-              />
-            )}
-          </div>
+        </div>
+        <div>
+          {clickedImg && (
+            <ImgModal
+              clickedImg={clickedImg}
+              setClickedImg={setClickedImg}
+              clickRight={clickRight}
+              clickLeft={clickLeft}
+              imgTitle={imgTitle}
+              imgId={imgId}
+            />
+          )}
         </div>
 
 

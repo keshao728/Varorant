@@ -1,38 +1,26 @@
 .media {
+  flex-grow: 1;
+  transition: all 0.5s ease;
+  padding: 65px 0;
+  max-width: 100%;
+}
+
+.media-img {
+  object-fit: cover;
+  width: auto;
+}
+
+.media-map {
   display: grid;
   grid-template-columns: repeat(4, auto);
   grid-auto-flow: dense;
   grid-auto-rows: 1fr;
   width: 1230px;
-  grid-auto-flow: dense;
   grid-gap: 10px;
   flex-basis: 200px;
 }
 
-.media-img {
-  flex-grow: 1;
-  transition: all 0.5s ease;
-  padding: 65px 0;
-  object-fit: cover;
-}
-
-.media-map {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 10px;
-  flex-grow: 1;
-  /* width: 1232px; */
-  height: auto;
-}
-
 .all-media {
-  /* display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  flex-direction: row; */
-  /* grid-auto-flow: dense; */
   width: 1232px;
   margin-top: 80px;
   margin-bottom: 80px;
