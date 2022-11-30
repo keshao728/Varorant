@@ -30,7 +30,7 @@ const deleteMediaAction = (mediaId) => ({
 })
 
 export const getAllMediaThunk = () => async (dispatch) => {
-  const response = await fetch('/api/media');
+  const response = await fetch('/api/media/');
 
   if (response.ok){
     const mediaData = await response.json();
@@ -40,16 +40,16 @@ export const getAllMediaThunk = () => async (dispatch) => {
   return console.log("GET-ALL-MEDIA-THUNK-ERROR", response)
 }
 
-export const getOneMediaThunk = (mediaId) => async (dispatch) => {
-  const response = await fetch(`/api/media/${mediaId}`);
+// export const getOneMediaThunk = (mediaId) => async (dispatch) => {
+//   const response = await fetch(`/api/media/${mediaId}`);
 
-  if (response.ok){
-    const mediaData = await response.json();
-    dispatch(getOneMediaAction(mediaData));
-    return mediaData;
-  }
-  return console.log("GET-ONE-MEDIA-THUNK-ERROR", response)
-}
+//   if (response.ok){
+//     const mediaData = await response.json();
+//     dispatch(getOneMediaAction(mediaData));
+//     return mediaData;
+//   }
+//   return console.log("GET-ONE-MEDIA-THUNK-ERROR", response)
+// }
 
 export const createMediaThunk = (media) => async (dispatch) => {
   const response = await fetch('/api/media/new', {

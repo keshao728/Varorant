@@ -17,10 +17,10 @@ def get_all_media():
     return jsonify(media_list)
 
 
-@media_routes.route('/<int:id>')
-def get_one_media(id):
-    media = Media.query.get(id)
-    return media.to_dict()
+# @media_routes.route('/<int:id>')
+# def get_one_media(id):
+#     media = Media.query.get(id)
+#     return media.to_dict()
 
 # CREATE A MEDIA
 
