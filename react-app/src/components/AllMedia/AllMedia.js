@@ -24,15 +24,9 @@ const AllMedia = () => {
   const [imgId, setImgId] = useState(null)
 
   const RandomSize = {
-    0: "width:675px; height:600px; grid-column:span 2",
-    1: "width:260px; height:280px; grid-column:span 1",
-    2: "width:260px; height:600px; grid-column:span 1",
-
-    3: "width:675px; height:600px; grid-column:span 2",
-    4: "width:260px; height:280px; grid-column:span 1",
-    5: "width:260px; height:600px; grid-column:span 1",
-
-    6: "width:675px; height:600px; grid-column:span 2",
+    0:"grid-column:span 1;grid-row:span 2",
+    1:"grid-row:span 1",
+    2:"grid-column:span 2;grid-row:span 2"
   }
 
   const RandomSizeArr = Object.values(RandomSize)
@@ -45,7 +39,7 @@ const AllMedia = () => {
     // let divs = document.getElementsByClassName('grow');
 
     divs.forEach((div) => {
-      div.style = RandomSizeArr[Math.floor(Math.random() * 7)];
+      div.style = RandomSizeArr[Math.floor(Math.random() * 3)];
     })
 
   };
