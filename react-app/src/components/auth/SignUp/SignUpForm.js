@@ -98,7 +98,7 @@ const SignUpForm = () => {
 
   useEffect(() => {
     if (displayErrors) validate()
-  }, [username, email, password, repeatPassword])
+  }, [setErrors, username, email, password, repeatPassword])
 
   const PageDisplay = () => {
     if (page === 0) {

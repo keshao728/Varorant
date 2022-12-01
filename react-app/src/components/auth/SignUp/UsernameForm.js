@@ -25,7 +25,7 @@ const UsernameForm = ({ username, setUsername, errors }) => {
           }
         ></input>
         <label>USERNAME</label>
-        {!!Object.values(errors).length && (
+        {!!errors?.username && (
           <div className='sign-in-error'>
             <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
             {/* {errors?.filter(error => error.includes("username"))} */}
