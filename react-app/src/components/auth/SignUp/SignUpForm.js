@@ -17,6 +17,13 @@ const SignUpForm = () => {
     password: '',
     repeatPassword: '',
   })
+  const [usernameErr, setUsernameErr] = useState('')
+  const [emailErr, setEmailErr] = useState('')
+  const [passwordErr, setPasswordErr] = useState('')
+  const [repeatPasswordErr, setRepeatPasswordErr] = useState('')
+
+  const [formSubmitted, setFormSubmitted] = useState(false)
+
 
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
@@ -37,51 +44,79 @@ const SignUpForm = () => {
     }
   }
 
-  // let err=[]
-  const onSignUp = async (e) => {
-    e.preventDefault();
-    if (formData.password === formData.repeatPassword) {
-      const data = await dispatch(signUp(formData.username, formData.email, formData.password));
-      if (data) {
-        for (let error of data) {
-          if (error.startsWith('email')) setPage(0)
-          if (error.startsWith('username')) setPage(1)
-          // if(error.startsWith('password'))err.push('password: Invalid password')
-          // setErrors(err)
-        }
-      }
-      setErrors(data)
-    }
-  };
+  // const submitDisabled = () => {
+  //   if (!formData.password || !formData.repeatPassword) {
+  //     return <button disabled={true}></button>
+  //   } else {
+  //     <button disabled={false}> </button>
+  //   }
+  // }
 
+  // const err = {};
 
 
   const PageDisplay = () => {
     if (page === 0) {
       return <div>
-        <EmailForm formData={formData} setFormData={setFormData} errors={errors} />
+        <EmailForm formData={formData} setFormData={setFormData} emailErr={emailErr} formSubmitted={formSubmitted} />
         <div>
           <NavLink className="signup-redirect" to="/login"> ALREADY HAVE AN ACCOUNT? </NavLink>
         </div>
       </div>
     } else if (page === 1) {
-      return <UsernameForm formData={formData} setFormData={setFormData} errors={errors} />
+      return <UsernameForm formData={formData} setFormData={setFormData} usernameErr={usernameErr} formSubmitted={formSubmitted} />
     } else {
-      return <PasswordForm formData={formData} setFormData={setFormData} />
+      return <PasswordForm formData={formData} setFormData={setFormData} passwordErr={passwordErr} repeatPasswordErr={repeatPasswordErr} />
     }
   }
 
-  const err = {};
+  const onSignUp = async (e) => {
+    e.preventDefault();
+    setFormSubmitted(true)
+
+    if (formData.password === formData.repeatPassword) {
+      const data = await dispatch(signUp(formData.username, formData.email, formData.password));
+      if (data) {
+        // let err=[]
+        // for (let error of data) {
+        //   if (error.startsWith('email')) setPage(0)
+        //   if (error.startsWith('username')) setPage(1)
+        if (!!emailErr) {
+          setPage(0)
+          setEmailErr("")
+        } else if (!!usernameErr) {
+          setPage(1)
+          setUsernameErr("")
+        }
+        // if(error.startsWith('password'))err.push('password: Invalid password')
+        // setErrors(err)
+      }
+      setErrors(data)
+    }
+  };
+  console.log("EEEEEEEE", emailErr)
+
+  // const err = {};
+  // useEffect(async () => {
+  //   if (formData.username.length > 15) err.username = 'Username must be less than 15 characters'
+  //   if (formData.username.length < 3) err.username = 'Username must be at least 3 characters'
+  //   if (!formData.email.toLowerCase().match(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,63})$/)) err.email = 'Please provide a valid email'
+  //   if (formData.password !== formData.repeatPassword) err.password = 'Passwords must match'
+  //   if (formData.password.length < 6) err.password = 'Password must be at least 6 characters'
+  //   if (formData.password.length > 20) err.password = 'Password length must not exceed 20 characters'
+  //   setErrors(err)
+  //   return err
+  // }, [formData.username, formData.email, formData.password, formData.repeatPassword])
+
   useEffect(async () => {
-    if (formData.username.length > 15) err.username = 'Username must be less than 15 characters'
-    if (formData.username.length < 3) err.username = 'Username must be at least 3 characters'
-    if (!formData.email.toLowerCase().match(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,63})$/)) err.email = 'Please provide a valid email'
-    if (formData.password !== formData.repeatPassword) err.password = 'Passwords must match'
-    if (formData.password.length < 6) err.password = 'Password must be at least 6 characters'
-    if (formData.password.length > 20) err.password = 'Password length must not exceed 20 characters'
-    setErrors(err)
-    return err
+    if (formData.username.length > 15) setUsernameErr('Username must be less than 15 characters')
+    if (formData.username.length < 3) setUsernameErr('Username must be at least 3 characters')
+    if (!formData.email.toLowerCase().match(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,63})$/)) setEmailErr('Please enter a valid email')
+    if (formData.password !== formData.repeatPassword) setRepeatPasswordErr('Passwords must match')
+    if (formData.password.length < 6) setPasswordErr('Password must be at least 6 characters')
+    if (formData.password.length > 20) setPasswordErr('Password length must not exceed 20 characters')
   }, [formData.username, formData.email, formData.password, formData.repeatPassword])
+
 
 
   console.log("EEEEEEEE", errors)
@@ -128,11 +163,6 @@ const SignUpForm = () => {
       <form onSubmit={onSignUp}>
         <div className='signup-form-wrapper'>
           <div className="signup-form-child">
-            {/* <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
-          </div> */}
             <div className='signup-mes-des'>
               <div className='signup-message'>{FormTitles[page]}</div>
               <div className='signup-description'>{FormDescriptions[page]}</div>
@@ -145,7 +175,7 @@ const SignUpForm = () => {
             <div>
               {page === FormTitles.length - 1 ?
                 <button
-                  disabled={!formData.password || !formData.repeatPassword || errors.length}
+                  disabled={!formData.password || !formData.repeatPassword}
                   className='submit-signup-button' type='submit'>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>

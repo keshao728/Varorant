@@ -1,7 +1,7 @@
 import React from "react";
 import "./SignUpForm.css"
 
-const UsernameForm = ({ formData, setFormData, errors }) => {
+const UsernameForm = ({ formData, setFormData, usernameErr, formSubmitted }) => {
 
   // const err = [];
   // useEffect(async () => {
@@ -25,11 +25,11 @@ const UsernameForm = ({ formData, setFormData, errors }) => {
           }
         ></input>
         <label>USERNAME</label>
-        {!!errors.length && (
+        {!!usernameErr && formSubmitted && (
           <div className='sign-in-error'>
             <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
-            {errors.filter(error => error.includes("username"))}
-            {errors.formData.username}
+            {/* {errors.filter(error => error.includes("username"))} */}
+            {usernameErr}
           </div>
         )}
       </div>

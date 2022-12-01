@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import "./SignUpForm.css"
 
 
-const EmailForm = ({ formData, setFormData, errors }) => {
+const EmailForm = ({ formData, setFormData, emailErr, formSubmitted }) => {
 
 
   return (
@@ -19,10 +19,11 @@ const EmailForm = ({ formData, setFormData, errors }) => {
           }
         />
         <label htmlFor='email'>EMAIL</label>
-        {!!errors.length && (
+        {!!emailErr.length && formSubmitted && (
           <div className='sign-in-error'>
             <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
-            {errors.filter(error => error.includes("email"))}
+            {/* {errors.filter(error => error.includes("email"))} */}
+            {emailErr}
           </div>
         )}
       </div>
