@@ -20,7 +20,7 @@ const SignUpForm = () => {
   const [usernameErr, setUsernameErr] = useState('')
   const [emailErr, setEmailErr] = useState('')
   const [passwordErr, setPasswordErr] = useState('')
-  const [repeatPasswordErr, setRepeatPasswordErr] = useState('')
+  // const [repeatPasswordErr, setRepeatPasswordErr] = useState('')
 
   const [formSubmitted, setFormSubmitted] = useState(false)
 
@@ -55,20 +55,6 @@ const SignUpForm = () => {
   // const err = {};
 
 
-  const PageDisplay = () => {
-    if (page === 0) {
-      return <div>
-        <EmailForm formData={formData} setFormData={setFormData} emailErr={emailErr} formSubmitted={formSubmitted} />
-        <div>
-          <NavLink className="signup-redirect" to="/login"> ALREADY HAVE AN ACCOUNT? </NavLink>
-        </div>
-      </div>
-    } else if (page === 1) {
-      return <UsernameForm formData={formData} setFormData={setFormData} usernameErr={usernameErr} formSubmitted={formSubmitted} />
-    } else {
-      return <PasswordForm formData={formData} setFormData={setFormData} passwordErr={passwordErr} repeatPasswordErr={repeatPasswordErr} />
-    }
-  }
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -77,24 +63,27 @@ const SignUpForm = () => {
     if (formData.password === formData.repeatPassword) {
       const data = await dispatch(signUp(formData.username, formData.email, formData.password));
       if (data) {
-        // let err=[]
-        // for (let error of data) {
-        //   if (error.startsWith('email')) setPage(0)
-        //   if (error.startsWith('username')) setPage(1)
-        if (!!emailErr) {
-          setPage(0)
-          setEmailErr("")
-        } else if (!!usernameErr) {
-          setPage(1)
-          setUsernameErr("")
+        for (let error of data) {
+          if (error.startsWith('email')) setEmailErr('Email address is already in use')
+          if (error.startsWith('username')) setUsernameErr('Username is already in use')
+          if (!!emailErr) {
+            setPage(0)
+
+            const response = await fetch('/api/auth/check-email')
+            if (Object.values(response).includes('avaliable')) {
+              setEmailErr('')
+
+            }
+          } else if (!!usernameErr) {
+            setPage(1)
+            if (!usernameErr) setUsernameErr("")
+          }
         }
-        // if(error.startsWith('password'))err.push('password: Invalid password')
-        // setErrors(err)
       }
-      setErrors(data)
     }
   };
-  console.log("EEEEEEEE", emailErr)
+
+
 
   // const err = {};
   // useEffect(async () => {
@@ -109,17 +98,34 @@ const SignUpForm = () => {
   // }, [formData.username, formData.email, formData.password, formData.repeatPassword])
 
   useEffect(async () => {
+    // if (formData.password === formData.repeatPassword) setPasswordErr('Password must match')
+    if (!formData.email.toLowerCase().match(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,63})$/)) setEmailErr('Please enter a valid email')
     if (formData.username.length > 15) setUsernameErr('Username must be less than 15 characters')
     if (formData.username.length < 3) setUsernameErr('Username must be at least 3 characters')
-    if (!formData.email.toLowerCase().match(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,63})$/)) setEmailErr('Please enter a valid email')
-    if (formData.password !== formData.repeatPassword) setRepeatPasswordErr('Passwords must match')
+    if (formData.password !== formData.repeatPassword) setPasswordErr('Passwords must match')
     if (formData.password.length < 6) setPasswordErr('Password must be at least 6 characters')
     if (formData.password.length > 20) setPasswordErr('Password length must not exceed 20 characters')
   }, [formData.username, formData.email, formData.password, formData.repeatPassword])
 
 
+  const PageDisplay = () => {
+    if (page === 0) {
+      return <div>
+        <EmailForm formData={formData} setFormData={setFormData} emailErr={emailErr} formSubmitted={formSubmitted} />
+        <div>
+          <NavLink className="signup-redirect" to="/login"> ALREADY HAVE AN ACCOUNT? </NavLink>
+        </div>
+      </div>
+    } else if (page === 1) {
+      return <UsernameForm formData={formData} setFormData={setFormData} usernameErr={usernameErr} formSubmitted={formSubmitted} />
+    } else {
+      return <PasswordForm formData={formData} setFormData={setFormData} passwordErr={passwordErr} />
+    }
+  }
 
   console.log("EEEEEEEE", errors)
+  console.log("EEEEEEMAIL ERROREE", emailErr)
+  console.log("USERNAME ERRRRR", usernameErr)
 
   if (user) {
     return <Redirect to='/' />;

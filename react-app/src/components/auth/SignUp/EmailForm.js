@@ -24,6 +24,7 @@ const EmailForm = ({ formData, setFormData, emailErr, formSubmitted }) => {
             <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
             {/* {errors.filter(error => error.includes("email"))} */}
             {emailErr}
+            {/* {console.log("SHIBASHAKE IT", emailErr)} */}
           </div>
         )}
       </div>
