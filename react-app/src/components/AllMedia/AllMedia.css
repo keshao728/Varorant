@@ -29,19 +29,28 @@
 .media-item-title {
   position: absolute;
   width: 60%;
-  text-overflow: ellipsis;
+  /* height: auto; */
+  /* text-overflow: ellipsis;
   overflow-wrap: break-word;
-  white-space: wrap;
+  white-space: wrap; */
   background-color: #0F1923;
   color: #ECE8E1;
-  height: 5%;
+  height: 6%;
   align-items: flex-end;
   bottom: 0;
   display: flex;
   align-items: center;
-  padding: 10px 15px;
+  /* padding: 1% 2%; */
   font-size: 14px;
   text-transform: uppercase;
+  padding: 10px 15px;
+}
+
+.media-individual-title{
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow-wrap: break-word;
+  white-space: wrap;
 }
 
 .all-media-wrapper {

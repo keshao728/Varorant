@@ -19,7 +19,7 @@ const MediaForm = ({ setModalOpen }) => {
 
   const validate = () => {
     let err = {}
-    if (title.length > 15) err.title = 'Title must be less than 15 characters'
+    if (title.length >20) err.title = 'Title must be less than 20 characters'
     if (title.length < 3) err.title = 'Title must be at least 3 characters'
 
     if (!attachment.match(/\.(jpg|jpeg|png|gif)$/)) err.attachment = "Please enter a valid URL ending with jpg, jpeg, png or gif"
