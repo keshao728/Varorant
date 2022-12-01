@@ -46,43 +46,70 @@ const TicketForm = () => {
     return err
   }
 
-
-
-
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    if (!Object.values(errors).length) {
-      setErrors({})
-      setShowErrors(false)
-      let validationErrors = validate()
-      if (Object?.values(validationErrors)?.length) return
+    let validationErrors = validate()
+    if (Object.values(validationErrors).length > 0) {
+      setShowErrors(true)
+      return
+    }
 
-      if (!Object?.values(validationErrors)?.length) {
-        const newTicket = {
-          request_type: request,
-          subject: subject,
-          description: description,
-          attachments: attachments,
-          user_id: sessionUser.id
-        }
-        let createdTicket = await dispatch(createTicketThunk(newTicket)).catch(async res => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        })
-
-        if (createdTicket) {
-          setShowErrors(false)
-          history.push(`/tickets/${createdTicket.id}`)
-          // return (() => dispatch(resetData()))
-        }
+    if (!Object.values(validationErrors).length) {
+      const newTicket = {
+        request_type: request,
+        subject: subject,
+        description: description,
+        attachments: attachments,
+        user_id: sessionUser.id
       }
+      let createdTicket = await dispatch(createTicketThunk(newTicket))
+
+      setShowErrors(false)
+      history.push(`/tickets/${createdTicket.id}`)
+      // return (() => dispatch(resetData()))
+
       return errors
     }
   }
+
+
+
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault()
+
+  //   if (!Object.values(errors).length) {
+  //     setErrors({})
+  //     setShowErrors(false)
+  //     let validationErrors = validate()
+  //     if (Object?.values(validationErrors)?.length) return
+
+  //     if (!Object?.values(validationErrors)?.length) {
+  //       const newTicket = {
+  //         request_type: request,
+  //         subject: subject,
+  //         description: description,
+  //         attachments: attachments,
+  //         user_id: sessionUser.id
+  //       }
+  //       let createdTicket = await dispatch(createTicketThunk(newTicket)).catch(async res => {
+  //         const data = await res.json();
+  //         if (data && data.errors) setErrors(data.errors);
+  //       })
+
+  //       if (createdTicket) {
+  //         setShowErrors(false)
+  //         history.push(`/tickets/${createdTicket.id}`)
+  //         // return (() => dispatch(resetData()))
+  //       }
+  //     }
+  //     return errors
+  //   }
+  // }
   useEffect(async () => {
     if (showErrors) validate()
-  }, [setErrors, subject, description])
+  }, [setErrors, subject, description, attachments])
 
   if (!sessionUser) {
     return <Redirect to="/" />

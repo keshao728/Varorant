@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams,  NavLink, Redirect } from 'react-router-dom';
+import { useParams, NavLink, Redirect } from 'react-router-dom';
 // import { NavLink } from 'react-router-dom';
 import DeleteTicketModal from "./DeleteTicket/DeleteTicketModal";
 import EditTicketModal from "../TicketForm/EditTicketForm/EditTicketModal";
@@ -102,8 +102,7 @@ const SingleTicket = () => {
               </div>
 
               {myTicket.attachments ?
-                <img className="single-attachments" src={myTicket?.attachments} onError={myTicket.attachments = null}/>
-                : null
+                <img className="single-attachments" src={myTicket?.attachments} alt="" onError={""} /> : ""
               }
 
               <div className="single-actions">
