@@ -6,6 +6,8 @@ import './EditTicketForm.css'
 const EditTicketModal = () => {
   const [modalOpen, setModalOpen] = useState(false)
 
+
+
   return (
     <div>
       <button className='edit-ticket-modal-button' onClick={() => setModalOpen(true)}>Edit</button>

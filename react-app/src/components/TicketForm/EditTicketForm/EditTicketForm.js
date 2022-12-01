@@ -20,34 +20,39 @@ const EditTicketForm = ({ setModalOpen }) => {
   const [status, setStatus] = useState(false);
 
   const [showErrors, setShowErrors] = useState(false);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState([]);
 
 
   const validate = () => {
-    let err = {}
+    let err = []
     if (subject.length > 15) err.subject = 'Subject must be less than 15 characters'
-    if (subject.length < 3) err.subject = 'Subject must be at least 3 characters'
+    if (!subject || subject.length < 3) err.subject = 'Subject must be at least 3 characters'
     if (description.length > 100) err.description = 'Description must be less than 100 characters'
-    if (description.length < 10) err.description = 'Description must be at least 10 characters'
+    if (!description || description.length < 10) err.description = 'Description must be at least 10 characters'
+
     setErrors(err)
-    if (Object.values(err).length) {
-      setShowErrors(true)
-    }
+
+
+    if (err.length) setShowErrors(true)
+
     return err
   }
 
 
+
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setModalOpen(false)
+    setShowErrors(true)
 
-    if (!Object.values(errors).length) {
-      setErrors({})
+    if (!errors.length) {
+      setErrors([])
       setShowErrors(false)
-      let validationErrors = validate()
-      if (Object?.values(validationErrors)?.length) return
 
-      if (!Object?.values(validationErrors)?.length) {
+      let validationErrors = validate()
+      if (validationErrors?.length) return
+
+
+      if (!errors.length) {
         const updatedTicket = {
           user_id: sessionUser.id,
           subject: subject,
@@ -57,15 +62,19 @@ const EditTicketForm = ({ setModalOpen }) => {
         }
         let createdTicket = await dispatch(editTicketThunk(ticketId, updatedTicket)).catch(async res => {
           const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
+          if (data && data.errors) {
+            setErrors(data.errors)
+          }
         })
 
         if (createdTicket) {
           setShowErrors(false)
-          history.push(`/tickets/${createdTicket.id}`)
+          // setModalOpen(false)
+          // history.push(`/tickets/${createdTicket.id}`)
           // return (() => dispatch(resetData()))
         }
       }
+      setModalOpen(false)
       return errors
     }
   }
@@ -73,7 +82,6 @@ const EditTicketForm = ({ setModalOpen }) => {
   useEffect(async () => {
     if (showErrors) validate()
   }, [setErrors, subject, description])
-
 
   return (
     <div className='edit-ticket-mother'>
@@ -102,6 +110,12 @@ const EditTicketForm = ({ setModalOpen }) => {
                 type="text"
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)} />
+              {!!errors.subject &&
+                <div className="ticket-error">
+                  <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
+                  {errors.subject}
+                </div>
+              }
             </div>
             <div className='edit-ticket-input-box'>
               <label className="edit-ticket-label">
@@ -113,7 +127,14 @@ const EditTicketForm = ({ setModalOpen }) => {
                 type="text"
                 id="ticket-des"
                 value={description}
+                required
                 onChange={(e) => setDescription(e.target.value)} />
+              {!!errors.description &&
+                <div className='ticket-error'>
+                  <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
+                  {errors.description}
+                </div>
+              }
             </div>
             <div className="edit-ticket-radio">
               <div className="edit-ticket-label">
@@ -125,7 +146,7 @@ const EditTicketForm = ({ setModalOpen }) => {
                   name="true"
                   value={false}
                   checked
-                  // checked={status === false}
+                  required
                   onChange={(e) => setStatus(e.target.value)} />
                 <label className='radio-label'>Still need help</label>
               </div>
