@@ -18,7 +18,7 @@ const TicketForm = () => {
   const [attachments, setAttachments] = useState('');
   const [showForm, setShowForm] = useState(false);
 
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
   const [showErrors, setShowErrors] = useState(false);
 
   const openForm = (e) => {
@@ -32,46 +32,59 @@ const TicketForm = () => {
     };
   };
 
-
-  useEffect(async () => {
-    const err = []
+  const validate = () => {
+    let err = {}
     if (subject.length > 15) err.subject = 'Subject must be less than 15 characters'
     if (subject.length < 3) err.subject = 'Subject must be at least 3 characters'
     if (description.length > 100) err.description = 'Description must be less than 100 characters'
     if (description.length < 10) err.description = 'Description must be at least 10 characters'
+    if (attachments && !attachments.match(/\.(jpg|jpeg|png|gif)$/)) err.attachments = "Please enter a valid URL ending with jpg, jpeg, png or gif"
     setErrors(err)
-    console.log("THIS IS MAI ERROR", err)
-  }, [subject, description])
+    if (Object.values(err).length) {
+      setShowErrors(true)
+    }
+    return err
+  }
+
+
 
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    if (Object.keys(errors).length) {
-      setShowErrors(true)
-    }
-
     if (!Object.values(errors).length) {
-      const newTicket = {
-        request_type: request,
-        subject: subject,
-        description: description,
-        attachments: attachments,
-        user_id: sessionUser.id
-      }
-      let createdTicket = await dispatch(createTicketThunk(newTicket))
+      setErrors({})
+      setShowErrors(false)
+      let validationErrors = validate()
+      if (Object?.values(validationErrors)?.length) return
 
-      if (createdTicket) {
-        setShowErrors(false)
-        history.push(`/tickets/${createdTicket.id}`)
-        // return (() => dispatch(resetData()))
+      if (!Object?.values(validationErrors)?.length) {
+        const newTicket = {
+          request_type: request,
+          subject: subject,
+          description: description,
+          attachments: attachments,
+          user_id: sessionUser.id
+        }
+        let createdTicket = await dispatch(createTicketThunk(newTicket)).catch(async res => {
+          const data = await res.json();
+          if (data && data.errors) setErrors(data.errors);
+        })
+
+        if (createdTicket) {
+          setShowErrors(false)
+          history.push(`/tickets/${createdTicket.id}`)
+          // return (() => dispatch(resetData()))
+        }
       }
+      return errors
     }
-
   }
+  useEffect(async () => {
+    if (showErrors) validate()
+  }, [setErrors, subject, description])
   console.log("THIS IS MAI ERROR", errors)
 
-  // if (!Object.values(errors).length) setShowErrors(false)
 
   return (
     <div className='ticket-mother'>
@@ -136,7 +149,7 @@ const TicketForm = () => {
                   type="text"
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)} />
-                {showErrors &&
+                {!!errors.subject &&
                   <div className="ticket-error">
                     <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
                     {errors.subject}
@@ -154,8 +167,8 @@ const TicketForm = () => {
                   id="ticket-des"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)} />
-                {showErrors &&
-                  <div className='sign-in-error'>
+                {!!errors.description &&
+                  <div className='ticket-error'>
                     <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
                     {errors.description}
                   </div>
@@ -170,6 +183,12 @@ const TicketForm = () => {
                   type="text"
                   value={attachments}
                   onChange={(e) => setAttachments(e.target.value)} />
+                {!!errors.attachments &&
+                  <div className="ticket-error">
+                    <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
+                    {errors.attachments}
+                  </div>
+                }
               </div>
               <button className="button-create-ticket" type="submit"> SUBMIT </button>
             </div>

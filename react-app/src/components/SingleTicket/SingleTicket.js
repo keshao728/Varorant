@@ -97,11 +97,14 @@ const SingleTicket = () => {
                 {myTicket.description}
               </div>
 
+
+              <img className="single-attachments" src={myTicket?.attachments} />
+
               <div className="single-actions">
                 <div>
                   {sessionUser.id === myTicket.user_id && <EditTicketModal />}
                 </div>
-                
+
                 <div>
                   {sessionUser.id === myTicket.user_id && <DeleteTicketModal />}
                 </div>
