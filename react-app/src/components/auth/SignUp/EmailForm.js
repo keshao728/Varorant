@@ -20,7 +20,7 @@ const EmailForm = ({ email, setEmail, errors}) => {
         />
         <label htmlFor='email'>EMAIL</label>
         {!!errors?.email && (
-          console.log("EEEEEEEEROR IN EMAIL FORM", errors),
+          // console.log("EEEEEEEEROR IN EMAIL FORM", errors),
           <div className='sign-in-error'>
             <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
             {/* {errors?.filter(error => error.includes("email"))} */}

@@ -1,17 +1,7 @@
 import React from "react";
 import "./SignUpForm.css"
 
-// const onSignUp = async (e) => {
-//   e.preventDefault();
-//   if (password === repeatPassword) {
-//     const data = await dispatch(signUp(username, email, password));
-//     if (data) {
-//       setErrors(data)
-//     }
-//   }
-// };
-
-const PasswordForm = ({ password, setPassword, repeatPassword, setRepeatPassword, errors}) => {
+const PasswordForm = ({ password, setPassword, repeatPassword, setRepeatPassword, errors }) => {
   return (
     <div>
       <div className='signup-input-box'>
@@ -33,12 +23,26 @@ const PasswordForm = ({ password, setPassword, repeatPassword, setRepeatPassword
           value={repeatPassword}
           required
           onChange={(e) =>
-           setRepeatPassword(e.target.value)
+            setRepeatPassword(e.target.value)
           }
         ></input>
         <label>CONFIRM PASSWORD</label>
-        {errors.password && <div>{errors.password}</div>}
-        {errors.repeatPassword && <div>{errors.repeatPassword}</div>}
+        {!!errors?.email && (
+          <div>
+            {errors.password &&
+              <div className='sign-in-error'>
+                <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
+                {errors.password}
+              </div>
+            }
+            {errors.repeatPassword &&
+              <div className='sign-in-error'>
+                <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
+                {errors.repeatPassword}
+              </div>
+            }
+          </div>
+        )}
       </div>
     </div>
   )

@@ -25,7 +25,7 @@
   flex-direction: column;
   align-items: center;
   width: 90%;
-  gap:7px;
+  gap: 7px;
   /* height: 100%; */
 }
 
@@ -92,7 +92,7 @@
   color: white;
 }
 
-.submit-login-button:disabled{
+.submit-login-button:disabled {
   background-color: #F9F9F9;
   padding: 30px;
   border: 2px solid #E8E8E8;
@@ -174,15 +174,18 @@
   /* height: 24px; */
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-direction: row;
   border-radius: 5px;
   margin-bottom: 10px;
   padding-left: 5px;
   gap: 5px;
-  color:#E35B66;
+  color: #E35B66;
   font-size: 14px;
 }
 
-.caution{
+
+.caution {
   width: 20px;
 }
 
@@ -202,6 +205,7 @@
 .signin-home-individual-logo:hover {
   filter: invert(99%) sepia(2%) saturate(2246%) hue-rotate(254deg) brightness(118%) contrast(86%);
 }
+
 .signin-home-logo:hover+div {
   color: #101D2C;
 }
@@ -210,12 +214,13 @@
 .signin-home:hover .signin-home-individual-logo {
   filter: invert(99%) sepia(2%) saturate(2246%) hue-rotate(254deg) brightness(118%) contrast(86%);
 }
+
 .signin-home:hover .signin-home-name {
   color: #101D2C;
 }
 
 
-.singin-link-home{
+.singin-link-home {
   text-decoration: none;
   color: inherit;
 }
