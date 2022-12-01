@@ -144,6 +144,7 @@ const AllMedia = () => {
             <div className="media">
               <img className="media-img"
                 src={media.attachment}
+                onError={(e) => e.target.src = "https://imgur.com/2DrReGq.jpg"}
                 onClick={() => {
                   setClickedImg(media.attachment);
                   setCurrentIndex(index)
