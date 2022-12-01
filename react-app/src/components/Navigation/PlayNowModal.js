@@ -16,7 +16,7 @@ const PlayNow = () => {
 
   return (
     <div className="playnow-modal-mother">
-      <button onClick={() => setShowModal(true)}> PLAY NOW </button>
+      <button className="nav-playnow-modal-button" onClick={() => setShowModal(true)}> PLAY NOW </button>
 
       {showModal && (
         <Modal onClose={closeModal}>

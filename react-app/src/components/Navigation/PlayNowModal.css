@@ -136,3 +136,14 @@
   padding: 5px;
   transition: transform 200ms ease-in-out;
 }
+
+.nav-playnow-modal-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  background: linear-gradient(to right, rgb(255, 73, 73), #f6714d);
+}

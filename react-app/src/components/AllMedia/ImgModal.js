@@ -36,18 +36,27 @@ const ImgModal = ({ clickedImg, setClickedImg, clickRight, clickLeft, imgTitle, 
         <img className="clicked-img" src={clickedImg} onError={(e) => e.target.src = "https://imgur.com/2DrReGq.jpg"} />
         <div className='img-title-buttons-wrapper'>
           <div className='img-title-buttons'>
-            <div onClick={clickLeft} className="modal-left">
-              <i class="fa-solid fa-angle-left"></i>
+            <div className="img-title-button-overlay">
+              <div className="img-title-overlay"></div>
+              <div onClick={clickLeft} className="modal-left">
+                <i class="fa-solid fa-angle-left"></i>
+              </div>
             </div>
-            <div onClick={clickRight} className="modal-right">
-              <i class="fa-solid fa-angle-right"></i>
+
+            <div className="img-title-button-overlay">
+              <div className="img-title-overlay"></div>
+              <div onClick={clickRight} className="modal-right">
+                <i class="fa-solid fa-angle-right"></i>
+              </div>
             </div>
+
+
             <div className='img-modal-img-title'>
               <div><i class="fa-regular fa-image"></i></div>
               <div> {imgTitle}</div>
             </div>
           </div>
-          {sessionUser.id === userId &&
+          {sessionUser?.id === userId &&
             <button onClick={handleSubmit} className='button-delete-media close-me' type='submit'>Delete</button>
           }
         </div>

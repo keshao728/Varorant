@@ -160,6 +160,8 @@
   display: flex;
   justify-content: flex-start;
   color: #808080;
+  transition: 0.2s;
+  cursor: pointer;
 }
 
 .logout-button:hover {

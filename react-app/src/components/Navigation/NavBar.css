@@ -68,13 +68,18 @@
   margin-left: 6px;
 }
 
+.meowit-games{
+  text-decoration: none;
+  color: inherit;
+}
 
 .nav-right {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 100px;
+  width: auto;
   /* height: 100px; */
+  margin-right: 50px;
   background-color: #111111;
 }
 
@@ -117,12 +122,16 @@
   font-size: 16px;
   padding-bottom: 10px;
   padding: 12px 16px;
+}
 
+.nav-profile-nav-top{
+  cursor: pointer;
 }
 
 .drop-profile-button{
   border-top: 1px solid #3f3f3f;
   padding: 12px;
   display: flex;
+  /* cursor: pointer; */
   justify-content: flex-start;
 }

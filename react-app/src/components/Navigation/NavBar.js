@@ -14,8 +14,8 @@ const NavBar = () => {
   if (sessionUser) {
     sessionLinks = (
       <div className="nav-profile">
-        
-        <div>
+
+        <div className="nav-profile-nav-top">
           {sessionUser.username}
         </div>
 
@@ -46,7 +46,7 @@ const NavBar = () => {
       <div className='nav-wrapper'>
         <div className='nav-left'>
           <div className='nav-home-wrapper'>
-            <NavLink to='/' exact={true} activeClassName='active'>
+            <NavLink to='/' exact={true} className="meowit-games" activeClassName='active'>
               <div className='nav-home'>
                 <div className="nav-home-logo" >
                   <img className='nav-home-individual-logo' src={logo} />
