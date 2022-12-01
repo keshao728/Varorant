@@ -42,12 +42,30 @@ const SignUpForm = () => {
 
   const validate = () => {
     let err = {}
-    if (username.length > 15) err.username = 'Username must be less than 15 characters'
-    if (username.length < 3) err.username = 'Username must be at least 3 characters'
-    if (!email.toLowerCase().match(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,63})$/)) err.email = 'Please provide a valid email'
-    if (password !== repeatPassword) err.repeatPassword = 'Passwords must match'
-    if (password.length < 6) err.password = 'Password must be at least 6 characters'
-    if (password.length > 20) err.password = 'Password length must not exceed 20 characters'
+    if (!email.toLowerCase().match(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,63})$/)) {
+      err.email = 'Please provide a valid email'
+      setPage(0)
+    }
+    if (username.length > 15) {
+      err.username = 'Username must be less than 15 characters'
+      setPage(1)
+    }
+    if (username.length < 3) {
+      err.username = 'Username must be at least 3 characters'
+      setPage(1)
+    }
+    if (password !== repeatPassword) {
+      err.repeatPassword = 'Passwords must match'
+      setPage(2)
+    }
+    if (password.length < 6) {
+      err.password = 'Password must be at least 6 characters'
+      setPage(2)
+    }
+    if (password.length > 20) {
+      err.password = 'Password length must not exceed 20 characters'
+      setPage(2)
+    }
     setErrors(err)
 
     if (Object.values(err).length) {
@@ -58,7 +76,6 @@ const SignUpForm = () => {
 
 
 
-  // let err=[]
   const onSignUp = async (e) => {
     e.preventDefault();
 
@@ -73,19 +90,16 @@ const SignUpForm = () => {
         if (password === repeatPassword) {
           const data = await dispatch(signUp(username, email, password))
           if (data) {
-            console.log("THIS IS DA DATA", data)
             let err = {}
             for (let error of data) {
               console.log(error);
               if (error.startsWith('email')) {
                 setPage(0)
                 err.email = "Email address is already in use"
-                // setErrors(err)
               }
               if (error.startsWith('username')) {
                 setPage(1)
                 err.username = "Username is already in use"
-                // setErrors(err)
               }
             }
             setErrors(err)
@@ -116,7 +130,6 @@ const SignUpForm = () => {
   }
 
 
-  console.log("EEEEEEEE", errors)
 
   if (user) {
     return <Redirect to='/' />;
