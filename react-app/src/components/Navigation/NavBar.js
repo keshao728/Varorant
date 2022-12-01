@@ -15,7 +15,7 @@ const NavBar = () => {
     sessionLinks = (
       <div className="nav-profile">
 
-        <div>
+        <div className="nav-profile-nav-top">
           {sessionUser.username}
         </div>
 

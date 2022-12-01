@@ -47,8 +47,16 @@
 
 .fa-angle-left,
 .fa-angle-right {
-  border: 1px solid #ECE8E1;
+  /* border: 1px solid #ECE8E1; */
   padding: 25px;
+  position: relative;
+  z-index: 6;
+}
+
+.modal-left,
+.modal-right{
+  cursor: pointer;
+  display: block;
 }
 
 .img-modal-img-title{
@@ -78,4 +86,31 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+}
+.img-title-button-overlay{
+  position: relative;
+  border: 1px solid #ECE8E1;
+
+}
+
+
+.img-title-button-overlay:hover .img-title-overlay{
+  width: 100%;
+  position: absolute;
+}
+
+.img-title-overlay{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top:0;
+  background-color: #78000e;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  z-index: 5;
+  transition: .2s ease;
+  opacity: 60%;
+  /* border: 1px solid #ECE8E1; */
 }
