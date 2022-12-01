@@ -97,8 +97,10 @@ const SingleTicket = () => {
                 {myTicket.description}
               </div>
 
-
-              <img className="single-attachments" src={myTicket?.attachments} />
+              {myTicket.attachments ?
+                <img className="single-attachments" src={myTicket?.attachments} onError={myTicket.attachments = null}/>
+                : null
+              }
 
               <div className="single-actions">
                 <div>

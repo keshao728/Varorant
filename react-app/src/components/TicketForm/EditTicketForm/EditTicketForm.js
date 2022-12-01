@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { NavLink, useParams, useHistory } from 'react-router-dom';
 import { editTicketThunk } from '../../../store/ticket';
 import close from '../../Navigation/NavImages/close.png'
 
@@ -9,6 +9,8 @@ import './EditTicketForm.css'
 const EditTicketForm = ({ setModalOpen }) => {
   const dispatch = useDispatch();
   const { ticketId } = useParams();
+
+  const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
   const ticket = useSelector((state) => state.ticket);
   const myTicket = ticket[ticketId]
@@ -17,28 +19,61 @@ const EditTicketForm = ({ setModalOpen }) => {
   const [description, setDescription] = useState(myTicket.description);
   const [status, setStatus] = useState(false);
 
+  const [showErrors, setShowErrors] = useState(false);
+  const [errors, setErrors] = useState({});
+
+
+  const validate = () => {
+    let err = {}
+    if (subject.length > 15) err.subject = 'Subject must be less than 15 characters'
+    if (subject.length < 3) err.subject = 'Subject must be at least 3 characters'
+    if (description.length > 100) err.description = 'Description must be less than 100 characters'
+    if (description.length < 10) err.description = 'Description must be at least 10 characters'
+    setErrors(err)
+    if (Object.values(err).length) {
+      setShowErrors(true)
+    }
+    return err
+  }
+
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    // setShowErrors(true)
     setModalOpen(false)
-    // if (!validationErrors.length) {
-    const updatedTicket = {
-      user_id: sessionUser.id,
-      subject: subject,
-      description: description,
-      status: status ? "Solved" : "Open"
-      // status: status ? !status : status
+
+    if (!Object.values(errors).length) {
+      setErrors({})
+      setShowErrors(false)
+      let validationErrors = validate()
+      if (Object?.values(validationErrors)?.length) return
+
+      if (!Object?.values(validationErrors)?.length) {
+        const updatedTicket = {
+          user_id: sessionUser.id,
+          subject: subject,
+          description: description,
+          status: status ? "Solved" : "Open"
+          // status: status ? !status : status
+        }
+        let createdTicket = await dispatch(editTicketThunk(ticketId, updatedTicket)).catch(async res => {
+          const data = await res.json();
+          if (data && data.errors) setErrors(data.errors);
+        })
+
+        if (createdTicket) {
+          setShowErrors(false)
+          history.push(`/tickets/${createdTicket.id}`)
+          // return (() => dispatch(resetData()))
+        }
+      }
+      return errors
     }
-    // let createdTicket = await dispatch(createTicketThunk(newTicket))
-    await dispatch(editTicketThunk(ticketId, updatedTicket))
-    // if (createdTicket) {
-    //   // setShowErrors(false)
-    //   history.push(`/tickets/${createdTicket.id}`)
-    //   return (() => dispatch(resetData()))
-    // }
-    // // }
   }
+
+  useEffect(async () => {
+    if (showErrors) validate()
+  }, [setErrors, subject, description])
+
 
   return (
     <div className='edit-ticket-mother'>
@@ -81,7 +116,7 @@ const EditTicketForm = ({ setModalOpen }) => {
                 onChange={(e) => setDescription(e.target.value)} />
             </div>
             <div className="edit-ticket-radio">
-            <div className="edit-ticket-label">
+              <div className="edit-ticket-label">
                 Status
                 <i class="fa-solid fa-star-of-life"></i>
               </div>
@@ -102,7 +137,7 @@ const EditTicketForm = ({ setModalOpen }) => {
                   // checked
                   onChange={(e) => setStatus(e.target.value)} />
                 <label className='radio-label'>I got it!</label>
-                  {/* <div >
+                {/* <div >
                     <input type="checkbox"
                       value={true}
                       onChange={(e) => setStatus(e.target.value)} />

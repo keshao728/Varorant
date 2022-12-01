@@ -83,7 +83,7 @@ const TicketForm = () => {
   useEffect(async () => {
     if (showErrors) validate()
   }, [setErrors, subject, description])
-  console.log("THIS IS MAI ERROR", errors)
+
 
 
   return (
@@ -174,6 +174,7 @@ const TicketForm = () => {
                   </div>
                 }
               </div>
+
               <div className='ticket-input-box'>
                 <label className="ticket-label">
                   ATTACHMENTS
@@ -189,6 +190,7 @@ const TicketForm = () => {
                     {errors.attachments}
                   </div>
                 }
+
               </div>
               <button className="button-create-ticket" type="submit"> SUBMIT </button>
             </div>
