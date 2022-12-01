@@ -1,10 +1,12 @@
 import homeVid from './HomeAssets/homeVid.mp4'
 import PlayFree from '../Navigation/PlayFreeModal';
 import varorantW from './HomeAssets/varorantW.png'
+// import { useSelector } from 'react-redux';
+// import { Redirect } from 'react-router-dom';
 import "./Home.css"
 
 const Home = () => {
-
+  // const sessionUser = useSelector(state => state.session.user);
 
   return (
     <div>
@@ -17,7 +19,7 @@ const Home = () => {
         <video className="home-video" src={homeVid} autoPlay muted loop />
       </div>
       <div>TESTING321</div>
-      
+
     </div>
   )
 }

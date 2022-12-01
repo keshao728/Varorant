@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
+import { useParams, NavLink, Redirect } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import DeleteTicketModal from "./DeleteTicket/DeleteTicketModal";
 import EditTicketModal from "../TicketForm/EditTicketForm/EditTicketModal";
 import * as moment from 'moment';
@@ -29,6 +29,10 @@ const SingleTicket = () => {
       .then(() => setIsLoaded(true))
 
   }, [dispatch, ticketId])
+
+  if (!sessionUser) {
+    return <Redirect to="/" />
+  }
 
   return isLoaded && (
     <div className="single-ticket-mother">
@@ -97,11 +101,15 @@ const SingleTicket = () => {
                 {myTicket.description}
               </div>
 
+              {myTicket.attachments ?
+                <img className="single-attachments" src={myTicket?.attachments} alt="" onError={""} /> : ""
+              }
+
               <div className="single-actions">
                 <div>
                   {sessionUser.id === myTicket.user_id && <EditTicketModal />}
                 </div>
-                
+
                 <div>
                   {sessionUser.id === myTicket.user_id && <DeleteTicketModal />}
                 </div>

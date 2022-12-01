@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Modal } from '../../context/Modal';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useHistory} from 'react-router-dom';
+import { useSelector } from 'react-redux';
+// import { Redirect } from 'react-router-dom';
 // import LoginForm from "../auth/LoginForm";
 // import SignUpForm from "../auth/SignUpForm";
 import close from "./NavImages/close.png"
@@ -11,19 +13,28 @@ const PlayFree = () => {
   const [showModal, setShowModal] = useState(false);
   const history = useHistory();
 
+  const sessionUser = useSelector(state => state.session.user);
+  //
   const closeModal = () => {
     setShowModal(false);
   }
 
   return (
     <div className="playnow-modal-mother">
-      <div className="playfree-border">
-
-        <button
-          className="playnow-button"
-          id="playnow-play-free"
-          onClick={() => setShowModal(true)}> PLAY FREE </button>
-      </div>
+      {!sessionUser ?
+        <div className="playfree-border">
+          <button
+            className="playnow-button"
+            id="playnow-play-free"
+            onClick={() => setShowModal(true)}> PLAY FREE </button>
+        </div> :
+        <div className="playfree-border">
+          <button className="playnow-button"
+            id="playnow-play-free"
+            onClick={() => history.push("/media")}
+          >VIEW MEDIA</button>
+        </div>
+      }
 
       {showModal && (
         <Modal onClose={closeModal}>

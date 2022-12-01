@@ -103,7 +103,8 @@
   min-width: 208px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   top: 40px;
-  left: -135px;
+  /* left: -135px; */
+  right: 0px;
   z-index: 1;
   border-top: #FF4655 4px solid;
 }

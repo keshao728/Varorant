@@ -31,7 +31,7 @@ const ImgModal = ({ clickedImg, setClickedImg, clickRight, clickLeft, imgTitle, 
   return (
     <div className="img-modal-wrapper close-me" onClick={handleClick}>
       <div className='img-modal-content'>
-        <img className="clicked-img" src={clickedImg} />
+        <img className="clicked-img" src={clickedImg} onError={(e) => e.target.src = "https://imgur.com/2DrReGq.jpg"}/>
         <div className='img-title-buttons-wrapper'>
           <div className='img-title-buttons'>
             <div onClick={clickLeft} className="modal-left">

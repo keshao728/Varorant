@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 
 import { getUserTicketsThunk } from '../../store/ticket';
 import varorantW from '../Home/HomeAssets/varorantW.png'
@@ -13,6 +13,12 @@ const UserTickets = () => {
   const dispatch = useDispatch();
   const allTickets = useSelector((state) => state.ticket);
   const allTicketsArr = Object.values(allTickets);
+
+  const recentTickets = []
+  for (let i = allTicketsArr.length - 1; i >= 0; i--) {
+    recentTickets.push(allTicketsArr[i])
+  }
+
   const sessionUser = useSelector(state => state.session.user);
   // console.log("ALLTICKETS", allTickets)
   const [isLoaded, setIsLoaded] = useState(false)
@@ -24,8 +30,11 @@ const UserTickets = () => {
 
   }, [dispatch])
 
-  const userTicket = allTicketsArr?.filter((ticket) => ticket.user_id === sessionUser.id)
+  const userTicket = recentTickets?.filter((ticket) => ticket?.user_id === sessionUser?.id)
   console.log("USER TICKET", userTicket)
+  if (!sessionUser) {
+    return <Redirect to="/" />
+  }
 
   return isLoaded && (
     <div className="my-ticket-wrapper">
