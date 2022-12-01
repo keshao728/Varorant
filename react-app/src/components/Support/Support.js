@@ -21,6 +21,24 @@ const Support = () => {
       </div>
       {sessionUser ?
         <div className="support-ticket-icons">
+          <NavLink to='/tickets/my-tickets' exact={true} className="support-ticket" activeClassName='active'>
+            <img className="support-icon" src={userTicket} />
+            <div className="support-name">
+              MY TICKETS
+            </div>
+          </NavLink>
+          <NavLink to='/tickets/new' exact={true} className="support-ticket" activeClassName='active'>
+            <img className="support-icon" src={submitTicket} />
+            <div className="support-name">
+              SUBMIT A TICKET
+            </div>
+          </NavLink>
+          {/* <div>SUBMIT A TICKET</div> */}
+          {/* <div>VIEW OTHER TICKETS</div>
+      <div>USEFUL ERROR CODES</div> */}
+        </div> :
+        <div>
+          <div className="support-ticket-icons">
             <NavLink to='/tickets/my-tickets' exact={true} className="support-ticket" activeClassName='active'>
               <img className="support-icon" src={userTicket} />
               <div className="support-name">
@@ -32,20 +50,6 @@ const Support = () => {
               <div className="support-name">
                 SUBMIT A TICKET
               </div>
-            </NavLink>
-          {/* <div>SUBMIT A TICKET</div> */}
-          {/* <div>VIEW OTHER TICKETS</div>
-      <div>USEFUL ERROR CODES</div> */}
-        </div> :
-        <div>
-          <div>
-            <NavLink to='/login' exact={true} className="support-ticket" activeClassName='active'>
-              MY TICKETS
-            </NavLink>
-          </div>
-          <div>
-            <NavLink to='/login' exact={true} className="support-ticket" activeClassName='active'>
-              SUBMIT A TICKET
             </NavLink>
           </div>
           {/* <div>SUBMIT A TICKET</div> */}

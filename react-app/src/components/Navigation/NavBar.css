@@ -77,8 +77,9 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 100px;
+  width: auto;
   /* height: 100px; */
+  margin-right: 50px;
   background-color: #111111;
 }
 

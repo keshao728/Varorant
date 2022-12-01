@@ -56,7 +56,7 @@ const ImgModal = ({ clickedImg, setClickedImg, clickRight, clickLeft, imgTitle, 
               <div> {imgTitle}</div>
             </div>
           </div>
-          {sessionUser.id === userId &&
+          {sessionUser?.id === userId &&
             <button onClick={handleSubmit} className='button-delete-media close-me' type='submit'>Delete</button>
           }
         </div>
