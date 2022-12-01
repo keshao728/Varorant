@@ -58,6 +58,10 @@
   font-size: 12px;
   color: #55574C;
   letter-spacing: 0.5px;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow-wrap: break-word;
+  white-space: wrap;
 }
 .see-all-ticket{
   height: 20px;

@@ -31,7 +31,7 @@ const UserTickets = () => {
   }, [dispatch])
 
   const userTicket = recentTickets?.filter((ticket) => ticket?.user_id === sessionUser?.id)
-  console.log("USER TICKET", userTicket)
+  // console.log("USER TICKET", userTicket)
   if (!sessionUser) {
     return <Redirect to="/" />
   }

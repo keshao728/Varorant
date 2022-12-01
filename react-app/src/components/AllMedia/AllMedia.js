@@ -22,6 +22,7 @@ const AllMedia = () => {
   const [currentIndex, setCurrentIndex] = useState(null)
   const [imgTitle, setImgTitle] = useState(null)
   const [imgId, setImgId] = useState(null)
+  const [userId, setUserId] = useState(null)
 
   const RandomSize = {
     0: "grid-column:span 1;grid-row:span 2",
@@ -51,6 +52,7 @@ const AllMedia = () => {
       setClickedImg(newUrl);
       setImgTitle(allMediaArr[0].title)
       setImgId(allMediaArr[0].id)
+      setUserId(allMediaArr[0].user_id)
       return;
     }
     const newIndex = currentIndex + 1;
@@ -64,6 +66,7 @@ const AllMedia = () => {
     setCurrentIndex(newIndex);
     setImgTitle(newTitle);
     setImgId(newId);
+    setUserId(newUrl[0].user_id)
   }
 
   const clickLeft = () => {
@@ -74,6 +77,7 @@ const AllMedia = () => {
       setClickedImg(newUrl);
       setImgTitle(allMediaArr[mediaLength - 1].title)
       setImgId(allMediaArr[mediaLength - 1].id)
+      setUserId(allMediaArr[mediaLength - 1].user_id)
       return;
     }
     const newIndex = currentIndex - 1;
@@ -87,6 +91,7 @@ const AllMedia = () => {
     setCurrentIndex(newIndex);
     setImgTitle(newTitle);
     setImgId(newId);
+    setUserId(newUrl[0].user_id)
   }
 
   // window.onload = randomize;
@@ -150,10 +155,13 @@ const AllMedia = () => {
                   setCurrentIndex(index)
                   setImgTitle(media.title)
                   setImgId(media.id)
+                  setUserId(media.user_id)
                 }}
               />
               <div className="media-item-title">
-                {media.title}
+                <div className="media-individual-title">
+                  {media.title}
+                </div>
               </div>
             </div>
           ))}
@@ -167,6 +175,7 @@ const AllMedia = () => {
               clickLeft={clickLeft}
               imgTitle={imgTitle}
               imgId={imgId}
+              userId={userId}
             />
           )}
         </div>
