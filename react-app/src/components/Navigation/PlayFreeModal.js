@@ -18,7 +18,6 @@ const PlayFree = () => {
   const closeModal = () => {
     setShowModal(false);
   }
-
   return (
     <div className="playnow-modal-mother">
       {!sessionUser ?
