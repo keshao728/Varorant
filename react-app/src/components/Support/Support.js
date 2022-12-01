@@ -39,13 +39,13 @@ const Support = () => {
         </div> :
         <div>
           <div className="support-ticket-icons">
-            <NavLink to='/tickets/my-tickets' exact={true} className="support-ticket" activeClassName='active'>
+            <NavLink to='/login' exact={true} className="support-ticket" activeClassName='active'>
               <img className="support-icon" src={userTicket} />
               <div className="support-name">
                 MY TICKETS
               </div>
             </NavLink>
-            <NavLink to='/tickets/new' exact={true} className="support-ticket" activeClassName='active'>
+            <NavLink to='/login' exact={true} className="support-ticket" activeClassName='active'>
               <img className="support-icon" src={submitTicket} />
               <div className="support-name">
                 SUBMIT A TICKET
