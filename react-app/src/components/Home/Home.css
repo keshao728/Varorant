@@ -127,6 +127,7 @@
   overflow-wrap: break-word;
   white-space: wrap;
   font-family: 'Cabin', sans-serif;
+  letter-spacing: 0.5px;
 }
 
 .footer {
@@ -155,7 +156,16 @@
 .proj-directory{
   color: #F9F9EC;
   text-decoration: none;
+  transition: 0.4s;
+  padding: 8px 20px;
+  /* border: 1px solid #F9F9EC; */
+  border-radius: 8px;
 }
+
+.proj-directory:hover{
+  background-color: #5e5e5e;
+}
+
 .dev-socials{
   background-color: #111111;
   display: flex;
