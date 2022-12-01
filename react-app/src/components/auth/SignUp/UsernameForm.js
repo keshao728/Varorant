@@ -1,7 +1,7 @@
 import React from "react";
 import "./SignUpForm.css"
 
-const UsernameForm = ({ formData, setFormData, usernameErr, formSubmitted }) => {
+const UsernameForm = ({ username, setUsername, errors }) => {
 
   // const err = [];
   // useEffect(async () => {
@@ -18,18 +18,18 @@ const UsernameForm = ({ formData, setFormData, usernameErr, formSubmitted }) => 
         <input
           type='text'
           name='username'
-          value={formData.username}
+          value={username}
           required
           onChange={(e) =>
-            setFormData({ ...formData, username: e.target.value })
+            {setUsername(e.target.value)}
           }
         ></input>
         <label>USERNAME</label>
-        {!!usernameErr && formSubmitted && (
+        {!!Object.values(errors).length && (
           <div className='sign-in-error'>
             <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
-            {/* {errors.filter(error => error.includes("username"))} */}
-            {usernameErr}
+            {/* {errors?.filter(error => error.includes("username"))} */}
+            {errors.username && <div>{errors.username}</div>}
           </div>
         )}
       </div>

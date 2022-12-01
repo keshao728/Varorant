@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import "./SignUpForm.css"
 
 
-const EmailForm = ({ formData, setFormData, emailErr, formSubmitted }) => {
+const EmailForm = ({ email, setEmail, errors}) => {
 
 
   return (
@@ -13,18 +13,17 @@ const EmailForm = ({ formData, setFormData, emailErr, formSubmitted }) => {
           type='text'
           name='email'
           required
-          value={formData?.email}
+          value={email}
           onChange={(e) =>
-            setFormData({ ...formData, email: e.target.value })
+            {setEmail(e.target.value)}
           }
         />
         <label htmlFor='email'>EMAIL</label>
-        {!!emailErr.length && formSubmitted && (
+        {!!Object.values(errors).length && (
           <div className='sign-in-error'>
             <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
-            {/* {errors.filter(error => error.includes("email"))} */}
-            {emailErr}
-            {/* {console.log("SHIBASHAKE IT", emailErr)} */}
+            {/* {errors?.filter(error => error.includes("email"))} */}
+            {errors.email && <div>{errors.email}</div>}
           </div>
         )}
       </div>

@@ -11,7 +11,7 @@ import "./SignUpForm.css"
 //   }
 // };
 
-const PasswordForm = ({ formData, setFormData, passwordErr, formSubmitted }) => {
+const PasswordForm = ({ password, setPassword, repeatPassword, setRepeatPassword, errors}) => {
   return (
     <div>
       <div className='signup-input-box'>
@@ -19,9 +19,9 @@ const PasswordForm = ({ formData, setFormData, passwordErr, formSubmitted }) => 
           type='password'
           name='password'
           required
-          value={formData.password}
+          value={password}
           onChange={(e) =>
-            setFormData({ ...formData, password: e.target.value })
+            setPassword(e.target.value)
           }
         ></input>
         <label>PASSWORD</label>
@@ -30,21 +30,15 @@ const PasswordForm = ({ formData, setFormData, passwordErr, formSubmitted }) => 
         <input
           type='password'
           name='repeat_password'
-          value={formData.repeatPassword}
+          value={repeatPassword}
           required
           onChange={(e) =>
-            setFormData({ ...formData, repeatPassword: e.target.value })
+           setRepeatPassword(e.target.value)
           }
         ></input>
         <label>CONFIRM PASSWORD</label>
-        {!!passwordErr.length && formSubmitted && (
-          <div className='sign-in-error'>
-            <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
-            {/* {errors.filter(error => error.includes("email"))} */}
-            {passwordErr}
-            {/* {console.log("SHIBASHAKE IT", emailErr)} */}
-          </div>
-        )}
+        {errors.password && <div>{errors.password}</div>}
+        {errors.repeatPassword && <div>{errors.repeatPassword}</div>}
       </div>
     </div>
   )

@@ -9,143 +9,114 @@ import logo from '../../Navigation/NavImages/logo.png'
 import "./SignUpForm.css"
 
 const SignUpForm = () => {
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
   const [page, setPage] = useState(0);
-  const [formData, setFormData] = useState({
-    email: '',
-    username: '',
-    password: '',
-    repeatPassword: '',
-  })
-  const [usernameErr, setUsernameErr] = useState('')
-  const [emailErr, setEmailErr] = useState('')
-  const [passwordErr, setPasswordErr] = useState('')
-  // const [repeatPasswordErr, setRepeatPasswordErr] = useState('')
-
-  const [formSubmitted, setFormSubmitted] = useState(false)
-
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [repeatPassword, setRepeatPassword] = useState('');
+  // const [formData, setFormData] = useState({
+  //   email: '',
+  //   username: '',
+  //   password: '',
+  //   repeatPassword: '',
+  // })
 
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const FormTitles = ["What's your email?", "Choose a username", "Choose a password"]
   const FormDescriptions = ["", "Used for sign in to all our games.", "Make sure it's a good one."]
-
-
+  const [displayErrors, setDisplayErrors] = useState(false);
 
 
   const isDisabled = () => {
-    if (page === 0 && formData.email === '') {
+    if (page === 0 && email === '') {
       return <button disabled={true}></button>
-    } else if (page === 1 && formData.username === '') {
+    } else if (page === 1 && username === '') {
       return <button disabled={true}></button>
     } else {
       <button disabled={false}> </button>
     }
   }
 
-  // const submitDisabled = () => {
-  //   if (!formData.password || !formData.repeatPassword) {
-  //     return <button disabled={true}></button>
-  //   } else {
-  //     <button disabled={false}> </button>
-  //   }
-  // }
+  const validate = () => {
+    let err = {}
+    if (username.length > 15) err.username = 'Username must be less than 15 characters'
+    if (username.length < 3) err.username = 'Username must be at least 3 characters'
+    if (!email.toLowerCase().match(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,63})$/)) err.email = 'Please provide a valid email'
+    if (password !== repeatPassword) err.repeatPassword = 'Passwords must match'
+    if (password.length < 6) err.password = 'Password must be at least 6 characters'
+    if (password.length > 20) err.password = 'Password length must not exceed 20 characters'
+    setErrors(err)
 
-  // const err = {};
+    if (Object.values(err).length) {
+      setDisplayErrors(true)
+    }
+    return err
+  }
 
 
 
+  // let err=[]
   const onSignUp = async (e) => {
     e.preventDefault();
-    setFormSubmitted(true)
 
-    if (usernameErr && emailErr && passwordErr) {
-      const data = await dispatch(signUp(formData.username, formData.email, formData.password));
-      if (data) {
-        setErrors(data);
-        // for (let error of data) {
-        //   if (error.startsWith('email')) setEmailErr('Email address is already in use')
-        //   if (error.startsWith('username')) setUsernameErr('Username is already in use')
-        //   if (!!emailErr) {
-        //     setPage(0)
+    if (!Object.values(errors).length) {
+      setErrors({})
+      setDisplayErrors(false)
+      let validationErrors = validate()
+      if (Object.values(validationErrors).length) return
 
-        //     const response = await fetch('/api/auth/check-email')
-        //     if (Object.values(response).includes('avaliable')) {
-        //       setEmailErr('')
-        //     }
-        //   } else if (!!usernameErr) {
-        //     setPage(1)
-        //     if (!usernameErr) setUsernameErr("")
-        //   }
-        // }
+
+      if (!Object.values(validationErrors).length) {
+        if (password === repeatPassword) {
+          const data = await dispatch(signUp(username, email, password))
+          if (data) {
+            console.log("THIS IS DA DATA", data)
+            let err = {}
+            for (let error of data) {
+              console.log(error);
+              if (error.startsWith('email')) {
+                setPage(0)
+                err.email = "Email address is already in use"
+                // setErrors(err)
+              }
+              if (error.startsWith('username')) {
+                setPage(1)
+                err.username = "Username is already in use"
+                // setErrors(err)
+              }
+            }
+            setErrors(err)
+          }
+        }
       }
     }
+    return errors
   };
 
-
-
-  // const err = {};
-  // useEffect(async () => {
-  //   if (formData.username.length > 15) err.username = 'Username must be less than 15 characters'
-  //   if (formData.username.length < 3) err.username = 'Username must be at least 3 characters'
-  //   if (!formData.email.toLowerCase().match(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,63})$/)) err.email = 'Please provide a valid email'
-  //   if (formData.password !== formData.repeatPassword) err.password = 'Passwords must match'
-  //   if (formData.password.length < 6) err.password = 'Password must be at least 6 characters'
-  //   if (formData.password.length > 20) err.password = 'Password length must not exceed 20 characters'
-  //   setErrors(err)
-  //   return err
-  // }, [formData.username, formData.email, formData.password, formData.repeatPassword])
-
-  useEffect(async () => {
-    // if (formData.password === formData.repeatPassword) setPasswordErr('Password must match')
-    if (!formData.email.toLowerCase().match(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,63})$/)) setEmailErr('Please enter a valid email')
-    if (formData.username.length > 15) setUsernameErr('Username must be less than 15 characters')
-    if (formData.username.length < 3) setUsernameErr('Username must be at least 3 characters')
-    if (formData.password !== formData.repeatPassword) setPasswordErr('Passwords must match')
-    if (formData.password.length < 6) setPasswordErr('Password must be at least 6 characters')
-    if (formData.password.length > 20) setPasswordErr('Password length must not exceed 20 characters')
-
-
-    for (let error of errors) {
-      if (error.startsWith('email')) setEmailErr('Email address is already in use')
-      if (error.startsWith('username')) setUsernameErr('Username is already in use')
-      if (!!emailErr) {
-        // setPage(0)
-
-        if (!emailErr) setEmailErr('')
-        // const response = await fetch('/api/auth/check-email')
-        // if (Object.values(response).includes('avaliable')) {
-        //   setEmailErr('')
-        // }
-      } else if (!!usernameErr) {
-        // setPage(1)
-        if (!usernameErr) setUsernameErr("")
-      } else {
-        if (!passwordErr) setPasswordErr('')
-      }
-    }
-  }, [formData.username, formData.email, formData.password, formData.repeatPassword])
-
+  useEffect(() => {
+    if (displayErrors) validate()
+  }, [username, email, password, repeatPassword])
 
   const PageDisplay = () => {
     if (page === 0) {
       return <div>
-        <EmailForm formData={formData} setFormData={setFormData} emailErr={emailErr} formSubmitted={formSubmitted} />
+        <EmailForm email={email} setEmail={setEmail} errors={errors} />
         <div>
           <NavLink className="signup-redirect" to="/login"> ALREADY HAVE AN ACCOUNT? </NavLink>
         </div>
       </div>
     } else if (page === 1) {
-      return <UsernameForm formData={formData} setFormData={setFormData} usernameErr={usernameErr} formSubmitted={formSubmitted} />
+      return <UsernameForm username={username} setUsername={setUsername} errors={errors} />
     } else {
-      return <PasswordForm formData={formData} setFormData={setFormData} passwordErr={passwordErr} formSubmitted={formSubmitted}/>
+      return <PasswordForm password={password} setPassword={setPassword} repeatPassword={repeatPassword} setRepeatPassword={setRepeatPassword} errors={errors} />
     }
   }
 
+
   console.log("EEEEEEEE", errors)
-  console.log("EEEEEEMAIL ERROREE", emailErr)
-  console.log("USERNAME ERRRRR", usernameErr)
 
   if (user) {
     return <Redirect to='/' />;
@@ -189,6 +160,11 @@ const SignUpForm = () => {
       <form onSubmit={onSignUp}>
         <div className='signup-form-wrapper'>
           <div className="signup-form-child">
+            {/* <div>
+          {errors.map((error, ind) => (
+            <div key={ind}>{error}</div>
+          ))}
+          </div> */}
             <div className='signup-mes-des'>
               <div className='signup-message'>{FormTitles[page]}</div>
               <div className='signup-description'>{FormDescriptions[page]}</div>
@@ -201,12 +177,12 @@ const SignUpForm = () => {
             <div>
               {page === FormTitles.length - 1 ?
                 <button
-                  disabled={!formData.password || !formData.repeatPassword}
+                  disabled={!password || !repeatPassword || Object.values(errors).length}
                   className='submit-signup-button' type='submit'>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
                 : <button
-                  onClick={() => setPage((currPage) => currPage + 1)}
+                  onClick={() => {setPage((currPage) => currPage + 1); setErrors({})}}
                   className='submit-signup-button'
                   disabled={isDisabled()}
                 >
