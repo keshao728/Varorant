@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+import { NavLink, useHistory, Redirect } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { createTicketThunk } from '../../store/ticket';
 import varorantW from '../Home/HomeAssets/varorantW.png'
 // import ticketBanner from './TicketImages/ticketBanner.jpg'
@@ -84,6 +84,9 @@ const TicketForm = () => {
     if (showErrors) validate()
   }, [setErrors, subject, description])
 
+  if (!sessionUser) {
+    return <Redirect to="/" />
+  }
 
 
   return (
