@@ -2,7 +2,7 @@
   background-image: url(./supportImages/supportBanner.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  height: 50vh;
+  height: 52vh;
   width: auto;
   background-position: 0px -62px;
   justify-content: center;
@@ -20,4 +20,42 @@
 .support-title{
   width: 650px;
   margin-bottom: 25px;
+}
+
+.support-ticket-icons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  margin-bottom: 25px;
+  text-align: center;
+
+}
+
+.support-icon:hover {
+  transform: scaleX(-1);
+  margin-left:2.5px;
+  transition: transform 0.6s;
+}
+
+.support-icon{
+  width: 100px;
+  height: 100px;
+  transition: transform 0.6s;
+}
+
+.support-name{
+  font-size: 20px;
+  width: 100px;
+  font-weight: bolder;
+  padding: 0px 10px;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.support-ticket{
+  margin-top: 50px;
+  text-decoration: none;
+  width: 120px;
+  color: black;
 }

@@ -1,6 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import varorantW from '../Home/HomeAssets/varorantW.png'
+import submitTicket from './supportImages/submitTicket.png'
+import userTicket from './supportImages/userTicket.png'
 import './Support.css'
 
 
@@ -18,17 +20,19 @@ const Support = () => {
         </div>
       </div>
       {sessionUser ?
-        <div>
-          <div>
+        <div className="support-ticket-icons">
             <NavLink to='/tickets/my-tickets' exact={true} className="support-ticket" activeClassName='active'>
-              MY TICKETS
+              <img className="support-icon" src={userTicket} />
+              <div className="support-name">
+                MY TICKETS
+              </div>
             </NavLink>
-          </div>
-          <div>
             <NavLink to='/tickets/new' exact={true} className="support-ticket" activeClassName='active'>
-              SUBMIT A TICKET
+              <img className="support-icon" src={submitTicket} />
+              <div className="support-name">
+                SUBMIT A TICKET
+              </div>
             </NavLink>
-          </div>
           {/* <div>SUBMIT A TICKET</div> */}
           {/* <div>VIEW OTHER TICKETS</div>
       <div>USEFUL ERROR CODES</div> */}
