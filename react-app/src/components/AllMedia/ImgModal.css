@@ -56,6 +56,7 @@
   flex-direction: row;
   gap: 20px;
   margin-left: 70px;
+  text-transform: uppercase;
 }
 
 .button-delete-media{

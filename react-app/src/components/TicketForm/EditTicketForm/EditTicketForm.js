@@ -20,11 +20,11 @@ const EditTicketForm = ({ setModalOpen }) => {
   const [status, setStatus] = useState(false);
 
   const [showErrors, setShowErrors] = useState(false);
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
 
 
   const validate = () => {
-    let err = []
+    let err = {}
     if (subject.length > 15) err.subject = 'Subject must be less than 15 characters'
     if (!subject || subject.length < 3) err.subject = 'Subject must be at least 3 characters'
     if (description.length > 100) err.description = 'Description must be less than 100 characters'
@@ -42,39 +42,27 @@ const EditTicketForm = ({ setModalOpen }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setShowErrors(true)
 
-    if (!errors.length) {
-      setErrors([])
-      setShowErrors(false)
+    let validationErrors = validate()
 
-      let validationErrors = validate()
-      if (validationErrors?.length) return
+    if (Object.values(validationErrors).length > 0) {
+      setShowErrors(true)
+      return
+    }
 
-
-      if (!errors.length) {
-        const updatedTicket = {
-          user_id: sessionUser.id,
-          subject: subject,
-          description: description,
-          status: status ? "Solved" : "Open"
-          // status: status ? !status : status
-        }
-        let createdTicket = await dispatch(editTicketThunk(ticketId, updatedTicket)).catch(async res => {
-          const data = await res.json();
-          if (data && data.errors) {
-            setErrors(data.errors)
-          }
-        })
-
-        if (createdTicket) {
-          setShowErrors(false)
-          // setModalOpen(false)
-          // history.push(`/tickets/${createdTicket.id}`)
-          // return (() => dispatch(resetData()))
-        }
+    if (!Object.values(validationErrors).length) {
+      const updatedTicket = {
+        user_id: sessionUser.id,
+        subject: subject,
+        description: description,
+        status: status ? "Solved" : "Open"
+        // status: status ? !status : status
       }
+      await dispatch(editTicketThunk(ticketId, updatedTicket))
+
+      setShowErrors(false)
       setModalOpen(false)
+
       return errors
     }
   }

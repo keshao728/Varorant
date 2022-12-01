@@ -11,14 +11,14 @@ const MediaForm = ({ setModalOpen }) => {
   const [title, setTitle] = useState('');
   const [attachment, setAttachment] = useState('');
 
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
   const [showErrors, setShowErrors] = useState(false);
 
   const sessionUser = useSelector(state => state.session.user);
 
 
   const validate = () => {
-    let err = []
+    let err = {}
     if (title.length > 15) err.title = 'Title must be less than 15 characters'
     if (title.length < 3) err.title = 'Title must be at least 3 characters'
 
@@ -29,37 +29,30 @@ const MediaForm = ({ setModalOpen }) => {
     return err
   }
 
-  console.log("MEDIA ERRORS", errors)
+  // console.log("MEDIA ERRORS", errors)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    // setShowErrors(true)
 
-    if (!errors.length) {
-      setErrors([])
-      setShowErrors(false)
+    let validationErrors = validate()
+    if (Object.values(validationErrors).length > 0) {
+      setShowErrors(true)
+      return
+    }
 
-      let validationErrors = validate()
-      if (validationErrors?.length) return
 
-      if (!validationErrors.length) {
-        const newMedia = {
-          user_id: sessionUser.id,
-          title: title,
-          attachment: attachment,
-        }
-
-        let createdMedia = await dispatch(createMediaThunk(newMedia)).catch(async res => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        })
-
-        // setModalOpen(false)
-        if (createdMedia) {
-          setShowErrors(false)
-          setModalOpen(false)
-        }
+    if (!Object.values(validationErrors).length) {
+      const newMedia = {
+        user_id: sessionUser.id,
+        title: title,
+        attachment: attachment,
       }
+
+      await dispatch(createMediaThunk(newMedia))
+
+      setShowErrors(false)
+      setModalOpen(false)
+
       return errors
     }
   }
