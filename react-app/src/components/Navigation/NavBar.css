@@ -68,6 +68,10 @@
   margin-left: 6px;
 }
 
+.meowit-games{
+  text-decoration: none;
+  color: inherit;
+}
 
 .nav-right {
   display: flex;
