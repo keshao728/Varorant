@@ -47,22 +47,21 @@ const SignUpForm = () => {
       setPage(0)
     }
     if (username.length > 15) {
+      setPage(1)
       err.username = 'Username must be less than 15 characters'
+    } else if (username.length < 3) {
       setPage(1)
-    }
-    if (username.length < 3) {
       err.username = 'Username must be at least 3 characters'
-      setPage(1)
     }
+
     if (password !== repeatPassword) {
       err.repeatPassword = 'Passwords must match'
       setPage(2)
     }
     if (password.length < 6) {
-      err.password = 'Password must be at least 6 characters'
       setPage(2)
-    }
-    if (password.length > 20) {
+      err.password = 'Password must be at least 6 characters'
+    }else if (password.length > 20) {
       err.password = 'Password length must not exceed 20 characters'
       setPage(2)
     }
@@ -195,7 +194,7 @@ const SignUpForm = () => {
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
                 : <button
-                  onClick={() => {setPage((currPage) => currPage + 1); setErrors({})}}
+                  onClick={() => { setPage((currPage) => currPage + 1); setErrors({}) }}
                   className='submit-signup-button'
                   disabled={isDisabled()}
                 >

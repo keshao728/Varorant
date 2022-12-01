@@ -27,7 +27,7 @@ const PasswordForm = ({ password, setPassword, repeatPassword, setRepeatPassword
           }
         ></input>
         <label>CONFIRM PASSWORD</label>
-        {!!errors?.email && (
+        {!!errors?.password && (
           <div>
             {errors.password &&
               <div className='sign-in-error'>
