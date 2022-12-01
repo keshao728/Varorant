@@ -11,7 +11,7 @@ import "./SignUpForm.css"
 //   }
 // };
 
-const PasswordForm = ({ formData, setFormData }) => {
+const PasswordForm = ({ formData, setFormData, passwordErr, formSubmitted }) => {
   return (
     <div>
       <div className='signup-input-box'>
@@ -37,6 +37,14 @@ const PasswordForm = ({ formData, setFormData }) => {
           }
         ></input>
         <label>CONFIRM PASSWORD</label>
+        {!!passwordErr.length && formSubmitted && (
+          <div className='sign-in-error'>
+            <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
+            {/* {errors.filter(error => error.includes("email"))} */}
+            {passwordErr}
+            {/* {console.log("SHIBASHAKE IT", emailErr)} */}
+          </div>
+        )}
       </div>
     </div>
   )

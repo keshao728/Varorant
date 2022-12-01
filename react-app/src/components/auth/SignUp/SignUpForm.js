@@ -60,25 +60,25 @@ const SignUpForm = () => {
     e.preventDefault();
     setFormSubmitted(true)
 
-    if (formData.password === formData.repeatPassword) {
+    if (usernameErr && emailErr && passwordErr) {
       const data = await dispatch(signUp(formData.username, formData.email, formData.password));
       if (data) {
-        for (let error of data) {
-          if (error.startsWith('email')) setEmailErr('Email address is already in use')
-          if (error.startsWith('username')) setUsernameErr('Username is already in use')
-          if (!!emailErr) {
-            setPage(0)
+        setErrors(data);
+        // for (let error of data) {
+        //   if (error.startsWith('email')) setEmailErr('Email address is already in use')
+        //   if (error.startsWith('username')) setUsernameErr('Username is already in use')
+        //   if (!!emailErr) {
+        //     setPage(0)
 
-            const response = await fetch('/api/auth/check-email')
-            if (Object.values(response).includes('avaliable')) {
-              setEmailErr('')
-
-            }
-          } else if (!!usernameErr) {
-            setPage(1)
-            if (!usernameErr) setUsernameErr("")
-          }
-        }
+        //     const response = await fetch('/api/auth/check-email')
+        //     if (Object.values(response).includes('avaliable')) {
+        //       setEmailErr('')
+        //     }
+        //   } else if (!!usernameErr) {
+        //     setPage(1)
+        //     if (!usernameErr) setUsernameErr("")
+        //   }
+        // }
       }
     }
   };
@@ -105,6 +105,26 @@ const SignUpForm = () => {
     if (formData.password !== formData.repeatPassword) setPasswordErr('Passwords must match')
     if (formData.password.length < 6) setPasswordErr('Password must be at least 6 characters')
     if (formData.password.length > 20) setPasswordErr('Password length must not exceed 20 characters')
+
+
+    for (let error of errors) {
+      if (error.startsWith('email')) setEmailErr('Email address is already in use')
+      if (error.startsWith('username')) setUsernameErr('Username is already in use')
+      if (!!emailErr) {
+        // setPage(0)
+
+        if (!emailErr) setEmailErr('')
+        // const response = await fetch('/api/auth/check-email')
+        // if (Object.values(response).includes('avaliable')) {
+        //   setEmailErr('')
+        // }
+      } else if (!!usernameErr) {
+        // setPage(1)
+        if (!usernameErr) setUsernameErr("")
+      } else {
+        if (!passwordErr) setPasswordErr('')
+      }
+    }
   }, [formData.username, formData.email, formData.password, formData.repeatPassword])
 
 
@@ -119,7 +139,7 @@ const SignUpForm = () => {
     } else if (page === 1) {
       return <UsernameForm formData={formData} setFormData={setFormData} usernameErr={usernameErr} formSubmitted={formSubmitted} />
     } else {
-      return <PasswordForm formData={formData} setFormData={setFormData} passwordErr={passwordErr} />
+      return <PasswordForm formData={formData} setFormData={setFormData} passwordErr={passwordErr} formSubmitted={formSubmitted}/>
     }
   }
 

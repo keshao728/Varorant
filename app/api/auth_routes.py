@@ -74,19 +74,19 @@ def sign_up():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-@auth_routes.route('/check-email')
-def check_email():
-    """
-    Checks if an email is already in use
-    """
-    form = SignUpForm()
+# @auth_routes.route('/check-email')
+# def check_email():
+#     """
+#     Checks if an email is already in use
+#     """
+#     form = SignUpForm()
 
-    signupEmail = form.data['email']
-    print("DIS IS BACKEND EMAIL", signupEmail)
-    current_email = User.query.filter(User.email == signupEmail).first()
-    if current_email:
-        return {'email': 'Email is already in use'}
-    return {'hehe': 'avaliable'}
+#     signupEmail = form.data['email']
+#     print("DIS IS BACKEND EMAIL", signupEmail)
+#     current_email = User.query.filter(User.email == signupEmail).first()
+#     if current_email:
+#         return {'email': 'Email is already in use'}
+#     return {'hehe': 'avaliable'}
 
 @auth_routes.route('/unauthorized')
 def unauthorized():
