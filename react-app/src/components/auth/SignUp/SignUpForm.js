@@ -61,7 +61,7 @@ const SignUpForm = () => {
     if (password.length < 6) {
       setPage(2)
       err.password = 'Password must be at least 6 characters'
-    }else if (password.length > 20) {
+    } else if (password.length > 20) {
       err.password = 'Password length must not exceed 20 characters'
       setPage(2)
     }
@@ -136,26 +136,6 @@ const SignUpForm = () => {
 
   return (
     <div className='signup-form-mother'>
-      <div className='signup-links-pages'>
-        <div
-          className="signup-individual-pages"
-          onClick={() => setPage(0)}
-          style={page === 0 ? { backgroundColor: "#FF4654" } : null}
-        >
-        </div>
-        <div
-          className="signup-individual-pages"
-          onClick={() => setPage(1)}
-          style={page === 1 ? { backgroundColor: "#FF4654" } : null}
-        >
-        </div>
-        <div
-          className="signup-individual-pages"
-          onClick={() => setPage(2)}
-          style={page === 2 ? { backgroundColor: "#FF4654" } : null}
-        >
-        </div>
-      </div>
       <div className='signup-logo'>
         <NavLink to='/' exact={true} className="singup-link-home" activeClassName='active'>
           <div className='signup-home'>
@@ -171,6 +151,26 @@ const SignUpForm = () => {
       </div> */}
       <form onSubmit={onSignUp}>
         <div className='signup-form-wrapper'>
+          <div className='signup-links-pages'>
+            <div
+              className="signup-individual-pages"
+              onClick={() => setPage(0)}
+              style={page === 0 ? { backgroundColor: "#FF4654" } : null}
+            >
+            </div>
+            <div
+              className="signup-individual-pages"
+              onClick={() => setPage(1)}
+              style={page === 1 ? { backgroundColor: "#FF4654" } : null}
+            >
+            </div>
+            <div
+              className="signup-individual-pages"
+              onClick={() => setPage(2)}
+              style={page === 2 ? { backgroundColor: "#FF4654" } : null}
+            >
+            </div>
+          </div>
           <div className="signup-form-child">
             {/* <div>
           {errors.map((error, ind) => (
