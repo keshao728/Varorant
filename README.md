@@ -1,8 +1,8 @@
-<a href="https://drive.google.com/uc?export=view&id=1Ny5QO7F3UWUmmYPgb6Long-PNtxa5YJb"><img src="https://drive.google.com/uc?export=view&id=1Ny5QO7F3UWUmmYPgb6Long-PNtxa5YJb" title="Meowbnb logo">
+<a href="https://imgur.com/l5EBZUn"><img src="https://imgur.com/l5EBZUn.png" title="Varorant logo">
 </a>
-
+<br>
+<br>
 Meowit Games presents VARORANT, inspired by [Valorant](https://playvalorant.com/en-us/): a media/ticket site based on 5v5 character-based tactical FPS where precise gunplay meets unique agent abilities. Have an issue with the game? Would like to show off your Media artwork? Varorant is your place to go.
-
 
 <br>
 <br>
