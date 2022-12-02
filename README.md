@@ -48,6 +48,7 @@ Meowit Games presents VARORANT, inspired by [Valorant](https://playvalorant.com/
 
 <!-- ![Imgur GIF](https://imgur.com/RbgNqTk.gif) -->
 <a href="https://varorant.herokuapp.com/"><img src="https://imgur.com/RbgNqTk.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/qibVmu4"><img src="https://i.imgur.com/qibVmu4.gif" title="source: imgur.com" /></a>
 
 <br>
 <br>
@@ -94,4 +95,8 @@ Meowit Games presents VARORANT, inspired by [Valorant](https://playvalorant.com/
 <h2> Let's Get Connected! </h2>
 <div>
 <h3> Kelly Shao </h3>
-<a href="https://www.linkedin.com/in/keyingshao/" target="_blank">![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)</a>
+<a href="https://www.linkedin.com/in/keyingshao/" target="_blank">
+
+![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)
+
+</a>
