@@ -47,8 +47,8 @@ Meowit Games presents VARORANT, inspired by [Valorant](https://playvalorant.com/
 <a href="https://varorant.herokuapp.com/"><img src="https://imgur.com/ulwOo0t.png" title="Varorant logo">
 
 <!-- ![Imgur GIF](https://imgur.com/RbgNqTk.gif) -->
-<a href="https://varorant.herokuapp.com/"><img src="https://imgur.com/RbgNqTk.gif" title="source: imgur.com" /></a>
-<a href="https://imgur.com/qibVmu4"><img src="https://i.imgur.com/qibVmu4.gif" title="source: imgur.com" /></a>
+<a href="https://varorant.herokuapp.com/"><img src="https://imgur.com/rgUAKFK.gif" title="source: imgur.com" /></a>
+
 
 <br>
 <br>
