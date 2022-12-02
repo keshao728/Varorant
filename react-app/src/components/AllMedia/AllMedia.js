@@ -158,6 +158,7 @@ const AllMedia = () => {
                   setUserId(media.user_id)
                 }}
               />
+              <div className="media-img-overlay"> </div>
               <div className="media-item-title">
                 <div className="media-individual-title">
                   {media.title}

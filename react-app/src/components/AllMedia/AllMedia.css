@@ -2,6 +2,8 @@
   flex-grow: 1;
   transition: all 0.5s ease;
   position: relative;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 .media-img {
@@ -9,6 +11,34 @@
   width: 100%;
   height: 100%;
   cursor: pointer;
+	transform: scale(1);
+	transition: .5s ease-in-out;
+}
+
+.media:hover .media-img {
+	transform: scale(1.1);
+}
+
+
+
+.media:hover .media-img-overlay{
+  width: 100%;
+
+}
+
+.media-img-overlay{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top:0;
+  background-color: #78000e;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  z-index: 5;
+  transition: .2s ease;
+  opacity: 0.6;
 }
 
 .media-map {
@@ -45,6 +75,7 @@
   font-size: 14px;
   text-transform: uppercase;
   padding: 10px 15px;
+  z-index: 7;
 }
 
 .media-individual-title{
