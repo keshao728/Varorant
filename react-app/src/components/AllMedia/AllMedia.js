@@ -146,17 +146,25 @@ const AllMedia = () => {
 
         <div className="media-map">
           {allMediaArr?.map((media, index) => (
-            <div className="media">
+            <div className="media"
+              onClick={() => {
+                setClickedImg(media.attachment);
+                setCurrentIndex(index)
+                setImgTitle(media.title)
+                setImgId(media.id)
+                setUserId(media.user_id)
+              }}
+            >
               <img className="media-img"
                 src={media.attachment}
                 onError={(e) => e.target.src = "https://imgur.com/2DrReGq.jpg"}
-                onClick={() => {
-                  setClickedImg(media.attachment);
-                  setCurrentIndex(index)
-                  setImgTitle(media.title)
-                  setImgId(media.id)
-                  setUserId(media.user_id)
-                }}
+              // onClick={() => {
+              //   setClickedImg(media.attachment);
+              //   setCurrentIndex(index)
+              //   setImgTitle(media.title)
+              //   setImgId(media.id)
+              //   setUserId(media.user_id)
+              // }}
               />
               <div className="media-img-overlay"> </div>
               <div className="media-item-title">
