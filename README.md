@@ -46,7 +46,8 @@ Meowit Games presents VARORANT, inspired by [Valorant](https://playvalorant.com/
 <!-- <a href="https://imgur.com/l5EBZUn"><img src="https://imgur.com/RbgNqTk.gif" title="Varorant Splash" alt="https://imgur.com/ulwOo0t.png"> </a> -->
 <a href="https://varorant.herokuapp.com/"><img src="https://imgur.com/ulwOo0t.png" title="Varorant logo">
 
-![Imgur GIF](https://imgur.com/RbgNqTk.gif)
+<!-- ![Imgur GIF](https://imgur.com/RbgNqTk.gif) -->
+<a href="https://varorant.herokuapp.com/"><img src="https://imgur.com/RbgNqTk.gif" title="source: imgur.com" /></a>
 
 <br>
 <br>
@@ -93,13 +94,4 @@ Meowit Games presents VARORANT, inspired by [Valorant](https://playvalorant.com/
 <h2> Let's Get Connected! </h2>
 <div>
 <h3> Kelly Shao </h3>
-<a href="https://github.com/keshao728"  target="_blank">
-
-![Github](https://img.shields.io/badge/github-%230077B5.svg?style=for-the-badge&logo=github&logoColor=white)
-</a>
-
-<a href="https://www.linkedin.com/in/keyingshao/" target="_blank">
-
-![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)</a>
-</a>
-</div>
+<a href="https://www.linkedin.com/in/keyingshao/" target="_blank">![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)</a>
