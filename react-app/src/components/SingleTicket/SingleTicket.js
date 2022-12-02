@@ -116,6 +116,7 @@ const SingleTicket = () => {
               </div>
             </div>
           </div>
+          <div className="empty-single-tickets"></div>
         </div>
       </div>
     </div>

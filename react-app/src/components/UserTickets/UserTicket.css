@@ -1,13 +1,14 @@
 
 
 .my-ticket-title{
-  font-size: 50px;
-  font-weight: bolder;
+  font-size: 40px;
+  letter-spacing: 3px;
+  /* font-weight: bolder; */
   padding: 0px 10px;
   margin-bottom: 20px;
   display: flex;
   justify-content: center;
-  letter-spacing: 1px;
+  font-family: 'Anton', sans-serif;
 }
 
 

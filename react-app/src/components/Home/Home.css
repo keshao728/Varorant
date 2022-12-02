@@ -86,12 +86,11 @@
 .home-latest-title {
   display: flex;
   margin-left: 17.8%;
-  font-size: 100px;
-  font-weight: bolder;
-  font-family: 'Antonio', sans-serif;
+  font-size: 92px;
+  font-family: 'Anton', sans-serif;
   color: #FF4655;
   position: relative;
-  top: 25px;
+  top: 40px;
   z-index: 6;
 }
 

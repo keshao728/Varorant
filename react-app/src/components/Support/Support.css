@@ -25,7 +25,7 @@
 .support-ticket-icons{
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   gap: 100px;
   margin-bottom: 25px;
   text-align: center;
@@ -46,11 +46,12 @@
 
 .support-name{
   font-size: 20px;
-  width: 100px;
-  font-weight: bolder;
+  width: 90px;
+  /* font-weight: bold; */
   padding: 0px 10px;
   letter-spacing: 1px;
   margin-bottom: 5px;
+  font-family: 'Anton', sans-serif;
 }
 
 .support-ticket{
