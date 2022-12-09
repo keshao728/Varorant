@@ -1,3 +1,5 @@
+import React, { useRef, useEffect } from 'react';
+
 import homeVid from './HomeAssets/homeVid.mp4'
 import PlayFree from '../Navigation/PlayFreeModal';
 import varorantW from './HomeAssets/varorantW.png'
@@ -5,12 +7,52 @@ import latest1 from './HomeAssets/latest1.png'
 import latest2 from './HomeAssets/latest2.png'
 import latest3 from './HomeAssets/latest3.png'
 import harbor from './HomeAssets/harbor.jpg'
+import playbutton from './HomeAssets/playbutton.png'
 // import { useSelector } from 'react-redux';
 // import { Redirect } from 'react-router-dom';
+// import wearevalo from './HomeAssets/wearevalo.png'
 import "./Home.css"
 
 const Home = () => {
+  const ref = useRef(null);
+
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset;
+      const elementTop = ref.current.offsetTop;
+      const elementHeight = ref.current.offsetHeight;
+      const elementBottom = elementTop + ref.current.elementHeight;
+
+      ref.current.style.transform = `translateY(${(scrollTop - elementTop) / 16}px)`;
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [ref]);
+
   // const sessionUser = useSelector(state => state.session.user);
+
+  // let weValo = document.getElementById("we-are");
+
+  // window.onscroll = function () {
+  //   let scrollTop = document.documentElement.scrollTop;
+  //   let scrollHeight = document.documentElement.scrollHeight;
+  //   let clientHeight = document.documentElement.clientHeight;
+
+  //   let valoY = -(scrollTop - document.getElementById("we-are").offsetHeight) + 100;
+
+  // }
+
+  // let weValoBackground = document.querySelector(".home-latest")
+
+  // document.querySelector(".home-latest").addEventListener('scroll', () => {
+  // let windowScroll = document.querySelector(".home-latest").scrollTop;
+  // document.getElementById("we-are").style.transform = "translateY(" + windowScroll / 2 + "px)";
+  // })
 
   return (
     <div className="home-wrapper">
@@ -23,9 +65,14 @@ const Home = () => {
         <PlayFree />
         <video className="home-video" src={homeVid} autoPlay muted loop />
       </div>
-      <div className="home-latest">
+      <div className="home-latest" id="home-latest">
+        {/* <img className="home-background" src={wearevalo}/> */}
         <div className="home-latest-title">
           THE LATEST
+        </div>
+        <div className="latest-background-wrap" id="we-are" ref={ref}>
+          <div className="latest-background-1">WE ARE </div>
+          <div className="latest-background-2">VALORANT</div>
         </div>
         <div className="home-latest-img">
           <a className="latest-links" href="https://letsplay.live/valorantchallengersoceania2023/" target="_blank" rel="noreferrer">
@@ -91,26 +138,40 @@ const Home = () => {
 
       <div className="we-are-wrapper">
         <div className="we-are-box">
+          <div className="we-are-border-top"></div>
           <div>
             <div className="we-are-title">WE ARE VARORANT</div>
           </div>
           <div className="defy-wrapper">
-            <div className="defy-title">DEFY THE LIMITS</div>
-            <div className="defy-des">
-              Blend your style and experience on a global, competitive stage. You have 13 rounds to attack and defend your side using sharp gunplay and tactical abilities. And, with one life per-round, you'll need to think faster than your opponent if you want to survive. Take on foes across Competitive and Unranked modes as well as Deathmatch and Spike Rush.
-            </div>
-            <div className="we-are-button-wrap">
-              <div className="we-are-boader">
-                <button
-                  className="we-are-but"
-                  id="we-are-button"
-                  onClick={() => {
-                    window.open('https://playvalorant.com/en-us/news/announcements/beginners-guide/')
-                  }}>
-                  LEARN THE GAME
-                </button>
+            <div className="defy-left">
+              <div className="defy-title">DEFY THE LIMITS</div>
+              <div className="defy-des">
+                Blend your style and experience on a global, competitive stage. You have 13 rounds to attack and defend your side using sharp gunplay and tactical abilities. And, with one life per-round, you'll need to think faster than your opponent if you want to survive. Take on foes across Competitive and Unranked modes as well as Deathmatch and Spike Rush.
+              </div>
+              <div className="we-are-button-wrap">
+                <div className="we-are-boader">
+                  <button
+                    className="we-are-but"
+                    id="we-are-button"
+                    onClick={() => {
+                      window.open('https://playvalorant.com/en-us/news/announcements/beginners-guide/')
+                    }}>
+                    LEARN THE GAME
+                  </button>
+                </div>
               </div>
             </div>
+
+            <a href="https://www.youtube.com/watch?v=le474A3jBxA&t=3s&ab_channel=VALORANT" className="defy-gif-wrapper" target="_blank" rel="noreferrer">
+              <img className="defy-gif" src="https://imgur.com/5DxTAAS.gif" />
+
+              <div className="defy-border">
+                <div className="defy-gif-button-wrapper">
+                  <img className="defy-gif-button" src={playbutton} />
+                  <div className="defy-gif-overlay"> </div>
+                </div>
+              </div>
+            </a>
           </div>
         </div>
 
