@@ -9,22 +9,32 @@ import latest3 from './HomeAssets/latest3.png'
 import harbor from './HomeAssets/harbor.jpg'
 import reynaraze from './HomeAssets/reynaraze.gif'
 import playbutton from './HomeAssets/playbutton.png'
+import map from './HomeAssets/map.png'
 // import { useSelector } from 'react-redux';
 // import { Redirect } from 'react-router-dom';
 // import wearevalo from './HomeAssets/wearevalo.png'
+import birds from './HomeAssets/birds.png'
 import "./Home.css"
 
 const Home = () => {
   const ref = useRef(null);
 
+  const ref2 = useRef(null);
+
+  const ref3 = useRef(null);
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.pageYOffset;
+      const scrollLeft = window.pageXOffset;
       const elementTop = ref.current.offsetTop;
-      const elementHeight = ref.current.offsetHeight;
-      const elementBottom = elementTop + ref.current.elementHeight;
+      const elementTop2 = ref2.current.offsetTop;
+      const elementTop3 = ref3.current.offsetTop;
+      const elementTop4 = ref3.current.offsetLeft;
 
       ref.current.style.transform = `translateY(${(scrollTop - elementTop) / 20}px)`;
+      ref2.current.style.transform = `translateY(${(scrollTop - elementTop2) / 15}px)`;
+      ref3.current.style.transform = `translateY(${-(scrollTop - elementTop3) / 35}px) translateX(${-(scrollTop - elementTop3) / 5}px)`;
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -32,7 +42,38 @@ const Home = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [ref]);
+  }, [ref, ref2]);
+
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const scrollTop = window.pageYOffset;
+  //     const elementTop2 = ref2.current.offsetTop;
+
+  //     // ref.current.style.transform = `translateY(${(scrollTop - elementTop) / 20}px)`;
+  //     ref2.current.style.transform = `translateY(${(scrollTop - elementTop2) / 20}px)`;
+  //   };
+
+  //   window.addEventListener('scroll', handleScroll);
+
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, [ref2]);
+
+  // window.onscroll = function () {
+  //   var scrollT = document.documentElement.scrollTop;
+  //   //居上滚动了多少高度
+  //   var scrollH = document.documentElement.scrollHeight;
+  //   //页面总高度
+  //   var clientH = document.documentElement.clientHeight;
+  //   //页面可视区域的高度
+  //   // var birdY =-( scrollT - document.getElementById("scrollbird").offsetHeight) - 50;
+  //   // var birdX =-( scrollT - document.getElementById("scrollbird").offsetHeight) - 350;
+  //   var placeY = scrollT - document.getElementById("scrollplace").offsetHeight - 10;
+  //   // console.log(birdY);
+  //   // document.getElementById("scrollbird").style.transform = "translateY("+birdY+"px) translateX("+birdX+"px)";
+  //   document.getElementById("scrollplace").style.transform = "translateY(-" + placeY + "px)";
+  // }
 
   // const sessionUser = useSelector(state => state.session.user);
 
@@ -191,7 +232,7 @@ const Home = () => {
                   className="agent-but"
                   id="agent-button"
                   onClick={() => {
-                    window.open('https://playvalorant.com/en-us/agents/')
+                    window.open('https://playvalorant.com/en-us/news/announcements/beginners-guide/')
                   }}>
                   LEARN THE GAME
                 </button>
@@ -202,28 +243,33 @@ const Home = () => {
       </div>
 
       <div className="map-wrapper">
-        <div className="map-gif-wrap">
-          <img src={reynaraze} className="map-gif" />
-        </div>
+          <div className="map-background-wrap" id="scrollplace" ref={ref2}>
+            <div className="map-background-1">PLACE</div>
+          </div>
         <div className="map-left">
-          <div className="map-title">YOUR AGENTS</div>
-          <div className="map-title-2">CREATIVITY IS YOUR GREATEST WEAPON.</div>
-          <div className="map-des">More than guns and bullets, you’ll choose an Agent armed with adaptive, swift, and lethal abilities that create opportunities to let your gunplay shine. No two Agents play alike, just as no two highlight reels will look the same.
+          <div className="map-title">YOUR MAPS</div>
+          <div className="map-title-2">FIGHT AROUND THE WORLD.</div>
+          <div className="map-des">Each map is a playground to showcase your creative thinking. Purpose-built for team strategies, spectacular plays, and clutch moments. Make the play others will imitate for years to come.
             <div className="map-button-wrap">
               <div className="map-boader">
                 <button
                   className="map-but"
                   id="map-button"
                   onClick={() => {
-                    window.open('https://playvalorant.com/en-us/agents/')
+                    window.open('https://playvalorant.com/en-us/maps/')
                   }}>
-                  LEARN THE GAME
+                  VIEW ALL MAPS
                 </button>
               </div>
             </div>
           </div>
         </div>
+        <div>
+            <img src={map} className="map-img" />
+            <img src={birds} className="bird-img" ref={ref3}/>
+        </div>
       </div>
+
 
       <div className="footer">
         <div className="proj-directory-wrapper">
