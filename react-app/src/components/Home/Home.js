@@ -7,6 +7,7 @@ import latest1 from './HomeAssets/latest1.png'
 import latest2 from './HomeAssets/latest2.png'
 import latest3 from './HomeAssets/latest3.png'
 import harbor from './HomeAssets/harbor.jpg'
+import reynaraze from './HomeAssets/reynaraze.gif'
 import playbutton from './HomeAssets/playbutton.png'
 // import { useSelector } from 'react-redux';
 // import { Redirect } from 'react-router-dom';
@@ -16,7 +17,6 @@ import "./Home.css"
 const Home = () => {
   const ref = useRef(null);
 
-
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.pageYOffset;
@@ -24,7 +24,7 @@ const Home = () => {
       const elementHeight = ref.current.offsetHeight;
       const elementBottom = elementTop + ref.current.elementHeight;
 
-      ref.current.style.transform = `translateY(${(scrollTop - elementTop) / 16}px)`;
+      ref.current.style.transform = `translateY(${(scrollTop - elementTop) / 20}px)`;
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -72,7 +72,7 @@ const Home = () => {
         </div>
         <div className="latest-background-wrap" id="we-are" ref={ref}>
           <div className="latest-background-1">WE ARE </div>
-          <div className="latest-background-2">VALORANT</div>
+          <div className="latest-background-2">VARORANT</div>
         </div>
         <div className="home-latest-img">
           <a className="latest-links" href="https://letsplay.live/valorantchallengersoceania2023/" target="_blank" rel="noreferrer">
@@ -176,6 +176,55 @@ const Home = () => {
         </div>
 
       </div>
+
+      <div className="agent-wrapper">
+        <div className="agent-gif-wrap">
+          <img src={reynaraze} className="agent-gif" />
+        </div>
+        <div className="agent-right">
+          <div className="agent-title">YOUR AGENTS</div>
+          <div className="agent-title-2">CREATIVITY IS YOUR GREATEST WEAPON.</div>
+          <div className="agent-des">More than guns and bullets, you’ll choose an Agent armed with adaptive, swift, and lethal abilities that create opportunities to let your gunplay shine. No two Agents play alike, just as no two highlight reels will look the same.
+            <div className="agent-button-wrap">
+              <div className="agent-boader">
+                <button
+                  className="agent-but"
+                  id="agent-button"
+                  onClick={() => {
+                    window.open('https://playvalorant.com/en-us/agents/')
+                  }}>
+                  LEARN THE GAME
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="map-wrapper">
+        <div className="map-gif-wrap">
+          <img src={reynaraze} className="map-gif" />
+        </div>
+        <div className="map-left">
+          <div className="map-title">YOUR AGENTS</div>
+          <div className="map-title-2">CREATIVITY IS YOUR GREATEST WEAPON.</div>
+          <div className="map-des">More than guns and bullets, you’ll choose an Agent armed with adaptive, swift, and lethal abilities that create opportunities to let your gunplay shine. No two Agents play alike, just as no two highlight reels will look the same.
+            <div className="map-button-wrap">
+              <div className="map-boader">
+                <button
+                  className="map-but"
+                  id="map-button"
+                  onClick={() => {
+                    window.open('https://playvalorant.com/en-us/agents/')
+                  }}>
+                  LEARN THE GAME
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="footer">
         <div className="proj-directory-wrapper">
           <a className="proj-directory" href="https://github.com/keshao728/Varorant" target="_blank" rel="noreferrer">
@@ -199,7 +248,7 @@ const Home = () => {
         </div>
       </div>
 
-    </div>
+    </div >
   )
 }
 

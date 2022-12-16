@@ -43,7 +43,7 @@
 
 .video-line {
   position: absolute;
-  height: 2500px;
+  height: 3500px;
   margin-left: 17.8%;
   /* left: 338px; */
   border-left: 1px solid white;
@@ -87,12 +87,12 @@
   position: relative;
 }
 
-.latest-background-wrap{
+.latest-background-wrap {
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: #dbd8d2;
   font-size: 240px;
-  position:absolute;
+  position: absolute;
   z-index: 0;
   left: 280px;
   letter-spacing: 30px;
@@ -100,12 +100,13 @@
   transition: 0.5s;
 }
 
-.latest-background-1, .latest-background-2{
+.latest-background-1,
+.latest-background-2 {
   /* padding: -10px; */
   font-family: 'Anton', sans-serif;
 }
 
-.latest-background-2{
+.latest-background-2 {
   margin-top: -100px;
   position: relative;
   left: 480px;
@@ -386,7 +387,8 @@
   width: 65%;
   height: 100%;
 }
-.we-are-border-top{
+
+.we-are-border-top {
   border-top: 1px solid #C0BFBB;
   width: 100%;
   margin-left: 120px;
@@ -538,4 +540,201 @@
   z-index: 5;
   transition: .2s ease;
   opacity: 1;
+}
+
+.agent-wrapper {
+  display: flex;
+  position: relative;
+  /* justify-content: center;
+  align-items: center; */
+  width: 100%;
+  height: 867px;
+  margin-top: 50px;
+  flex-direction: column;
+
+  background-color: #FF4655;
+}
+
+.agent-gif-wrap {
+  position: absolute;
+  top: -155px;
+  left: 245px;
+}
+
+.agent-gif{
+  height: 1100px;
+}
+
+.agent-right {
+  position: absolute;
+  right: 340px;
+  top: -0;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  border-top: 1px solid #F7868D;
+  width: 480px;
+}
+
+.agent-title{
+  margin-top: 45px;
+  font-family: 'Anton', sans-serif;
+  font-size: 110px;
+  color: #ECE8E1;
+  line-height: 120px;
+  width: 400px;
+}
+
+.agent-title-2{
+  margin-top: 50px;
+  font-size: 20px;
+  color: #ECE8E1;
+  width: 400px;
+  font-weight: 500;
+}
+
+.agent-des{
+  margin-top: 25px;
+  color: #ECE8E1;
+  line-height: 25px;
+  width: 380px;
+  /* position: relative; */
+}
+
+
+.agent-but {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 250px;
+  height: 50px;
+  font-weight: bolder;
+  cursor: pointer;
+  font-family: 'Cabin', sans-serif;
+  transition: 0.8s;
+  position: relative;
+  border: none;
+  overflow: hidden;
+  /* color: var(--color); */
+  background-color: var(--background-color);
+
+  /* color: #ECE8E1; */
+}
+
+#agent-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #0F1923;
+  z-index: -1;
+  color: #ECE8E1;
+
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms ease-in-out;
+}
+
+#agent-button:hover{
+  color: #ECE8E1;
+  transition: 0.8s;
+  transition: transform 200ms ease-in-out;
+}
+
+#agent-button:hover::before,
+#agent-button:focus::before {
+  transform: scaleX(1);
+}
+
+#agent-button {
+  color: #383F46;
+  background-color: #ECE8E1;
+  z-index: 1;
+  transition: transform 200ms ease-in-out;
+
+}
+
+.agent-boader {
+  border: 1px solid #BDBCB7;
+  padding: 5px;
+  width: 250px;
+}
+
+.agent-button-wrap {
+  margin-top: 40px;
+  position: absolute;
+  right: 100px;
+  bottom: -20px;
+}
+
+
+
+
+
+
+
+
+
+.agent-wrapper {
+  display: flex;
+  position: relative;
+  /* justify-content: center;
+  align-items: center; */
+  width: 100%;
+  height: 867px;
+  margin-top: 50px;
+  flex-direction: column;
+
+  background-color: #FF4655;
+}
+
+.agent-gif-wrap {
+  position: absolute;
+  top: -155px;
+  left: 245px;
+}
+
+.agent-gif{
+  height: 1100px;
+}
+
+.agent-right {
+  position: absolute;
+  right: 340px;
+  top: -0;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  border-top: 1px solid #F7868D;
+  width: 480px;
+}
+
+.agent-title{
+  margin-top: 45px;
+  font-family: 'Anton', sans-serif;
+  font-size: 110px;
+  color: #ECE8E1;
+  line-height: 120px;
+  width: 400px;
+}
+
+.agent-title-2{
+  margin-top: 50px;
+  font-size: 20px;
+  color: #ECE8E1;
+  width: 400px;
+  font-weight: 500;
+}
+
+.agent-des{
+  margin-top: 25px;
+  color: #ECE8E1;
+  line-height: 25px;
+  width: 380px;
+  /* position: relative; */
 }
