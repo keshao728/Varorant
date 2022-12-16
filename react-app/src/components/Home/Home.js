@@ -23,6 +23,8 @@ const Home = () => {
 
   const ref3 = useRef(null);
 
+  const ref4 = useRef(null);
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.pageYOffset;
@@ -30,11 +32,12 @@ const Home = () => {
       const elementTop = ref.current.offsetTop;
       const elementTop2 = ref2.current.offsetTop;
       const elementTop3 = ref3.current.offsetTop;
-      const elementTop4 = ref3.current.offsetLeft;
+      const elementTop4 = ref4.current.offsetTop;
 
       ref.current.style.transform = `translateY(${(scrollTop - elementTop) / 20}px)`;
       ref2.current.style.transform = `translateY(${(scrollTop - elementTop2) / 15}px)`;
       ref3.current.style.transform = `translateY(${-(scrollTop - elementTop3) / 35}px) translateX(${-(scrollTop - elementTop3) / 5}px)`;
+      ref4.current.style.transform = `translateY(${-(scrollTop - elementTop4) / 10}px)`;
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -178,6 +181,7 @@ const Home = () => {
       </div>
 
       <div className="we-are-wrapper">
+        <div className="we-are-line"></div>
         <div className="we-are-box">
           <div className="we-are-border-top"></div>
           <div>
@@ -220,8 +224,9 @@ const Home = () => {
 
       <div className="agent-wrapper">
         <div className="agent-gif-wrap">
-          <img src={reynaraze} className="agent-gif" />
+          <img src={reynaraze} ref={ref4} className="agent-gif" />
         </div>
+        <div className="agent-line"></div>
         <div className="agent-right">
           <div className="agent-title">YOUR AGENTS</div>
           <div className="agent-title-2">CREATIVITY IS YOUR GREATEST WEAPON.</div>
@@ -243,9 +248,9 @@ const Home = () => {
       </div>
 
       <div className="map-wrapper">
-          <div className="map-background-wrap" id="scrollplace" ref={ref2}>
-            <div className="map-background-1">PLACE</div>
-          </div>
+        <div className="map-background-wrap" id="scrollplace" ref={ref2}>
+          <div className="map-background-1">PLACE</div>
+        </div>
         <div className="map-left">
           <div className="map-title">YOUR MAPS</div>
           <div className="map-title-2">FIGHT AROUND THE WORLD.</div>
@@ -265,8 +270,8 @@ const Home = () => {
           </div>
         </div>
         <div>
-            <img src={map} className="map-img" />
-            <img src={birds} className="bird-img" ref={ref3}/>
+          <img src={map} className="map-img" />
+          <img src={birds} className="bird-img" ref={ref3} />
         </div>
       </div>
 
