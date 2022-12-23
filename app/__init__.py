@@ -10,6 +10,7 @@ from .models import db, User
 from .api.auth_routes import auth_routes
 from .api.media_routes import media_routes
 from .api.ticket_routes import ticket_routes
+from .api.comment_routes import comment_routes
 
 from .seeds import seed_commands
 
@@ -35,6 +36,7 @@ app.config.from_object(Config)
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(media_routes, url_prefix='/api/media')
 app.register_blueprint(ticket_routes, url_prefix='/api/tickets')
+app.register_blueprint(comment_routes, url_prefix='/api/comments')
 
 db.init_app(app)
 Migrate(app, db)

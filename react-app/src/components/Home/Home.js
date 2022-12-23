@@ -239,7 +239,7 @@ const Home = () => {
                   onClick={() => {
                     window.open('https://playvalorant.com/en-us/news/announcements/beginners-guide/')
                   }}>
-                  LEARN THE GAME
+                  VIEW ALL AGENTS
                 </button>
               </div>
             </div>
