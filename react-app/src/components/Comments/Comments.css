@@ -1,6 +1,7 @@
 .individual-comment {
   padding: 30px 20px 30px 20px;
   border-bottom: 1px solid #ECE8E1;
+  width: 560px;
 }
 
 .comment-form-wrapper {

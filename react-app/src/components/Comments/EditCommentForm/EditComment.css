@@ -37,3 +37,11 @@
   gap: 10px;
 }
 
+.comment-input {
+  border: none;
+  resize: none;
+  width: 96%;
+  height: 80px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
