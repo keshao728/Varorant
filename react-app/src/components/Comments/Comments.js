@@ -7,6 +7,7 @@ import { getAllComments, createComment, deleteComment } from "../../store/commen
 
 import * as moment from 'moment';
 import "./Comments.css"
+import EditComment from "./EditCommentForm/EditComment";
 
 const AllComments = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,9 @@ const AllComments = () => {
   const [validationErrors, setValidationErrors] = useState([])
   const [showErrors, setShowErrors] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
+
+  const [showEdit, setShowEdit] = useState(false)
+
 
 
   function isEmpty(str) {
@@ -68,6 +72,19 @@ const AllComments = () => {
     }
   }
 
+  // useEffect(() => {
+  //   if (!showEdit) return;
+
+  //   const closeMenu = () => {
+  //     setShowEdit(false);
+  //   };
+
+  //   document.addEventListener('click', closeMenu);
+
+  //   return () => document.removeEventListener("click", closeMenu);
+  // }, [showEdit]);
+
+
 
   return isLoaded && (
     <div className="comment-wrapper">
@@ -82,19 +99,34 @@ const AllComments = () => {
                     {comment.commentter.username}
                   </div>
                   <div className="comment-des">
-                    {moment(comment?.created_at).format('MMMM D YYYY HH:mm')}
+                    {moment(comment?.created_at).format('MMMM D, YYYY HH:mm')}
                   </div>
                 </div>
               </div>
-              <div className="comment-des">
-                {comment.comment_body}
-              </div>
-              {sessionUser?.id === comment.user_id && (
-                <button className="delete-comment-button"
-                  onClick={async () => await dispatch(deleteComment(comment?.id))}>
-                  Delete
-                </button>
-              )}
+              {sessionUser?.id === comment.user_id ?
+                <div>
+                  {showEdit === comment.id ? <EditComment comment={comment} setShowEdit={setShowEdit} /> :
+                    <div>
+                      <div className="comment-des">
+                        {comment.comment_body}
+                      </div>
+                      <div className="edit-actions">
+                        <button className="comment-button"
+                          onClick={() => setShowEdit(comment.id)}>
+                          Edit
+                        </button>
+                        <button className="comment-button"
+                          onClick={async () => await dispatch(deleteComment(comment?.id))}>
+                          Delete
+                        </button>
+                      </div>
+                    </div>
+
+                  } </div> :
+                <div className="comment-des">
+                  {comment.comment_body}
+                </div>
+              }
             </div>
           )
         }

@@ -6,7 +6,7 @@ const GET_ALL_COMMENTS = 'tracks/getAllComments';
 
 const CREATE_COMMENT = 'tracks/createComment';
 
-// const EDIT_COMMENT = 'tracks/editComment';
+const EDIT_COMMENT = 'tracks/editComment';
 
 const DELETE_COMMENT = 'tracks/deleteComment';
 
@@ -39,12 +39,13 @@ const actionCreateComment = (ticketId, commentCreated) => {
 
 // //edit a comment
 
-// const actionEditComment = (commentEdit) => {
-//     return {
-//         type: "EDIT_COMMENT",
-//         commentEdit
-//     }
-// }
+const actionEditComment = (commentEdit) => {
+    return {
+        type: "EDIT_COMMENT",
+        // commentId,
+        commentEdit
+    }
+}
 
 
 
@@ -63,13 +64,12 @@ const actionDeleteComment = (commentId) => {
 //thunks
 
 //get all comments
-
 export const getAllComments = (ticketId) => async (dispatch) => {
     const response = await fetch(`/api/tickets/${ticketId}`)
 
     if (response.ok) {
         const comments = await response.json();
-        console.log("THIS IS RESPONSE OK - COMMENTS IN GETALLCOMMENTS", comments)
+        // console.log("THIS IS RESPONSE OK - COMMENTS IN GETALLCOMMENTS", comments)
         await dispatch(actionGetComments(comments))
         return comments
     }
@@ -80,8 +80,6 @@ export const getAllComments = (ticketId) => async (dispatch) => {
 //create comment
 
 export const createComment = (ticketId, comment) => async (dispatch) => {
-    // console.log("THIS IS TRACK ID IN CREATECOMMENT", ticketId)
-    // console.log("THIS IS COMMENT IN CREATECOMMENT", comment)
     const response = await fetch(`/api/comments/${ticketId}/comment`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -90,15 +88,27 @@ export const createComment = (ticketId, comment) => async (dispatch) => {
 
     if (response.ok) {
         const comment = await response.json();
-        // console.log("THIS IS RESPONSE OK - COMMENT IN CREATECOMMENT", comment)
         await dispatch(actionCreateComment(ticketId, comment))
         return comment
     }
 }
+//edit comment
+export const editComment = (comment) => async (dispatch) => {
+    // console.log("THIS IS COMMENT IN EDITCOMMENT THUNK", comment)
+    const response = await fetch(`/api/comments/${comment.id}/edit`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(comment)
+    })
 
+    if (response.ok) {
+        const comment = await response.json();
+        await dispatch(actionEditComment(comment))
+        return comment
+    }
+}
 
 //delete comment
-
 export const deleteComment = (commentId) => async (dispatch) => {
     const response = await fetch(`/api/comments/${commentId}`, {
         method: "DELETE",
@@ -146,11 +156,16 @@ const commentReducer = (state = initialState, action) => {
             newState.user = action.commentCreated
             return newState
         }
-        // case EDIT_COMMENT: {
-        //     newState = { ...state }
-        //     newState[action.comment.id] = action.comment
-        //     return newState
-        // }
+        case EDIT_COMMENT: {
+            newState = {
+                ...state,
+                comments: { ...state.comments },
+                user: { ...state.user }
+            }
+            newState[action.commentEdit.id] = action.commentEdit
+            newState.user = action.commentEdit
+            return newState
+        }
         case DELETE_COMMENT: {
             newState = {
                 ...state,

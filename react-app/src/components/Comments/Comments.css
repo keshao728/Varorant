@@ -80,3 +80,26 @@
   justify-content: center;
   align-items: center;
 }
+
+.edit-actions{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.comment-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ECE8E1;
+  background: transparent;
+  color: #818181;
+  cursor: pointer;
+}
+
+.comment-button:hover{
+  color: #DA363A;
+  border-color: #ffd0d0;
+}
