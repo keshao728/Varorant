@@ -68,7 +68,7 @@ function App() {
         <Route path='/tickets/:ticketId'>
           <NavBar />
           <SingleTicket />
-          <AllComments />
+          {/* <AllComments /> */}
         </Route>
         <Route exact path='/media'>
           <NavBar />

@@ -66,7 +66,22 @@ const AllComments = () => {
       <div>
         {commentsArr.map((comment) => {
           return (
-            <div>{comment.comment_body}</div>
+            <div className="individual-comment">
+              <div className="comment-user-info">
+                <img className="comment-pfp" src="https://i.imgur.com/2DrReGq.jpg"></img>
+                <div className="comment-user-des">
+                  <div className="comment-user">
+                    {comment.commentter.username}
+                  </div>
+                  <div className="comment-des">
+                    {moment(comment?.created_at).fromNow()}
+                  </div>
+                </div>
+              </div>
+              <div className="comment-des">
+                {comment.comment_body}
+              </div>
+            </div>
           )
         }
         )}

@@ -6,12 +6,12 @@ import DeleteTicketModal from "./DeleteTicket/DeleteTicketModal";
 import EditTicketModal from "../TicketForm/EditTicketForm/EditTicketModal";
 import * as moment from 'moment';
 
-
 import { getOneTicketThunk } from '../../store/ticket';
 import varorantW from '../Home/HomeAssets/varorantW.png'
 
 import './SingleTicket.css'
 import '../TicketForm/TicketForm.css'
+import AllComments from "../Comments/Comments";
 
 const SingleTicket = () => {
   const dispatch = useDispatch();
@@ -117,6 +117,9 @@ const SingleTicket = () => {
                   {sessionUser.id === myTicket.user_id && <DeleteTicketModal />}
                 </div>
               </div>
+            </div>
+            <div>
+              <AllComments />
             </div>
           </div>
           <div className="empty-single-tickets"></div>
