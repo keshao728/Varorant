@@ -69,18 +69,7 @@ export const getAllComments = (ticketId) => async (dispatch) => {
 
     if (response.ok) {
         const comments = await response.json();
-        // console.log('this is the comments', comments)
-        const valuearr = Object.values(comments.Comments)
-        // console.log('this is valuearr',valuearr)
-        valuearr.forEach(async (comment) => {
-            const usernamedict = await fetch(`/api/users/${comment.user_id}/special`)
-            // console.log('usernamedict', usernamedict)
-            const username = await usernamedict.json()
-            // console.log('username', username)
-            comment.username = username.username
-        })
-        await dispatch(actionGetComments(comments));
-        // console.log('this is the comments', comments)
+        await dispatch(actionGetComments(comments))
         return comments
     }
 }
@@ -92,7 +81,7 @@ export const getAllComments = (ticketId) => async (dispatch) => {
 export const createComment = (ticketId, comment) => async (dispatch) => {
     // console.log("THIS IS TRACK ID IN CREATECOMMENT", ticketId)
     // console.log("THIS IS COMMENT IN CREATECOMMENT", comment)
-    const response = await fetch(`/api/tickets/${ticketId}/comment`, {
+    const response = await fetch(`/api/comments/${ticketId}/comment`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(comment)

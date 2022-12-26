@@ -1,20 +1,21 @@
 from flask import Blueprint,render_template,redirect, request, jsonify
-from app.models import db, Comment
+from app.models import db, Comment, Ticket
 from app.forms import CommentForm
 from flask_login import login_required, current_user
 
 comment_routes = Blueprint('comments', __name__)
 
-@comment_routes.route('/<int:id>')
-def comments():
-    comments = Comment.query.all()
+# #GET INDIVIDUAL TICKETS COMMENTS
+# @comment_routes.route('/<int:id>')
+# def comments():
+#     comments = Comment.query.filter(Comment.ticket_id == Ticket.id).all()
 
-    comment_list = []
-    for comment in comments:
-        comment_dict = comment.to_dict()
-        comment_list.append(comment_dict)
+#     comment_list = []
+#     for comment in comments:
+#         comment_dict = comment.to_dict()
+#         comment_list.append(comment_dict)
 
-    return jsonify(comment_list)
+#     return jsonify(comment_list)
 
 @comment_routes.route('/<int:id>/comment', methods=["POST"])
 @login_required
