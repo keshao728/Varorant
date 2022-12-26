@@ -21,6 +21,9 @@ const SingleTicket = () => {
 
   const ticket = useSelector((state) => state.ticket);
 
+  // const comment = useSelector((state) => state.ticket.Comments);
+  // console.log("COMMENT", comment)
+
   const myTicket = ticket[ticketId]
   console.log("MYTICKET", myTicket)
 

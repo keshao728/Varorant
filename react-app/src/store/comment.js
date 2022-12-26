@@ -69,6 +69,7 @@ export const getAllComments = (ticketId) => async (dispatch) => {
 
     if (response.ok) {
         const comments = await response.json();
+        console.log("THIS IS RESPONSE OK - COMMENTS IN GETALLCOMMENTS", comments)
         await dispatch(actionGetComments(comments))
         return comments
     }
