@@ -100,15 +100,18 @@ export const createComment = (ticketId, comment) => async (dispatch) => {
 //delete comment
 
 export const deleteComment = (commentId) => async (dispatch) => {
-    const response = await fetch(`/api/comment/${commentId}`, {
+    const response = await fetch(`/api/comments/${commentId}`, {
         method: "DELETE",
     })
+    console.log("THIS IS RESPONSE IN DELETECOMMENT", response)
 
     if (response.ok) {
         const deletedComment = await response.json();
         await dispatch(actionDeleteComment(commentId));
         return deletedComment
     }
+    return console.log("DELETE-COMMENT-THUNK-ERROR", response)
+
 }
 
 

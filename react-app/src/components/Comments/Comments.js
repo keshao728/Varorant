@@ -27,21 +27,7 @@ const AllComments = () => {
   const [userComments, setUserComments] = useState("");
   const [validationErrors, setValidationErrors] = useState([])
   const [showErrors, setShowErrors] = useState(false)
-  const [showSubmit, setShowSubmit] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false)
-
-
-  const openSubmit = () => {
-    if (showSubmit) return;
-    setShowSubmit(true);
-  };
-
-
-  const closeSubmit = (e) => {
-    e.preventDefault();
-    setShowErrors(false)
-    setShowSubmit(false);
-  };
 
 
   function isEmpty(str) {
@@ -78,7 +64,6 @@ const AllComments = () => {
       let createdComment = await dispatch(createComment(ticketId, newComment))
       if (createdComment) {
         setShowErrors(false)
-        setShowSubmit(false)
       }
     }
   }
@@ -104,46 +89,51 @@ const AllComments = () => {
               <div className="comment-des">
                 {comment.comment_body}
               </div>
+              {sessionUser?.id === comment.user_id && (
+                <button className="delete-comment-button"
+                  onClick={async () => await dispatch(deleteComment(comment?.id))}>
+                  Delete
+                </button>
+              )}
             </div>
           )
         }
         )}
       </div>
       {ticketStatus === false &&
-      <div className="comment-form-wrapper">
-        <form className="comment-form-parent" onSubmit={handleSubmit}>
-          <div className="comment-form">
-            <label>
-              <div className="commenter-img-input">
+        <div className="comment-form-wrapper">
+          <form className="comment-form-parent" onSubmit={handleSubmit}>
+            <div className="comment-form">
+              <label>
+                <div className="commenter-img-input">
 
-                {/* <img alt="comment-img" className="commenter-img" src={pfp ? pfp : defaultpro}></img> */}
-                <textarea
-                  placeholder="Type a response..."
-                  type="text"
-                  error
-                  className="comment-input"
-                  value={userComments}
-                  onClick={openSubmit}
-                  required
-                  onChange={(e) => setUserComments(e.target.value)}
-                />
+                  {/* <img alt="comment-img" className="commenter-img" src={pfp ? pfp : defaultpro}></img> */}
+                  <textarea
+                    placeholder="Type a response..."
+                    type="text"
+                    error
+                    className="comment-input"
+                    value={userComments}
+                    required
+                    onChange={(e) => setUserComments(e.target.value)}
+                  />
+                </div>
+                {showErrors && (
+                  <ul className="comment-form-errors">
+                    {validationErrors.length > 0 &&
+                      validationErrors.map(error => (
+                        <li className="comment-form-error-text" key={error}>{error}</li>
+                      ))}
+                  </ul>
+                )
+                }
+              </label>
+              <div className="comment-button-wrapper">
+                <button className="button-create-comment" type="submit" onSubmit={handleSubmit}> Submit</button>
               </div>
-              {showErrors && showSubmit && (
-                <ul className="comment-form-errors">
-                  {validationErrors.length > 0 &&
-                    validationErrors.map(error => (
-                      <li className="comment-form-error-text" key={error}>{error}</li>
-                    ))}
-                </ul>
-              )
-              }
-            </label>
-            <div className="comment-button-wrapper">
-              <button className="button-create-comment" type="submit" onSubmit={handleSubmit}> Submit</button>
             </div>
-          </div>
-        </form>
-      </div>
+          </form>
+        </div>
       }
     </div>
   )
