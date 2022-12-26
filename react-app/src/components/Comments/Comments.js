@@ -43,7 +43,11 @@ const AllComments = () => {
   useEffect(() => {
     const errors = []
     if (!userComments || userComments === "" || isEmpty(userComments)) errors.push('Comment is Required')
-    if (userComments.length > 200) errors.push("Please enter less than 200 characters")
+    if (userComments === " ") {
+      setUserComments("")
+      errors.push('Comment is Required')
+    }
+    if (userComments.length > 600) errors.push("Please enter less than 600 characters")
 
     setValidationErrors(errors)
   }, [userComments])
@@ -125,8 +129,6 @@ const AllComments = () => {
             <div className="comment-form">
               <label>
                 <div className="commenter-img-input">
-
-                  {/* <img alt="comment-img" className="commenter-img" src={pfp ? pfp : defaultpro}></img> */}
                   <textarea
                     placeholder="Type a response..."
                     type="text"
@@ -135,15 +137,21 @@ const AllComments = () => {
                     value={userComments}
                     required
                     onChange={(e) => setUserComments(e.target.value)}
+                  // onClick=autoFocus
                   />
                 </div>
                 {showErrors && (
-                  <ul className="comment-form-errors">
-                    {validationErrors.length > 0 &&
+                  <div>
+                    {
+                      validationErrors.length > 0 &&
                       validationErrors.map(error => (
-                        <li className="comment-form-error-text" key={error}>{error}</li>
-                      ))}
-                  </ul>
+                        <div className="comment-error">
+                          <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
+                          <div className="comment-form-error-text" key={error}>{error}</div>
+                        </div>
+                      ))
+                    }
+                  </div>
                 )
                 }
               </label>

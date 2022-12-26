@@ -34,6 +34,24 @@ const EditComment = ({ setShowEdit, comment }) => {
     }
   }
 
+  function isEmpty(str) {
+    if (!str.trim().length)
+      return { border: "1px solid red" }
+  }
+
+
+  useEffect(() => {
+    const errors = []
+    if (!userComments || userComments === "" || isEmpty(userComments)) errors.push('Comment is Required')
+    if (userComments === " ") {
+      setUserComments("")
+      errors.push('Comment is Required')
+    }
+    if (userComments.length > 600) errors.push("Please enter less than 600 characters")
+
+    setValidationErrors(errors)
+  }, [userComments])
+
   const closeSubmit = (e) => {
     e.preventDefault();
     setShowErrors(false)
@@ -53,16 +71,22 @@ const EditComment = ({ setShowEdit, comment }) => {
                 className="comment-input"
                 value={userComments}
                 required
+                autoFocus
                 onChange={(e) => setUserComments(e.target.value)}
               />
             </div>
             {showErrors && (
-              <ul className="comment-form-errors">
-                {validationErrors.length > 0 &&
+              <div>
+                {
+                  validationErrors.length > 0 &&
                   validationErrors.map(error => (
-                    <li className="comment-form-error-text" key={error}>{error}</li>
-                  ))}
-              </ul>
+                    <div className="comment-error">
+                      <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
+                      <div className="comment-form-error-text" key={error}>{error}</div>
+                    </div>
+                  ))
+                }
+              </div>
             )
             }
           </label>
