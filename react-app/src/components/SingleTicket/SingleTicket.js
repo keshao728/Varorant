@@ -64,21 +64,21 @@ const SingleTicket = () => {
             <div className="left-section">
               <div className="left-title">TICKET ID</div>
               <div className="left-item">
-                #{myTicket.id}
+                #{myTicket?.id}
               </div>
             </div>
 
             <div className="left-section">
               <div className="left-title">CREATED</div>
               <div className="left-item">
-                {moment(ticket.created_at).fromNow()}
+                {moment(myTicket?.created_at).fromNow()}
               </div>
             </div>
 
             <div className="left-section">
               <div className="left-title">STATUS</div>
               <div className="left-item">
-                {myTicket.status === null || myTicket.status === false ? "Open" : "Solved"}
+                {myTicket?.status === null || myTicket?.status === false ? "Open" : "Solved"}
               </div>
             </div>
 
@@ -94,14 +94,14 @@ const SingleTicket = () => {
               </div>
 
               <div className="single-subject">
-                {myTicket.subject}
+                {myTicket?.subject}
               </div>
 
               <div className="single-des">
-                {myTicket.description}
+                {myTicket?.description}
               </div>
 
-              {myTicket.attachments ?
+              {myTicket?.attachments ?
                 <img className="single-attachments" src={myTicket?.attachments} alt="" onError={""} /> : ""
               }
 

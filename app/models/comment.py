@@ -13,20 +13,17 @@ class Comment(db.Model):
     updated_at = db.Column(db.DateTime(timezone=True), onupdate=func.current_timestamp())
 
 
-    # non_session_username = db.Column(db.String(40), nullable=True, unique=True)
 
     comment_user = db.relationship('User', back_populates='user_comment')
-    # comment_track = db.relationship('Ticket', back_populates='ticket_comment')
+    comment_ticket = db.relationship('Ticket', back_populates='ticket_comment')
 
     def to_dict(self):
         return {
             "id": self.id,
-            # "non_session_username": self.non_session_username,
             "user_id": self.user_id,
             "ticket_id": self.track_id,
             # "username" : self.username,
             "comment_body": self.comment_body,
             "created_at": self.created_at,
             "updated_at": self.updated_at,
-            # "commentter": self.comment_user.to_dict()
         }
