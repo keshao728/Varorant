@@ -1,5 +1,10 @@
 .individual-comment {
-  padding: 20px 20px 20px 20px;
+  padding: 30px 20px 30px 20px;
+  border-bottom: 1px solid #ECE8E1;
+}
+
+.comment-form-wrapper {
+  padding: 30px 20px 30px 20px;
   border-bottom: 1px solid #ECE8E1;
 }
 
@@ -43,4 +48,35 @@
   text-overflow: ellipsis;
   overflow-wrap: break-word;
   white-space: wrap;
+}
+
+.comment-input {
+  border: none;
+  resize: none;
+  width: 96%;
+  height: 80px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.button-create-comment {
+  border: none;
+  background: #E4373C;
+  display: flex;
+  font-size: 11px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  justify-content: center;
+  width: 180px;
+  height: 44px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.comment-button-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

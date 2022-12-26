@@ -24,7 +24,7 @@ def create_comments(id):
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         comment = Comment(
-            track_id=id,
+            ticket_id=id,
             user_id=current_user.id,
             comment_body=form.comment_body.data
         )

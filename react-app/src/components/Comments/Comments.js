@@ -18,7 +18,11 @@ const AllComments = () => {
 
   const comments = useSelector((state) => state.comment.comments);
   const commentsArr = Object.values(comments);
-  // console.log("COMMENTS", commentsArr);
+
+  const ticket = useSelector((state) => state.ticket)
+
+  const ticketArr = Object.values(ticket)
+  const ticketStatus = ticketArr[0].status
 
   const [userComments, setUserComments] = useState("");
   const [validationErrors, setValidationErrors] = useState([])
@@ -60,6 +64,25 @@ const AllComments = () => {
       .then(() => setIsLoaded(true))
   }, [dispatch, ticketId])
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setShowErrors(true)
+
+    if (!validationErrors.length) {
+      setShowErrors(false)
+      const newComment = {
+        comment_body: userComments
+        // user_id:
+      };
+      setUserComments("");
+      let createdComment = await dispatch(createComment(ticketId, newComment))
+      if (createdComment) {
+        setShowErrors(false)
+        setShowSubmit(false)
+      }
+    }
+  }
+
 
   return isLoaded && (
     <div className="comment-wrapper">
@@ -74,7 +97,7 @@ const AllComments = () => {
                     {comment.commentter.username}
                   </div>
                   <div className="comment-des">
-                    {moment(comment?.created_at).fromNow()}
+                    {moment(comment?.created_at).format('MMMM D YYYY HH:mm')}
                   </div>
                 </div>
               </div>
@@ -86,6 +109,42 @@ const AllComments = () => {
         }
         )}
       </div>
+      {ticketStatus === false &&
+      <div className="comment-form-wrapper">
+        <form className="comment-form-parent" onSubmit={handleSubmit}>
+          <div className="comment-form">
+            <label>
+              <div className="commenter-img-input">
+
+                {/* <img alt="comment-img" className="commenter-img" src={pfp ? pfp : defaultpro}></img> */}
+                <textarea
+                  placeholder="Type a response..."
+                  type="text"
+                  error
+                  className="comment-input"
+                  value={userComments}
+                  onClick={openSubmit}
+                  required
+                  onChange={(e) => setUserComments(e.target.value)}
+                />
+              </div>
+              {showErrors && showSubmit && (
+                <ul className="comment-form-errors">
+                  {validationErrors.length > 0 &&
+                    validationErrors.map(error => (
+                      <li className="comment-form-error-text" key={error}>{error}</li>
+                    ))}
+                </ul>
+              )
+              }
+            </label>
+            <div className="comment-button-wrapper">
+              <button className="button-create-comment" type="submit" onSubmit={handleSubmit}> Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      }
     </div>
   )
 }
