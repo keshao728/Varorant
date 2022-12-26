@@ -72,19 +72,6 @@ const AllComments = () => {
     }
   }
 
-  // useEffect(() => {
-  //   if (!showEdit) return;
-
-  //   const closeMenu = () => {
-  //     setShowEdit(false);
-  //   };
-
-  //   document.addEventListener('click', closeMenu);
-
-  //   return () => document.removeEventListener("click", closeMenu);
-  // }, [showEdit]);
-
-
 
   return isLoaded && (
     <div className="comment-wrapper">
@@ -132,7 +119,7 @@ const AllComments = () => {
         }
         )}
       </div>
-      {ticketStatus === false &&
+      {!ticketStatus &&
         <div className="comment-form-wrapper">
           <form className="comment-form-parent" onSubmit={handleSubmit}>
             <div className="comment-form">

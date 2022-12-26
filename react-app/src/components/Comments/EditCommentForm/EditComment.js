@@ -27,6 +27,7 @@ const EditComment = ({ setShowEdit, comment }) => {
       };
       let createdComment = await dispatch(editComment(newComment))
       if (createdComment) {
+        dispatch(getAllComments(ticketId))
         setShowErrors(false)
         setShowEdit(false)
       }
@@ -39,10 +40,6 @@ const EditComment = ({ setShowEdit, comment }) => {
     setShowEdit(false);
   };
 
-
-  useEffect(() => {
-    dispatch(getAllComments(ticketId))
-  }, [dispatch, ticketId])
 
   return (
     <div>
