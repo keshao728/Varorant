@@ -14,6 +14,7 @@ import map from './HomeAssets/map.png'
 // import { Redirect } from 'react-router-dom';
 // import wearevalo from './HomeAssets/wearevalo.png'
 import birds from './HomeAssets/birds.png'
+import { FadeIn } from 'react-slide-fade-in'
 import "./Home.css"
 
 const Home = () => {
@@ -98,21 +99,54 @@ const Home = () => {
   // document.getElementById("we-are").style.transform = "translateY(" + windowScroll / 2 + "px)";
   // })
 
+
+  function slideUp() {
+    const title = document.querySelector('#slide');
+    // get the current top position of the title
+    const top = parseInt(title.style.top, 10);
+
+    // update the top position
+    title.style.top = `${top - 10}px`;
+
+    // if the title has not reached the top of the screen, keep sliding
+    if (top > 0) {
+      requestAnimationFrame(slideUp);
+    }
+  }
+
+  // wait 1 second before starting the animation
+  setTimeout(() => {
+    requestAnimationFrame(slideUp);
+  }, 1000);
+
   return (
     <div className="home-wrapper">
       <div className='video-line'></div>
-      <div className='video-line-2'></div>
       <div className='video-line-3'></div>
+      <div className='video-line-2'></div>
       <div className='video-wrapper'>
         <div className='video-des'>A 5v5 character-based tactical shooter</div>
         <img className='video-title' src={varorantW} />
         <PlayFree />
-        <video className="home-video" src={homeVid} autoPlay muted loop />
+        {/* <div className="tests"></div> */}
+        <video className="home-video" src={homeVid} autoPlay muted loop></video>
       </div>
+
       <div className="home-latest" id="home-latest">
+        <div className="latest-line"></div>
         {/* <img className="home-background" src={wearevalo}/> */}
-        <div className="home-latest-title">
-          THE LATEST
+        <div className="fade-title">
+          <FadeIn
+            from="bottom"
+            className="home-latest-title"
+            positionOffset={50}
+            triggerOffset={200}
+            durationInMilliseconds={500}
+            delayInMilliseconds={0}>
+            <div className="home-latest-title">
+              THE LATEST
+            </div>
+          </FadeIn>
         </div>
         <div className="latest-background-wrap" id="we-are" ref={ref}>
           <div className="latest-background-1">WE ARE </div>
@@ -122,8 +156,19 @@ const Home = () => {
           <a className="latest-links" href="https://letsplay.live/valorantchallengersoceania2023/" target="_blank" rel="noreferrer">
 
             <div className="latest-img-wrapper">
-              <img className="latest-img" src={latest1} />
-              <div className="latest-img-overlay"></div>
+              <div className="fade-img">
+                <FadeIn
+                  // className="home-latest-title-1"
+                  from="bottom"
+                  className="home-latest-title"
+                  positionOffset={50}
+                  triggerOffset={200}
+                  durationInMilliseconds={500}
+                  delayInMilliseconds={100}>
+                  <div className="latest-img-overlay"></div>
+                  <img className="latest-img" src={latest1} />
+                </FadeIn>
+              </div>
             </div>
 
             <div className="latest-date-info">
@@ -136,8 +181,19 @@ const Home = () => {
 
           <a className="latest-links" href="https://playvalorant.com/en-us/news/game-updates/valorant-patch-notes-5-10/" target="_blank" rel="noreferrer">
             <div className="latest-img-wrapper">
-              <img className="latest-img" src={latest2} />
-              <div className="latest-img-overlay"></div>
+              <div className="fade-img">
+                <FadeIn
+                  // className="home-latest-title-1"
+                  from="bottom"
+                  className="home-latest-title"
+                  positionOffset={50}
+                  triggerOffset={0}
+                  durationInMilliseconds={200}
+                  delayInMilliseconds={200}>
+                  <img className="latest-img" src={latest2} />
+                  <div className="latest-img-overlay"></div>
+                </FadeIn>
+              </div>
             </div>
 
             <div className="latest-date-info">
@@ -149,8 +205,19 @@ const Home = () => {
 
           <a className="latest-links" href="https://valorantesports.com/news/watch-game-changers-championship-earn-drops/" target="_blank" rel="noreferrer">
             <div className="latest-img-wrapper">
-              <img className="latest-img" id="latest-img-id" src={latest3} />
-              <div className="latest-img-overlay"></div>
+              <div className="fade-img">
+                <FadeIn
+                  // className="home-latest-title-1"
+                  from="bottom"
+                  className="home-latest-title"
+                  positionOffset={50}
+                  triggerOffset={200}
+                  delayInMilliseconds={300}
+                  durationInMilliseconds={500}>
+                  <img className="latest-img" id="latest-img-id" src={latest3} />
+                  <div className="latest-img-overlay"></div>
+                </FadeIn>
+              </div>
             </div>
             <div className="latest-date-info">
               <div>11/14/22</div>
@@ -161,10 +228,21 @@ const Home = () => {
         </div>
       </div>
       <div className="overview-wrapper">
+        <div className="overview-line"></div>
         <img src={harbor} className="harbor-img" />
         <div className="overview-text">
           <div className="overview-des">EPISODE_5 // ACT III / YR 2</div>
-          <div className="overview-title">DIMENSION</div>
+          <div className="fade-title">
+            <FadeIn
+              from="bottom"
+              className="home-latest-title"
+              positionOffset={50}
+              triggerOffset={400}
+              durationInMilliseconds={500}
+              delayInMilliseconds={0}>
+              <div className="overview-title">DIMENSION</div>
+            </FadeIn>
+          </div>
           <div className="overview-button-wrap">
             <div className="overview-boader">
               <button
@@ -180,12 +258,22 @@ const Home = () => {
         </div>
       </div>
 
+      <div className="we-are-line"></div>
       <div className="we-are-wrapper">
-        <div className="we-are-line"></div>
         <div className="we-are-box">
           <div className="we-are-border-top"></div>
-          <div>
-            <div className="we-are-title">WE ARE VARORANT</div>
+          <div className="fade-title">
+            <FadeIn
+              from="bottom"
+              className="home-latest-title"
+              positionOffset={50}
+              triggerOffset={0}
+              durationInMilliseconds={500}
+              delayInMilliseconds={0}>
+              <div>
+                <div className="we-are-title">WE ARE VARORANT</div>
+              </div>
+            </FadeIn>
           </div>
           <div className="defy-wrapper">
             <div className="defy-left">
@@ -222,13 +310,25 @@ const Home = () => {
 
       </div>
 
+      {/* <div className="agent-line"></div> */}
       <div className="agent-wrapper">
+
         <div className="agent-gif-wrap">
           <img src={reynaraze} ref={ref4} className="agent-gif" />
         </div>
         <div className="agent-line"></div>
         <div className="agent-right">
-          <div className="agent-title">YOUR AGENTS</div>
+          <div className="fade-title">
+            <FadeIn
+              from="bottom"
+              className="home-latest-title"
+              positionOffset={50}
+              triggerOffset={0}
+              durationInMilliseconds={500}
+              delayInMilliseconds={0}>
+              <div className="agent-title">YOUR AGENTS</div>
+            </FadeIn>
+          </div>
           <div className="agent-title-2">CREATIVITY IS YOUR GREATEST WEAPON.</div>
           <div className="agent-des">More than guns and bullets, you’ll choose an Agent armed with adaptive, swift, and lethal abilities that create opportunities to let your gunplay shine. No two Agents play alike, just as no two highlight reels will look the same.
             <div className="agent-button-wrap">
@@ -247,12 +347,23 @@ const Home = () => {
         </div>
       </div>
 
+      <div className="map-line"></div>
       <div className="map-wrapper">
         <div className="map-background-wrap" id="scrollplace" ref={ref2}>
           <div className="map-background-1">PLACE</div>
         </div>
         <div className="map-left">
-          <div className="map-title">YOUR MAPS</div>
+          <div className="fade-title">
+            <FadeIn
+              from="bottom"
+              className="home-latest-title"
+              positionOffset={50}
+              triggerOffset={0}
+              durationInMilliseconds={500}
+              delayInMilliseconds={0}>
+              <div className="map-title" id="slide">YOUR MAPS</div>
+            </FadeIn>
+          </div>
           <div className="map-title-2">FIGHT AROUND THE WORLD.</div>
           <div className="map-des">Each map is a playground to showcase your creative thinking. Purpose-built for team strategies, spectacular plays, and clutch moments. Make the play others will imitate for years to come.
             <div className="map-button-wrap">

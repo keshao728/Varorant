@@ -178,7 +178,7 @@ const MediaForm = ({ setModalOpen }) => {
                 id="media-des"
                 value={attachment}
               onChange={(e) => setAttachment(e.target.value)} /> */}
-                <div className="media-input-1">/ADD IMAGE OR DROP IMAGE HERE</div>
+                <div className="media-input-1">/SELECT IMAGE HERE</div>
                 <input
                   className={!attachment ? "no-show-name" : "media-file-name"}
                   type="file"

@@ -14,6 +14,7 @@
   /* height: 72vh; */
   height: 76vh;
   z-index: 1;
+
 }
 
 .home-video {
@@ -43,18 +44,40 @@
 
 .video-line {
   position: absolute;
-  height: 4500px;
+  height: 81.5%;
   margin-left: 17.8%;
-  /* left: 338px; */
   border-left: 1px solid white;
   z-index: 2;
 }
 
+.we-are-line {
+  position: absolute;
+  height: 100%;
+  margin-left: 17.8%;
+  border-left: 1px solid #928F8B;
+  z-index: 2;
+}
+
+.latest-line {
+  position: absolute;
+  height: 130%;
+  margin-left: 17.8%;
+  border-left: 1px solid #928F8B;
+  z-index: 2;
+  margin-top: 120px;
+}
+
+.overview-line {
+  position: absolute;
+  height: 100%;
+  margin-left: 17.8%;
+  border-left: 1px solid white;
+  z-index: 2;
+}
 
 .video-line-2 {
   position: absolute;
   height: 81.5%;
-  /* height: 780px; */
   /* left: 655px; */
   margin-left: 34.2%;
   z-index: 2;
@@ -71,6 +94,7 @@
   border-left: 1px solid white;
 }
 
+
 .home-wrapper {
   background-color: #ECE8E1;
   /* display: flex;
@@ -86,6 +110,7 @@
   width: 100%;
   margin-bottom: 70px;
   position: relative;
+  /* margin-top: -10px; */
 }
 
 .latest-background-wrap {
@@ -118,9 +143,16 @@
   display: flex;
   margin-left: 17.8%;
   font-size: 92px;
-  font-family: 'Anton', sans-serif;
   color: #FF4655;
-  z-index: 6;
+  /* font-weight: bold; */
+  z-index: 10;
+  position: relative;
+  font-family: 'Anton', sans-serif;
+}
+
+.fade-title{
+  position: relative;
+  z-index: 10;
 }
 
 .home-latest-img {
@@ -129,7 +161,10 @@
   display: flex;
   flex-direction: row;
   gap: 29px;
-  justify-content: center;
+  /* justify-content: center; */
+  margin-left: 17.8%;
+
+  /* margin-left: -2px; */
 }
 
 .latest-links {
@@ -266,7 +301,8 @@
   object-fit: none;
   object-position: -770px 0px;
   z-index: 1;
-  position: relative
+  position: relative;
+  margin-bottom: -5px;
 }
 
 .overview-text {
@@ -386,6 +422,7 @@
   margin-top: 50px;
   flex-direction: column;
 }
+
 /* .we-are-line {
   position: absolute;
   height: 4500px;
@@ -570,7 +607,7 @@
 }
 
 /* .agent-gif-wrap { */
-  /* top: -155px;
+/* top: -155px;
   left: 245px; */
 /* } */
 
@@ -578,16 +615,25 @@
   position: absolute;
   height: 1100px;
   left: 244px;
-  top:120px;
+  top: 120px;
   z-index: 1;
   transition: 0.8s;
 
 }
+
 .agent-line {
   position: absolute;
-  height: 4500px;
+  height: 100%;
   margin-left: 17.8%;
-  border-left: 1px solid #AA998B;
+  border-left: 1px solid white;
+  z-index: 2;
+}
+
+.map-line {
+  position: absolute;
+  height: 100%;
+  margin-left: 17.8%;
+  border-left: 1px solid #928F8B;
   z-index: 2;
 }
 
@@ -715,7 +761,7 @@
   margin-bottom: -100px;
 }
 
-.map-img{
+.map-img {
   position: absolute;
   top: -130px;
   left: 320px;
@@ -834,14 +880,14 @@
   z-index: 1;
 }
 
-.map-background-1{
+.map-background-1 {
   word-spacing: 20px;
   font-family: 'Anton', sans-serif;
   z-index: 1;
 
 }
 
-.bird-img{
+.bird-img {
   position: absolute;
   left: 1300px;
   top: 200px;
