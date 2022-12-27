@@ -27,12 +27,12 @@ const Home = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.pageYOffset;
-      const scrollLeft = window.pageXOffset;
-      const elementTop = ref?.current.offsetTop;
-      const elementTop2 = ref2?.current.offsetTop;
-      const elementTop3 = ref3?.current.offsetTop;
-      const elementTop4 = ref4?.current.offsetTop;
+      const scrollTop = window?.pageYOffset;
+      const scrollLeft = window?.pageXOffset;
+      const elementTop = ref?.current?.offsetTop;
+      const elementTop2 = ref2?.current?.offsetTop;
+      const elementTop3 = ref3?.current?.offsetTop;
+      const elementTop4 = ref4?.current?.offsetTop;
 
       ref.current.style.transform = `translateY(${(scrollTop - elementTop) / 20}px)`;
       ref2.current.style.transform = `translateY(${(scrollTop - elementTop2) / 15}px)`;
