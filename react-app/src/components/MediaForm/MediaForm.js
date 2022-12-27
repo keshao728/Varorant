@@ -117,6 +117,17 @@ const MediaForm = ({ setModalOpen }) => {
     if (showErrors) validate()
   }, [setErrors, title, attachment])
 
+  // function getFileName() {
+  //   let fileUpload = document.getElementById('file-upload');
+  //   let fileName = document.getElementById('file-name');
+
+  //   fileUpload.addEventListener('change', function () {
+  //     if (attachment.length)
+  //       fileName.innerText = attachment[0].name;
+  //     else
+  //       fileName.innerText = '';
+  //   });
+  // }
 
 
   return (
@@ -137,8 +148,10 @@ const MediaForm = ({ setModalOpen }) => {
           <div className='media-input-wrapper'>
             <div className='media-input-box'>
               <label className="media-label">
-                TITLE
-                <i class="fa-solid fa-star-of-life"></i>
+                <div className="media-label-title">
+                  TITLE
+                  <i class="fa-solid fa-star-of-life"></i>
+                </div>
               </label>
               <input
                 className='media-input'
@@ -155,30 +168,40 @@ const MediaForm = ({ setModalOpen }) => {
             </div>
             <div className='media-input-box'>
               <label className="media-label">
-                ATTACHMENT
-                <i class="fa-solid fa-star-of-life"></i>
-              </label>
-              {/* <textarea
+                <div className="media-label-title">
+                  ATTACHMENT
+                  <i class="fa-solid fa-star-of-life"></i>
+                </div>
+                {/* <textarea
                 className='media-input'
                 type="text"
                 id="media-des"
                 value={attachment}
-                onChange={(e) => setAttachment(e.target.value)} /> */}
-              <input
-                type="file"
-                accept="image/*"
-                onChange={updateImage}
-              />
-              {(imageLoading) && <p>Loading...</p>}
+              onChange={(e) => setAttachment(e.target.value)} /> */}
+                <div className="media-input-1">/ADD IMAGE OR DROP IMAGE HERE</div>
+                <input
+                  className={!attachment ? "no-show-name" : "media-file-name"}
+                  type="file"
+                  accept="image/*"
+                  onChange={updateImage}
+                  id="file-upload"
+                />
+              </label>
               {!!errors.attachment &&
-                <div className="ticket-error">
+                <div className="ticket-error" >
                   <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
                   {errors.attachment}
                 </div>
               }
             </div>
 
-            <button className="button-media" type="submit"> SUBMIT </button>
+            {(imageLoading) ?
+              <div className="button-media">
+                <img className="button-media-loading" src="https://imgur.com/ktdZebh.gif" />
+              </div>
+              :
+              <button className="button-media" type="submit"> SUBMIT </button>
+            }
           </div>
         </form>
       </div >

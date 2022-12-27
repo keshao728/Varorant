@@ -1,4 +1,4 @@
-.media-form-wrapper{
+.media-form-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -6,7 +6,7 @@
   color: white;
 }
 
-.media-wrapper{
+.media-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,11 +17,32 @@
   margin-bottom: 60px;
 }
 
-.media-input{
+.media-input {
   padding: 15px 20px;
+
 }
 
-.media-close-edit{
+input::file-selector-button {
+  display: none;
+}
+
+.no-show-name {
+  display: hidden;
+}
+
+
+.media-input-1 {
+  margin-top: 10px;
+  border: 1px dashed #ECE8E1;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.media-close-edit {
   width: 50px;
   border: 1px solid #ECE8E1;
   position: relative;
@@ -30,12 +51,18 @@
   padding: 5px;
   transition: transform 200ms ease-in-out;
 }
-#media-des{
+
+.button-media-loading {
+  width: 20px;
+  height: 20px;
+}
+
+#media-des {
   resize: none;
   height: 100px;
 }
 
-.media-form-title-des{
+.media-form-title-des {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,7 +70,7 @@
   margin-bottom: 50px;
 }
 
-.media-form-title{
+.media-form-title {
   font-size: 50px;
   font-weight: bolder;
   padding: 0px 10px;
@@ -51,14 +78,14 @@
   margin-bottom: 5px;
 }
 
-.media-form-des{
+.media-form-des {
   font-size: 14px;
   padding: 0px 10px;
   color: #666666;
   letter-spacing: 1.5px;
 }
 
-.media-input-wrapper{
+.media-input-wrapper {
   width: 55%;
   display: flex;
   flex-direction: column;
@@ -66,7 +93,7 @@
   align-items: center;
 }
 
-.media-input-box{
+.media-input-box {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -75,15 +102,20 @@
   width: 100%;
 }
 
-.media-label{
+.media-label-title {
+  display: flex;
+  flex-direction: row;
+}
+
+.media-label {
   font-size: 10px;
   margin-bottom: 10px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   letter-spacing: 1px;
 }
 
-.button-media{
+.button-media {
   border: none;
   background: #E4373C;
   display: flex;
@@ -96,4 +128,20 @@
   height: 44px;
   align-items: center;
   margin-top: 10px;
+}
+
+.media-file-name {
+  font-size: 10px;
+  display: flex;
+  flex-direction: column;
+  letter-spacing: 1px;
+  margin-top: 20px;
+  position: relative;
+  /* left: 20px; */
+  right: 0px;
+  /* top: 0; */
+}
+
+.no-show-name{
+  display: none;
 }
