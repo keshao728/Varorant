@@ -2,6 +2,8 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Media, db
 from app.forms import MediaForm
+from app.s3_helpers import (
+    upload_file_to_s3, allowed_file, get_unique_filename)
 
 media_routes = Blueprint('media', __name__)
 
@@ -24,23 +26,60 @@ def get_all_media():
 
 # CREATE A MEDIA
 
-
-@media_routes.route('/new', methods=['POST'])
+@media_routes.route("/new", methods=["POST"])
 @login_required
-def create_media():
-    form = MediaForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
+def upload_image():
+    # form = MediaForm()
 
-    if form.validate_on_submit():
-        media = Media(
-            user_id=current_user.id,
-            attachment=form.attachment.data,
-            title=form.title.data,
+    if "attachment" not in request.files:
+        return {"errors": "attachment required"}, 400
+
+    attachment = request.files["attachment"]
+
+    if not allowed_file(attachment.filename):
+        return {"errors": "file type not permitted"}, 400
+
+    attachment.filename = get_unique_filename(attachment.filename)
+
+    upload = upload_file_to_s3(attachment)
+
+    if "url" not in upload:
+        # if the dictionary doesn't have a url key
+        # it means that there was an error when we tried to upload
+        # so we send back that error message
+        return upload, 400
+    # print("FORM------------------------------", request.form)
+    data = request.form
+    # print("wow------------------------------", data)
+    attachment = upload["url"]
+
+    # flask_login allows us to get the current user from the request
+    new_image = Media(
+        user_id=current_user.id,
+        title=data['title'],
+        # title= form.title.data,
+        attachment=attachment
         )
-        db.session.add(media)
-        db.session.commit()
-        return media.to_dict()
-    return {'errors': "error"}, 401
+    db.session.add(new_image)
+    db.session.commit()
+    return {"attachment": attachment}
+
+# @media_routes.route('/new', methods=['POST'])
+# @login_required
+# def create_media():
+#     form = MediaForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
+
+#     if form.validate_on_submit():
+#         media = Media(
+#             user_id=current_user.id,
+#             attachment=form.attachment.data,
+#             title=form.title.data,
+#         )
+#         db.session.add(media)
+#         db.session.commit()
+#         return media.to_dict()
+#     return {'errors': "error"}, 401
 
 
 # # EDIT A MEDIA
@@ -62,7 +101,7 @@ def create_media():
 #         return media.to_dict()
 #     return {'errors': 'Invalid media', 'statusCode': 401}
 
-#DELETE A MEDIA
+# DELETE A MEDIA
 @media_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete_media(id):
