@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { NavLink, useHistory, Redirect } from 'react-router-dom';
 // import { useHistory } from 'react-router-dom';
-import { getAllTicketsThunk } from '../../store/ticket';
+import { getUserTicketsThunk } from '../../store/ticket';
 import varorantW from '../Home/HomeAssets/varorantW.png'
 // import ticketBanner from './TicketImages/ticketBanner.jpg'
 import './TicketForm.css';
@@ -99,7 +99,7 @@ const TicketForm = () => {
       if (res.ok) {
         await res.json();
         // console.log('res', res)
-        await dispatch(getAllTicketsThunk());
+        await dispatch(getUserTicketsThunk());
         setImageLoading(false);
         history.push("/tickets/my-tickets");
       } else {
