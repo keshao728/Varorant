@@ -16,7 +16,12 @@
   left: 370px;
   top: -30px;
   padding: 5px;
-  transition: transform 200ms ease-in-out;
+  /* transition: transform 200ms ease-in-out; */
+  cursor: pointer;
+  /* flex-grow: 1; */
+  transform: scale(1.1);
+
+  transition: all 0.5s ease;
 }
 
 .button-delete-ticket{
