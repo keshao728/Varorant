@@ -22,12 +22,14 @@ const PlayNow = () => {
         <Modal onClose={closeModal}>
           {/* <button type="button" className="cancel-create-annotation" onClick={closeModal}>Cancel</button> */}
           <div className="playnow-modal-wrapper">
-            <img
-              className="playnow-cancel"
-              onClick={closeModal}
-              src={close}
-              alt="Cancel"
-            />
+            <div className="playnow-cancel">
+              <img
+                className="playnow-cancel-img"
+                onClick={closeModal}
+                src={close}
+                alt="Cancel"
+              />
+            </div>
             <div className="playnow-title">
               <div>\</div>
               <div className="playnow-title-text">

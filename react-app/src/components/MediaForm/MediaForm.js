@@ -135,7 +135,9 @@ const MediaForm = ({ setModalOpen }) => {
     <div className='media-mother'>
       <div className='media-form-wrapper'>
         <form className='media-wrapper' onSubmit={handleSubmit} id="media-form">
-          <img className="media-close-edit" src={close} alt="Cancel" onClick={() => setModalOpen(false)} />
+          <div className="media-close-edit">
+            <img src={close} className="media-close-edit-img" alt="Cancel" onClick={() => setModalOpen(false)} />
+          </div>
           <div className='media-form-title-des'>
             <div className='media-form-title'>
               Post A Media

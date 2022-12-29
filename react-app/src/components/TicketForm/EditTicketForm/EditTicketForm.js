@@ -76,7 +76,9 @@ const EditTicketForm = ({ setModalOpen }) => {
       <div className='edit-ticket-form-wrapper'>
 
         <form className='ticket-wrapper' onSubmit={handleSubmit}>
-          <img className="ticket-close-edit" src={close} alt="Cancel" onClick={() => setModalOpen(false)} />
+          <div className="ticket-close-edit">
+            <img className="ticket-close-edit-img" src={close} alt="Cancel" onClick={() => setModalOpen(false)} />
+          </div>
           <div className='edit-ticket-form-title-des'>
             <div className='edit-ticket-form-title'>
               Edit Ticket
@@ -119,7 +121,7 @@ const EditTicketForm = ({ setModalOpen }) => {
                 onChange={(e) => setDescription(e.target.value)} />
               {!!errors.description &&
                 <div className='ticket-error'>
-                  <img className="caution" src="https://imgur.com/E1p7Fvo.png" alt="Error Message"/>
+                  <img className="caution" src="https://imgur.com/E1p7Fvo.png" alt="Error Message" />
                   {errors.description}
                 </div>
               }

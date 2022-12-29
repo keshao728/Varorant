@@ -42,14 +42,27 @@ input::file-selector-button {
   cursor: pointer;
 }
 
-.media-close-edit {
+.media-close-edit{
   width: 50px;
+  height: 50px;
   border: 1px solid #ECE8E1;
   position: relative;
-  left: 320px;
-  top: -25px;
+  left: 350px;
+  top: -43px;
   padding: 5px;
+  cursor: pointer;
+
+  overflow: hidden;
+}
+
+.media-close-edit-img{
   transition: transform 200ms ease-in-out;
+  width: 50px;
+  height: 50px;
+}
+
+.media-close-edit:hover .media-close-edit-img{
+  transform: scale(1.1);
 }
 
 .button-media-loading {

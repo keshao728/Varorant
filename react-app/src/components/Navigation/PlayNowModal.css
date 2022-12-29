@@ -127,14 +127,27 @@
 
 }
 
-.playnow-cancel {
+.playnow-cancel{
   width: 50px;
+  height: 50px;
   border: 1px solid #ECE8E1;
   position: relative;
   left: 820px;
   top: -25px;
   padding: 5px;
+  cursor: pointer;
+
+  overflow: hidden;
+}
+
+.playnow-cancel-img{
   transition: transform 200ms ease-in-out;
+  width: 50px;
+  height: 50px;
+}
+
+.playnow-cancel:hover .playnow-cancel-img{
+  transform: scale(1.1);
 }
 
 .nav-playnow-modal-button{
