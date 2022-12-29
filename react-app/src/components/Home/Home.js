@@ -60,16 +60,16 @@ const Home = () => {
 
   window.onscroll = function () {
     //get my divs
-    let reword_wrapper = document.getElementById("reword-wrapper");
-    let reword_line = document.getElementById('reword-line')
-    let reword_top = document.getElementById('rewords1')
-    let reword_bottom = document.getElementById('rewords2')
+    let reword_wrapper = document?.getElementById("reword-wrapper");
+    let reword_line = document?.getElementById('reword-line')
+    let reword_top = document?.getElementById('rewords1')
+    let reword_bottom = document?.getElementById('rewords2')
 
-    let scope = (reword_wrapper.offsetHeight * (100 - 90)) / 100;
-    let clientHeight = document.documentElement.clientHeight;
+    let scope = (reword_wrapper?.offsetHeight * (100 - 90)) / 100;
+    let clientHeight = document?.documentElement.clientHeight;
 
     //get the size of an element and its position relative to the viewport
-    let bottomY = reword_wrapper.getBoundingClientRect().bottom;
+    let bottomY = reword_wrapper?.getBoundingClientRect().bottom;
     // let topY = reword_wrapper.getBoundingClientRect().top;
 
     if (bottomY < -scope || bottomY > clientHeight + scope) {
