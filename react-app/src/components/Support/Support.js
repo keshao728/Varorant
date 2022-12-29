@@ -10,35 +10,46 @@ import './Support.css'
 const Support = () => {
   const sessionUser = useSelector(state => state.session.user);
   // const history = useHistory();
-  const allTicketRef = useRef(null);
-  useEffect(() => {
-    const all = allTicketRef.current;
+  // const allTicketRef = useRef(null);
+  // const root = useRef(null);
 
-    const shadowItem = all.attachShadow({ mode: 'open' });
-    shadowItem.innerHTML = `
-    <style>
+  // useEffect(() => {
+  //   try {
 
-    </style>
-    <div className="">
+  //     root.current = allTicketRef?.current?.attachShadow({ mode: 'open' });
 
+  //     const div = document.createElement('div');
+  //     div.textContent = '';
+  //     root.current.appendChild(div);
 
-    </div>
-
-    `
-  }, [])
+  //     const style = document.createElement('style');
+  //     style.textContent = `
+  //     div{
+  //       background-color: #1a1a1a;
+  //       height: 20px;
+  //       width: 20px;
+  //       position:relative;
+  //     }
+  //     `
+  //     root.current.appendChild(style);
+  //   }
+  //   catch (e) {
+  //     console.log(e)
+  //   }
+  // }, [])
 
   return (
     <div className='support-mother'>
       <div className='support-top-wrapper'>
         <div className='support-top'>
-          <img className='support-title' src={varorantW} alt="Banner"/>
-          <button></button>
+          <img className='support-title' src={varorantW} alt="Banner" />
+          {/* <button></button> */}
         </div>
       </div>
       {sessionUser ?
         <div className="support-ticket-icons">
           <NavLink to='/tickets/my-tickets' exact={true} className="support-ticket" activeClassName='active'>
-            <img className="support-icon" src={userTicket} alt="My Tickets"/>
+            <img className="support-icon" src={userTicket} alt="My Tickets" />
             <div className="support-name">
               MY TICKETS
             </div>
@@ -56,13 +67,13 @@ const Support = () => {
         <div>
           <div className="support-ticket-icons">
             <NavLink to='/login' exact={true} className="support-ticket" activeClassName='active'>
-              <img className="support-icon" src={userTicket} alt="My Tickets"/>
+              <img className="support-icon" src={userTicket} alt="My Tickets" />
               <div className="support-name">
                 MY TICKETS
               </div>
             </NavLink>
             <NavLink to='/login' exact={true} className="support-ticket" activeClassName='active'>
-              <img className="support-icon" src={submitTicket} alt="Submit Ticket"/>
+              <img className="support-icon" src={submitTicket} alt="Submit Ticket" />
               <div className="support-name">
                 SUBMIT A TICKET
               </div>
@@ -73,7 +84,7 @@ const Support = () => {
     <div>USEFUL ERROR CODES</div> */}
         </div>
       }
-      <div ref={allTicketRef}></div>
+      {/* <div ref={allTicketRef}></div> */}
     </div>
   )
 }

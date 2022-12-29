@@ -67,6 +67,29 @@
   margin-top: 120px;
 }
 
+.latest-dots {
+  position: relative;
+  left: 50%;
+  bottom: 100px;
+}
+
+.latest-dots-1 {
+  width: 8px;
+  position: absolute;
+  height: 8px;
+  background-color: #FF4655;
+  /* top: -45px; */
+}
+
+.latest-dots-2 {
+  margin-left: 50px;
+  width: 8px;
+  height: 8px;
+  background-color: #FF4655;
+  position: absolute;
+  /* top: -45px; */
+}
+
 .overview-line {
   position: absolute;
   height: 100%;
@@ -1035,3 +1058,7 @@
   background-image: url(./HomeAssets/background.png);
   background-repeat: no-repeat;
 } */
+
+.shadow-square {
+  position: relative
+}

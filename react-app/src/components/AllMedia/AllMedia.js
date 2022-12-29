@@ -25,9 +25,9 @@ const AllMedia = () => {
   const [userId, setUserId] = useState(null)
 
   const RandomSize = {
-    0: "grid-column:span 1;grid-row:span 2",
-    1: "grid-row:span 1",
-    2: "grid-column:span 2;grid-row:span 2"
+    0: "grid-column:span 1;grid-row:span 2; ",
+    1: "grid-row:span 1; max-height:300px",
+    2: "grid-column:span 2;grid-row:span 2;"
   }
 
   const RandomSizeArr = Object.values(RandomSize)

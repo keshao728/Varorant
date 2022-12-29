@@ -34,6 +34,36 @@ const Home = () => {
   // const ref7 = useRef(null);
   // const ref8 = useRef(null);
 
+  const shadowRef = useRef(null);
+  const root = useRef(null);
+  useEffect(() => {
+    try {
+
+      root.current = shadowRef?.current?.attachShadow({ mode: 'open' });
+
+      const div = document.createElement('div');
+      div.textContent = '';
+      root.current.appendChild(div);
+
+      const style = document.createElement('style');
+      style.textContent = `
+      div{
+        height: 10px;
+        width: 10px;
+        position:absolute;
+        left: 0px;
+        bottom: 200px;
+        background-color: #ff4655;
+        z-index: 10;
+      }
+      `
+      root.current.appendChild(style);
+    }
+    catch (e) {
+      console.log(e)
+    }
+  }, [])
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -199,6 +229,10 @@ const Home = () => {
           <div className="latest-background-1">WE ARE </div>
           <div className="latest-background-2">VARORANT</div>
         </div>
+            <div className="latest-dots">
+              <div className="latest-dots-1"></div>
+              <div className="latest-dots-2"></div>
+            </div>
         <div className="home-latest-img">
           <a className="latest-links" href="https://letsplay.live/valorantchallengersoceania2023/" target="_blank" rel="noreferrer">
 
@@ -217,6 +251,7 @@ const Home = () => {
                 </FadeIn>
               </div>
             </div>
+
 
             <div className="latest-date-info">
               <div>11/22/22</div>
@@ -275,7 +310,10 @@ const Home = () => {
         </div>
       </div>
       <div className="overview-wrapper">
-        <div className="overview-line"></div>
+        <div className="overview-line">
+
+          <div ref={shadowRef}></div>
+        </div>
         <img src={harbor} className="harbor-img" alt="Harbor" />
         <div className="overview-text">
           <div className="overview-des">EPISODE_5 // ACT III / YR 2</div>
@@ -302,6 +340,8 @@ const Home = () => {
               </button>
             </div>
           </div>
+
+
         </div>
       </div>
 
