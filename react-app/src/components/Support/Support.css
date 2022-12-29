@@ -1,4 +1,4 @@
-.support-top-wrapper{
+.support-top-wrapper {
   background-image: url(./supportImages/supportBanner.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -17,12 +17,12 @@
   z-index: 1;
 } */
 
-.support-title{
+.support-title {
   width: 650px;
   margin-bottom: 25px;
 }
 
-.support-ticket-icons{
+.support-ticket-icons {
   display: flex;
   justify-content: center;
   /* align-items: center; */
@@ -32,19 +32,19 @@
 
 }
 
-.support-icon:hover {
+.support-ticket:hover .support-icon {
   transform: scaleX(-1);
-  margin-left:2.5px;
+  margin-left: -2px;
   transition: transform 0.6s;
 }
 
-.support-icon{
+.support-icon {
   width: 100px;
   height: 100px;
   transition: transform 0.6s;
 }
 
-.support-name{
+.support-name {
   font-size: 20px;
   width: 90px;
   /* font-weight: bold; */
@@ -54,9 +54,110 @@
   font-family: 'Anton', sans-serif;
 }
 
-.support-ticket{
+.support-ticket {
   margin-top: 50px;
   text-decoration: none;
   width: 120px;
   color: black;
+}
+
+.support-ticket:hover {
+  color: #E4373C;
+  transition: color 0.6s;
+}
+
+
+.support-all {
+  display: flex;
+  width: 100%;
+  height: 700px;
+  background-color: #FAFAFA;
+  margin-top: 120px;
+  align-items: center;
+
+}
+
+.support-all-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  height: 310px;
+  background-color: #F5F5F5;
+  position: relative;
+}
+
+.support-all-img {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  background-image: url(./supportImages/varorantOutlined.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0px -10px;
+  opacity: 0.5;
+}
+
+.support-all-line {
+  width: 100%;
+  height: 3px;
+  background-color: #ECEAE7;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+.support-all-text-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.support-all-text {
+  font-family: 'Anton', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  /* height: 100%; */
+  text-align: center;
+  font-size: 40px;
+  width: 350px;
+  margin-top: -20px;
+  letter-spacing: 2px;
+  line-height: 50px;
+}
+
+.support-all-button{
+  border: none;
+  background: #E4373C;
+  display: flex;
+  font-size: 11px;
+  font-weight: bold;
+  color: white;
+  /* padding: 10px 20px; */
+  cursor: pointer;
+  justify-content: center;
+  width: 230px;
+  height: 40px;
+  align-items: center;
+  margin-top: 20px;
+  letter-spacing: 1px;
 }

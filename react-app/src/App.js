@@ -9,7 +9,7 @@ import User from './components/User/User';
 import Home from './components/Home/Home';
 import UserTickets from './components/UserTickets/UserTickets';
 import Support from './components/Support/Support';
-import AllTicket from './components/TicketPage/AllTicket';
+import AllTicket from './components/AllTickets/AllTicket';
 import SingleTicket from './components/SingleTicket/SingleTicket';
 import AllMedia from './components/AllMedia/AllMedia';
 import TicketForm from './components/TicketForm/TicketForm';

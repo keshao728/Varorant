@@ -42,7 +42,7 @@ input::file-selector-button {
   cursor: pointer;
 }
 
-.media-close-edit{
+.media-close-edit {
   width: 50px;
   height: 50px;
   border: 1px solid #ECE8E1;
@@ -55,13 +55,13 @@ input::file-selector-button {
   overflow: hidden;
 }
 
-.media-close-edit-img{
+.media-close-edit-img {
   transition: transform 200ms ease-in-out;
   width: 50px;
   height: 50px;
 }
 
-.media-close-edit:hover .media-close-edit-img{
+.media-close-edit:hover .media-close-edit-img {
   transform: scale(1.1);
 }
 
@@ -143,6 +143,12 @@ input::file-selector-button {
   margin-top: 10px;
 }
 
+.button-media:hover {
+  background-color: #c53136;
+  transition: 0.2s ease;
+}
+
+
 .media-file-name {
   font-size: 10px;
   display: flex;
@@ -155,6 +161,6 @@ input::file-selector-button {
   /* top: 0; */
 }
 
-.no-show-name{
+.no-show-name {
   display: none;
 }

@@ -470,9 +470,9 @@
 .we-are-title {
   margin-top: 20px;
   display: flex;
-  width: 800px;
+  width: 820px;
   margin-left: 10%;
-  font-size: 110px;
+  font-size: 120px;
   font-family: 'Anton', sans-serif;
   color: #0F1923;
   z-index: 0;
@@ -580,18 +580,21 @@
 
 .defy-border {
   position: relative;
-  left: 100px;
+  /* left: 100px; */
   width: 700px;
-  top: 10px;
+  /* top: 10px; */
   background-color: #000000;
   display: flex;
 }
 
 .defy-gif-wrapper {
   display: flex;
+  left: 110px;
   justify-content: center;
   align-items: center;
   text-decoration: none;
+  position: relative;
+  top: 25px;;
 }
 
 .defy-gif-button-wrapper {
@@ -711,6 +714,7 @@
 
   background-color: #FF4655;
   z-index: 8;
+  background-image: url(./HomeAssets/red-val.png);
 }
 
 .defy-00 {
@@ -1017,7 +1021,7 @@
   /* width: 300px; */
   height: 120px;
   position: relative;
-  margin-bottom: -100px;
+  margin-bottom: -110px;
 }
 
 #reword-wrapper {
@@ -1061,4 +1065,55 @@
 
 .shadow-square {
   position: relative
+}
+
+.left-map-item-wrap {
+  position: relative;
+  left: 255px;
+  top: 70px;
+  z-index: 2;
+}
+
+.left-map-item {
+  position: absolute;
+}
+
+.defy-decor-box{
+  height: 10px;
+  width: 10px;
+  position:relative;
+  left: 0;
+  top:785px;
+  background-color: #ff4655;
+  z-index: 1;
+}
+
+.defy-decor-box-1{
+  height: 6px;
+  width: 6px;
+  position:relative;
+  left: 0;
+  top:250px;
+  background-color: #ff4655;
+  z-index: 1;
+}
+
+.defy-decor-box-2{
+  height: 6px;
+  width: 6px;
+  position:relative;
+  left: 100px;
+  top:570px;
+  background-color: #ff4655;
+  z-index: 1;
+}
+
+.defy-decor-box-3{
+  height:13px;
+  width: 13px;
+  position:absolute;
+  right: 250px;
+  top:-5px;
+  background-color: #ff4655;
+  z-index: 1;
 }

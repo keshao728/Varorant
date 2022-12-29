@@ -131,6 +131,11 @@
   margin-top: 10px;
 }
 
+.button-edit-ticket:hover {
+  background-color: #c53136;
+  transition: 0.2s ease;
+}
+
 .edit-ticket-modal-button{
   display: flex;
   justify-content: center;

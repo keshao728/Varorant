@@ -60,7 +60,10 @@ const ImgModal = ({ clickedImg, setClickedImg, clickRight, clickLeft, imgTitle, 
             <button onClick={handleSubmit} className='button-delete-media close-me' type='submit'>Delete</button>
           }
         </div>
-        <img className="close-img-modal close-me" src={close} alt="Cancel" onClick={handleClick} />
+      </div>
+      <div className="close-img-modal close-me">
+        <div className="close-img-overlay"></div>
+        <img className="close-img-modal-img" src={close} alt="Cancel" onClick={handleClick} />
       </div>
     </div>
   )

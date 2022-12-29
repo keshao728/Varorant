@@ -156,7 +156,7 @@ const AllComments = () => {
                 }
               </label>
               <div className="comment-button-wrapper">
-                <button className="button-create-comment" type="submit" onSubmit={handleSubmit}> Submit</button>
+                <button className="button-create-comment" type="submit" onSubmit={handleSubmit}> SUBMIT</button>
               </div>
             </div>
           </form>

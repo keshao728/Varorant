@@ -75,6 +75,11 @@
   margin-top: 10px;
 }
 
+.button-create-comment:hover {
+  background-color: #c53136;
+  transition: 0.2s ease;
+}
+
 .comment-button-wrapper {
   display: flex;
   flex-direction: column;

@@ -39,6 +39,11 @@ const MediaForm = ({ setModalOpen }) => {
   // console.log("MEDIA ERRORS", errors)
 
 
+  // const [value, setValue] = useState(0); // integer state
+  // const forceUpdate = () => {
+  //   return () => setValue(value => value + 1); // update the state to force render
+  // }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -64,8 +69,11 @@ const MediaForm = ({ setModalOpen }) => {
 
       if (res.ok) {
         await res.json();
+        // forceUpdate()
         await dispatch(getAllMediaThunk());
         setImageLoading(false);
+        setShowErrors(false)
+        setModalOpen(false)
         history.push("/media");
       }
       else {
@@ -74,11 +82,10 @@ const MediaForm = ({ setModalOpen }) => {
         // error handling
         console.log("error", res);
       }
+      await dispatch(getAllMediaThunk());
 
-      // await dispatch(createMediaThunk(newMedia))
-
-      setShowErrors(false)
-      setModalOpen(false)
+      // setShowErrors(false)
+      // setModalOpen(false)
 
       return errors
     }

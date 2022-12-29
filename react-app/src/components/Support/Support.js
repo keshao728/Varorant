@@ -1,15 +1,16 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useEffect, useRef } from 'react';
 import varorantW from '../Home/HomeAssets/varorantW.png'
 import submitTicket from './supportImages/submitTicket.png'
 import userTicket from './supportImages/userTicket.png'
+import varorantOutlined from './supportImages/varorantOutlined.png'
 import './Support.css'
 
 
 const Support = () => {
   const sessionUser = useSelector(state => state.session.user);
-  // const history = useHistory();
+  const history = useHistory();
   // const allTicketRef = useRef(null);
   // const root = useRef(null);
 
@@ -85,6 +86,25 @@ const Support = () => {
         </div>
       }
       {/* <div ref={allTicketRef}></div> */}
+      <div className="support-all">
+        <div className="support-all-box">
+          <div className="support-all-img">
+            <div className="support-all-line"></div>
+          </div>
+          <div className="support-all-text-wrap">
+            <div className="support-all-text">
+              Can’t find what you’re looking for?
+            </div>
+            <button
+              className="support-all-button"
+              onClick={() => {
+                history.push("/tickets")
+              }}>
+              / VIEW ALL TICKETS
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

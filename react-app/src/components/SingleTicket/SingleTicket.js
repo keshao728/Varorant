@@ -91,7 +91,7 @@ const SingleTicket = () => {
             <div className="right-section">
 
               <div className="see-all-ticket">
-                <NavLink to='/tickets/my-tickets' exact={true} className="see-all-ticket-link" activeClassName='active'>
+                <NavLink to='/tickets' exact={true} className="see-all-ticket-link" activeClassName='active'>
                   {"< SEE ALL TICKETS"}
                 </NavLink>
               </div>

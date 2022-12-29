@@ -10,6 +10,7 @@ import harbor from './HomeAssets/harbor.jpg'
 import reynaraze from './HomeAssets/reynaraze.gif'
 import playbutton from './HomeAssets/playbutton.png'
 import map from './HomeAssets/map.png'
+import mapleft from './HomeAssets/mapleft.png'
 // import { useSelector } from 'react-redux';
 // import { Redirect } from 'react-router-dom';
 // import wearevalo from './HomeAssets/wearevalo.png'
@@ -229,10 +230,10 @@ const Home = () => {
           <div className="latest-background-1">WE ARE </div>
           <div className="latest-background-2">VARORANT</div>
         </div>
-            <div className="latest-dots">
-              <div className="latest-dots-1"></div>
-              <div className="latest-dots-2"></div>
-            </div>
+        <div className="latest-dots">
+          <div className="latest-dots-1"></div>
+          <div className="latest-dots-2"></div>
+        </div>
         <div className="home-latest-img">
           <a className="latest-links" href="https://letsplay.live/valorantchallengersoceania2023/" target="_blank" rel="noreferrer">
 
@@ -345,7 +346,11 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="we-are-line"></div>
+      <div className="we-are-line">
+        <div className="defy-decor-box"></div>
+        <div className="defy-decor-box-1"></div>
+        <div className="defy-decor-box-2"></div>
+      </div>
       <div className="we-are-wrapper">
         <div className="we-are-box">
           <div className="we-are-border-top"></div>
@@ -361,8 +366,9 @@ const Home = () => {
                 <div className="we-are-title">WE ARE VARORANT</div>
               </div>
             </FadeIn>
+            <div className="defy-decor-box-3"></div>
           </div>
-          <div class="rebox">
+          <div className="rebox">
             <div id="reword-wrapper">
               <div id="rewords1"> </div>
               <div id="rewords2"> </div>
@@ -452,7 +458,10 @@ const Home = () => {
 
 
       <div className="map-line"></div>
-      {/* <div className="testing"/> */}
+      <div className="left-map-item-wrap">
+
+        <img className="left-map-item" src={mapleft} />
+      </div>
       <div className="map-wrapper">
         <div className="map-background-wrap" id="scrollplace" ref={ref2}>
           <div className="map-background-1">PLACE</div>

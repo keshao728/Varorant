@@ -26,7 +26,7 @@ const AllMedia = () => {
 
   const RandomSize = {
     0: "grid-column:span 1;grid-row:span 2; ",
-    1: "grid-row:span 1; max-height:300px",
+    1: "grid-row:span 1; height:245px",
     2: "grid-column:span 2;grid-row:span 2;"
   }
 
@@ -103,6 +103,7 @@ const AllMedia = () => {
 
   }, [dispatch])
 
+
   // const handleClick = (media, index) => {
   //   setCurrentIndex(index)
   //   setClickedImg(media.attachment)
@@ -128,7 +129,7 @@ const AllMedia = () => {
           </div>
         </div>
         <div>
-          <img className="media-top-gif" src="https://imgur.com/EWhTQo2.gif" alt="Skye Gameplay"/>
+          <img className="media-top-gif" src="https://imgur.com/EWhTQo2.gif" alt="Skye Gameplay" />
         </div>
       </div>
 
