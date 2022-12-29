@@ -15,9 +15,11 @@ import map from './HomeAssets/map.png'
 // import wearevalo from './HomeAssets/wearevalo.png'
 import birds from './HomeAssets/birds.png'
 import { FadeIn } from 'react-slide-fade-in'
+import background from './HomeAssets/background.png'
 import "./Home.css"
 
 const Home = () => {
+  //PARALLAX SCROLL
   const ref = useRef(null);
 
   const ref2 = useRef(null);
@@ -28,8 +30,11 @@ const Home = () => {
 
   useEffect(() => {
     const handleScroll = () => {
+      //get the pixel from the top of the page
       const scrollTop = window?.pageYOffset;
-      const scrollLeft = window?.pageXOffset;
+      // const scrollLeft = window?.pageXOffset;
+
+      //get the pixel from the top of the element
       const elementTop = ref?.current?.offsetTop;
       const elementTop2 = ref2?.current?.offsetTop;
       const elementTop3 = ref3?.current?.offsetTop;
@@ -48,76 +53,74 @@ const Home = () => {
     };
   }, [ref, ref2]);
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const scrollTop = window.pageYOffset;
-  //     const elementTop2 = ref2.current.offsetTop;
+  //REWORD
+  let top_final = 'VLRT PR0T0C0L'
+  let reword_status = true
 
-  //     // ref.current.style.transform = `translateY(${(scrollTop - elementTop) / 20}px)`;
-  //     ref2.current.style.transform = `translateY(${(scrollTop - elementTop2) / 20}px)`;
-  //   };
+  window.onscroll = function () {
+    //get my divs
+    let reword_wrapper = document.getElementById("reword-wrapper");
+    let reword_line = document.getElementById('reword-line')
+    let reword_top = document.getElementById('rewords1')
+    let reword_bottom = document.getElementById('rewords2')
 
-  //   window.addEventListener('scroll', handleScroll);
+    let scope = (reword_wrapper.offsetHeight * (100 - 90)) / 100;
+    let clientHeight = document.documentElement.clientHeight;
 
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, [ref2]);
+    //get the size of an element and its position relative to the viewport
+    let bottomY = reword_wrapper.getBoundingClientRect().bottom;
+    // let topY = reword_wrapper.getBoundingClientRect().top;
 
-  // window.onscroll = function () {
-  //   var scrollT = document.documentElement.scrollTop;
-  //   //居上滚动了多少高度
-  //   var scrollH = document.documentElement.scrollHeight;
-  //   //页面总高度
-  //   var clientH = document.documentElement.clientHeight;
-  //   //页面可视区域的高度
-  //   // var birdY =-( scrollT - document.getElementById("scrollbird").offsetHeight) - 50;
-  //   // var birdX =-( scrollT - document.getElementById("scrollbird").offsetHeight) - 350;
-  //   var placeY = scrollT - document.getElementById("scrollplace").offsetHeight - 10;
-  //   // console.log(birdY);
-  //   // document.getElementById("scrollbird").style.transform = "translateY("+birdY+"px) translateX("+birdX+"px)";
-  //   document.getElementById("scrollplace").style.transform = "translateY(-" + placeY + "px)";
-  // }
-
-  // const sessionUser = useSelector(state => state.session.user);
-
-  // let weValo = document.getElementById("we-are");
-
-  // window.onscroll = function () {
-  //   let scrollTop = document.documentElement.scrollTop;
-  //   let scrollHeight = document.documentElement.scrollHeight;
-  //   let clientHeight = document.documentElement.clientHeight;
-
-  //   let valoY = -(scrollTop - document.getElementById("we-are").offsetHeight) + 100;
-
-  // }
-
-  // let weValoBackground = document.querySelector(".home-latest")
-
-  // document.querySelector(".home-latest").addEventListener('scroll', () => {
-  // let windowScroll = document.querySelector(".home-latest").scrollTop;
-  // document.getElementById("we-are").style.transform = "translateY(" + windowScroll / 2 + "px)";
-  // })
-
-
-  function slideUp() {
-    const title = document.querySelector('#slide');
-    // get the current top position of the title
-    const top = parseInt(title.style.top, 10);
-
-    // update the top position
-    title.style.top = `${top - 10}px`;
-
-    // if the title has not reached the top of the screen, keep sliding
-    if (top > 0) {
-      requestAnimationFrame(slideUp);
+    if (bottomY < -scope || bottomY > clientHeight + scope) {
+      reword_top.innerHTML = ''
+      reword_bottom.innerHTML = ''
+      reword_line.style.width = "0";
+      reword_status = true
+    } else {
+      if (reword_status) {
+        let reword_line = document.getElementById('reword-line')
+        rewords1()
+        setTimeout(rewords2(), top_final.length * 30);
+        reword_line.style.width = "100%";
+        reword_status = false
+      }
     }
   }
 
-  // wait 1 second before starting the animation
-  setTimeout(() => {
-    requestAnimationFrame(slideUp);
-  }, 1000);
+  function rewords1() {
+    let top_final = 'VLRT PR0T0C0L'
+    let runword = 'VLRTPR0T0C0L'
+    let top_initial = ''
+    let i = 0
+    let reword_top = document.getElementById('rewords1')
+    let timer = setInterval(() => {
+      if (top_initial.length < top_final.length) {
+        top_initial += top_final[i++]
+        reword_top.innerHTML = top_initial + runword[Math.round(Math.random() * 10)]
+      } else {
+        clearInterval(timer)
+        reword_top.innerHTML = top_initial
+      }
+    }, 30)
+  }
+
+  function rewords2() {
+    let bottom_final = 'MR0C - SWD - BR4'
+    let runword = 'VLRTPR0T0C0L'
+    let bottom_initial = ''
+    let j = 0
+    let reword_bottom = document.getElementById('rewords2')
+    let timer1 = setInterval(() => {
+      if (bottom_initial.length < bottom_final.length) {
+        bottom_initial += bottom_final[j++]
+        reword_bottom.innerHTML = bottom_initial + runword[Math.round(Math.random() * 10)]
+      } else {
+        clearInterval(timer1)
+        reword_bottom.innerHTML = bottom_initial
+      }
+    }, 30)
+  }
+
 
   return (
     <div className="home-wrapper">
@@ -275,6 +278,13 @@ const Home = () => {
               </div>
             </FadeIn>
           </div>
+          <div class="rebox">
+            <div id="reword-wrapper">
+              <div id="rewords1"> </div>
+              <div id="rewords2"> </div>
+              <div id="reword-line"></div>
+            </div>
+          </div>
           <div className="defy-wrapper">
             <div className="defy-left">
               <div className="defy-title">DEFY THE LIMITS</div>
@@ -310,8 +320,8 @@ const Home = () => {
 
       </div>
 
-      {/* <div className="agent-line"></div> */}
       <div className="agent-wrapper">
+      <div className="agent-triangle"></div>
 
         <div className="agent-gif-wrap">
           <img src={reynaraze} ref={ref4} className="agent-gif" />
@@ -347,7 +357,9 @@ const Home = () => {
         </div>
       </div>
 
+
       <div className="map-line"></div>
+      {/* <div className="testing"/> */}
       <div className="map-wrapper">
         <div className="map-background-wrap" id="scrollplace" ref={ref2}>
           <div className="map-background-1">PLACE</div>
