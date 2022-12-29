@@ -71,6 +71,10 @@ function App() {
           <NavBar />
           <AllMedia />
         </Route>
+        <Route path="*">
+          <NavBar />
+          <Home />
+        </Route>
         {/* <Route path='/media/:mediaId' component={ImgModal}>
 
         </Route> */}
