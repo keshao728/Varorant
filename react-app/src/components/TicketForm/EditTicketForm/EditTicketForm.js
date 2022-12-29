@@ -25,9 +25,9 @@ const EditTicketForm = ({ setModalOpen }) => {
 
   const validate = () => {
     let err = {}
-    if (subject.length > 15) err.subject = 'Subject must be less than 15 characters'
+    if (subject.length > 25) err.subject = 'Subject must be less than 25 characters'
     if (!subject || subject.length < 3) err.subject = 'Subject must be at least 3 characters'
-    if (description.length > 100) err.description = 'Description must be less than 100 characters'
+    if (description.length > 200) err.description = 'Description must be less than 200 characters'
     if (!description || description.length < 10) err.description = 'Description must be at least 10 characters'
 
     setErrors(err)

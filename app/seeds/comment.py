@@ -11,7 +11,7 @@ def seed_comments():
     comment2 = Comment(
         user_id=3,
         ticket_id=1,
-        comment_body="In order to further look into the matter, we'll need a few logs created by our Riot Repair Tool: Just right click & run it as admin, select the game, and then wait for the tool to collect the necessary files. Once it's finished, open the 'Riot Logs' folder from your Desktop, and attach the .zip files that it contains to your ticket (there should be a folder called 'System Logs', and a folder with the Logs for the game)."
+        comment_body="In order to further look into the matter, we'll need a few logs created by our Meowit Repair Tool: Just right click & run it as admin, select the game, and then wait for the tool to collect the necessary files. Once it's finished, open the 'Meowit Logs' folder from your Desktop, and attach the .zip files that it contains to your ticket (there should be a folder called 'System Logs', and a folder with the Logs for the game)."
     )
 
     comment3 = Comment(
@@ -21,13 +21,18 @@ def seed_comments():
     )
 
     comment4 = Comment(
-      user_id=3,
-      ticket_id=2,
-      comment_body="make sure you've installed the latest Windows Updates. VALORANT is optimized to work best when on the latest version of Windows and updating can resolve a number of issues."
+        user_id=3,
+        ticket_id=3,
+        comment_body="In order to further look into the matter, we'll need a few logs created by our Meowit Repair Tool: Just right click & run it as admin, select the game, and then wait for the tool to collect the necessary files. Once it's finished, open the 'Meowit Logs' folder from your Desktop, and attach the .zip files that it contains to your ticket (there should be a folder called 'System Logs', and a folder with the Logs for the game)."
     )
 
+    comment5 = Comment(
+        user_id=1,
+        ticket_id=4,
+        comment_body="I know getting your End of Year stats is important to see how you've improved throughout the year! If you haven't already done so, please head to https://account.riotgames.com >> Communication Preferences >> Then check the \"Communications from Meowit Games\" box because we should be sending out these emails shortly. In addition make sure you whitelist the following email address in the email connected to your Meowit Games account: VARORANT@em.meowitgames.com"
+    )
 
-    all_comments = [comment1, comment2, comment3, comment4]
+    all_comments = [comment1, comment2, comment3, comment4, comment5]
     saved_comments = [db.session.add(comment) for comment in all_comments]
     db.session.commit()
 

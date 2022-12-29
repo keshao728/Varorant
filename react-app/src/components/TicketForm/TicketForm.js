@@ -36,9 +36,9 @@ const TicketForm = () => {
 
   const validate = () => {
     let err = {}
-    if (subject.length > 15) err.subject = 'Subject must be less than 15 characters'
+    if (subject.length > 25) err.subject = 'Subject must be less than 25 characters'
     if (subject.length < 3) err.subject = 'Subject must be at least 3 characters'
-    if (description.length > 100) err.description = 'Description must be less than 100 characters'
+    if (description.length > 200) err.description = 'Description must be less than 200 characters'
     if (description.length < 10) err.description = 'Description must be at least 10 characters'
     // if (attachments && !attachments.match(/\.(jpg|jpeg|png|gif)$/)) err.attachments = "Please enter a valid URL ending with jpg, jpeg, png or gif"
     setErrors(err)

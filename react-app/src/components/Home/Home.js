@@ -52,7 +52,7 @@ const Home = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [ref, ref2]);
+  }, [ref, ref2, ref3, ref4]);
 
   //REWORD
   let top_final = 'VLRT PR0T0C0L'
@@ -86,6 +86,7 @@ const Home = () => {
         reword_status = false
       }
     }
+    window.onscroll = null;
   }
 
   function rewords1() {
@@ -103,6 +104,7 @@ const Home = () => {
         reword_top.innerHTML = top_initial
       }
     }, 30)
+    window.onscroll = null;
   }
 
   function rewords2() {
@@ -120,8 +122,8 @@ const Home = () => {
         reword_bottom.innerHTML = bottom_initial
       }
     }, 30)
+    window.onscroll = null;
   }
-
 
   return (
     <div className="home-wrapper">
@@ -130,7 +132,7 @@ const Home = () => {
       <div className='video-line-2'></div>
       <div className='video-wrapper'>
         <div className='video-des'>A 5v5 character-based tactical shooter</div>
-        <img className='video-title' src={varorantW} alt="Video Title"/>
+        <img className='video-title' src={varorantW} alt="Video Title" />
         <PlayFree />
         {/* <div className="tests"></div> */}
         <video className="home-video" alt="Home Video" src={homeVid} autoPlay muted loop></video>
@@ -233,7 +235,7 @@ const Home = () => {
       </div>
       <div className="overview-wrapper">
         <div className="overview-line"></div>
-        <img src={harbor} className="harbor-img" alt="Harbor"/>
+        <img src={harbor} className="harbor-img" alt="Harbor" />
         <div className="overview-text">
           <div className="overview-des">EPISODE_5 // ACT III / YR 2</div>
           <div className="fade-title">
@@ -315,12 +317,12 @@ const Home = () => {
                 </div>
                 <div className="defy-gameplay">Gameplay</div>
                 <video className="defy-gif" preload="true" autoPlay muted loop>
-                  <source src={defy} type="video/mp4" alt="Gameplay Video"/>
+                  <source src={defy} type="video/mp4" alt="Gameplay Video" />
                 </video>
                 <div className="defy-vid-line"></div>
 
                 <div className="defy-gif-button-wrapper">
-                  <img className="defy-gif-button" src={playbutton} alt="Play Video Button"/>
+                  <img className="defy-gif-button" src={playbutton} alt="Play Video Button" />
                   <div className="defy-gif-overlay"> </div>
                 </div>
               </div>
@@ -403,7 +405,7 @@ const Home = () => {
           </div>
         </div>
         <div>
-          <img src={map} className="map-img" alt="Map"/>
+          <img src={map} className="map-img" alt="Map" />
           <img src={birds} className="bird-img" ref={ref3} alt="Bird" />
         </div>
       </div>
