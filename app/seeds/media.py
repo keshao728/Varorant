@@ -109,6 +109,12 @@ def seed_media():
         attachment="https://imgur.com/jjIZ10S.jpg"
     )
 
+    # media19 = Media(
+    #     user_id=2,
+    #     title="TEST",
+    #     attachment="https://varorant.s3.us-west-1.amazonaws.com/24bb0e5ffad041d7a15a0550f605efa5.png"
+    # )
+
     db.session.add(media1)
     db.session.add(media2)
     db.session.add(media3)
@@ -127,6 +133,7 @@ def seed_media():
     db.session.add(media16)
     db.session.add(media17)
     db.session.add(media18)
+    # db.session.add(media19)
     db.session.commit()
 
 

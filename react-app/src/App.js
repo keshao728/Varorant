@@ -16,6 +16,7 @@ import AllMedia from './components/AllMedia/AllMedia';
 import TicketForm from './components/TicketForm/TicketForm';
 import ImgModal from './components/AllMedia/ImgModal';
 import { authenticate } from './store/session';
+import AllComments from './components/Comments/Comments';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -67,6 +68,7 @@ function App() {
         <Route path='/tickets/:ticketId'>
           <NavBar />
           <SingleTicket />
+          {/* <AllComments /> */}
         </Route>
         <Route exact path='/media'>
           <NavBar />

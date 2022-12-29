@@ -16,8 +16,10 @@
 
 .clicked-img {
   display: block;
-  width: 100%;
-  height: auto;
+  width: 1230px;
+  height: 690px;
+
+  /* height: auto; */
 }
 
 .close-img-modal {
@@ -55,12 +57,12 @@
 }
 
 .modal-left,
-.modal-right{
+.modal-right {
   cursor: pointer;
   display: block;
 }
 
-.img-modal-img-title{
+.img-modal-img-title {
   display: flex;
   flex-direction: row;
   gap: 20px;
@@ -68,7 +70,7 @@
   text-transform: uppercase;
 }
 
-.button-delete-media{
+.button-delete-media {
   background-color: transparent;
   border: none;
   color: #FF4655;
@@ -77,35 +79,36 @@
   cursor: pointer;
 }
 
-.button-delete-media:hover{
+.button-delete-media:hover {
   color: #ECE8E1;
 }
 
-.img-title-buttons-wrapper{
+.img-title-buttons-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
-.img-title-button-overlay{
+
+.img-title-button-overlay {
   position: relative;
   border: 1px solid #ECE8E1;
 
 }
 
 
-.img-title-button-overlay:hover .img-title-overlay{
+.img-title-button-overlay:hover .img-title-overlay {
   width: 100%;
   position: absolute;
 }
 
-.img-title-overlay{
+.img-title-overlay {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  top:0;
+  top: 0;
   background-color: #78000e;
   overflow: hidden;
   width: 0;

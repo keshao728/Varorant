@@ -12,8 +12,12 @@ class Ticket(db.Model):
     description = db.Column(db.String(255), nullable=False)
     attachments = db.Column(db.String(255), nullable=True)
     status = db.Column(db.Boolean)
-    created_at = db.Column(db.DateTime(timezone=True), server_default=func.current_timestamp())
-    updated_at = db.Column(db.DateTime(timezone=True), onupdate=func.current_timestamp())
+    created_at = db.Column(db.DateTime(timezone=True),
+                           server_default=func.current_timestamp())
+    updated_at = db.Column(db.DateTime(timezone=True),
+                           onupdate=func.current_timestamp())
+
+    ticket_comment = db.relationship('Comment', back_populates='comment_ticket')
 
     def to_dict(self):
         return {

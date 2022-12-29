@@ -1,0 +1,127 @@
+.individual-comment {
+  padding: 30px 20px 30px 20px;
+  border-bottom: 1px solid #ECE8E1;
+  width: 560px;
+}
+
+.comment-form-wrapper {
+  padding: 30px 20px 30px 20px;
+  border-bottom: 1px solid #ECE8E1;
+}
+
+.comment-pfp {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.comment-user-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+  height: 40px;
+
+}
+
+.comment-user-des {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.comment-user {
+  font-size: 14px;
+  /* color: #55574C; */
+  letter-spacing: 0.5px;
+  margin-right: 10px;
+}
+
+.comment-des {
+  margin-bottom: 10px;
+  font-size: 12px;
+  color: #55574C;
+  letter-spacing: 0.5px;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow-wrap: break-word;
+  white-space: wrap;
+}
+
+.comment-input {
+  border: none;
+  resize: none;
+  width: 96%;
+  height: 80px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.button-create-comment {
+  border: none;
+  background: #E4373C;
+  display: flex;
+  font-size: 11px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  justify-content: center;
+  width: 180px;
+  height: 44px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.comment-button-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-actions{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.comment-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ECE8E1;
+  background: transparent;
+  color: #818181;
+  cursor: pointer;
+}
+
+.comment-button:hover{
+  color: #DA363A;
+  border-color: #ffd0d0;
+}
+
+
+.comment-error {
+  border: 1px solid #E35B66;
+  background-color: #FFF0F1;
+  width: 98%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding-left: 5px;
+  gap: 5px;
+  color: #E35B66;
+  font-size: 14px;
+}
+
+
+.caution {
+  width: 20px;
+}

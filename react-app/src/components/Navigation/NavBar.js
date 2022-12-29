@@ -58,9 +58,11 @@ const NavBar = () => {
           <div className='nav-action'>
             <NavLink to='/media' exact={true} className="individual-action" activeClassName='active'>
               Media
+              <div className="nav-line"></div>
             </NavLink>
             <NavLink to='/support' exact={true} className="individual-action" activeClassName='active'>
               Support
+              <div className="nav-line"></div>
             </NavLink>
 
           </div>

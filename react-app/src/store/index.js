@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import ticketReducer from './ticket';
 import mediaReducer from './media';
+import commentReducer from './comment';
 
 const rootReducer = combineReducers({
   session,
   ticket: ticketReducer,
-  media: mediaReducer
+  media: mediaReducer,
+  comment: commentReducer
 });
 
 

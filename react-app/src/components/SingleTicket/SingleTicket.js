@@ -6,12 +6,12 @@ import DeleteTicketModal from "./DeleteTicket/DeleteTicketModal";
 import EditTicketModal from "../TicketForm/EditTicketForm/EditTicketModal";
 import * as moment from 'moment';
 
-
 import { getOneTicketThunk } from '../../store/ticket';
 import varorantW from '../Home/HomeAssets/varorantW.png'
 
 import './SingleTicket.css'
 import '../TicketForm/TicketForm.css'
+import AllComments from "../Comments/Comments";
 
 const SingleTicket = () => {
   const dispatch = useDispatch();
@@ -20,6 +20,9 @@ const SingleTicket = () => {
   const sessionUser = useSelector(state => state.session.user);
 
   const ticket = useSelector((state) => state.ticket);
+
+  // const comment = useSelector((state) => state.ticket.Comments);
+  // console.log("COMMENT", comment)
 
   const myTicket = ticket[ticketId]
   console.log("MYTICKET", myTicket)
@@ -64,21 +67,21 @@ const SingleTicket = () => {
             <div className="left-section">
               <div className="left-title">TICKET ID</div>
               <div className="left-item">
-                #{myTicket.id}
+                #{myTicket?.id}
               </div>
             </div>
 
             <div className="left-section">
               <div className="left-title">CREATED</div>
               <div className="left-item">
-                {moment(ticket.created_at).fromNow()}
+                {moment(myTicket?.created_at).fromNow()}
               </div>
             </div>
 
             <div className="left-section">
               <div className="left-title">STATUS</div>
               <div className="left-item">
-                {myTicket.status === null || myTicket.status === false ? "Open" : "Solved"}
+                {myTicket?.status === null || myTicket?.status === false ? "Open" : "Solved"}
               </div>
             </div>
 
@@ -94,14 +97,14 @@ const SingleTicket = () => {
               </div>
 
               <div className="single-subject">
-                {myTicket.subject}
+                {myTicket?.subject}
               </div>
 
               <div className="single-des">
-                {myTicket.description}
+                {myTicket?.description}
               </div>
 
-              {myTicket.attachments ?
+              {myTicket?.attachments ?
                 <img className="single-attachments" src={myTicket?.attachments} alt="" onError={""} /> : ""
               }
 
@@ -114,6 +117,9 @@ const SingleTicket = () => {
                   {sessionUser.id === myTicket.user_id && <DeleteTicketModal />}
                 </div>
               </div>
+            </div>
+            <div>
+              <AllComments />
             </div>
           </div>
           <div className="empty-single-tickets"></div>

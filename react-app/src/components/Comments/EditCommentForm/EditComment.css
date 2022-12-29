@@ -1,0 +1,47 @@
+.edit-submit-comment-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ECE8E1;
+  background: #DA363A;
+  color: white;
+  cursor: pointer;
+}
+
+/* .edit-submit-comment-button:hover{
+  color: #DA363A;
+  border-color: #ffd0d0;
+}
+ */
+
+.edit-cancel-comment-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ECE8E1;
+  background: transparent;
+  color: #818181;
+  cursor: pointer;
+}
+
+.edit-cancel-comment-button:hover{
+  color: #DA363A;
+  border-color: #ffd0d0;
+}
+
+.edit-comment-button-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.comment-input {
+  border: none;
+  resize: none;
+  width: 96%;
+  height: 80px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
