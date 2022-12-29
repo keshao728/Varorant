@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useEffect, useRef } from 'react';
 import varorantW from '../Home/HomeAssets/varorantW.png'
 import submitTicket from './supportImages/submitTicket.png'
 import userTicket from './supportImages/userTicket.png'
@@ -9,7 +10,22 @@ import './Support.css'
 const Support = () => {
   const sessionUser = useSelector(state => state.session.user);
   // const history = useHistory();
+  const allTicketRef = useRef(null);
+  useEffect(() => {
+    const all = allTicketRef.current;
+    
+    const shadowItem = all.attachShadow({ mode: 'open' });
+    shadowItem.innerHTML = `
+    <style>
 
+    </style>
+    <div className="">
+
+
+    </div>
+
+    `
+  }, [])
 
   return (
     <div className='support-mother'>
@@ -57,6 +73,7 @@ const Support = () => {
     <div>USEFUL ERROR CODES</div> */}
         </div>
       }
+      <div ref={allTicketRef}></div>
     </div>
   )
 }
