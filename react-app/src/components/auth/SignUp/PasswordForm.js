@@ -31,13 +31,13 @@ const PasswordForm = ({ password, setPassword, repeatPassword, setRepeatPassword
           <div>
             {errors.password &&
               <div className='sign-in-error'>
-                <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
+                <img className="caution" src="https://imgur.com/E1p7Fvo.png" alt="Error Message" />
                 {errors.password}
               </div>
             }
             {errors.repeatPassword &&
               <div className='sign-in-error'>
-                <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
+                <img className="caution" src="https://imgur.com/E1p7Fvo.png" alt="Error Message"/>
                 {errors.repeatPassword}
               </div>
             }

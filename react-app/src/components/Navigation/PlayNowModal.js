@@ -26,6 +26,7 @@ const PlayNow = () => {
               className="playnow-cancel"
               onClick={closeModal}
               src={close}
+              alt="Cancel"
             />
             <div className="playnow-title">
               <div>\</div>

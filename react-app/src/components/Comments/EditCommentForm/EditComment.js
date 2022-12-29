@@ -81,7 +81,7 @@ const EditComment = ({ setShowEdit, comment }) => {
                   validationErrors.length > 0 &&
                   validationErrors.map(error => (
                     <div className="comment-error">
-                      <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
+                      <img className="caution" src="https://imgur.com/E1p7Fvo.png" alt="Error Message"/>
                       <div className="comment-form-error-text" key={error}>{error}</div>
                     </div>
                   ))

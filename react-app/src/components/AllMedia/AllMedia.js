@@ -128,7 +128,7 @@ const AllMedia = () => {
           </div>
         </div>
         <div>
-          <img className="media-top-gif" src="https://imgur.com/EWhTQo2.gif" />
+          <img className="media-top-gif" src="https://imgur.com/EWhTQo2.gif" alt="Skye Gameplay"/>
         </div>
       </div>
 
@@ -157,6 +157,7 @@ const AllMedia = () => {
             >
               <img className="media-img"
                 src={media.attachment}
+                alt="Media"
                 onError={(e) => e.target.src = "https://imgur.com/2DrReGq.jpg"}
               // onClick={() => {
               //   setClickedImg(media.attachment);

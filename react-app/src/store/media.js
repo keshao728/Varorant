@@ -9,10 +9,10 @@ const getAllMediaAction = (media) => ({
   media
 })
 
-const getOneMediaAction = (media) => ({
-  type: GET_ONE_MEDIA,
-  media
-})
+// const getOneMediaAction = (media) => ({
+//   type: GET_ONE_MEDIA,
+//   media
+// })
 
 // const editMediaAction = (mediaId) => ({
 //   type: EDIT_MEDIA,

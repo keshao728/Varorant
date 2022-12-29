@@ -135,7 +135,7 @@ const MediaForm = ({ setModalOpen }) => {
     <div className='media-mother'>
       <div className='media-form-wrapper'>
         <form className='media-wrapper' onSubmit={handleSubmit} id="media-form">
-          <img className="media-close-edit" src={close} onClick={() => setModalOpen(false)} />
+          <img className="media-close-edit" src={close} alt="Cancel" onClick={() => setModalOpen(false)} />
           <div className='media-form-title-des'>
             <div className='media-form-title'>
               Post A Media
@@ -162,7 +162,7 @@ const MediaForm = ({ setModalOpen }) => {
                 onChange={(e) => setTitle(e.target.value)} />
               {!!errors.title &&
                 <div className="ticket-error">
-                  <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
+                  <img className="caution" src="https://imgur.com/E1p7Fvo.png" alt="Error Message" />
                   {errors.title}
                 </div>
               }
@@ -191,7 +191,7 @@ const MediaForm = ({ setModalOpen }) => {
               </label>
               {!!errors.attachment &&
                 <div className="ticket-error" >
-                  <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
+                  <img className="caution" src="https://imgur.com/E1p7Fvo.png" alt="Error Message" />
                   {errors.attachment}
                 </div>
               }
@@ -199,7 +199,7 @@ const MediaForm = ({ setModalOpen }) => {
 
             {(imageLoading) ?
               <div className="button-media">
-                <img className="button-media-loading" src="https://imgur.com/ktdZebh.gif" />
+                <img className="button-media-loading" src="https://imgur.com/ktdZebh.gif" alt="Loading" />
               </div>
               :
               <button className="button-media" type="submit"> SUBMIT </button>

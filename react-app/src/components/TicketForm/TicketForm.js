@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { NavLink, useHistory, Redirect } from 'react-router-dom';
 // import { useHistory } from 'react-router-dom';
-import { createTicketThunk, getAllTicketsThunk } from '../../store/ticket';
+import { getAllTicketsThunk } from '../../store/ticket';
 import varorantW from '../Home/HomeAssets/varorantW.png'
 // import ticketBanner from './TicketImages/ticketBanner.jpg'
 import './TicketForm.css';
@@ -134,7 +134,7 @@ const TicketForm = () => {
   return (
     <div className='ticket-mother'>
       <div className='ticket-top-wrapper'>
-        <img className='ticket-title' src={varorantW} />
+        <img className='ticket-title' src={varorantW} alt="Banner"/>
       </div>
 
       <div className='ticket-support-wrapper'>
@@ -197,7 +197,7 @@ const TicketForm = () => {
                   onChange={(e) => setSubject(e.target.value)} />
                 {!!errors.subject &&
                   <div className="ticket-error">
-                    <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
+                    <img className="caution" src="https://imgur.com/E1p7Fvo.png" alt="Error Message"/>
                     {errors.subject}
                   </div>
                 }
@@ -216,7 +216,7 @@ const TicketForm = () => {
                   onChange={(e) => setDescription(e.target.value)} />
                 {!!errors.description &&
                   <div className='ticket-error'>
-                    <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
+                    <img className="caution" src="https://imgur.com/E1p7Fvo.png" alt="Error Message" />
                     {errors.description}
                   </div>
                 }
@@ -244,7 +244,7 @@ const TicketForm = () => {
                   onChange={(e) => setAttachments(e.target.value)} /> */}
                 {!!errors.attachments &&
                   <div className="ticket-error">
-                    <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
+                    <img className="caution" src="https://imgur.com/E1p7Fvo.png" alt="Error Message"/>
                     {errors.attachments}
                   </div>
                 }
@@ -252,7 +252,7 @@ const TicketForm = () => {
               </div>
               {(imageLoading) ?
                 <div className="button-ticket">
-                  <img className="button-ticket-loading" src="https://imgur.com/ktdZebh.gif" />
+                  <img className="button-ticket-loading" src="https://imgur.com/ktdZebh.gif" alt="Loading"/>
                 </div>
                 :
                 <button className="button-create-ticket" type="submit"> SUBMIT </button>

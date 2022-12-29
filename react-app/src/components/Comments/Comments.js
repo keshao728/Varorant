@@ -84,7 +84,7 @@ const AllComments = () => {
           return (
             <div className="individual-comment">
               <div className="comment-user-info">
-                <img className="comment-pfp" src="https://i.imgur.com/2DrReGq.jpg"></img>
+                <img className="comment-pfp" src="https://i.imgur.com/2DrReGq.jpg" alt="Default Profile Picture"></img>
                 <div className="comment-user-des">
                   <div className="comment-user">
                     {comment.commentter.username}
@@ -146,7 +146,7 @@ const AllComments = () => {
                       validationErrors.length > 0 &&
                       validationErrors.map(error => (
                         <div className="comment-error">
-                          <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
+                          <img className="caution" src="https://imgur.com/E1p7Fvo.png" alt="Error Message"/>
                           <div className="comment-form-error-text" key={error}>{error}</div>
                         </div>
                       ))

@@ -23,7 +23,7 @@ const DeleteTicket = ({ setModalOpen }) => {
   return (
     <div className='delete-ticket-wrapper'>
       <form onSubmit={handleSubmit}>
-      <img className="ticket-close-delete" src={close} onClick={() => setModalOpen(false)} />
+      <img className="ticket-close-delete" src={close} alt="Cancel" onClick={() => setModalOpen(false)} />
         <div className='delete-ticket'>
           <div className='delete-ticket-title'> Would you like to delete this ticket? </div>
           <button className='button-delete-ticket' type='submit'>Delete</button>

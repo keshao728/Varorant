@@ -49,7 +49,7 @@ const NavBar = () => {
             <NavLink to='/' exact={true} className="meowit-games" activeClassName='active'>
               <div className='nav-home'>
                 <div className="nav-home-logo" >
-                  <img className='nav-home-individual-logo' src={logo} />
+                  <img className='nav-home-individual-logo' src={logo} alt="Site Logo"/>
                 </div>
                 <div className='nav-home-name'>MEOWIT GAMES</div>
               </div>

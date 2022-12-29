@@ -39,7 +39,7 @@ const UserTickets = () => {
   return isLoaded && (
     <div className="my-ticket-wrapper">
       <div className='ticket-top-wrapper'>
-        <img className='ticket-title' src={varorantW} />
+        <img className='ticket-title' src={varorantW} alt="Banner"/>
       </div>
 
       <div className='ticket-support-wrapper'>

@@ -33,7 +33,7 @@ const ImgModal = ({ clickedImg, setClickedImg, clickRight, clickLeft, imgTitle, 
   return (
     <div className="img-modal-wrapper close-me" onClick={handleClick}>
       <div className='img-modal-content'>
-        <img className="clicked-img" src={clickedImg} onError={(e) => e.target.src = "https://imgur.com/2DrReGq.jpg"} />
+        <img className="clicked-img" src={clickedImg} alt="Media" onError={(e) => e.target.src = "https://imgur.com/2DrReGq.jpg"} />
         <div className='img-title-buttons-wrapper'>
           <div className='img-title-buttons'>
             <div className="img-title-button-overlay">
@@ -60,7 +60,7 @@ const ImgModal = ({ clickedImg, setClickedImg, clickRight, clickLeft, imgTitle, 
             <button onClick={handleSubmit} className='button-delete-media close-me' type='submit'>Delete</button>
           }
         </div>
-        <img className="close-img-modal close-me" src={close} onClick={handleClick} />
+        <img className="close-img-modal close-me" src={close} alt="Cancel" onClick={handleClick} />
       </div>
     </div>
   )

@@ -40,7 +40,7 @@ const SingleTicket = () => {
   return isLoaded && (
     <div className="single-ticket-mother">
       <div className='ticket-top-wrapper'>
-        <img className='ticket-title' src={varorantW} />
+        <img className='ticket-title' src={varorantW} alt="Banner"/>
       </div>
 
       <div className='ticket-support-wrapper'>
@@ -105,7 +105,7 @@ const SingleTicket = () => {
               </div>
 
               {myTicket?.attachments ?
-                <img className="single-attachments" src={myTicket?.attachments} alt="" onError={""} /> : ""
+                <img className="single-attachments" src={myTicket?.attachments} alt="Attachment" onError={""} /> : ""
               }
 
               <div className="single-actions">

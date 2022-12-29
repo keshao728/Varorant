@@ -5,7 +5,6 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUp/SignUpForm';
 import NavBar from './components/Navigation/NavBar';
 // import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/User/UsersList';
 import User from './components/User/User';
 import Home from './components/Home/Home';
 import UserTickets from './components/UserTickets/UserTickets';
@@ -14,9 +13,7 @@ import AllTicket from './components/TicketPage/AllTicket';
 import SingleTicket from './components/SingleTicket/SingleTicket';
 import AllMedia from './components/AllMedia/AllMedia';
 import TicketForm from './components/TicketForm/TicketForm';
-import ImgModal from './components/AllMedia/ImgModal';
 import { authenticate } from './store/session';
-import AllComments from './components/Comments/Comments';
 
 function App() {
   const [loaded, setLoaded] = useState(false);

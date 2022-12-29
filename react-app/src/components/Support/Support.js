@@ -13,7 +13,7 @@ const Support = () => {
   const allTicketRef = useRef(null);
   useEffect(() => {
     const all = allTicketRef.current;
-    
+
     const shadowItem = all.attachShadow({ mode: 'open' });
     shadowItem.innerHTML = `
     <style>
@@ -31,20 +31,20 @@ const Support = () => {
     <div className='support-mother'>
       <div className='support-top-wrapper'>
         <div className='support-top'>
-          <img className='support-title' src={varorantW} />
+          <img className='support-title' src={varorantW} alt="Banner"/>
           <button></button>
         </div>
       </div>
       {sessionUser ?
         <div className="support-ticket-icons">
           <NavLink to='/tickets/my-tickets' exact={true} className="support-ticket" activeClassName='active'>
-            <img className="support-icon" src={userTicket} />
+            <img className="support-icon" src={userTicket} alt="My Tickets"/>
             <div className="support-name">
               MY TICKETS
             </div>
           </NavLink>
           <NavLink to='/tickets/new' exact={true} className="support-ticket" activeClassName='active'>
-            <img className="support-icon" src={submitTicket} />
+            <img className="support-icon" src={submitTicket} alt="Submit Ticket" />
             <div className="support-name">
               SUBMIT A TICKET
             </div>
@@ -56,13 +56,13 @@ const Support = () => {
         <div>
           <div className="support-ticket-icons">
             <NavLink to='/login' exact={true} className="support-ticket" activeClassName='active'>
-              <img className="support-icon" src={userTicket} />
+              <img className="support-icon" src={userTicket} alt="My Tickets"/>
               <div className="support-name">
                 MY TICKETS
               </div>
             </NavLink>
             <NavLink to='/login' exact={true} className="support-ticket" activeClassName='active'>
-              <img className="support-icon" src={submitTicket} />
+              <img className="support-icon" src={submitTicket} alt="Submit Ticket"/>
               <div className="support-name">
                 SUBMIT A TICKET
               </div>

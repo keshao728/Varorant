@@ -50,7 +50,7 @@ const LoginForm = () => {
         <NavLink to='/' exact={true} className="singin-link-home" activeClassName='active'>
           <div className='signin-home'>
             <div className="signin-home-logo" >
-              <img className='signin-home-individual-logo' src={logo} />
+              <img className='signin-home-individual-logo' src={logo} alt="Site Logo"/>
             </div>
             <div className='signin-home-name'>MEOWIT GAMES</div>
           </div>
@@ -72,7 +72,7 @@ const LoginForm = () => {
             </div>
             {!!errors.length && (
               <div className='sign-in-error'>
-                <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
+                <img className="caution" src="https://imgur.com/E1p7Fvo.png" alt="Error Message"/>
                 {errors.filter(error => error.includes("email"))}
               </div>
             )}
@@ -88,7 +88,7 @@ const LoginForm = () => {
             </div>
             {!!errors.length && (
               <div className='sign-in-error'>
-                <img className="caution" src="https://imgur.com/E1p7Fvo.png" />
+                <img className="caution" src="https://imgur.com/E1p7Fvo.png" alt="Error Message"/>
                 {errors.filter(error => error.includes("password"))}
               </div>
             )}

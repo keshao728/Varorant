@@ -130,10 +130,10 @@ const Home = () => {
       <div className='video-line-2'></div>
       <div className='video-wrapper'>
         <div className='video-des'>A 5v5 character-based tactical shooter</div>
-        <img className='video-title' src={varorantW} />
+        <img className='video-title' src={varorantW} alt="Video Title"/>
         <PlayFree />
         {/* <div className="tests"></div> */}
-        <video className="home-video" src={homeVid} autoPlay muted loop></video>
+        <video className="home-video" alt="Home Video" src={homeVid} autoPlay muted loop></video>
       </div>
       <div className="video-triangle"></div>
       <div className="home-latest" id="home-latest">
@@ -170,7 +170,7 @@ const Home = () => {
                   durationInMilliseconds={500}
                   delayInMilliseconds={100}>
                   <div className="latest-img-overlay"></div>
-                  <img className="latest-img" src={latest1} />
+                  <img className="latest-img" src={latest1} alt="Latest News 1" />
                 </FadeIn>
               </div>
             </div>
@@ -194,7 +194,7 @@ const Home = () => {
                   triggerOffset={0}
                   durationInMilliseconds={200}
                   delayInMilliseconds={200}>
-                  <img className="latest-img" src={latest2} />
+                  <img className="latest-img" src={latest2} alt="Latest News 2" />
                   <div className="latest-img-overlay"></div>
                 </FadeIn>
               </div>
@@ -218,7 +218,7 @@ const Home = () => {
                   triggerOffset={200}
                   delayInMilliseconds={300}
                   durationInMilliseconds={500}>
-                  <img className="latest-img" id="latest-img-id" src={latest3} />
+                  <img className="latest-img" id="latest-img-id" src={latest3} alt="Latest News 3" />
                   <div className="latest-img-overlay"></div>
                 </FadeIn>
               </div>
@@ -233,7 +233,7 @@ const Home = () => {
       </div>
       <div className="overview-wrapper">
         <div className="overview-line"></div>
-        <img src={harbor} className="harbor-img" />
+        <img src={harbor} className="harbor-img" alt="Harbor"/>
         <div className="overview-text">
           <div className="overview-des">EPISODE_5 // ACT III / YR 2</div>
           <div className="fade-title">
@@ -315,12 +315,12 @@ const Home = () => {
                 </div>
                 <div className="defy-gameplay">Gameplay</div>
                 <video className="defy-gif" preload="true" autoPlay muted loop>
-                  <source src={defy} type="video/mp4" />
+                  <source src={defy} type="video/mp4" alt="Gameplay Video"/>
                 </video>
                 <div className="defy-vid-line"></div>
 
                 <div className="defy-gif-button-wrapper">
-                  <img className="defy-gif-button" src={playbutton} />
+                  <img className="defy-gif-button" src={playbutton} alt="Play Video Button"/>
                   <div className="defy-gif-overlay"> </div>
                 </div>
               </div>
@@ -334,7 +334,7 @@ const Home = () => {
         <div className="agent-triangle"></div>
 
         <div className="agent-gif-wrap">
-          <img src={reynaraze} ref={ref4} className="agent-gif" />
+          <img src={reynaraze} ref={ref4} className="agent-gif" alt="Reyna and Raze" />
         </div>
         <div className="agent-line"></div>
         <div className="agent-right">
@@ -403,8 +403,8 @@ const Home = () => {
           </div>
         </div>
         <div>
-          <img src={map} className="map-img" />
-          <img src={birds} className="bird-img" ref={ref3} />
+          <img src={map} className="map-img" alt="Map"/>
+          <img src={birds} className="bird-img" ref={ref3} alt="Bird" />
         </div>
       </div>
 

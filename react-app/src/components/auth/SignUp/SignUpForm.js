@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, NavLink } from 'react-router-dom';
 import { signUp } from '../../../store/session';
@@ -111,7 +111,7 @@ const SignUpForm = () => {
 
   useEffect(() => {
     if (displayErrors) validate()
-  }, [setErrors, username, email, password, repeatPassword])
+  }, [setErrors, username, email, password, repeatPassword, displayErrors])
 
   const PageDisplay = () => {
     if (page === 0) {
@@ -140,7 +140,7 @@ const SignUpForm = () => {
         <NavLink to='/' exact={true} className="singup-link-home" activeClassName='active'>
           <div className='signup-home'>
             <div className="signup-home-logo" >
-              <img className='signup-home-individual-logo' src={logo} />
+              <img className='signup-home-individual-logo' src={logo} alt="Site Logo" />
             </div>
             <div className='signup-home-name'>MEOWIT GAMES</div>
           </div>
