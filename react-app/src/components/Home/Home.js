@@ -15,6 +15,7 @@ import map from './HomeAssets/map.png'
 // import wearevalo from './HomeAssets/wearevalo.png'
 import birds from './HomeAssets/birds.png'
 import { FadeIn } from 'react-slide-fade-in'
+import defy from './HomeAssets/defy.mp4'
 import background from './HomeAssets/background.png'
 import "./Home.css"
 
@@ -134,7 +135,7 @@ const Home = () => {
         {/* <div className="tests"></div> */}
         <video className="home-video" src={homeVid} autoPlay muted loop></video>
       </div>
-
+      <div className="video-triangle"></div>
       <div className="home-latest" id="home-latest">
         <div className="latest-line"></div>
         {/* <img className="home-background" src={wearevalo}/> */}
@@ -303,12 +304,21 @@ const Home = () => {
                   </button>
                 </div>
               </div>
+              <div className="defy-00">00.</div>
             </div>
-
             <a href="https://www.youtube.com/watch?v=le474A3jBxA&t=3s&ab_channel=VALORANT" className="defy-gif-wrapper" target="_blank" rel="noreferrer">
-              <img className="defy-gif" src="https://imgur.com/5DxTAAS.gif" />
-
+              {/* <img className="defy-gif" src="https://imgur.com/5DxTAAS.gif" /> */}
               <div className="defy-border">
+                <div className="defy-dots">
+                  <div className="defy-dots-1"></div>
+                  <div className="defy-dots-2"></div>
+                </div>
+                <div className="defy-gameplay">Gameplay</div>
+                <video className="defy-gif" preload="true" autoPlay muted loop>
+                  <source src={defy} type="video/mp4" />
+                </video>
+                <div className="defy-vid-line"></div>
+
                 <div className="defy-gif-button-wrapper">
                   <img className="defy-gif-button" src={playbutton} />
                   <div className="defy-gif-overlay"> </div>
@@ -321,7 +331,7 @@ const Home = () => {
       </div>
 
       <div className="agent-wrapper">
-      <div className="agent-triangle"></div>
+        <div className="agent-triangle"></div>
 
         <div className="agent-gif-wrap">
           <img src={reynaraze} ref={ref4} className="agent-gif" />
