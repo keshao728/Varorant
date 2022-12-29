@@ -59,7 +59,7 @@ def upload_image():
         title=data['title'],
         # title= form.title.data,
         attachment=attachment
-        )
+    )
     db.session.add(new_image)
     db.session.commit()
     return {"attachment": attachment}
