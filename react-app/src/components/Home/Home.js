@@ -29,6 +29,12 @@ const Home = () => {
 
   const ref4 = useRef(null);
 
+  // const ref5 = useRef(null);
+  // const ref6 = useRef(null);
+  // const ref7 = useRef(null);
+  // const ref8 = useRef(null);
+
+
   useEffect(() => {
     const handleScroll = () => {
       //get the pixel from the top of the page
@@ -41,53 +47,88 @@ const Home = () => {
       const elementTop3 = ref3?.current?.offsetTop;
       const elementTop4 = ref4?.current?.offsetTop;
 
-      ref.current.style.transform = `translateY(${(scrollTop - elementTop) / 20}px)`;
-      ref2.current.style.transform = `translateY(${(scrollTop - elementTop2) / 15}px)`;
-      ref3.current.style.transform = `translateY(${-(scrollTop - elementTop3) / 35}px) translateX(${-(scrollTop - elementTop3) / 5}px)`;
-      ref4.current.style.transform = `translateY(${-(scrollTop - elementTop4) / 10}px)`;
+      if (ref.current) {
+        ref.current.style.transform = `translateY(${(scrollTop - elementTop) / 20}px)`;
+        ref2.current.style.transform = `translateY(${(scrollTop - elementTop2) / 15}px)`;
+        ref3.current.style.transform = `translateY(${-(scrollTop - elementTop3) / 35}px) translateX(${-(scrollTop - elementTop3) / 5}px)`;
+        ref4.current.style.transform = `translateY(${-(scrollTop - elementTop4) / 10}px)`;
+      }
+
+      //get my divs
+      // let reword_wrapper = ref5.current;
+      // let reword_top = ref6.current;
+      // let reword_bottom = ref7.current;
+      // let reword_line = ref8.current;
+      let reword_wrapper = document?.getElementById("reword-wrapper");
+      let reword_line = document?.getElementById('reword-line')
+      let reword_top = document?.getElementById('rewords1')
+      let reword_bottom = document?.getElementById('rewords2')
+
+      let scope = (reword_wrapper?.offsetHeight * (100 - 90)) / 100;
+      let clientHeight = document?.documentElement.clientHeight;
+
+      //get the size of an element and its position relative to the viewport
+      let bottomY = reword_wrapper?.getBoundingClientRect().bottom;
+      // let topY = reword_wrapper.getBoundingClientRect().top;
+      if (reword_line) {
+        if (bottomY < -scope || bottomY > clientHeight + scope) {
+          reword_top.innerHTML = ''
+          reword_bottom.innerHTML = ''
+          reword_line.style.width = "0";
+          reword_status = true
+        } else {
+          if (reword_status) {
+            let reword_line = document.getElementById('reword-line')
+            rewords1()
+            setTimeout(rewords2(), top_final.length * 30);
+            reword_line.style.width = "100%";
+            reword_status = false
+          }
+        }
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-    };
+    }
   }, [ref, ref2, ref3, ref4]);
 
   //REWORD
   let top_final = 'VLRT PR0T0C0L'
   let reword_status = true
 
-  window.onscroll = function () {
-    //get my divs
-    let reword_wrapper = document?.getElementById("reword-wrapper");
-    let reword_line = document?.getElementById('reword-line')
-    let reword_top = document?.getElementById('rewords1')
-    let reword_bottom = document?.getElementById('rewords2')
+  // window.onscroll = function () {
+  //   //get my divs
+  //   let reword_wrapper = document?.getElementById("reword-wrapper");
+  //   let reword_line = document?.getElementById('reword-line')
+  //   let reword_top = document?.getElementById('rewords1')
+  //   let reword_bottom = document?.getElementById('rewords2')
 
-    let scope = (reword_wrapper?.offsetHeight * (100 - 90)) / 100;
-    let clientHeight = document?.documentElement.clientHeight;
+  //   let scope = (reword_wrapper?.offsetHeight * (100 - 90)) / 100;
+  //   let clientHeight = document?.documentElement.clientHeight;
 
-    //get the size of an element and its position relative to the viewport
-    let bottomY = reword_wrapper?.getBoundingClientRect().bottom;
-    // let topY = reword_wrapper.getBoundingClientRect().top;
+  //   //get the size of an element and its position relative to the viewport
+  //   let bottomY = reword_wrapper?.getBoundingClientRect().bottom;
+  //   // let topY = reword_wrapper.getBoundingClientRect().top;
 
-    if (bottomY < -scope || bottomY > clientHeight + scope) {
-      reword_top.innerHTML = ''
-      reword_bottom.innerHTML = ''
-      reword_line.style.width = "0";
-      reword_status = true
-    } else {
-      if (reword_status) {
-        let reword_line = document.getElementById('reword-line')
-        rewords1()
-        setTimeout(rewords2(), top_final.length * 30);
-        reword_line.style.width = "100%";
-        reword_status = false
-      }
-    }
-    window.onscroll = null;
-  }
+  //   if (bottomY < -scope || bottomY > clientHeight + scope) {
+  //     reword_top.innerHTML = ''
+  //     reword_bottom.innerHTML = ''
+  //     reword_line.style.width = "0";
+  //     reword_status = true
+  //   } else {
+  //     if (reword_status) {
+  //       let reword_line = document.getElementById('reword-line')
+  //       rewords1()
+  //       setTimeout(rewords2(), top_final.length * 30);
+  //       reword_line.style.width = "100%";
+  //       reword_status = false
+  //     }
+  //   }
+  //   window.onscroll = null;
+  // }
 
   function rewords1() {
     let top_final = 'VLRT PR0T0C0L'
@@ -126,7 +167,7 @@ const Home = () => {
   }
 
   return (
-    <div className="home-wrapper">
+    <div className="home-wrapper" id="home-wrapper">
       <div className='video-line'></div>
       <div className='video-line-3'></div>
       <div className='video-line-2'></div>
