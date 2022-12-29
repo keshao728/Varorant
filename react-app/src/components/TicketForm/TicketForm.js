@@ -230,9 +230,10 @@ const TicketForm = () => {
                     <input
                       className={!attachments ? "no-show-name" : "ticket-file-name"}
                       type="file"
-                      accept="image/*"
+                      // accept="image/*"
                       onChange={updateImage}
                       id="file-upload"
+                      accept="image/png, image/gif, image/jpeg"
                     />
                   </div>
                 </label>
@@ -249,7 +250,13 @@ const TicketForm = () => {
                 }
 
               </div>
-              <button className="button-create-ticket" type="submit"> SUBMIT </button>
+              {(imageLoading) ?
+                <div className="button-ticket">
+                  <img className="button-ticket-loading" src="https://imgur.com/ktdZebh.gif" />
+                </div>
+                :
+                <button className="button-create-ticket" type="submit"> SUBMIT </button>
+              }
             </div>
           )}
         </form>

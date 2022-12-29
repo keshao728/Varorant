@@ -182,7 +182,8 @@ const MediaForm = ({ setModalOpen }) => {
                 <input
                   className={!attachment ? "no-show-name" : "media-file-name"}
                   type="file"
-                  accept="image/*"
+                  // accept="image/*"
+                  accept="image/png, image/gif, image/jpeg"
                   onChange={updateImage}
                   id="file-upload"
                 />

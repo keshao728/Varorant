@@ -59,10 +59,10 @@ def create_ticket():
     #     return {"errors": "attachments required"}, 400
 
     if "attachments" in request.files:
+        attachments = request.files["attachments"]
         if not allowed_file(attachments.filename):
             return {"errors": "file type not permitted"}, 400
 
-        attachments = request.files["attachments"]
         attachments.filename = get_unique_filename(attachments.filename)
         upload = upload_file_to_s3(attachments)
 

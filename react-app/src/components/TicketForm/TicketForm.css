@@ -210,3 +210,23 @@
   width: 100%;
   height: 150px;
 }
+
+.button-ticket {
+  border: none;
+  background: #E4373C;
+  display: flex;
+  font-size: 11px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  justify-content: center;
+  width: 180px;
+  height: 44px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.button-ticket-loading {
+  width: 20px;
+  height: 20px;
+}
