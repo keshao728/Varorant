@@ -27,6 +27,7 @@ const MediaForm = ({ setModalOpen }) => {
     let err = {}
     if (title.length > 20) err.title = 'Title must be less than 20 characters'
     if (title.length < 3) err.title = 'Title must be at least 3 characters'
+    if (!attachment) err.attachment = 'Please enter a valid URL ending with jpg, jpeg, png or gif'
 
     // if (!attachment.match(/\.(jpg|jpeg|png|gif)$/)) err.attachment = "Please enter a valid URL ending with jpg, jpeg, png or gif"
 
@@ -183,7 +184,7 @@ const MediaForm = ({ setModalOpen }) => {
                   className={!attachment ? "no-show-name" : "media-file-name"}
                   type="file"
                   // accept="image/*"
-                  accept="image/png, image/gif, image/jpeg"
+                  accept="image/png, image/gif, image/jpeg, image/jpg"
                   onChange={updateImage}
                   id="file-upload"
                 />

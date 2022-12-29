@@ -233,7 +233,7 @@ const TicketForm = () => {
                       // accept="image/*"
                       onChange={updateImage}
                       id="file-upload"
-                      accept="image/png, image/gif, image/jpeg"
+                      accept="image/png, image/gif, image/jpeg, image/jpg"
                     />
                   </div>
                 </label>
