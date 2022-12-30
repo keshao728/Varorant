@@ -61,9 +61,9 @@ const ImgModal = ({ clickedImg, setClickedImg, clickRight, clickLeft, imgTitle, 
           }
         </div>
       </div>
-      <div className="close-img-modal close-me">
+      <div className="close-img-modal">
         <div className="close-img-overlay"></div>
-        <img className="close-img-modal-img" src={close} alt="Cancel" onClick={handleClick} />
+        <img className="close-img-modal-img close-me" src={close} alt="Cancel" onClick={handleClick} />
       </div>
     </div>
   )
