@@ -48,22 +48,40 @@ const Support = () => {
         </div>
       </div>
       {sessionUser ?
-        <div className="support-ticket-icons">
-          <NavLink to='/tickets/my-tickets' exact={true} className="support-ticket" activeClassName='active'>
-            <img className="support-icon" src={userTicket} alt="My Tickets" />
-            <div className="support-name">
-              MY TICKETS
+        <div>
+          <div className="support-ticket-icons">
+            <NavLink to='/tickets/my-tickets' exact={true} className="support-ticket" activeClassName='active'>
+              <img className="support-icon" src={userTicket} alt="My Tickets" />
+              <div className="support-name">
+                MY TICKETS
+              </div>
+            </NavLink>
+            <NavLink to='/tickets/new' exact={true} className="support-ticket" activeClassName='active'>
+              <img className="support-icon" src={submitTicket} alt="Submit Ticket" />
+              <div className="support-name">
+                SUBMIT A TICKET
+              </div>
+            </NavLink>
+          </div>
+          <div className="support-all">
+            <div className="support-all-box">
+              <div className="support-all-img">
+                <div className="support-all-line"></div>
+              </div>
+              <div className="support-all-text-wrap">
+                <div className="support-all-text">
+                  Can’t find what you’re looking for?
+                </div>
+                <button
+                  className="support-all-button"
+                  onClick={() => {
+                    history.push("/tickets")
+                  }}>
+                  / VIEW ALL TICKETS
+                </button>
+              </div>
             </div>
-          </NavLink>
-          <NavLink to='/tickets/new' exact={true} className="support-ticket" activeClassName='active'>
-            <img className="support-icon" src={submitTicket} alt="Submit Ticket" />
-            <div className="support-name">
-              SUBMIT A TICKET
-            </div>
-          </NavLink>
-          {/* <div>SUBMIT A TICKET</div> */}
-          {/* <div>VIEW OTHER TICKETS</div>
-      <div>USEFUL ERROR CODES</div> */}
+          </div>
         </div> :
         <div>
           <div className="support-ticket-icons">
@@ -80,13 +98,32 @@ const Support = () => {
               </div>
             </NavLink>
           </div>
+          <div className="support-all">
+            <div className="support-all-box">
+              <div className="support-all-img">
+                <div className="support-all-line"></div>
+              </div>
+              <div className="support-all-text-wrap">
+                <div className="support-all-text">
+                  Can’t find what you’re looking for?
+                </div>
+                <button
+                  className="support-all-button"
+                  onClick={() => {
+                    history.push("/login")
+                  }}>
+                  / VIEW ALL TICKETS
+                </button>
+              </div>
+            </div>
+          </div>
           {/* <div>SUBMIT A TICKET</div> */}
           {/* <div>VIEW OTHER TICKETS</div>
     <div>USEFUL ERROR CODES</div> */}
         </div>
       }
       {/* <div ref={allTicketRef}></div> */}
-      <div className="support-all">
+      {/* <div className="support-all">
         <div className="support-all-box">
           <div className="support-all-img">
             <div className="support-all-line"></div>
@@ -104,7 +141,7 @@ const Support = () => {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
