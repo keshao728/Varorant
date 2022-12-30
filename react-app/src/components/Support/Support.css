@@ -145,7 +145,7 @@
   line-height: 50px;
 }
 
-.support-all-button{
+.support-all-button {
   border: none;
   background: #E4373C;
   display: flex;
@@ -160,4 +160,9 @@
   align-items: center;
   margin-top: 20px;
   letter-spacing: 1px;
+}
+
+.support-all-button:hover {
+  background-color: #c53136;
+  transition: 0.2s ease;
 }

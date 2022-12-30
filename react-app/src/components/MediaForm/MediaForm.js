@@ -196,6 +196,7 @@ const MediaForm = ({ setModalOpen }) => {
                   accept="image/png, image/gif, image/jpeg, image/jpg"
                   onChange={updateImage}
                   id="file-upload"
+                  // style={{ width:"227px", height:"245px" }}
                 />
               </label>
               {!!errors.attachment &&

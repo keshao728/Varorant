@@ -32,7 +32,7 @@ const deleteTicketAction = (ticketId) => ({
 
 //THUNK
 export const getAllTicketsThunk = () => async (dispatch) => {
-  const response = await fetch('/api/tickets');
+  const response = await fetch('/api/tickets/');
   console.log("RESPONSE", response)
   if (response.ok) {
     const ticketsData = await response.json();
