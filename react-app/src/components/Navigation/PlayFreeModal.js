@@ -30,8 +30,8 @@ const PlayFree = () => {
         <div className="playfree-border">
           <button className="playnow-button"
             id="playnow-play-free"
-            onClick={() => history.push("/media")}
-          >VIEW MEDIA</button>
+            onClick={() => history.push("/tickets")}
+          >VIEW ALL TICKETS</button>
         </div>
       }
 
