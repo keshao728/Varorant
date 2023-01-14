@@ -203,7 +203,7 @@ const Home = () => {
       <div className='video-line-3'></div>
       <div className='video-line-2'></div>
       <div className='video-wrapper'>
-        <div className='video-des'>A 5v5 character-based tactical shooter</div>
+        <div className='video-des'>A media/ticket community for 5v5 character-based tactical shooter</div>
         <img className='video-title' src={varorantW} alt="Video Title" />
         <PlayFree />
         {/* <div className="tests"></div> */}

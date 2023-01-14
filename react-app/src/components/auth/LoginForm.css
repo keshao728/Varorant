@@ -121,7 +121,145 @@
   padding: 14px 20px;
   width: 50%;
   border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
+
+
+.demo-1-wrap {
+  position: relative;
+  width: 50%;
+}
+
+.demo-login-button:hover .demo-login-overlay-1,
+.demo-login-button:hover .demo-login-overlay-2 {
+  height: 100%;
+}
+
+.demo-login-button:hover .fa-user {
+  display: none;
+  transition: 0.3s ease;
+}
+
+
+#demo-1,
+#demo-2 {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+
+
+.demo-login-overlay-1 {
+  border-radius: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-color: #ffffff;
+  overflow: hidden;
+  color: rgb(87, 87, 87);
+  width: 100%;
+  height: 0;
+  z-index: 5;
+  transition: .2s ease;
+  opacity: 0.9;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+
+.demo-login-overlay-2 {
+  border-radius: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-color: #000000;
+  overflow: hidden;
+  color: rgb(232, 232, 232);
+  width: 100%;
+  height: 0;
+  z-index: 5;
+  transition: .2s ease;
+  opacity: 0.4;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+/* .demo-login-button {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 250px;
+  height: 50px;
+  font-weight: bolder;
+  cursor: pointer;
+  font-family: 'Cabin', sans-serif;
+  transition: 0.8s;
+  position: relative;
+  border: none;
+  overflow: hidden;
+  background-color: var(--background-color);
+
+}
+
+#demo-2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #0F1923;
+  z-index: -1;
+  color: #ECE8E1;
+
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms ease-in-out;
+}
+
+#demo-2:hover {
+  color: #ECE8E1;
+  transition: 0.8s;
+  transition: transform 200ms ease-in-out;
+}
+
+#demo-2:hover::before,
+#demo-2:focus::before {
+  transform: scaleX(1);
+}
+
+#demo-2 {
+  color: #383F46;
+  background-color: #ECE8E1;
+  z-index: 1;
+  transition: transform 200ms ease-in-out;
+
+}
+
+ */
+
+
+
+
+
+
+
+
+
+
 
 #demo-1 {
   background-color: black;
