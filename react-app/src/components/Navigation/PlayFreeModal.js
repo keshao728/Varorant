@@ -25,7 +25,7 @@ const PlayFree = () => {
           <button
             className="playnow-button"
             id="playnow-play-free"
-            onClick={() => setShowModal(true)}> PLAY FREE </button>
+            onClick={() => setShowModal(true)}> JOIN FREE </button>
         </div> :
         <div className="playfree-border">
           <button className="playnow-button"
@@ -50,7 +50,7 @@ const PlayFree = () => {
             <div className="playnow-title">
               <div>\</div>
               <div className="playnow-title-text">
-                GET SET UP TO PLAY
+                GET SET UP TO CREATE
               </div>
               <div>\</div>
             </div>

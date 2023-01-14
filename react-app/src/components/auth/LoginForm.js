@@ -50,7 +50,7 @@ const LoginForm = () => {
         <NavLink to='/' exact={true} className="singin-link-home" activeClassName='active'>
           <div className='signin-home'>
             <div className="signin-home-logo" >
-              <img className='signin-home-individual-logo' src={logo} alt="Site Logo"/>
+              <img className='signin-home-individual-logo' src={logo} alt="Site Logo" />
             </div>
             <div className='signin-home-name'>MEOWIT GAMES</div>
           </div>
@@ -72,7 +72,7 @@ const LoginForm = () => {
             </div>
             {!!errors.length && (
               <div className='sign-in-error'>
-                <img className="caution" src="https://imgur.com/E1p7Fvo.png" alt="Error Message"/>
+                <img className="caution" src="https://imgur.com/E1p7Fvo.png" alt="Error Message" />
                 {errors.filter(error => error.includes("email"))}
               </div>
             )}
@@ -88,29 +88,37 @@ const LoginForm = () => {
             </div>
             {!!errors.length && (
               <div className='sign-in-error'>
-                <img className="caution" src="https://imgur.com/E1p7Fvo.png" alt="Error Message"/>
+                <img className="caution" src="https://imgur.com/E1p7Fvo.png" alt="Error Message" />
                 {errors.filter(error => error.includes("password"))}
               </div>
             )}
             <div className="demo-user">
-              <button className='demo-login-button'
-                id='demo-2'
-                type="submit"
-                onClick={() => {
-                  setEmail("marnie@aa.io")
-                  setPassword("password")
-                }}>
-                <i class="fa-regular fa-user"></i>
-              </button>
-              <button className='demo-login-button'
-                id='demo-1'
-                type="submit"
-                onClick={() => {
-                  setEmail("demo@aa.io")
-                  setPassword("password")
-                }}>
-                <i class="fa-solid fa-user"></i>
-              </button>
+              <div className="demo-1-wrap">
+                <button className='demo-login-button'
+                  id='demo-2'
+                  type="submit"
+                  onClick={() => {
+                    setEmail("marnie@aa.io")
+                    setPassword("password")
+                  }}>
+                  <i className="fa-regular fa-user"></i>
+                  <div className="demo-login-overlay-2">Demo User 1</div>
+
+                </button>
+              </div>
+
+              <div className="demo-1-wrap">
+                <button className='demo-login-button'
+                  id='demo-1'
+                  type="submit"
+                  onClick={() => {
+                    setEmail("demo@aa.io")
+                    setPassword("password")
+                  }}>
+                  <i className="fa-solid fa-user"></i>
+                  <div className="demo-login-overlay-1">Demo User 2</div>
+                </button>
+              </div>
             </div>
             <div className='submit-login-wrapper'>
               <button className='submit-login-button' type='submit' disabled={!email || !password}>
