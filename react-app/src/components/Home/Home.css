@@ -328,6 +328,12 @@
   margin-bottom: -5px;
 }
 
+/* @media(max-width: 1400px) {
+  .harbor-img {
+    object-position: 0px 0px;
+  }
+} */
+
 .overview-text {
   position: relative;
   width: 0;
@@ -594,7 +600,8 @@
   align-items: center;
   text-decoration: none;
   position: relative;
-  top: 25px;;
+  top: 25px;
+  ;
 }
 
 .defy-gif-button-wrapper {
@@ -754,7 +761,8 @@
 
 .map-line {
   position: absolute;
-  height: 100%;
+  height: 900px;
+  overflow: hidden;
   margin-left: 17.8%;
   border-left: 1px solid #928F8B;
   z-index: 2;
@@ -1078,42 +1086,42 @@
   position: absolute;
 }
 
-.defy-decor-box{
+.defy-decor-box {
   height: 10px;
   width: 10px;
-  position:relative;
+  position: relative;
   left: 0;
-  top:785px;
+  top: 785px;
   background-color: #ff4655;
   z-index: 1;
 }
 
-.defy-decor-box-1{
+.defy-decor-box-1 {
   height: 6px;
   width: 6px;
-  position:relative;
+  position: relative;
   left: 0;
-  top:250px;
+  top: 250px;
   background-color: #ff4655;
   z-index: 1;
 }
 
-.defy-decor-box-2{
+.defy-decor-box-2 {
   height: 6px;
   width: 6px;
-  position:relative;
+  position: relative;
   left: 100px;
-  top:570px;
+  top: 570px;
   background-color: #ff4655;
   z-index: 1;
 }
 
-.defy-decor-box-3{
-  height:13px;
+.defy-decor-box-3 {
+  height: 13px;
   width: 13px;
-  position:absolute;
+  position: absolute;
   right: 250px;
-  top:-5px;
+  top: -5px;
   background-color: #ff4655;
   z-index: 1;
 }
