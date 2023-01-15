@@ -3,11 +3,24 @@
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
-  width: auto;
+  width: 100%;
   background-position: 0px -285px;
   justify-content: center;
   display: flex;
   align-items: center;
+  position: fixed;
+}
+
+@media (max-width: 1564px) {
+  .login-form-mother {
+    background-position: 0px -180px;
+  }
+}
+
+@media (max-width: 1370px) {
+  .login-form-mother {
+    background-position: 0px 0px;
+  }
 }
 
 .login-form-wrapper {
@@ -331,9 +344,14 @@
 
 
 .login-logo {
-  position: relative;
+  /* position: relative;
   top: -430px;
-  left: -590px;
+  left: -590px; */
+  display: flex;
+
+  position: fixed;
+  top: 50px;
+  left: 60px;
 }
 
 .signin-home-individual-logo {

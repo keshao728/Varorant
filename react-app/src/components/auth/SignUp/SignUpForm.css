@@ -3,13 +3,37 @@
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
-  width: auto;
-  background-position: 0px -280px;
+  /* width: auto; */
+
   justify-content: flex-end;
   display: flex;
   align-items: center;
   /* position: relative; */
+
+
+  width: 100%;
+  position: fixed;
+  background-position: 0px -280px;
 }
+
+@media (max-width: 1564px) {
+  .signup-form-mother {
+    background-position: 0px -180px;
+  }
+}
+
+@media (max-width: 1370px) {
+  .signup-form-mother {
+    background-position: 0px 0px;
+  }
+}
+
+/* @media (max-width: 1024px) {
+  .signup-form-mother {
+    background-position: 0px -50px;
+  }
+} */
+
 
 .signup-form-wrapper {
   display: flex;
@@ -69,9 +93,15 @@
 }
 
 .signup-logo {
-  position: relative;
+  /* position: relative;
   top: -450px;
-  left: -1150px;
+  left: -1150px; */
+
+  display: flex;
+
+  position: fixed;
+  top: 50px;
+  left: 60px;
 }
 
 .signup-homepage {
@@ -170,7 +200,7 @@
   /* top: -360px; */
   /* left: 630px; */
   right: 0px;
-  top:-28px;
+  top: -28px;
   /* bottom: 0; */
   gap: 10px
 }
@@ -286,11 +316,11 @@
 .progressbar div {
 } */
 
-.signup-logo {
+/* .signup-logo {
   position: relative;
   top: -430px;
-  left: -1200px;
-}
+  left: -61%;
+} */
 
 .signup-home-individual-logo {
   width: 60px;
