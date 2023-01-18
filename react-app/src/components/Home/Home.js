@@ -457,11 +457,12 @@ const Home = () => {
       </div>
 
 
-      <div className="map-line"></div>
       <div className="left-map-item-wrap">
 
         <img className="left-map-item" src={mapleft} />
       </div>
+        <div className="map-line"></div>
+      {/* <div className="map-line"></div> */}
       <div className="map-wrapper">
         <div className="map-background-wrap" id="scrollplace" ref={ref2}>
           <div className="map-background-1">PLACE</div>
