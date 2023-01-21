@@ -44,11 +44,32 @@ Meowit Games presents VARORANT, inspired by [Valorant](https://playvalorant.com/
 
 
 <!-- <a href="https://imgur.com/l5EBZUn"><img src="https://imgur.com/RbgNqTk.gif" title="Varorant Splash" alt="https://imgur.com/ulwOo0t.png"> </a> -->
-<a href="https://varorant.herokuapp.com/"><img src="https://imgur.com/ulwOo0t.png" title="Varorant logo">
+<!-- <a href="https://varorant.herokuapp.com/"><img src="https://imgur.com/ulwOo0t.png" title="Varorant logo"> -->
 
 <!-- ![Imgur GIF](https://imgur.com/RbgNqTk.gif) -->
-<a href="https://varorant.herokuapp.com/"><img src="https://imgur.com/rgUAKFK.gif" title="source: imgur.com" /></a>
+<a href="https://varorant.herokuapp.com/"><img src="https://imgur.com/ocrvTro.gif" title="source: imgur.com" /></a>
 
+
+<br>
+<br>
+
+<h3> Sign Up/Log In:</h3>
+<a href="https://varorant.herokuapp.com/"><img src="https://imgur.com/sKRpEtJ.gif" title="source: imgur.com" /></a>
+
+<br>
+<br>
+
+<h3> Media Feature:</h3>
+<a href="https://varorant.herokuapp.com/"><img src="https://imgur.com/K3MzEwn.gif" title="source: imgur.com" /></a>
+
+
+<br>
+<br>
+
+<h3> Ticket/Comment Feature:</h3>
+<a href="https://varorant.herokuapp.com/"><img src="https://imgur.com/V0iYwpQ.gif" title="source: imgur.com" /></a>
+
+<a href="https://varorant.herokuapp.com/"><img src="https://imgur.com/vcwUQTw.gif" title="source: imgur.com" /></a>
 
 <br>
 <br>
