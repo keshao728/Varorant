@@ -53,8 +53,8 @@ Meowit Games presents VARORANT, inspired by [Valorant](https://playvalorant.com/
 <br>
 <br>
 
-<h3> Sign Up/Log In:</h3>
-<a href="https://varorant.herokuapp.com/"><img src="https://imgur.com/sKRpEtJ.gif" title="source: imgur.com" /></a>
+<h3> Log In:</h3>
+<a href="https://varorant.herokuapp.com/"><img src="https://imgur.com/1bn6Gg2.gif" title="source: imgur.com" /></a>
 
 <br>
 <br>
