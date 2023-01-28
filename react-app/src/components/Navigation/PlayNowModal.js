@@ -40,7 +40,7 @@ const PlayNow = () => {
             <div className="playnow-buttons">
 
               <div>
-                <div className="playnow-individual-text">I dont't have a Riot account yet</div>
+                <div className="playnow-individual-text">I dont't have a Meowit account yet</div>
                 <div className="playnow-individual-border">
                   <button
                     className="playnow-individual-button"
@@ -54,7 +54,7 @@ const PlayNow = () => {
                 </div>
               </div>
               <div>
-                <div className="playnow-individual-text">I have a Riot account</div>
+                <div className="playnow-individual-text">I have a Meowit account</div>
                 <div className="playnow-individual-border">
                   <button
                     className="playnow-individual-button"
