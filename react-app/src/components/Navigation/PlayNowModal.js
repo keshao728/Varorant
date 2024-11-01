@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Modal } from '../../context/Modal';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 // import LoginForm from "../auth/LoginForm";
 // import SignUpForm from "../auth/SignUpForm";
 import close from "./NavImages/close.png"
@@ -8,7 +8,7 @@ import './PlayNowModal.css';
 
 const PlayNow = () => {
   const [showModal, setShowModal] = useState(false);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const closeModal = () => {
     setShowModal(false);
@@ -47,7 +47,7 @@ const PlayNow = () => {
                     id="playnow-make-one"
                     onClick={() => {
                       setShowModal(false);
-                      history.push("/sign-up")
+                      navigate("/sign-up")
                     }}>
                     MAKE ONE
                   </button>
@@ -61,7 +61,7 @@ const PlayNow = () => {
                     id="playnow-sign-in"
                     onClick={() => {
                       setShowModal(false);
-                      history.push("/login")
+                      navigate("/login")
                     }}>
                     SIGN IN
                   </button>

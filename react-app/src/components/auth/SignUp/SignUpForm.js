@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect, NavLink } from 'react-router-dom';
+import { NavLink, Navigate } from 'react-router-dom';
 import { signUp } from '../../../store/session';
 import EmailForm from './EmailForm'
 import UsernameForm from './UsernameForm'
@@ -131,7 +131,7 @@ const SignUpForm = () => {
 
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Navigate to="/" replace={true} />;
   }
 
   return (

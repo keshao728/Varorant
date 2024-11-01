@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUp/SignUpForm';
@@ -32,54 +32,67 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Switch>
-        <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route>
-        <Route path='/users/:userId' exact={true} >
-          <User />
-        </Route>
-        <Route path='/' exact={true} >
-          <NavBar />
-          <Home />
-        </Route>
-        <Route path='/support'>
-          <NavBar />
-          <Support />
-        </Route>
-        <Route exact path='/tickets'>
-          <NavBar />
-          <AllTicket />
-        </Route>
-        <Route path='/tickets/new'>
-          <NavBar />
-          <TicketForm />
-        </Route>
-        <Route path='/tickets/my-tickets'>
-          <NavBar />
-          <UserTickets />
-        </Route>
-        <Route path='/tickets/:ticketId'>
-          <NavBar />
-          <SingleTicket />
-          {/* <AllComments /> */}
-        </Route>
-        <Route exact path='/media'>
-          <NavBar />
-          <AllMedia />
-        </Route>
-        <Route path="*">
-          <NavBar />
-          <Home />
-        </Route>
-        {/* <Route path='/media/:mediaId' component={ImgModal}>
+      <Routes>
+        <Route path='/login' element={<LoginForm />} />
+        <Route path='/sign-up' element={<SignUpForm />} />
+        <Route path='/users/:userId' element={<User />} />
 
-        </Route> */}
-      </Switch>
+        <Route path='/' element={
+          <>
+            <NavBar />
+            <Home />
+          </>
+        } />
 
+        <Route path='/support' element={
+          <>
+            <NavBar />
+            <Support />
+          </>
+        } />
+
+        <Route path='/tickets' element={
+          <>
+            <NavBar />
+            <AllTicket />
+          </>
+        } />
+
+        <Route path='/tickets/new' element={
+          <>
+            <NavBar />
+            <TicketForm />
+          </>
+        } />
+
+        <Route path='/tickets/my-tickets' element={
+          <>
+            <NavBar />
+            <UserTickets />
+          </>
+        } />
+
+        <Route path='/tickets/:ticketId' element={
+          <>
+            <NavBar />
+            <SingleTicket />
+          </>
+        } />
+
+        <Route path='/media' element={
+          <>
+            <NavBar />
+            <AllMedia />
+          </>
+        } />
+
+        <Route path="*" element={
+          <>
+            <NavBar />
+            <Home />
+          </>
+        } />
+      </Routes>
     </BrowserRouter>
   );
 }

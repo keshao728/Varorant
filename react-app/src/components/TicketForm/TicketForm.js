@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { NavLink, useHistory, Redirect } from 'react-router-dom';
+import { NavLink, useNavigate, Navigate } from 'react-router-dom';
 // import { useHistory } from 'react-router-dom';
 import { getUserTicketsThunk } from '../../store/ticket';
 import varorantW from '../Home/HomeAssets/varorantW.png'
@@ -9,7 +9,7 @@ import './TicketForm.css';
 
 const TicketForm = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const sessionUser = useSelector(state => state.session.user);
 
   const [request, setRequest] = useState('');
@@ -101,7 +101,7 @@ const TicketForm = () => {
         // console.log('res', res)
         await dispatch(getUserTicketsThunk());
         setImageLoading(false);
-        history.push("/tickets/my-tickets");
+        navigate("/tickets/my-tickets");
       } else {
         setImageLoading(false);
         // a real app would probably use more advanced
@@ -127,7 +127,7 @@ const TicketForm = () => {
   }, [setErrors, subject, description, attachments])
 
   if (!sessionUser) {
-    return <Redirect to="/" />
+    return <Navigate to="/" replace={true} />
   }
 
 

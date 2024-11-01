@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Modal } from '../../context/Modal';
-import { NavLink, useHistory } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 // import { Redirect } from 'react-router-dom';
 // import LoginForm from "../auth/LoginForm";
@@ -11,7 +11,7 @@ import './PlayNowModal.css';
 
 const PlayFree = () => {
   const [showModal, setShowModal] = useState(false);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const sessionUser = useSelector(state => state.session.user);
   //
@@ -30,7 +30,7 @@ const PlayFree = () => {
         <div className="playfree-border">
           <button className="playnow-button"
             id="playnow-play-free"
-            onClick={() => history.push("/tickets")}
+            onClick={() => navigate("/tickets")}
           >VIEW ALL TICKETS</button>
         </div>
       }
@@ -64,7 +64,7 @@ const PlayFree = () => {
                     id="playnow-make-one"
                     onClick={() => {
                       setShowModal(false);
-                      history.push("/sign-up")
+                      navigate("/sign-up")
                     }}>
                     MAKE ONE
                   </button>
@@ -78,7 +78,7 @@ const PlayFree = () => {
                     id="playnow-sign-in"
                     onClick={() => {
                       setShowModal(false);
-                      history.push("/login")
+                      navigate("/login")
                     }}>
                     SIGN IN
                   </button>

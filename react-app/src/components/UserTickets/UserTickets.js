@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, Redirect } from 'react-router-dom';
+import { NavLink, Navigate } from 'react-router-dom';
 
 import { getUserTicketsThunk } from '../../store/ticket';
 import varorantW from '../Home/HomeAssets/varorantW.png'
@@ -33,7 +33,7 @@ const UserTickets = () => {
   const userTicket = recentTickets?.filter((ticket) => ticket?.user_id === sessionUser?.id)
   // console.log("USER TICKET", userTicket)
   if (!sessionUser) {
-    return <Redirect to="/" />
+    return <Navigate to="/" replace={true} />
   }
 
   return isLoaded && (

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { NavLink, useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { editTicketThunk } from '../../../store/ticket';
 import close from '../../Navigation/NavImages/close.png'
 
@@ -10,7 +10,6 @@ const EditTicketForm = ({ setModalOpen }) => {
   const dispatch = useDispatch();
   const { ticketId } = useParams();
 
-  const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
   const ticket = useSelector((state) => state.ticket);
   const myTicket = ticket[ticketId]
