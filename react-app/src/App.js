@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUp/SignUpForm';
-import NavBar from './components/Navigation/NavBar';
 // import ProtectedRoute from './components/auth/ProtectedRoute';
 import User from './components/User/User';
 import Home from './components/Home/Home';
+import Maps from './components/Maps/Maps';
 import UserTickets from './components/UserTickets/UserTickets';
 import Support from './components/Support/Support';
 import AllTicket from './components/AllTickets/AllTicket';
@@ -14,6 +14,7 @@ import SingleTicket from './components/SingleTicket/SingleTicket';
 import AllMedia from './components/AllMedia/AllMedia';
 import TicketForm from './components/TicketForm/TicketForm';
 import { authenticate } from './store/session';
+import Layout from './components/Layout/Layout';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -32,54 +33,23 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Switch>
-        <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route>
-        <Route path='/users/:userId' exact={true} >
-          <User />
-        </Route>
-        <Route path='/' exact={true} >
-          <NavBar />
-          <Home />
-        </Route>
-        <Route path='/support'>
-          <NavBar />
-          <Support />
-        </Route>
-        <Route exact path='/tickets'>
-          <NavBar />
-          <AllTicket />
-        </Route>
-        <Route path='/tickets/new'>
-          <NavBar />
-          <TicketForm />
-        </Route>
-        <Route path='/tickets/my-tickets'>
-          <NavBar />
-          <UserTickets />
-        </Route>
-        <Route path='/tickets/:ticketId'>
-          <NavBar />
-          <SingleTicket />
-          {/* <AllComments /> */}
-        </Route>
-        <Route exact path='/media'>
-          <NavBar />
-          <AllMedia />
-        </Route>
-        <Route path="*">
-          <NavBar />
-          <Home />
-        </Route>
-        {/* <Route path='/media/:mediaId' component={ImgModal}>
+      <Routes>
+        <Route path='/login' element={<LoginForm />} />
+        <Route path='/sign-up' element={<SignUpForm />} />
+        <Route path='/users/:userId' element={<User />} />
 
-        </Route> */}
-      </Switch>
-
+        <Route element={<Layout />}>
+          <Route path='/' element={<Home />} />
+          <Route path='/support' element={<Support />} />
+          <Route path='/tickets' element={<AllTicket />} />
+          <Route path='/tickets/new' element={<TicketForm />} />
+          <Route path='/tickets/my-tickets' element={<UserTickets />} />
+          <Route path='/tickets/:ticketId' element={<SingleTicket />} />
+          <Route path='/media' element={<AllMedia />} />
+          <Route path='/maps' element={<Maps />} />
+          <Route path="*" element={<Home />} />
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
 }

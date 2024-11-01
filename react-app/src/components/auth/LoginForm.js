@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
+import { NavLink, Navigate } from 'react-router-dom';
 import { login } from '../../store/session';
 import logo from '../Navigation/NavImages/logo.png'
 import './LoginForm.css';
@@ -41,7 +40,7 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Navigate to="/" replace={true} />;
   }
 
   return (

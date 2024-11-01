@@ -7,11 +7,7 @@
   color: white;
   margin-bottom: 60px;
   position: relative;
-  /* overflow: hidden; */
-  /* min-height: 75vh; */
-  /* min-width: 100vh; */
   width: 100%;
-  /* height: 72vh; */
   height: 76vh;
   z-index: 1;
 
@@ -133,6 +129,7 @@
   width: 100%;
   margin-bottom: 70px;
   position: relative;
+  z-index: 10;
   /* margin-top: -10px; */
 }
 
@@ -168,7 +165,7 @@
   font-size: 92px;
   color: #FF4655;
   /* font-weight: bold; */
-  z-index: 10;
+  z-index: 20;
   position: relative;
   font-family: 'Anton', sans-serif;
 }
@@ -193,6 +190,7 @@
 .latest-links {
   text-decoration: none;
   color: #383E3A;
+  /* z-index: 10; */
 }
 
 .latest-date-info {
@@ -321,12 +319,13 @@
 .harbor-img {
   width: 100%;
   height: 850px;
-  object-fit: none;
-  object-position: -770px 0px;
+  object-fit: cover;
+  transform: scale(1.2) translateY(71px); /* Adjust Y-axis translation to move the image up */
   z-index: 1;
   position: relative;
   margin-bottom: -5px;
 }
+
 
 /* @media(max-width: 1400px) {
   .harbor-img {
@@ -343,7 +342,6 @@
 .overview-title {
   margin-top: 20px;
   display: flex;
-  margin-left: 17.8%;
   font-size: 110px;
   font-family: 'Anton', sans-serif;
   color: #ECE8E1;
@@ -356,9 +354,7 @@
 .overview-des {
   margin-top: 20px;
   display: flex;
-  margin-left: 17.8%;
   font-size: 20px;
-  /* font-family: 'Anton', sans-serif; */
   color: #ECE8E1;
   position: absolute;
   letter-spacing: 3px;
@@ -1124,4 +1120,336 @@
   top: -5px;
   background-color: #ff4655;
   z-index: 1;
+}
+
+@media (max-width: 1200px) {
+  /* Hide all decorative lines */
+  .video-line,
+  .video-line-2,
+  .video-line-3,
+  .we-are-line,
+  .latest-line,
+  .overview-line,
+  .agent-line,
+  .map-line {
+    display: none;
+  }
+
+  /* Hide dots as well since they're related to the lines */
+  .latest-dots,
+  .latest-dots-1,
+  .latest-dots-2 {
+    display: none;
+  }
+}
+
+
+
+@media (max-width: 780px) {
+  .video-wrapper {
+    height: 50vh;
+  }
+
+  .video-des {
+    font-size: 14px;
+  }
+
+  .home-latest-title {
+    font-size: 36px;
+  }
+
+  .we-are-title {
+    font-size: 48px;
+  }
+
+  .defy-title {
+    text-align: center;
+  }
+
+  .defy-des {
+    text-align: center;
+  }
+
+  .defy-00 {
+    display: none;
+  }
+
+  .agent-title {
+    font-size: 48px;
+  }
+
+  .agent-title-2,
+  .agent-des {
+    font-size: 16px;
+  }
+
+  .map-title {
+    font-size: 48px;
+  }
+
+  .map-title-2,
+  .map-des {
+    font-size: 16px;
+  }
+
+  .footer {
+    padding: 20px;
+  }
+
+  .trademark {
+    width: 100%;
+    font-size: 10px;
+  }
+
+  /* Adjust button sizes */
+  .overview-but,
+  .we-are-but,
+  .agent-but,
+  .map-but {
+    width: 200px;
+  }
+}
+
+/* Fix layout issues with decorative elements */
+@media (max-width: 1200px) {
+  .video-line,
+  .video-line-2,
+  .video-line-3,
+  .we-are-line,
+  .latest-line,
+  .overview-line,
+  .agent-line,
+  .map-line,
+  .latest-dots,
+  .defy-dots-1,
+  .defy-dots-2 {
+    display: none;
+  }
+
+  .overview-title {
+    font-size: 90px;
+    left: 200px;
+  }
+
+  .overview-des {
+    left: 200px;
+  }
+
+  .harbor-img {
+    height: 700px;
+  }
+
+  .overview-button-wrap {
+    left: 200px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .home-latest-img {
+    flex-direction: column !important;
+    margin: 0 5%;
+    gap: 40px;
+  }
+
+  .defy-wrapper {
+    flex-direction: column !important;
+    left: 0;
+    margin: 0 20px;
+  }
+
+  .agent-wrapper {
+    flex-direction: column !important;
+    align-items: center;
+  }
+
+  .agent-right {
+    position: relative !important;
+    right: auto;
+    order: 1;
+    width: 90%;
+    margin: 40px auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .video-wrapper {
+    height: 50vh !important;
+  }
+
+  .video-des {
+    margin: 60px 20px 0 !important;
+    font-size: 16px !important;
+  }
+
+  .home-latest-title {
+    font-size: 48px !important;
+    margin-left: 5% !important;
+  }
+
+  .overview-title,
+  .agent-title,
+  .map-title {
+    font-size: 72px !important;
+    text-align: center !important;
+  }
+
+  /* Center all buttons */
+  .overview-button-wrap,
+  .we-are-button-wrap,
+  .agent-button-wrap,
+  .map-button-wrap {
+    display: flex !important;
+    justify-content: center !important;
+    left: 0 !important;
+    transform: none !important;
+  }
+}
+
+/* Small mobile styles */
+@media (max-width: 480px) {
+  .video-wrapper {
+    height: 50vh;
+  }
+
+  .home-latest-title {
+    font-size: 36px;
+  }
+
+  .footer {
+    padding: 20px;
+  }
+
+  .trademark {
+    width: 90%;
+    font-size: 10px;
+  }
+}
+
+/* Accessibility - Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .fade-title,
+  .latest-img-overlay {
+    transition: none;
+  }
+}
+
+.overview-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.overview-text {
+  position: relative;
+  width: 100%;
+  height: auto;
+  z-index: 2;
+}
+
+.overview-title {
+  margin-top: 20px;
+  font-size: 110px;
+  font-family: 'Anton', sans-serif;
+  color: #ECE8E1;
+  position: absolute;
+  z-index: 6;
+  top: -420px;
+  left: 370px;
+}
+
+.overview-des {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #ECE8E1;
+  position: absolute;
+  letter-spacing: 3px;
+  z-index: 6;
+  top: -470px;
+  left: 370px;
+  width: 400px;
+}
+
+.overview-button-wrap {
+  position: absolute;
+  top: -210px;
+  left: 370px;
+}
+
+@media (max-width: 1200px) {
+  .overview-title {
+    font-size: 90px;
+    left: 200px;
+  }
+
+  .overview-des {
+    left: 200px;
+  }
+
+  .harbor-img {
+    height: 700px;
+  }
+
+  .overview-button-wrap {
+    left: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .overview-text {
+    text-align: center;
+    top: 40px;
+  }
+
+  .overview-title {
+    font-size: 60px;
+    left: 40px;
+  }
+
+  .overview-des {
+    font-size: 16px;
+    left: 40px;
+  }
+
+  .harbor-img {
+    height: 500px;
+    object-position: center;
+  }
+
+  .overview-button-wrap {
+    display: flex;
+    justify-content: center;
+    left: 40px;
+    top: -280px;
+  }
+}
+
+
+
+@media (max-width: 340px) {
+  .overview-text {
+    text-align: center;
+    top: 40px;
+  }
+
+  .overview-title {
+    font-size: 60px;
+    left: 40px;
+  }
+
+  .overview-des {
+    font-size: 16px;
+    left: 40px;
+  }
+
+  .harbor-img {
+    height: 500px;
+    object-position: center;
+  }
+
+  .overview-button-wrap {
+    display: flex;
+    justify-content: center;
+    left: 40px;
+    top: -280px;
+  }
 }

@@ -1,15 +1,14 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
-import { createMediaThunk, getAllMediaThunk } from '../../store/media';
+import {  getAllMediaThunk } from '../../store/media';
 import close from '../Navigation/NavImages/close.png'
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 import './MediaForm.css'
 
 const MediaForm = ({ setModalOpen }) => {
-  const history = useHistory(); // so that we can redirect after the image upload is successful
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
@@ -19,30 +18,17 @@ const MediaForm = ({ setModalOpen }) => {
   const [showErrors, setShowErrors] = useState(false);
   const [imageLoading, setImageLoading] = useState(false);
 
-
-  const sessionUser = useSelector(state => state.session.user);
-
-
   const validate = () => {
     let err = {}
     if (title.length > 20) err.title = 'Title must be less than 20 characters'
     if (title.length < 3) err.title = 'Title must be at least 3 characters'
     if (!attachment) err.attachment = 'Please enter a valid URL ending with jpg, jpeg, png or gif'
 
-    // if (!attachment.match(/\.(jpg|jpeg|png|gif)$/)) err.attachment = "Please enter a valid URL ending with jpg, jpeg, png or gif"
-
     setErrors(err)
     if (err.length) setShowErrors(true)
     return err
   }
 
-  // console.log("MEDIA ERRORS", errors)
-
-
-  // const [value, setValue] = useState(0); // integer state
-  // const forceUpdate = () => {
-  //   return () => setValue(value => value + 1); // update the state to force render
-  // }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -69,23 +55,19 @@ const MediaForm = ({ setModalOpen }) => {
 
       if (res.ok) {
         await res.json();
-        // forceUpdate()
         await dispatch(getAllMediaThunk());
         setImageLoading(false);
         setShowErrors(false)
         setModalOpen(false)
-        history.push("/media");
+        navigate("/media");
       }
       else {
         setImageLoading(false);
-        // a real app would probably use more advanced
-        // error handling
         console.log("error", res);
       }
       await dispatch(getAllMediaThunk());
 
-      // setShowErrors(false)
-      // setModalOpen(false)
+
 
       return errors
     }
@@ -95,47 +77,12 @@ const MediaForm = ({ setModalOpen }) => {
     setAttachment(file);
   }
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault()
-
-  //   let validationErrors = validate()
-  //   if (Object.values(validationErrors).length > 0) {
-  //     setShowErrors(true)
-  //     return
-  //   }
 
 
-  //   if (!Object.values(validationErrors).length) {
-  //     const newMedia = {
-  //       user_id: sessionUser.id,
-  //       title: title,
-  //       attachment: attachment,
-  //     }
-
-  //     await dispatch(createMediaThunk(newMedia))
-
-  //     setShowErrors(false)
-  //     setModalOpen(false)
-
-  //     return errors
-  //   }
-  // }
-
-  useEffect(async () => {
+  useEffect(() => {
     if (showErrors) validate()
   }, [setErrors, title, attachment])
 
-  // function getFileName() {
-  //   let fileUpload = document.getElementById('file-upload');
-  //   let fileName = document.getElementById('file-name');
-
-  //   fileUpload.addEventListener('change', function () {
-  //     if (attachment.length)
-  //       fileName.innerText = attachment[0].name;
-  //     else
-  //       fileName.innerText = '';
-  //   });
-  // }
 
 
   return (

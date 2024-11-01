@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, Redirect } from 'react-router-dom';
+import { NavLink, Navigate } from 'react-router-dom';
 
 import { getAllTicketsThunk } from '../../store/ticket';
 import varorantW from '../Home/HomeAssets/varorantW.png'
@@ -31,7 +31,7 @@ const UserTickets = () => {
   }, [dispatch])
 
   if (!sessionUser) {
-    return <Redirect to="/" />
+    return <Navigate to="/" replace={true} />
   }
 
   return isLoaded && (

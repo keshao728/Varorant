@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import close from '../../Navigation/NavImages/close.png'
 
 
@@ -9,7 +9,7 @@ import './DeleteTicket.css'
 
 const DeleteTicket = ({ setModalOpen }) => {
   const dispatch = useDispatch()
-  const history = useHistory()
+  const navigate = useNavigate()
 
   const { ticketId } = useParams();
 
@@ -17,7 +17,7 @@ const DeleteTicket = ({ setModalOpen }) => {
     e.preventDefault()
     await dispatch(deleteTicketThunk(ticketId))
     setModalOpen(false)
-    history.push('/tickets/my-tickets')
+    navigate('/tickets/my-tickets')
   }
 
   return (

@@ -3,6 +3,9 @@ from app.models import db, User
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
+    # Clear existing users first
+    undo_users()
+
     demo = User(
         username='o冏o', email='demo@aa.io', password='password')
     marnie = User(
@@ -23,5 +26,9 @@ def seed_users():
 # resets the auto incrementing primary key, CASCADE deletes any
 # dependent entities
 def undo_users():
-    db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
+    db.session.execute('DELETE FROM users;')
+    try:
+        db.session.execute('DELETE FROM sqlite_sequence WHERE name="users";')
+    except:
+        pass  # sqlite_sequence table may not exist yet
     db.session.commit()

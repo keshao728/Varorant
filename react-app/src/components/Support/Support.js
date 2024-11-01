@@ -1,4 +1,4 @@
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useEffect, useRef } from 'react';
 import varorantW from '../Home/HomeAssets/varorantW.png'
@@ -10,7 +10,7 @@ import './Support.css'
 
 const Support = () => {
   const sessionUser = useSelector(state => state.session.user);
-  const history = useHistory();
+  const navigate = useNavigate();
   // const allTicketRef = useRef(null);
   // const root = useRef(null);
 
@@ -75,7 +75,7 @@ const Support = () => {
                 <button
                   className="support-all-button"
                   onClick={() => {
-                    history.push("/tickets")
+                    navigate("/tickets")
                   }}>
                   / VIEW ALL TICKETS
                 </button>
@@ -110,7 +110,7 @@ const Support = () => {
                 <button
                   className="support-all-button"
                   onClick={() => {
-                    history.push("/login")
+                    navigate("/login")
                   }}>
                   / VIEW ALL TICKETS
                 </button>
@@ -135,7 +135,7 @@ const Support = () => {
             <button
               className="support-all-button"
               onClick={() => {
-                history.push("/tickets")
+                navigate("/tickets")
               }}>
               / VIEW ALL TICKETS
             </button>

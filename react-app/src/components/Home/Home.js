@@ -11,85 +11,74 @@ import reynaraze from './HomeAssets/reynaraze.gif'
 import playbutton from './HomeAssets/playbutton.png'
 import map from './HomeAssets/map.png'
 import mapleft from './HomeAssets/mapleft.png'
-// import { useSelector } from 'react-redux';
-// import { Redirect } from 'react-router-dom';
-// import wearevalo from './HomeAssets/wearevalo.png'
 import birds from './HomeAssets/birds.png'
 import { FadeIn } from 'react-slide-fade-in'
 import defy from './HomeAssets/defy.mp4'
-import background from './HomeAssets/background.png'
 import "./Home.css"
 
 const Home = () => {
   //PARALLAX SCROLL
   const ref = useRef(null);
-
   const ref2 = useRef(null);
-
   const ref3 = useRef(null);
-
   const ref4 = useRef(null);
 
-  // const ref5 = useRef(null);
-  // const ref6 = useRef(null);
-  // const ref7 = useRef(null);
-  // const ref8 = useRef(null);
-
   const shadowRef = useRef(null);
-  const root = useRef(null);
-  useEffect(() => {
-    try {
 
-      root.current = shadowRef?.current?.attachShadow({ mode: 'open' });
+  useEffect(() => {
+    let currentRoot = null;
+
+    try {
+      currentRoot = shadowRef?.current?.attachShadow({ mode: 'open' });
 
       const div = document.createElement('div');
       div.textContent = '';
-      root.current.appendChild(div);
+      currentRoot.appendChild(div);
 
       const style = document.createElement('style');
       style.textContent = `
-      div{
-        height: 10px;
-        width: 10px;
-        position:absolute;
-        left: 0px;
-        bottom: 200px;
-        background-color: #ff4655;
-        z-index: 10;
-      }
-      `
-      root.current.appendChild(style);
+        div{
+          height: 10px;
+          width: 10px;
+          position:absolute;
+          left: 0px;
+          bottom: 200px;
+          background-color: #ff4655;
+          z-index: 10;
+        }
+      `;
+      currentRoot.appendChild(style);
     }
     catch (e) {
-      console.log(e)
+      console.log(e);
     }
-  }, [])
+
+    return () => {
+      if (currentRoot) {
+        while (currentRoot.firstChild) {
+          currentRoot.removeChild(currentRoot.firstChild);
+        }
+      }
+    };
+  }, []);
 
 
   useEffect(() => {
     const handleScroll = () => {
-      //get the pixel from the top of the page
       const scrollTop = window?.pageYOffset;
-      // const scrollLeft = window?.pageXOffset;
 
-      //get the pixel from the top of the element
+      if (!ref.current) return;
+
       const elementTop = ref?.current?.offsetTop;
       const elementTop2 = ref2?.current?.offsetTop;
       const elementTop3 = ref3?.current?.offsetTop;
       const elementTop4 = ref4?.current?.offsetTop;
 
-      if (ref.current) {
-        ref.current.style.transform = `translateY(${(scrollTop - elementTop) / 20}px)`;
-        ref2.current.style.transform = `translateY(${(scrollTop - elementTop2) / 15}px)`;
-        ref3.current.style.transform = `translateY(${-(scrollTop - elementTop3) / 35}px) translateX(${-(scrollTop - elementTop3) / 5}px)`;
-        ref4.current.style.transform = `translateY(${-(scrollTop - elementTop4) / 10}px)`;
-      }
+      ref.current.style.transform = `translateY(${(scrollTop - elementTop) / 20}px)`;
+      ref2.current.style.transform = `translateY(${(scrollTop - elementTop2) / 15}px)`;
+      ref3.current.style.transform = `translateY(${-(scrollTop - elementTop3) / 35}px) translateX(${-(scrollTop - elementTop3) / 5}px)`;
+      ref4.current.style.transform = `translateY(${-(scrollTop - elementTop4) / 10}px)`;
 
-      //get my divs
-      // let reword_wrapper = ref5.current;
-      // let reword_top = ref6.current;
-      // let reword_bottom = ref7.current;
-      // let reword_line = ref8.current;
       let reword_wrapper = document?.getElementById("reword-wrapper");
       let reword_line = document?.getElementById('reword-line')
       let reword_top = document?.getElementById('rewords1')
@@ -98,9 +87,8 @@ const Home = () => {
       let scope = (reword_wrapper?.offsetHeight * (100 - 90)) / 100;
       let clientHeight = document?.documentElement.clientHeight;
 
-      //get the size of an element and its position relative to the viewport
       let bottomY = reword_wrapper?.getBoundingClientRect().bottom;
-      // let topY = reword_wrapper.getBoundingClientRect().top;
+
       if (reword_line) {
         if (bottomY < -scope || bottomY > clientHeight + scope) {
           reword_top.innerHTML = ''
@@ -129,37 +117,6 @@ const Home = () => {
   //REWORD
   let top_final = 'VLRT PR0T0C0L'
   let reword_status = true
-
-  // window.onscroll = function () {
-  //   //get my divs
-  //   let reword_wrapper = document?.getElementById("reword-wrapper");
-  //   let reword_line = document?.getElementById('reword-line')
-  //   let reword_top = document?.getElementById('rewords1')
-  //   let reword_bottom = document?.getElementById('rewords2')
-
-  //   let scope = (reword_wrapper?.offsetHeight * (100 - 90)) / 100;
-  //   let clientHeight = document?.documentElement.clientHeight;
-
-  //   //get the size of an element and its position relative to the viewport
-  //   let bottomY = reword_wrapper?.getBoundingClientRect().bottom;
-  //   // let topY = reword_wrapper.getBoundingClientRect().top;
-
-  //   if (bottomY < -scope || bottomY > clientHeight + scope) {
-  //     reword_top.innerHTML = ''
-  //     reword_bottom.innerHTML = ''
-  //     reword_line.style.width = "0";
-  //     reword_status = true
-  //   } else {
-  //     if (reword_status) {
-  //       let reword_line = document.getElementById('reword-line')
-  //       rewords1()
-  //       setTimeout(rewords2(), top_final.length * 30);
-  //       reword_line.style.width = "100%";
-  //       reword_status = false
-  //     }
-  //   }
-  //   window.onscroll = null;
-  // }
 
   function rewords1() {
     let top_final = 'VLRT PR0T0C0L'
@@ -206,13 +163,11 @@ const Home = () => {
         <div className='video-des'>A media/ticket community for 5v5 character-based tactical shooter</div>
         <img className='video-title' src={varorantW} alt="Video Title" />
         <PlayFree />
-        {/* <div className="tests"></div> */}
         <video className="home-video" alt="Home Video" src={homeVid} autoPlay muted loop></video>
       </div>
       <div className="video-triangle"></div>
       <div className="home-latest" id="home-latest">
         <div className="latest-line"></div>
-        {/* <img className="home-background" src={wearevalo}/> */}
         <div className="fade-title">
           <FadeIn
             from="bottom"
@@ -226,7 +181,9 @@ const Home = () => {
             </div>
           </FadeIn>
         </div>
-        <div className="latest-background-wrap" id="we-are" ref={ref}>
+        <div className="latest-background-wrap" id="we-are"
+        ref={ref}
+        >
           <div className="latest-background-1">WE ARE </div>
           <div className="latest-background-2">VARORANT</div>
         </div>
@@ -240,7 +197,6 @@ const Home = () => {
             <div className="latest-img-wrapper">
               <div className="fade-img">
                 <FadeIn
-                  // className="home-latest-title-1"
                   from="bottom"
                   className="home-latest-title"
                   positionOffset={50}
@@ -266,7 +222,6 @@ const Home = () => {
             <div className="latest-img-wrapper">
               <div className="fade-img">
                 <FadeIn
-                  // className="home-latest-title-1"
                   from="bottom"
                   className="home-latest-title"
                   positionOffset={50}
@@ -290,7 +245,6 @@ const Home = () => {
             <div className="latest-img-wrapper">
               <div className="fade-img">
                 <FadeIn
-                  // className="home-latest-title-1"
                   from="bottom"
                   className="home-latest-title"
                   positionOffset={50}
@@ -396,7 +350,6 @@ const Home = () => {
               <div className="defy-00">00.</div>
             </div>
             <a href="https://www.youtube.com/watch?v=le474A3jBxA&t=3s&ab_channel=VALORANT" className="defy-gif-wrapper" target="_blank" rel="noreferrer">
-              {/* <img className="defy-gif" src="https://imgur.com/5DxTAAS.gif" /> */}
               <div className="defy-border">
                 <div className="defy-dots">
                   <div className="defy-dots-1"></div>
@@ -462,7 +415,6 @@ const Home = () => {
         <img className="left-map-item" src={mapleft} />
       </div>
         <div className="map-line"></div>
-      {/* <div className="map-line"></div> */}
       <div className="map-wrapper">
         <div className="map-background-wrap" id="scrollplace" ref={ref2}>
           <div className="map-background-1">PLACE</div>
@@ -500,31 +452,6 @@ const Home = () => {
           <img src={birds} className="bird-img" ref={ref3} alt="Bird" />
         </div>
       </div>
-
-
-      <div className="footer">
-        <div className="proj-directory-wrapper">
-          <a className="proj-directory" href="https://github.com/keshao728/Varorant" target="_blank" rel="noreferrer">
-            VIEW PROJECT GITHUB
-          </a>
-        </div>
-        <div className="dev-socials">
-          <div className="dev-socials-links">
-            <a href="https://github.com/keshao728" className="dev-link" target="_blank" rel="noreferrer">
-              <i className="fa-brands fa-github"></i></a>
-          </div>
-
-          <div className="dev-socials-links">
-            <a href="https://www.linkedin.com/in/keyingshao/" className="dev-link" target="_blank" rel="noreferrer">
-              <i className="fa-brands fa-linkedin"></i>
-            </a>
-          </div>
-        </div>
-        <div className="trademark">
-          ©2022 MEOWIT GAMES, INC. VARORANT, AND ANY ASSOCIATED LOGOS ARE TRADEMARKS, SERVICE MARKS, AND/OR REGISTERED TRADEMARKS OF MEOWIT GAMES, INC.
-        </div>
-      </div>
-
     </div >
   )
 }

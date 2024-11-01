@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { NavLink, useHistory, Redirect } from 'react-router-dom';
+import { NavLink, useNavigate, Navigate } from 'react-router-dom';
 // import { useHistory } from 'react-router-dom';
 import { getUserTicketsThunk } from '../../store/ticket';
 import varorantW from '../Home/HomeAssets/varorantW.png'
@@ -9,10 +9,9 @@ import './TicketForm.css';
 
 const TicketForm = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const sessionUser = useSelector(state => state.session.user);
 
-  const [request, setRequest] = useState('');
   const [subject, setSubject] = useState('');
   const [description, setDescription] = useState('');
   const [attachments, setAttachments] = useState('');
@@ -24,7 +23,6 @@ const TicketForm = () => {
   const [showErrors, setShowErrors] = useState(false);
 
   const openForm = (e) => {
-    setRequest(e.target.value)
     const moreForm = document.getElementById('type');
 
     if (moreForm.value === "1") {
@@ -48,32 +46,6 @@ const TicketForm = () => {
     return err
   }
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault()
-
-  //   let validationErrors = validate()
-  //   if (Object.values(validationErrors).length > 0) {
-  //     setShowErrors(true)
-  //     return
-  //   }
-
-  //   if (!Object.values(validationErrors).length) {
-  //     const newTicket = {
-  //       request_type: request,
-  //       subject: subject,
-  //       description: description,
-  //       attachments: attachments,
-  //       user_id: sessionUser.id
-  //     }
-  //     let createdTicket = await dispatch(createTicketThunk(newTicket))
-
-  //     setShowErrors(false)
-  //     history.push(`/tickets/${createdTicket.id}`)
-  //     // return (() => dispatch(resetData()))
-
-  //     return errors
-  //   }
-  // }
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -98,14 +70,11 @@ const TicketForm = () => {
 
       if (res.ok) {
         await res.json();
-        // console.log('res', res)
         await dispatch(getUserTicketsThunk());
         setImageLoading(false);
-        history.push("/tickets/my-tickets");
+        navigate("/tickets/my-tickets");
       } else {
         setImageLoading(false);
-        // a real app would probably use more advanced
-        // error handling
         console.log("error", res);
       }
       setShowErrors(false)
@@ -122,12 +91,12 @@ const TicketForm = () => {
 
 
 
-  useEffect(async () => {
+  useEffect(() => {
     if (showErrors) validate()
-  }, [setErrors, subject, description, attachments])
+  }, [showErrors, subject, description, attachments])
 
   if (!sessionUser) {
-    return <Redirect to="/" />
+    return <Navigate to="/" replace={true} />
   }
 
 
@@ -167,7 +136,7 @@ const TicketForm = () => {
           </div>
           <div className='ticket-input-wrapper-1'>
             <div className='ticket-input-box'>
-              <label className="ticket-label" for="request_type">1. CHOOSE A REQUEST TYPE</label>
+              <label className="ticket-label" htmlFor="request_type">1. CHOOSE A REQUEST TYPE</label>
               <select name="request_type" id='type' className='ticket-input' onChange={openForm}>
                 <option value="1">-</option>
                 <option value="Discuss Personal Suspension or Restriction">Discuss Personal Suspension or Restriction</option>
@@ -187,7 +156,7 @@ const TicketForm = () => {
               <div className='ticket-input-box'>
                 <label className="ticket-label">
                   SUBJECT
-                  <i class="fa-solid fa-star-of-life"></i>
+                  <i className="fa-solid fa-star-of-life"></i>
                 </label>
                 <input
                   className='ticket-input'
@@ -205,7 +174,7 @@ const TicketForm = () => {
               <div className='ticket-input-box'>
                 <label className="ticket-label">
                   DESCRIPTION
-                  <i class="fa-solid fa-star-of-life"></i>
+                  <i className="fa-solid fa-star-of-life"></i>
                 </label>
                 <textarea
                   className='ticket-input'

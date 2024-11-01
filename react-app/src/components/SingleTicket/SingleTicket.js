@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, NavLink, Redirect } from 'react-router-dom';
+import { useParams, NavLink, Navigate } from 'react-router-dom';
 // import { NavLink } from 'react-router-dom';
 import DeleteTicketModal from "./DeleteTicket/DeleteTicketModal";
 import EditTicketModal from "../TicketForm/EditTicketForm/EditTicketModal";
@@ -34,7 +34,7 @@ const SingleTicket = () => {
   }, [dispatch, ticketId])
 
   if (!sessionUser) {
-    return <Redirect to="/" />
+    return <Navigate to="/" replace={true} />
   }
 
   return isLoaded && (

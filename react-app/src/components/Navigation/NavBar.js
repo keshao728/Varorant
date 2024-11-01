@@ -60,6 +60,10 @@ const NavBar = () => {
               Media
               <div className="nav-line"></div>
             </NavLink>
+            <NavLink to='/maps' exact={true} className="individual-action" activeClassName='active'>
+              Maps
+              <div className="nav-line"></div>
+            </NavLink>
             <NavLink to='/support' exact={true} className="individual-action" onClick={() => window.scrollTo(0, 0)} activeClassName='active'>
               Support
               <div className="nav-line"></div>
