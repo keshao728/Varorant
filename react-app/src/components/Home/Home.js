@@ -181,7 +181,9 @@ const Home = () => {
             </div>
           </FadeIn>
         </div>
-        <div className="latest-background-wrap" id="we-are" ref={ref}>
+        <div className="latest-background-wrap" id="we-are"
+        // ref={ref}
+        >
           <div className="latest-background-1">WE ARE </div>
           <div className="latest-background-2">VARORANT</div>
         </div>
