@@ -5,6 +5,7 @@
   position: fixed;
   z-index: 20;
   border-bottom: 1px solid #1A1A1A;
+  font-size: 16px;
 }
 
 .nav-wrapper {
@@ -96,7 +97,6 @@
   padding: 5px 15px;
   border-radius: 5px;
   position: relative;
-  /* width: 0px; */
 }
 
 .individual-action:hover {

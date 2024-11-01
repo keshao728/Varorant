@@ -10,6 +10,7 @@ import haven from './img/6.png';
 import split from './img/7.png';
 import ascent from './img/8.png';
 import { FadeIn } from 'react-slide-fade-in'
+import { useNavigate } from 'react-router-dom';
 
 
 const imgs = [
@@ -73,6 +74,8 @@ function Maps() {
   const currentX = useRef(0);
   const moveWith = useRef(0);
   const minMoveOffset = useRef(0);
+
+  const navigate = useNavigate();
 
   // Update moveWith and currentOffset on window resize or index change
   useEffect(() => {
@@ -202,17 +205,29 @@ function Maps() {
     }
   }, [ref]);
 
+  useEffect(() => {
+    document.documentElement.classList.add('maps-page-active');
+    return () => {
+      document.documentElement.classList.remove('maps-page-active');
+    };
+  }, []);
+
+  const handleMediaClick = () => {
+    navigate('/media');
+  };
+
   return (
-    <div id="___gatsby" className="maps-container">
+    <div id="___gatsby" className="maps-page">
       <div style={{ outline: 'none' }} tabIndex="-1" id="gatsby-focus-wrapper">
         <section className="section light white-lines mapsCarousel--H7RTJ" data-testid="carousel">
           <div className="backgroundTextStroke--FsHcX hideOnMobile--DMAVs">
-          <div className="latest-background-wrap" id="we-are" ref={ref}
-        >
-          <div className="latest-background-1">WE ARE </div>
-          <div className="latest-background-2">VARORANT</div>
-        </div>
+            <div className="latest-background-wrap" id="we-are" ref={ref}>
+              <div className="latest-background-1">WE ARE </div>
+              <div className="latest-background-2">VARORANT</div>
+            </div>
           </div>
+
+
           <div className="sectionWrapper border-left sectionWrapper--OHQG7">
 
           <div className="fade-title">
@@ -224,7 +239,7 @@ function Maps() {
               durationInMilliseconds={500}
               delayInMilliseconds={0}>
               <div>
-                <div className="we-are-title">MAPS</div>
+                <div className="maps-title">MAPS</div>
               </div>
             </FadeIn>
             <div className="defy-decor-box-3"></div>
@@ -364,8 +379,9 @@ function Maps() {
                     data-icon="ArrowRightLong"
                     data-testid="carousel:item:cta-button"
                     style={{ opacity: 1 }}
+                    onClick={handleMediaClick}
                   >
-                    <p className="heading-06 label">VIEW GALLERY</p>
+                    <p className="heading-06 label">VIEW MEDIA</p>
                     <div className="icon icon--QtDXP icon--s9eG5 currentColor--ReEom">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 15">
                         <path

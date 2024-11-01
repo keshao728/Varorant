@@ -33,16 +33,19 @@
   overflow: hidden
 }
 
-*,
-:after,
-:before {
+.maps-page *,
+.maps-page :after,
+.maps-page :before {
   -webkit-box-sizing: border-box;
   box-sizing: border-box
 }
 
-html {
+.maps-page ~ html,
+html.maps-page-active {
   font-size: 10px !important;
 }
+
+
 
 .button,
 button {
@@ -93,7 +96,7 @@ button {
   height: auto;
   overflow-x: hidden;
   position: relative;
-  width: 100%
+  width: 100%;
 }
 
 .section {
@@ -101,7 +104,8 @@ button {
 }
 
 .section.light {
-  background-color: #ece8e1
+  background-color: #ece8e1;
+  padding-top: 80px;
 }
 
 .section:after {
@@ -472,7 +476,9 @@ body {
 }
 
 .label {
-  margin-right: 1em
+  margin-right: 1em;
+  font-weight: bolder;
+
 }
 
 @media(min-width:1024px) {
@@ -536,7 +542,7 @@ body {
 }
 
 .title {
-  min-height: 1.25em
+  min-height: 1.25em;
 }
 
 .title {
@@ -702,8 +708,21 @@ body {
   overflow: hidden;
   position: absolute;
   top: 0;
-  width: 100%
+  width: 100%;
+  padding-top: 60px;
 }
+
+.maps-title {
+  margin-top: 20px;
+  display: flex;
+  width: 820px;
+  font-size: 120px;
+  font-family: 'Anton', sans-serif;
+  color: #0F1923;
+  z-index: 0;
+  position: relative
+}
+
 
 .backgroundTextStroke--FsHcX {
   left: 0;
@@ -974,7 +993,8 @@ body {
   bottom: 0;
   height: 1em;
   position: absolute;
-  width: 1em
+  width: 1em;
+  left: -1px;
 }
 
 .bottomLeft {
