@@ -79,7 +79,7 @@ const MediaForm = ({ setModalOpen }) => {
 
 
 
-  useEffect(async () => {
+  useEffect(() => {
     if (showErrors) validate()
   }, [setErrors, title, attachment])
 

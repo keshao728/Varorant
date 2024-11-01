@@ -38,52 +38,59 @@ const Home = () => {
   const shadowRef = useRef(null);
   const root = useRef(null);
   useEffect(() => {
-    try {
+    let currentRoot = null;
 
-      root.current = shadowRef?.current?.attachShadow({ mode: 'open' });
+    try {
+      currentRoot = shadowRef?.current?.attachShadow({ mode: 'open' });
 
       const div = document.createElement('div');
       div.textContent = '';
-      root.current.appendChild(div);
+      currentRoot.appendChild(div);
 
       const style = document.createElement('style');
       style.textContent = `
-      div{
-        height: 10px;
-        width: 10px;
-        position:absolute;
-        left: 0px;
-        bottom: 200px;
-        background-color: #ff4655;
-        z-index: 10;
-      }
-      `
-      root.current.appendChild(style);
+        div{
+          height: 10px;
+          width: 10px;
+          position:absolute;
+          left: 0px;
+          bottom: 200px;
+          background-color: #ff4655;
+          z-index: 10;
+        }
+      `;
+      currentRoot.appendChild(style);
     }
     catch (e) {
-      console.log(e)
+      console.log(e);
     }
-  }, [])
+
+    // Cleanup function
+    return () => {
+      if (currentRoot) {
+        while (currentRoot.firstChild) {
+          currentRoot.removeChild(currentRoot.firstChild);
+        }
+      }
+    };
+  }, []);
 
 
   useEffect(() => {
     const handleScroll = () => {
-      //get the pixel from the top of the page
       const scrollTop = window?.pageYOffset;
-      // const scrollLeft = window?.pageXOffset;
 
-      //get the pixel from the top of the element
+      if (!ref.current) return;
+
       const elementTop = ref?.current?.offsetTop;
       const elementTop2 = ref2?.current?.offsetTop;
       const elementTop3 = ref3?.current?.offsetTop;
       const elementTop4 = ref4?.current?.offsetTop;
 
-      if (ref.current) {
-        ref.current.style.transform = `translateY(${(scrollTop - elementTop) / 20}px)`;
-        ref2.current.style.transform = `translateY(${(scrollTop - elementTop2) / 15}px)`;
-        ref3.current.style.transform = `translateY(${-(scrollTop - elementTop3) / 35}px) translateX(${-(scrollTop - elementTop3) / 5}px)`;
-        ref4.current.style.transform = `translateY(${-(scrollTop - elementTop4) / 10}px)`;
-      }
+      ref.current.style.transform = `translateY(${(scrollTop - elementTop) / 20}px)`;
+      ref2.current.style.transform = `translateY(${(scrollTop - elementTop2) / 15}px)`;
+      ref3.current.style.transform = `translateY(${-(scrollTop - elementTop3) / 35}px) translateX(${-(scrollTop - elementTop3) / 5}px)`;
+      ref4.current.style.transform = `translateY(${-(scrollTop - elementTop4) / 10}px)`;
 
       //get my divs
       // let reword_wrapper = ref5.current;
