@@ -14,6 +14,7 @@ import SingleTicket from './components/SingleTicket/SingleTicket';
 import AllMedia from './components/AllMedia/AllMedia';
 import TicketForm from './components/TicketForm/TicketForm';
 import { authenticate } from './store/session';
+import Layout from './components/Layout/Layout';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -37,61 +38,16 @@ function App() {
         <Route path='/sign-up' element={<SignUpForm />} />
         <Route path='/users/:userId' element={<User />} />
 
-        <Route path='/' element={
-          <>
-            <NavBar />
-            <Home />
-          </>
-        } />
-
-        <Route path='/support' element={
-          <>
-            <NavBar />
-            <Support />
-          </>
-        } />
-
-        <Route path='/tickets' element={
-          <>
-            <NavBar />
-            <AllTicket />
-          </>
-        } />
-
-        <Route path='/tickets/new' element={
-          <>
-            <NavBar />
-            <TicketForm />
-          </>
-        } />
-
-        <Route path='/tickets/my-tickets' element={
-          <>
-            <NavBar />
-            <UserTickets />
-          </>
-        } />
-
-        <Route path='/tickets/:ticketId' element={
-          <>
-            <NavBar />
-            <SingleTicket />
-          </>
-        } />
-
-        <Route path='/media' element={
-          <>
-            <NavBar />
-            <AllMedia />
-          </>
-        } />
-
-        <Route path="*" element={
-          <>
-            <NavBar />
-            <Home />
-          </>
-        } />
+        <Route element={<Layout />}>
+          <Route path='/' element={<Home />} />
+          <Route path='/support' element={<Support />} />
+          <Route path='/tickets' element={<AllTicket />} />
+          <Route path='/tickets/new' element={<TicketForm />} />
+          <Route path='/tickets/my-tickets' element={<UserTickets />} />
+          <Route path='/tickets/:ticketId' element={<SingleTicket />} />
+          <Route path='/media' element={<AllMedia />} />
+          <Route path="*" element={<Home />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
