@@ -107,7 +107,7 @@ const MediaForm = ({ setModalOpen }) => {
               <label className="media-label">
                 <div className="media-label-title">
                   TITLE
-                  <i class="fa-solid fa-star-of-life"></i>
+                  <i className="fa-solid fa-star-of-life"></i>
                 </div>
               </label>
               <input
@@ -127,7 +127,7 @@ const MediaForm = ({ setModalOpen }) => {
               <label className="media-label">
                 <div className="media-label-title">
                   ATTACHMENT
-                  <i class="fa-solid fa-star-of-life"></i>
+                  <i className="fa-solid fa-star-of-life"></i>
                 </div>
                 {/* <textarea
                 className='media-input'

@@ -29,7 +29,7 @@ const TicketForm = () => {
       setShowForm(false);
     } else {
       setShowForm(true);
-    };
+    }
   };
 
   const validate = () => {
@@ -125,10 +125,10 @@ const TicketForm = () => {
               Submit a request
             </div>
             <div className='ticket-form-des'>
-              From tech to tilt, we're here to help you!
+              From tech to tilt, we&apos;re here to help you!
             </div>
             <div className='ticket-form-des'>
-              Submit a Ticket! So long as it doesn't fall through a portal, we'll get back to you soon.
+              Submit a Ticket! So long as it doesn&apos;t fall through a portal, we&apos;ll get back to you soon.
             </div>
           </div>
           <div className='ticket-form-details'>

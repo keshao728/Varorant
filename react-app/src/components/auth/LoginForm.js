@@ -121,7 +121,7 @@ const LoginForm = () => {
             </div>
             <div className='submit-login-wrapper'>
               <button className='submit-login-button' type='submit' disabled={!email || !password}>
-                <i class="fa-solid fa-arrow-right"></i>
+                <i className="fa-solid fa-arrow-right"></i>
               </button>
             </div>
             <div>

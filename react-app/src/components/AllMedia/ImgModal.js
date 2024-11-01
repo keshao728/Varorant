@@ -39,20 +39,20 @@ const ImgModal = ({ clickedImg, setClickedImg, clickRight, clickLeft, imgTitle, 
             <div className="img-title-button-overlay">
               <div className="img-title-overlay"></div>
               <div onClick={clickLeft} className="modal-left">
-                <i class="fa-solid fa-angle-left"></i>
+                <i className="fa-solid fa-angle-left"></i>
               </div>
             </div>
 
             <div className="img-title-button-overlay">
               <div className="img-title-overlay"></div>
               <div onClick={clickRight} className="modal-right">
-                <i class="fa-solid fa-angle-right"></i>
+                <i className="fa-solid fa-angle-right"></i>
               </div>
             </div>
 
 
             <div className='img-modal-img-title'>
-              <div><i class="fa-regular fa-image"></i></div>
+              <div><i className="fa-regular fa-image"></i></div>
               <div> {imgTitle}</div>
             </div>
           </div>

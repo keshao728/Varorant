@@ -66,9 +66,9 @@ const EditTicketForm = ({ setModalOpen }) => {
     }
   }
 
-  useEffect(async () => {
+  useEffect(() => {
     if (showErrors) validate()
-  }, [setErrors, subject, description])
+  }, [showErrors, validate, setErrors, subject, description])
 
   return (
     <div className='edit-ticket-mother'>
@@ -83,7 +83,7 @@ const EditTicketForm = ({ setModalOpen }) => {
               Edit Ticket
             </div>
             <div className='edit-ticket-form-des'>
-              From tech to tilt, we're here to help you!
+              From tech to tilt, we&apos;re here to help you!
             </div>
           </div>
 
@@ -92,7 +92,7 @@ const EditTicketForm = ({ setModalOpen }) => {
             <div className='edit-ticket-input-box'>
               <label className="edit-ticket-label">
                 SUBJECT
-                <i class="fa-solid fa-star-of-life"></i>
+                <i className="fa-solid fa-star-of-life"></i>
               </label>
               <input
                 className='ticket-input'
@@ -109,7 +109,7 @@ const EditTicketForm = ({ setModalOpen }) => {
             <div className='edit-ticket-input-box'>
               <label className="edit-ticket-label">
                 DESCRIPTION
-                <i class="fa-solid fa-star-of-life"></i>
+                <i className="fa-solid fa-star-of-life"></i>
               </label>
               <textarea
                 className='ticket-input'
@@ -128,7 +128,7 @@ const EditTicketForm = ({ setModalOpen }) => {
             <div className="edit-ticket-radio">
               <div className="edit-ticket-label">
                 Status
-                <i class="fa-solid fa-star-of-life"></i>
+                <i className="fa-solid fa-star-of-life"></i>
               </div>
               <div className='edit-radio'>
                 <input type="radio"

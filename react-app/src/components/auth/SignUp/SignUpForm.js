@@ -15,12 +15,6 @@ const SignUpForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
-  // const [formData, setFormData] = useState({
-  //   email: '',
-  //   username: '',
-  //   password: '',
-  //   repeatPassword: '',
-  // })
 
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
@@ -42,7 +36,7 @@ const SignUpForm = () => {
 
   const validate = () => {
     let err = {}
-    if (!email.toLowerCase().match(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,63})$/)) {
+    if (!email.toLowerCase().match(/^([a-z0-9_.-]+)@([\da-z.-]+)\.([a-z.]{2,63})$/)) {
       err.email = 'Please provide a valid email'
       setPage(0)
     }
@@ -191,14 +185,14 @@ const SignUpForm = () => {
                 <button
                   disabled={!password || !repeatPassword || Object.values(errors).length}
                   className='submit-signup-button' type='submit'>
-                  <i class="fa-solid fa-arrow-right"></i>
+                  <i className="fa-solid fa-arrow-right"></i>
                 </button>
                 : <button
                   onClick={() => { setPage((currPage) => currPage + 1); setErrors({}) }}
                   className='submit-signup-button'
                   disabled={isDisabled()}
                 >
-                  <i class="fa-solid fa-arrow-right"></i>
+                  <i className="fa-solid fa-arrow-right"></i>
                 </button>
               }
             </div>

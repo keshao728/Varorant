@@ -72,7 +72,7 @@ const UserTickets = () => {
             </div>
           </div>
           {recentTickets?.map((ticket) => (
-            <div className="individual-ticket">
+            <div className="individual-ticket" key={ticket.id}>
               <div className="ticket-table-subject-2">
                 <NavLink className="ticket-subject-link" to={`/tickets/${ticket.id}`}>
                   {ticket.subject}

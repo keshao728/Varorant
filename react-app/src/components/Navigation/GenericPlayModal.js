@@ -25,7 +25,7 @@ const GenericModal = ({ showModal, closeModal, onMakeOne, onSignIn }) => {
             </div>
             <div className="playnow-buttons">
               <div>
-                <div className="playnow-individual-text">I dont't have a Meowit account yet</div>
+                <div className="playnow-individual-text">I don&apos;t have a Meowit account yet</div>
                 <div className="playnow-individual-border">
                   <button
                     className="playnow-individual-button"
