@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { editComment, getAllComments } from "../../../store/comment";
 
@@ -67,7 +67,6 @@ const EditComment = ({ setShowEdit, comment }) => {
             <div className="commenter-img-input">
               <textarea
                 type="text"
-                error
                 className="comment-input"
                 value={userComments}
                 required
@@ -79,10 +78,10 @@ const EditComment = ({ setShowEdit, comment }) => {
               <div>
                 {
                   validationErrors.length > 0 &&
-                  validationErrors.map(error => (
-                    <div className="comment-error">
+                  validationErrors.map((error, idx) => (
+                    <div className="comment-error" key={idx}>
                       <img className="caution" src="https://imgur.com/E1p7Fvo.png" alt="Error Message"/>
-                      <div className="comment-form-error-text" key={error}>{error}</div>
+                      <div className="comment-form-error-text">{error}</div>
                     </div>
                   ))
                 }

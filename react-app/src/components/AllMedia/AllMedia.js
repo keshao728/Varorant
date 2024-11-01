@@ -119,7 +119,7 @@ const AllMedia = () => {
             MEDIA
           </div>
           <div className="media-top-des">
-            Our work is your play. Whether you're press, a content creator or something in between, if you see it here it's yours to use.
+            Our work is your play. Whether you&apos;re press, a content creator or something in between, if you see it here it&apos;s yours to use.
           </div>
           <div className="media-top-des">
             Don’t forget, if you create something with these files, tag @PlayVARORANT on social media. We cannot wait to see what you make.
@@ -148,6 +148,7 @@ const AllMedia = () => {
         <div className="media-map">
           {allMediaArr?.map((media, index) => (
             <div className="media"
+              key={media.id}
               onClick={() => {
                 setClickedImg(media.attachment);
                 setCurrentIndex(index)
@@ -160,13 +161,7 @@ const AllMedia = () => {
                 src={media.attachment}
                 alt="Media"
                 onError={(e) => e.target.src = "https://imgur.com/2DrReGq.jpg"}
-              // onClick={() => {
-              //   setClickedImg(media.attachment);
-              //   setCurrentIndex(index)
-              //   setImgTitle(media.title)
-              //   setImgId(media.id)
-              //   setUserId(media.user_id)
-              // }}
+
               />
               <div className="media-img-overlay"> </div>
               <div className="media-item-title">

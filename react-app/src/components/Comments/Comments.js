@@ -1,8 +1,7 @@
-
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { NavLink, useParams } from "react-router-dom"
+import {  useParams } from "react-router-dom"
 import { getAllComments, createComment, deleteComment } from "../../store/comment";
 
 import * as moment from 'moment';
@@ -13,9 +12,7 @@ const AllComments = () => {
   const dispatch = useDispatch();
   const { ticketId } = useParams();
   const sessionUser = useSelector((state) => state.session.user);
-  // const pfp = useSelector(state => state.session.user?.profile_img)
-  // console.log("THIS IS SESSION USER IN ALLCOMMENTS", sessionUser)
-  // const track = useSelector(state => state.tracks)
+
 
   const comments = useSelector((state) => state.comment.comments);
   const commentsArr = Object.values(comments);
@@ -82,7 +79,7 @@ const AllComments = () => {
       <div>
         {commentsArr.map((comment) => {
           return (
-            <div className="individual-comment">
+            <div className="individual-comment" key={comment.id}>
               <div className="comment-user-info">
                 <img className="comment-pfp" src="https://i.imgur.com/2DrReGq.jpg" alt="Default Profile Picture"></img>
                 <div className="comment-user-des">
@@ -132,22 +129,20 @@ const AllComments = () => {
                   <textarea
                     placeholder="Type a response..."
                     type="text"
-                    error
                     className="comment-input"
                     value={userComments}
                     required
                     onChange={(e) => setUserComments(e.target.value)}
-                  // onClick=autoFocus
                   />
                 </div>
                 {showErrors && (
                   <div>
                     {
                       validationErrors.length > 0 &&
-                      validationErrors.map(error => (
-                        <div className="comment-error">
+                      validationErrors.map((error, idx) => (
+                        <div className="comment-error" key={idx}>
                           <img className="caution" src="https://imgur.com/E1p7Fvo.png" alt="Error Message"/>
-                          <div className="comment-form-error-text" key={error}>{error}</div>
+                          <div className="comment-form-error-text">{error}</div>
                         </div>
                       ))
                     }
