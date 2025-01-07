@@ -7,3 +7,4 @@ __pycache__/
 .node_modules/
 .package-lock.json
 /react-app/node_modules/
+/react-app/package-lock.json/

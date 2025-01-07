@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from 'react-router-dom';
 import MediaFormModal from "../MediaForm/MediaFormModal";
@@ -32,17 +32,12 @@ const AllMedia = () => {
 
   const RandomSizeArr = Object.values(RandomSize)
 
-  const randomize = () => {
-
+  const randomize = useCallback(() => {
     let divs = document.querySelectorAll('.media');
-
     divs.forEach((div) => {
       div.style = RandomSizeArr[Math.floor(Math.random() * 3)];
     })
-
-  };
-
-
+  }, [RandomSizeArr]);
 
   const clickRight = () => {
     const mediaLength = allMediaArr.length;
@@ -94,20 +89,16 @@ const AllMedia = () => {
     setUserId(newUrl[0].user_id)
   }
 
-  // window.onload = randomize;
-
   useEffect(() => {
     dispatch(getAllMediaThunk())
       .then(() => setIsLoaded(true))
-      .then(() => randomize())
-
   }, [dispatch])
 
-
-  // const handleClick = (media, index) => {
-  //   setCurrentIndex(index)
-  //   setClickedImg(media.attachment)
-  // }
+  useEffect(() => {
+    if (isLoaded) {
+      randomize()
+    }
+  }, [isLoaded, randomize])
 
   return isLoaded && (
     <div className="all-media-wrapper">
@@ -122,7 +113,7 @@ const AllMedia = () => {
             Our work is your play. Whether you&apos;re press, a content creator or something in between, if you see it here it&apos;s yours to use.
           </div>
           <div className="media-top-des">
-            Don’t forget, if you create something with these files, tag @PlayVARORANT on social media. We cannot wait to see what you make.
+            Don&apos;t forget, if you create something with these files, tag @PlayVARORANT on social media. We cannot wait to see what you make.
           </div>
           <div className="media-top-empty">
             <div className="media-top-empty-red"></div>
@@ -138,7 +129,6 @@ const AllMedia = () => {
           <NavLink className="link-media-all" to='/media' exact={true} activeClassName='active'>
             ALL
           </NavLink>
-          {/* maybe add my media later */}
           <div>
             {sessionUser && <MediaFormModal />}
           </div>
@@ -161,7 +151,6 @@ const AllMedia = () => {
                 src={media.attachment}
                 alt="Media"
                 onError={(e) => e.target.src = "https://imgur.com/2DrReGq.jpg"}
-
               />
               <div className="media-img-overlay"> </div>
               <div className="media-item-title">
